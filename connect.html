@@ -6,6 +6,9 @@
     <title>Connect - Antonio Murrieta</title>
     <meta name="description" content="Let's create something amazing together. Connect with Antonio Murrieta for collaborations, projects, or just to say hello.">
     
+    <!-- Import fonts for Stanford-inspired aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -14,92 +17,84 @@
         }
 
         :root {
-            --electric-blue: #00D9FF;
-            --hot-pink: #FF0099;
-            --lime: #BFFF00;
-            --purple: #7B61FF;
-            --yellow: #FFE500;
-            --orange: #FF6B35;
-            --mint: #00FFB7;
-            --black: #0A0A0A;
-            --white: #FAFAFA;
+            /* Stanford-inspired palette with warmth */
+            --cardinal: #8C1515;
+            --cardinal-light: #B83A3A;
+            --dark: #2E2D29;
+            --warm-gray: #544948;
+            --light-gray: #F4F4F4;
+            --white: #FFFFFF;
+            --accent-blue: #006CB8;
+            --accent-green: #009B76;
+            --text-primary: #2E2D29;
+            --text-secondary: #544948;
+            --border-light: #E5E5E5;
+            --max-width: 1200px;
+            --serif: 'Crimson Text', Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        ::selection {
+            background: var(--cardinal);
+            color: white;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--black);
-            color: var(--white);
+            font-family: var(--sans);
+            background: var(--white);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
             overflow-x: hidden;
-            cursor: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
             position: relative;
         }
 
-        /* Animated Background */
-        .background-animation {
+        /* Subtle Floating Gradients */
+        .floating-gradient {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+            animation: float-gradient 20s ease-in-out infinite;
             z-index: -1;
-            overflow: hidden;
         }
 
-        .shape {
-            position: absolute;
-            animation: float 20s infinite ease-in-out;
+        .gradient-1 {
+            background: radial-gradient(circle, var(--cardinal) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
         }
 
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--hot-pink) 0%, transparent 70%);
-            top: -150px;
-            right: -150px;
-            animation-delay: 0s;
+        .gradient-2 {
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation-delay: -10s;
         }
 
-        .shape-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--electric-blue) 0%, transparent 70%);
-            bottom: -200px;
-            left: -200px;
-            animation-delay: 5s;
-        }
-
-        .shape-3 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
+        .gradient-3 {
+            background: radial-gradient(circle, var(--accent-green) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation-delay: 10s;
+            animation-delay: -5s;
         }
 
-        @keyframes float {
+        @keyframes float-gradient {
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 15px;
-            height: 15px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            background: var(--white);
-            border-radius: 50%;
-            mix-blend-mode: difference;
-            transition: transform 0.2s ease;
-        }
-
-        .cursor.hover {
-            transform: scale(3);
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -107,24 +102,52 @@
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 30px 50px;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 24px 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            padding: 16px 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--hot-pink);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--dark);
             text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '.';
+            color: var(--cardinal);
+            font-weight: 700;
+            position: absolute;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .logo:hover {
+            color: var(--cardinal);
         }
 
         .nav-links {
@@ -134,19 +157,45 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cardinal);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .nav-links a.active {
-            color: var(--hot-pink);
+            color: var(--dark);
+            font-weight: 600;
         }
 
         /* Connect Container */
         .connect-container {
-            padding: 120px 50px 50px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 120px 40px 80px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -157,265 +206,405 @@
         /* Connect Header */
         .connect-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .connect-title {
-            font-size: clamp(60px, 8vw, 120px);
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--hot-pink), var(--electric-blue), var(--lime));
+            font-family: var(--serif);
+            font-size: clamp(56px, 8vw, 88px);
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+            line-height: 1.1;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .connect-title span {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 5s ease infinite;
+            animation: shimmer 3s ease-in-out infinite;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
         .connect-subtitle {
-            font-size: 24px;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
+            font-family: var(--serif);
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            font-weight: 400;
         }
 
         /* Contact Cards Grid */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
             width: 100%;
-            max-width: 1000px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .contact-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--white);
-            padding: 40px;
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            padding: 48px 32px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .contact-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--hot-pink) 0%, transparent 70%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--accent-blue) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
+            border-radius: 6px;
         }
 
         .contact-card:hover::before {
-            opacity: 0.2;
+            opacity: 0.03;
         }
 
         .contact-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            border-color: var(--hot-pink);
-            box-shadow: 0 20px 40px rgba(255, 0, 153, 0.3);
+            transform: translateY(-8px);
+            border-color: var(--cardinal);
+            box-shadow: 0 12px 32px rgba(140, 21, 21, 0.15);
         }
 
         .contact-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(30%);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+            filter: grayscale(0%);
         }
 
         .contact-method {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--lime);
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
         }
 
         .contact-info {
-            font-size: 16px;
-            opacity: 0.8;
-            word-break: break-all;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            word-break: break-word;
         }
 
         .contact-link {
-            color: var(--white);
+            color: var(--text-secondary);
             text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--cardinal);
         }
 
         /* Social Links */
         .social-section {
             text-align: center;
-            margin: 60px 0;
+            margin: 80px 0;
+            padding: 60px 0;
+            background: var(--light-gray);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
         }
 
         .social-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            color: var(--yellow);
+            font-family: var(--serif);
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .social-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--cardinal);
         }
 
         .social-links {
             display: flex;
-            gap: 30px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .social-link {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: transparent;
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            color: var(--white);
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 24px;
-            transition: all 0.3s ease;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .social-link:hover {
-            transform: scale(1.2) rotate(360deg);
-            background: var(--white);
-            color: var(--black);
+            transform: translateY(-4px);
+            background: var(--cardinal);
+            color: white;
+            border-color: var(--cardinal);
+            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.25);
         }
 
         /* Message Section */
         .message-section {
             width: 100%;
-            max-width: 600px;
-            margin: 60px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed var(--electric-blue);
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 48px;
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .message-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 30px;
+            font-family: var(--serif);
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 40px;
             text-align: center;
-            color: var(--electric-blue);
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .message-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--cardinal);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .form-label {
             display: block;
             font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--lime);
-            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+            letter-spacing: 0.2px;
         }
 
         .form-input,
         .form-textarea {
             width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid var(--white);
-            color: var(--white);
+            padding: 16px 20px;
+            background: var(--light-gray);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-primary);
             font-size: 16px;
-            font-family: inherit;
-            transition: all 0.3s ease;
+            font-family: var(--sans);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .form-input:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: var(--electric-blue);
-            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--cardinal);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(140, 21, 21, 0.1);
         }
 
         .form-textarea {
-            min-height: 150px;
+            min-height: 140px;
             resize: vertical;
+            line-height: 1.6;
         }
 
         .form-button {
             width: 100%;
-            padding: 20px;
-            background: var(--hot-pink);
+            padding: 18px 32px;
+            background: var(--cardinal);
             border: none;
-            color: var(--white);
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .form-button:hover::before {
+            left: 100%;
         }
 
         .form-button:hover {
-            background: var(--electric-blue);
-            transform: scale(1.05);
+            background: var(--cardinal-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.25);
         }
 
         /* Fun Message */
         .fun-message {
             text-align: center;
-            margin: 60px 0;
-            font-size: 20px;
-            opacity: 0.8;
+            margin: 60px auto;
+            max-width: 600px;
+            padding: 40px;
+            background: var(--light-gray);
+            border-radius: 12px;
         }
 
-        .fun-message span {
-            display: inline-block;
-            animation: wave 1s ease-in-out infinite;
+        .fun-text {
+            font-family: var(--serif);
+            font-size: 24px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
         }
 
-        .fun-message span:nth-child(1) { animation-delay: 0s; }
-        .fun-message span:nth-child(2) { animation-delay: 0.1s; }
-        .fun-message span:nth-child(3) { animation-delay: 0.2s; }
-        .fun-message span:nth-child(4) { animation-delay: 0.3s; }
-        .fun-message span:nth-child(5) { animation-delay: 0.4s; }
-
-        @keyframes wave {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .fun-text span {
+            color: var(--cardinal);
+            font-weight: 600;
         }
 
         /* Mobile Menu */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 5px;
         }
 
         .menu-toggle span {
-            width: 30px;
-            height: 3px;
-            background: var(--white);
+            width: 25px;
+            height: 2px;
+            background: var(--dark);
             transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
             .connect-container {
-                padding: 120px 20px 50px;
+                padding: 120px 20px 80px;
             }
 
             .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            nav {
-                padding: 20px;
+            .contact-card {
+                padding: 40px 24px;
+            }
+
+            .social-section {
+                margin: 60px 0;
+                padding: 40px 20px;
+            }
+
+            .message-section {
+                margin: 60px auto;
+                padding: 32px 24px;
+            }
+
+            .fun-message {
+                margin: 40px auto;
+                padding: 32px 24px;
+            }
+
+            .fun-text {
+                font-size: 20px;
             }
 
             .nav-links {
@@ -424,10 +613,11 @@
                 right: -100%;
                 width: 100%;
                 height: 100vh;
-                background: var(--black);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: 30px;
                 transition: right 0.3s ease;
             }
 
@@ -440,34 +630,31 @@
                 z-index: 1001;
             }
 
-            .cursor {
+            .gradient-1, .gradient-2, .gradient-3 {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
+    <!-- Dynamic Background -->
+    <div class="floating-gradient gradient-1"></div>
+    <div class="floating-gradient gradient-2"></div>
+    <div class="floating-gradient gradient-3"></div>
 
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">AM</a>
-            <ul class="nav-links">
+            <a href="index.html" class="logo">ANTONIO MURRIETA</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="work.html">WORK</a></li>
+                <li><a href="library.html">LIBRARY</a></li>
                 <li><a href="lab.html">LAB</a></li>
                 <li><a href="story.html">STORY</a></li>
                 <li><a href="connect.html" class="active">CONNECT</a></li>
             </ul>
-            <button class="menu-toggle">
+            <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -479,9 +666,12 @@
     <div class="connect-container">
         <!-- Header -->
         <div class="connect-header">
-            <h1 class="connect-title">LET'S CONNECT</h1>
+            <h1 class="connect-title">
+                Let's <span>Connect</span>
+            </h1>
             <p class="connect-subtitle">
-                Ready to create something extraordinary? Let's turn ideas into reality.
+                Ready to create something extraordinary? Whether you're looking to collaborate on innovative projects, 
+                discuss new ideas, or simply say hello, I'd love to hear from you.
             </p>
         </div>
 
@@ -512,7 +702,7 @@
 
         <!-- Social Links -->
         <div class="social-section">
-            <h2 class="social-title">FIND ME ON</h2>
+            <h2 class="social-title">Find Me Online</h2>
             <div class="social-links">
                 <a href="https://linkedin.com/in/antoniomurrieta" class="social-link" target="_blank" rel="noopener">
                     in
@@ -531,19 +721,19 @@
 
         <!-- Message Form -->
         <div class="message-section">
-            <h2 class="message-title">SEND A MESSAGE</h2>
+            <h2 class="message-title">Send a Message</h2>
             <form id="contactForm">
                 <div class="form-group">
-                    <label class="form-label" for="name">Name</label>
-                    <input type="text" id="name" class="form-input" required>
+                    <label class="form-label" for="name">Your Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" id="email" class="form-input" required>
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="your.email@example.com" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea id="message" class="form-textarea" required></textarea>
+                    <label class="form-label" for="message">Your Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="Tell me about your project, idea, or just say hello..." required></textarea>
                 </div>
                 <button type="submit" class="form-button">Send Message</button>
             </form>
@@ -551,40 +741,44 @@
 
         <!-- Fun Message -->
         <div class="fun-message">
-            <span>L</span><span>E</span><span>T</span><span>'</span><span>S</span>
-            <span> </span>
-            <span>M</span><span>A</span><span>K</span><span>E</span>
-            <span> </span>
-            <span>M</span><span>A</span><span>G</span><span>I</span><span>C</span>
-            <span>!</span>
+            <p class="fun-text">
+                "The best collaborations begin with a simple <span>hello</span>. 
+                Let's create something remarkable together."
+            </p>
         </div>
     </div>
 
     <script>
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.left = mouseX - 7.5 + 'px';
-            cursor.style.top = mouseY - 7.5 + 'px';
-        });
-
-        // Cursor hover effect
-        document.querySelectorAll('a, button, .contact-card, .social-link').forEach(element => {
-            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
         // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navbar = document.getElementById('navbar');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
         });
 
         // Form submission
@@ -596,32 +790,18 @@
             const message = document.getElementById('message').value;
             
             // Create mailto link
-            const subject = `Message from ${name}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            const subject = encodeURIComponent(`Message from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
             window.location.href = `mailto:carlosantonio.murrieta@gmail.com?subject=${subject}&body=${body}`;
             
             // Reset form
             document.getElementById('contactForm').reset();
             
             // Show success message
-            alert('Opening your email client to send the message! 🚀');
+            alert('Opening your email client to send the message!');
         });
 
-        // Animated background interaction
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.5;
-                const xOffset = (x - 0.5) * speed * 100;
-                const yOffset = (y - 0.5) * speed * 100;
-                shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-            });
-        });
-
-        // Contact card animation on click
+        // Contact card click handling
         document.querySelectorAll('.contact-card').forEach(card => {
             card.addEventListener('click', function() {
                 const link = this.querySelector('.contact-link');
@@ -629,6 +809,53 @@
                     window.location.href = link.href;
                 }
             });
+        });
+
+        // Smooth hover animations for cards
+        document.querySelectorAll('.contact-card, .social-link').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = this.classList.contains('contact-card') ? 
+                    'translateY(-8px)' : 'translateY(-4px)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add subtle parallax effect to floating gradients
+        document.addEventListener('mousemove', (e) => {
+            const gradients = document.querySelectorAll('.floating-gradient');
+            const x = (e.clientX / window.innerWidth - 0.5) * 0.5;
+            const y = (e.clientY / window.innerHeight - 0.5) * 0.5;
+            
+            gradients.forEach((gradient, index) => {
+                const speed = (index + 1) * 10;
+                gradient.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // Fade in animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for fade in animation
+        document.querySelectorAll('.contact-card, .social-section, .message-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
