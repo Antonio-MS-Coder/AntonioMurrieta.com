@@ -1153,9 +1153,6 @@
         </div>
     </div>
 
-    <!-- Load books data -->
-    <script src="books.js"></script>
-    
     <script>
         // Dynamic Library System
         let allBooks = [];
@@ -1163,16 +1160,72 @@
         let currentFilter = 'all';
         let currentSearchTerm = '';
 
-        // Initialize the library
-        function initializeLibrary() {
-            // Check if books is defined, if not try again
-            if (typeof books === 'undefined') {
-                console.warn('Books data not loaded yet. Retrying...');
-                setTimeout(initializeLibrary, 100);
-                return;
+        // Fetch books from JSON
+        async function loadBooksData() {
+            try {
+                const response = await fetch('books.json');
+                const data = await response.json();
+                return data.books;
+            } catch (error) {
+                console.error('Error loading books:', error);
+                // Return fallback data if JSON fails to load
+                return [
+                    {
+                        id: 1,
+                        title: "No Longer Human",
+                        author: "Osamu Dazai",
+                        category: "philosophy",
+                        rating: 5,
+                        coverEmoji: "📚",
+                        coverGradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                        summary: "A profound exploration of alienation and the human condition.",
+                        tags: ["Philosophy", "Japanese", "Classic"],
+                        yearRead: 2024
+                    }
+                ];
             }
+        }
+
+        // Helper functions
+        function getCurrentlyReading() {
+            return allBooks.find(book => book.currentlyReading === true);
+        }
+
+        function getBooksByCategory(category) {
+            if (category === 'all') return allBooks;
+            return allBooks.filter(book => book.category === category);
+        }
+
+        function searchBooks(searchTerm) {
+            const term = searchTerm.toLowerCase();
+            return allBooks.filter(book => 
+                book.title.toLowerCase().includes(term) ||
+                book.author.toLowerCase().includes(term) ||
+                book.summary.toLowerCase().includes(term) ||
+                book.tags.some(tag => tag.toLowerCase().includes(term))
+            );
+        }
+
+        function getBookStats() {
+            const totalBooks = allBooks.length;
+            const categories = [...new Set(allBooks.map(book => book.category))];
+            const averageRating = allBooks.reduce((sum, book) => sum + book.rating, 0) / totalBooks;
+            const booksThisYear = allBooks.filter(book => book.yearRead === new Date().getFullYear()).length;
             
-            console.log('Initializing library with', books.length, 'books');
+            return {
+                total: totalBooks,
+                categories: categories.length,
+                averageRating: averageRating.toFixed(1),
+                booksThisYear: booksThisYear,
+                booksPerYear: 52
+            };
+        }
+        
+        // Initialize the library
+        async function initializeLibrary() {
+            // Load books from JSON
+            const books = await loadBooksData();
+            console.log('Loaded', books.length, 'books from JSON');
             
             allBooks = books;
             filteredBooks = [...allBooks];
@@ -1572,17 +1625,7 @@
         }
 
         // Initialize library when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Give books.js time to load
-            setTimeout(initializeLibrary, 100);
-        });
-        
-        // Also try on window load as backup
-        window.addEventListener('load', function() {
-            if (allBooks.length === 0) {
-                initializeLibrary();
-            }
-        });
+        document.addEventListener('DOMContentLoaded', initializeLibrary);
     </script>
 </body>
 </html>
