@@ -6,6 +6,12 @@
     <title>Work - Antonio Murrieta</title>
     <meta name="description" content="Explore the creative projects of Antonio Murrieta - from digital art to interactive experiences, books to apps.">
     
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="Work - Antonio Murrieta">
+    <meta property="og:description" content="A curated portfolio of digital products, creative projects, and published works crafted at the intersection of art and technology.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoniomurrieta.com/work">
+    
     <style>
         * {
             margin: 0;
@@ -14,47 +20,45 @@
         }
 
         :root {
-            --electric-blue: #00D9FF;
-            --hot-pink: #FF0099;
-            --lime: #BFFF00;
-            --purple: #7B61FF;
-            --yellow: #FFE500;
-            --orange: #FF6B35;
-            --mint: #00FFB7;
-            --black: #0A0A0A;
-            --white: #FAFAFA;
+            /* Stanford-inspired palette with warmth */
+            --cardinal: #8C1515;
+            --cardinal-light: #B83A3A;
+            --dark: #2E2D29;
+            --warm-gray: #544948;
+            --light-gray: #F4F4F4;
+            --white: #FFFFFF;
+            --accent-blue: #006CB8;
+            --accent-green: #009B76;
+            --text-primary: #2E2D29;
+            --text-secondary: #544948;
+            --border-light: #E5E5E5;
+            --max-width: 1200px;
+            --serif: 'Crimson Text', Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
+
+        ::selection {
+            background: var(--cardinal);
+            color: white;
+        }
+
+        /* Import fonts for intellectual aesthetic */
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: var(--sans);
             background: var(--white);
-            color: var(--black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
             overflow-x: hidden;
-            cursor: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 30px;
-            height: 30px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-inner {
-            width: 100%;
-            height: 100%;
-            background: var(--hot-pink);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-        }
-
-        .cursor.hover .cursor-inner {
-            transform: rotate(45deg) scale(1.5);
-            background: var(--lime);
-            border-radius: 50%;
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -62,25 +66,52 @@
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 30px 50px;
-            background: var(--white);
-            border-bottom: 4px solid var(--black);
+            padding: 24px 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            padding: 16px 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--hot-pink);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--dark);
             text-decoration: none;
+            transition: all 0.2s ease;
             position: relative;
+        }
+
+        .logo::after {
+            content: '.';
+            color: var(--cardinal);
+            font-weight: 700;
+            position: absolute;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .logo:hover {
+            color: var(--cardinal);
         }
 
         .nav-links {
@@ -90,80 +121,186 @@
         }
 
         .nav-links a {
-            color: var(--black);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.2s ease;
             position: relative;
         }
 
-        .nav-links a.active,
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cardinal);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         .nav-links a:hover {
-            color: var(--hot-pink);
+            color: var(--dark);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--dark);
+            font-weight: 600;
         }
 
         /* Main Content */
         .work-container {
-            padding: 120px 50px 50px;
-            min-height: 100vh;
+            padding: 120px 40px 80px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            position: relative;
         }
 
         /* Header */
         .work-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
             position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .work-title {
-            font-size: clamp(60px, 8vw, 120px);
-            font-weight: 900;
+            font-family: var(--serif);
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .work-title span {
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .work-subtitle {
+            font-size: 18px;
+            color: var(--warm-gray);
+            margin-bottom: 32px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             position: relative;
             display: inline-block;
         }
 
-        .work-title span {
-            display: inline-block;
+        .work-subtitle::before,
+        .work-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--border-light);
         }
 
-        .work-title span:nth-child(1) { color: var(--hot-pink); transform: rotate(-2deg); }
-        .work-title span:nth-child(2) { color: var(--electric-blue); transform: rotate(2deg); }
-        .work-title span:nth-child(3) { color: var(--lime); transform: rotate(-1deg); }
-        .work-title span:nth-child(4) { color: var(--purple); transform: rotate(1deg); }
+        .work-subtitle::before {
+            left: -60px;
+        }
+
+        .work-subtitle::after {
+            right: -60px;
+        }
+
+        .work-description {
+            font-family: var(--serif);
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 400;
+        }
 
         /* Filter Buttons */
         .filter-container {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
         }
 
         .filter-btn {
             padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 700;
-            border: 3px solid var(--black);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--border-light);
             background: var(--white);
-            color: var(--black);
+            color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(140, 21, 21, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--yellow);
-            transform: rotate(-2deg) scale(1.05);
-            box-shadow: 5px 5px 0 var(--black);
+            background: var(--cardinal);
+            color: white;
+            border-color: var(--cardinal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140, 21, 21, 0.25);
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 40px;
             position: relative;
         }
@@ -172,168 +309,257 @@
         .project-card {
             position: relative;
             background: var(--white);
-            border: 4px solid var(--black);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            border-radius: 8px;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
-            transform: rotate(-1deg) scale(1.02);
-            box-shadow: 10px 10px 0 var(--black);
-            z-index: 10;
-        }
-
-        .project-card:nth-child(odd) {
-            transform: rotate(1deg);
-        }
-
-        .project-card:nth-child(even) {
-            transform: rotate(-1deg);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .project-visual {
-            height: 250px;
+            height: 260px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
+            font-size: 48px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Project specific colors */
-        .project-card[data-project="epistola"] .project-visual { background: linear-gradient(135deg, var(--hot-pink), var(--purple)); }
-        .project-card[data-project="datecraft"] .project-visual { background: linear-gradient(135deg, var(--yellow), var(--orange)); }
-        .project-card[data-project="andresnoir"] .project-visual { background: linear-gradient(135deg, var(--black), var(--purple)); }
-        .project-card[data-project="fitmental"] .project-visual { background: linear-gradient(135deg, var(--mint), var(--electric-blue)); }
-        .project-card[data-project="marketwizard"] .project-visual { background: linear-gradient(135deg, var(--electric-blue), var(--purple)); }
-        .project-card[data-project="toyfactory"] .project-visual { background: linear-gradient(135deg, var(--yellow), var(--hot-pink)); }
-        .project-card[data-project="books"] .project-visual { background: linear-gradient(135deg, var(--lime), var(--mint)); }
-        .project-card[data-project="stackrush"] .project-visual { background: linear-gradient(135deg, var(--orange), var(--hot-pink)); }
-        .project-card[data-project="art"] .project-visual { background: linear-gradient(135deg, var(--purple), var(--hot-pink)); }
+        .project-card:hover .project-visual {
+            transform: scale(1.05);
+        }
+
+        /* Project specific refined colors */
+        .project-card[data-project="epistola"] .project-visual { 
+            background: linear-gradient(135deg, #f8f0f5 0%, #f1e8ed 100%);
+            color: var(--cardinal);
+        }
+        .project-card[data-project="datecraft"] .project-visual { 
+            background: linear-gradient(135deg, #fef9e7 0%, #fdf4d3 100%);
+            color: #d97706;
+        }
+        .project-card[data-project="andresnoir"] .project-visual { 
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            color: var(--dark);
+        }
+        .project-card[data-project="fitmental"] .project-visual { 
+            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+            color: var(--accent-blue);
+        }
+        .project-card[data-project="marketwizard"] .project-visual { 
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            color: var(--accent-blue);
+        }
+        .project-card[data-project="toyfactory"] .project-visual { 
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #f59e0b;
+        }
+        .project-card[data-project="books"] .project-visual { 
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: var(--accent-green);
+        }
+        .project-card[data-project="stackrush"] .project-visual { 
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            color: var(--cardinal);
+        }
+        .project-card[data-project="art"] .project-visual { 
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            color: #7c3aed;
+        }
 
         .project-pattern {
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.3;
-            background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px);
+            opacity: 0.05;
+            background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
+            background-size: 20px 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-pattern {
+            opacity: 0.1;
         }
 
         .project-info {
-            padding: 30px;
+            padding: 32px;
             background: var(--white);
             position: relative;
         }
 
-        .project-title {
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
         .project-category {
             display: inline-block;
-            padding: 5px 15px;
-            background: var(--black);
-            color: var(--white);
-            font-size: 12px;
-            font-weight: 700;
+            padding: 6px 16px;
+            background: var(--light-gray);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-category {
+            background: var(--cardinal);
+            color: white;
+        }
+
+        .project-title {
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+            line-height: 1.3;
         }
 
         .project-description {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
         }
 
         .project-tags {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .project-tag {
-            padding: 5px 12px;
-            border: 2px solid var(--black);
+            padding: 6px 14px;
+            border: 1px solid var(--border-light);
             font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--white);
+            border-radius: 16px;
+            transition: all 0.3s ease;
         }
 
-        /* Decorative Elements */
-        .decoration {
+        .project-card:hover .project-tag {
+            border-color: var(--cardinal);
+            color: var(--cardinal);
+        }
+
+        /* Dynamic Background Elements */
+        .floating-gradient {
             position: fixed;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .decoration-1 {
-            top: 150px;
-            left: 20px;
-            width: 100px;
-            height: 100px;
-            background: var(--yellow);
+            width: 600px;
+            height: 600px;
             border-radius: 50%;
-            opacity: 0.3;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        .decoration-2 {
-            bottom: 100px;
-            right: 50px;
-            width: 150px;
-            height: 150px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="%2300D9FF"/></svg>') no-repeat center;
-            background-size: contain;
+            filter: blur(100px);
             opacity: 0.2;
-            animation: rotate 20s infinite linear;
+            pointer-events: none;
+            animation: float-gradient 20s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+        .gradient-1 {
+            background: radial-gradient(circle, var(--cardinal) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .gradient-2 {
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-gradient {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Reading Indicator */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--border-light);
+            z-index: 1001;
+        }
+
+        .reading-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .reading-time {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: center;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reading-time.visible {
+            opacity: 0.5;
         }
 
         /* Mobile Menu */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 5px;
         }
 
         .menu-toggle span {
-            width: 30px;
-            height: 4px;
-            background: var(--black);
+            width: 25px;
+            height: 2px;
+            background: var(--dark);
             transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .work-container {
-                padding: 120px 20px 50px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
             nav {
-                padding: 20px;
+                padding: 15px 20px;
             }
 
             .nav-links {
@@ -342,12 +568,12 @@
                 right: -100%;
                 width: 100%;
                 height: 100vh;
-                background: var(--white);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: 30px;
                 transition: right 0.3s ease;
-                border-left: 4px solid var(--black);
             }
 
             .nav-links.active {
@@ -359,29 +585,44 @@
                 z-index: 1001;
             }
 
-            .cursor {
+            .work-container {
+                padding: 120px 20px 80px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-card {
+                min-width: unset;
+            }
+
+            .work-subtitle::before,
+            .work-subtitle::after {
+                display: none;
+            }
+
+            .reading-time {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor">
-        <div class="cursor-inner"></div>
-    </div>
-
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">AM</a>
-            <ul class="nav-links">
+            <a href="index.html" class="logo">ANTONIO MURRIETA</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="work.html" class="active">WORK</a></li>
+                <li><a href="library.html">LIBRARY</a></li>
                 <li><a href="lab.html">LAB</a></li>
                 <li><a href="story.html">STORY</a></li>
                 <li><a href="connect.html">CONNECT</a></li>
             </ul>
-            <button class="menu-toggle">
+            <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -389,22 +630,39 @@
         </div>
     </nav>
 
+    <!-- Reading Progress -->
+    <div class="reading-progress">
+        <div class="reading-progress-fill" id="readingProgressFill"></div>
+    </div>
+
+    <!-- Dynamic Background -->
+    <div class="floating-gradient gradient-1"></div>
+    <div class="floating-gradient gradient-2"></div>
+    
+    <!-- Reading Indicator -->
+    <div class="reading-time" id="readingTime">3 MIN READ</div>
+
     <!-- Main Content -->
     <div class="work-container">
         <!-- Header -->
         <div class="work-header">
             <h1 class="work-title">
-                <span>W</span><span>O</span><span>R</span><span>K</span>
+                Selected <span>Work</span>
             </h1>
+            <p class="work-subtitle">Portfolio • Projects • Creative Endeavors</p>
+            <p class="work-description">
+                A curated collection of digital products, creative projects, and published works 
+                that explore the intersection of technology, design, and human creativity.
+            </p>
         </div>
 
         <!-- Filter Buttons -->
         <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="digital">Digital</button>
-            <button class="filter-btn" data-filter="creative">Creative</button>
-            <button class="filter-btn" data-filter="books">Books</button>
-            <button class="filter-btn" data-filter="art">Art</button>
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="digital">Digital Products</button>
+            <button class="filter-btn" data-filter="creative">Creative Works</button>
+            <button class="filter-btn" data-filter="books">Publications</button>
+            <button class="filter-btn" data-filter="art">Art & Design</button>
         </div>
 
         <!-- Projects Grid -->
@@ -419,10 +677,10 @@
                     <span class="project-category">Digital Platform</span>
                     <h3 class="project-title">Epistola</h3>
                     <p class="project-description">
-                        A digital platform designed to bring back the beauty of slow, thoughtful communication in a world dominated by instant messages.
+                        A thoughtfully designed digital platform that brings back the beauty of slow, meaningful communication in our fast-paced world, encouraging deeper connections through the art of letter writing.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">Web App</span>
+                        <span class="project-tag">Web Application</span>
                         <span class="project-tag">Communication</span>
                         <span class="project-tag">UX Design</span>
                     </div>
@@ -436,15 +694,15 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">App Design</span>
+                    <span class="project-category">Mobile Application</span>
                     <h3 class="project-title">Date Craft</h3>
                     <p class="project-description">
-                        Modern digital planner that makes organizing and planning dates effortless and fun. Craft your perfect day, one date at a time.
+                        An elegant digital companion that transforms date planning into an artful experience, helping couples create memorable moments through thoughtful curation and seamless organization.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">Mobile App</span>
-                        <span class="project-tag">Planning</span>
-                        <span class="project-tag">Social</span>
+                        <span class="project-tag">iOS Development</span>
+                        <span class="project-tag">Relationship</span>
+                        <span class="project-tag">Social Impact</span>
                     </div>
                 </div>
             </div>
@@ -457,14 +715,14 @@
                 </div>
                 <div class="project-info">
                     <span class="project-category">AI Art Project</span>
-                    <h3 class="project-title">Andres Noireau</h3>
+                    <h3 class="project-title">Andrés Noireau</h3>
                     <p class="project-description">
-                        An AI-powered artistic project exploring human stories through the transformative power of artificial intelligence and generative art.
+                        An experimental exploration of human narratives through artificial intelligence, examining the intersection of technology and storytelling to create compelling artistic expressions that challenge our understanding of creativity.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">AI</span>
-                        <span class="project-tag">Storytelling</span>
-                        <span class="project-tag">Art</span>
+                        <span class="project-tag">Artificial Intelligence</span>
+                        <span class="project-tag">Narrative</span>
+                        <span class="project-tag">Digital Art</span>
                     </div>
                 </div>
             </div>
@@ -476,15 +734,15 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">Health App</span>
+                    <span class="project-category">Health & Wellness</span>
                     <h3 class="project-title">FitMental</h3>
                     <p class="project-description">
-                        Mental health app combining science-backed methods, positive reinforcement, and AI to help users grow mentally, emotionally, and spiritually.
+                        A comprehensive mental wellness application that combines evidence-based psychological methods with modern technology to support personal growth, emotional resilience, and spiritual development.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">iOS</span>
-                        <span class="project-tag">Health</span>
-                        <span class="project-tag">AI</span>
+                        <span class="project-tag">Mental Health</span>
+                        <span class="project-tag">iOS App</span>
+                        <span class="project-tag">AI Integration</span>
                     </div>
                 </div>
             </div>
@@ -496,15 +754,15 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">FinTech</span>
+                    <span class="project-category">Financial Technology</span>
                     <h3 class="project-title">Market Wizard</h3>
                     <p class="project-description">
-                        AI-driven insights platform decoding market complexities with precision and foresight, transforming data into clear, actionable knowledge.
+                        An sophisticated analytics platform that harnesses artificial intelligence to decode financial market complexities, transforming raw data into clear, actionable insights for informed decision-making.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">AI</span>
-                        <span class="project-tag">Data</span>
-                        <span class="project-tag">Finance</span>
+                        <span class="project-tag">Machine Learning</span>
+                        <span class="project-tag">Data Analysis</span>
+                        <span class="project-tag">FinTech</span>
                     </div>
                 </div>
             </div>
@@ -516,15 +774,15 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">Creative Space</span>
+                    <span class="project-category">Innovation Lab</span>
                     <h3 class="project-title">The Toy Factory</h3>
                     <p class="project-description">
-                        Where imagination and innovation come to play. A space for experimenting, creating, and dreaming big.
+                        A creative laboratory where imagination meets innovation—a dedicated space for experimental projects, artistic exploration, and the playful pursuit of groundbreaking ideas that push conventional boundaries.
                     </p>
                     <div class="project-tags">
+                        <span class="project-tag">R&D</span>
+                        <span class="project-tag">Creative Process</span>
                         <span class="project-tag">Innovation</span>
-                        <span class="project-tag">Creative</span>
-                        <span class="project-tag">Lab</span>
                     </div>
                 </div>
             </div>
@@ -537,14 +795,14 @@
                 </div>
                 <div class="project-info">
                     <span class="project-category">Published Author</span>
-                    <h3 class="project-title">Amazon Books</h3>
+                    <h3 class="project-title">Published Works</h3>
                     <p class="project-description">
-                        Published author of children's literature and self-improvement books, crafting stories that inspire and guide readers of all ages.
+                        A diverse collection of published literature spanning children's books and self-improvement guides, each crafted to inspire, educate, and foster meaningful connections across different age groups and life experiences.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">Children's</span>
-                        <span class="project-tag">Self-Help</span>
-                        <span class="project-tag">Author</span>
+                        <span class="project-tag">Children's Literature</span>
+                        <span class="project-tag">Self-Development</span>
+                        <span class="project-tag">Publishing</span>
                     </div>
                 </div>
             </div>
@@ -556,15 +814,15 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">iOS Game</span>
+                    <span class="project-category">Game Development</span>
                     <h3 class="project-title">StackRush</h3>
                     <p class="project-description">
-                        Engaging iOS arcade game built with SwiftUI featuring dynamic gameplay, power-ups, achievements, and an in-game store system.
+                        An engaging iOS arcade game built with SwiftUI, featuring dynamic gameplay mechanics, progressive challenges, achievement systems, and an integrated marketplace that creates an immersive gaming experience.
                     </p>
                     <div class="project-tags">
                         <span class="project-tag">Swift</span>
-                        <span class="project-tag">Game Dev</span>
-                        <span class="project-tag">iOS</span>
+                        <span class="project-tag">SwiftUI</span>
+                        <span class="project-tag">Game Design</span>
                     </div>
                 </div>
             </div>
@@ -576,57 +834,88 @@
                     <div class="project-pattern"></div>
                 </div>
                 <div class="project-info">
-                    <span class="project-category">Creative Arts</span>
+                    <span class="project-category">Fine Arts</span>
                     <h3 class="project-title">Art & Music</h3>
                     <p class="project-description">
-                        Original paintings and musical compositions exploring the intersection of visual and auditory art forms.
+                        Original artistic works exploring the synergistic relationship between visual and auditory expression, creating multi-sensory experiences that challenge traditional boundaries between different art forms.
                     </p>
                     <div class="project-tags">
-                        <span class="project-tag">Painting</span>
-                        <span class="project-tag">Music</span>
-                        <span class="project-tag">Creative</span>
+                        <span class="project-tag">Visual Art</span>
+                        <span class="project-tag">Music Composition</span>
+                        <span class="project-tag">Multi-media</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Decorative Elements -->
-    <div class="decoration decoration-1"></div>
-    <div class="decoration decoration-2"></div>
-
     <script>
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
 
-        function animateCursor() {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-            
-            cursorX += dx * 0.1;
-            cursorY += dy * 0.1;
-            
-            cursor.style.left = cursorX - 15 + 'px';
-            cursor.style.top = cursorY - 15 + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Cursor hover effect
-        document.querySelectorAll('a, button, .project-card').forEach(element => {
-            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
 
-        // Filter functionality
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const readingTime = document.getElementById('readingTime');
+        const readingProgressFill = document.getElementById('readingProgressFill');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Update reading progress
+            readingProgressFill.style.width = scrollPercent + '%';
+            
+            // Show reading time indicator after scrolling
+            if (scrollTop > 200) {
+                readingTime.classList.add('visible');
+            } else {
+                readingTime.classList.remove('visible');
+            }
+        });
+
+        // Intersection Observer for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Filter functionality with smooth animations
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
 
@@ -638,15 +927,14 @@
 
                 const filter = btn.dataset.filter;
 
-                projectCards.forEach(card => {
+                projectCards.forEach((card, index) => {
                     if (filter === 'all' || card.dataset.category === filter) {
                         card.style.display = 'block';
                         setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = card.style.transform || 'rotate(0deg)';
-                        }, 10);
+                            card.classList.add('visible');
+                        }, index * 50);
                     } else {
-                        card.style.opacity = '0';
+                        card.classList.remove('visible');
                         setTimeout(() => {
                             card.style.display = 'none';
                         }, 300);
@@ -655,59 +943,86 @@
             });
         });
 
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        // Parallax effect for hero content
+        const workHeader = document.querySelector('.work-header');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.3;
+            
+            if (workHeader && scrolled < window.innerHeight) {
+                workHeader.style.transform = `translateY(${parallax}px)`;
+            }
         });
 
-        // Project card tilt effect
+        // Add micro-interactions to project cards
         projectCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
+            card.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const rotateX = (y - 0.5) * 10;
+                const rotateY = (x - 0.5) * 10;
+                
+                this.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Add ripple effect to filter buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
+                const ripple = document.createElement('span');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
                 
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
+                this.appendChild(ripple);
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
+                setTimeout(() => ripple.remove(), 600);
             });
         });
 
-        // Animate title letters on load
-        window.addEventListener('load', () => {
-            const titleLetters = document.querySelectorAll('.work-title span');
-            titleLetters.forEach((letter, index) => {
-                letter.style.animation = `dropIn 0.5s ease-out ${index * 0.1}s forwards`;
-            });
-        });
-
-        // Add animation
+        // Add CSS for ripple effect
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes dropIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(-50px) rotate(0deg);
-                }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+                width: 20px;
+                height: 20px;
+                margin-left: -10px;
+                margin-top: -10px;
+            }
+            
+            @keyframes ripple-animation {
                 to {
-                    opacity: 1;
-                    transform: translateY(0) rotate(${Math.random() * 6 - 3}deg);
+                    transform: scale(4);
+                    opacity: 0;
                 }
             }
         `;
         document.head.appendChild(style);
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Re-observe all cards after load to ensure proper animation
+            projectCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
     </script>
 </body>
 </html>

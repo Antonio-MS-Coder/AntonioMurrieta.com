@@ -20,27 +20,40 @@
         }
 
         :root {
-            --primary: #1a1a1a;
-            --secondary: #f9f9f9;
-            --accent: #FF6B35;
-            --accent-light: #FF8C61;
-            --text-primary: #333;
-            --text-secondary: #666;
-            --border: #e0e0e0;
-            --max-width: 1400px;
+            /* Stanford-inspired palette with warmth */
+            --cardinal: #8C1515;
+            --cardinal-light: #B83A3A;
+            --dark: #2E2D29;
+            --warm-gray: #544948;
+            --light-gray: #F4F4F4;
+            --white: #FFFFFF;
+            --accent-blue: #006CB8;
+            --accent-green: #009B76;
+            --text-primary: #2E2D29;
+            --text-secondary: #544948;
+            --border-light: #E5E5E5;
+            --max-width: 1200px;
+            --serif: 'Crimson Text', Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         ::selection {
-            background: var(--accent);
+            background: var(--cardinal);
             color: white;
         }
 
+        /* Import fonts for intellectual aesthetic */
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: var(--secondary);
+            font-family: var(--sans);
+            background: var(--white);
             color: var(--text-primary);
             line-height: 1.6;
+            font-size: 16px;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Smooth Scroll */
@@ -53,17 +66,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 20px 40px;
-            transition: all 0.3s ease;
+            padding: 24px 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
-            padding: 15px 40px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 16px 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -75,16 +88,30 @@
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            letter-spacing: 1px;
-            color: var(--primary);
+            letter-spacing: -0.5px;
+            color: var(--dark);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '.';
+            color: var(--cardinal);
+            font-weight: 700;
+            position: absolute;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .logo:hover {
-            color: var(--accent);
+            color: var(--cardinal);
         }
 
         .nav-links {
@@ -94,23 +121,28 @@
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: all 0.2s ease;
             position: relative;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: -4px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s ease;
+            height: 2px;
+            background: var(--cardinal);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--dark);
         }
 
         .nav-links a:hover::after,
@@ -118,9 +150,9 @@
             width: 100%;
         }
 
-        .nav-links a:hover,
         .nav-links a.active {
-            color: var(--accent);
+            color: var(--dark);
+            font-weight: 600;
         }
 
         /* Hero Section */
@@ -131,13 +163,13 @@
             justify-content: center;
             padding: 120px 40px 80px;
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
             text-align: center;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes fadeInUp {
@@ -152,32 +184,68 @@
         }
 
         .hero-title {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 300;
-            letter-spacing: -3px;
-            margin-bottom: 30px;
-            line-height: 0.9;
+            font-family: var(--serif);
+            font-size: clamp(56px, 9vw, 88px);
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 32px;
+            line-height: 1.1;
+            color: var(--dark);
+            position: relative;
         }
 
         .hero-title span {
-            display: block;
-            font-weight: 600;
-            color: var(--accent);
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
         .hero-subtitle {
-            font-size: clamp(18px, 2.5vw, 24px);
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: var(--warm-gray);
+            margin-bottom: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle::before,
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 1px;
+            background: var(--border-light);
+        }
+
+        .hero-subtitle::before {
+            left: -60px;
+        }
+
+        .hero-subtitle::after {
+            right: -60px;
         }
 
         .hero-description {
-            font-size: 16px;
+            font-family: var(--serif);
+            font-size: 20px;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            max-width: 640px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            font-weight: 400;
         }
 
         .hero-cta {
@@ -188,37 +256,55 @@
         }
 
         .btn {
-            padding: 14px 32px;
+            padding: 14px 36px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             border: none;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: var(--cardinal);
             color: white;
         }
 
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
         .btn-primary:hover {
-            background: var(--accent-light);
+            background: var(--cardinal-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.25);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
+            color: var(--dark);
+            border: 2px solid var(--dark);
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            background: var(--dark);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Scroll Indicator */
@@ -227,24 +313,41 @@
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce 2s infinite;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes bounce {
+        @keyframes float {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        .scroll-indicator:hover {
+            opacity: 0.6;
         }
 
         .scroll-indicator svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--text-secondary);
+            width: 20px;
+            height: 20px;
+            fill: var(--warm-gray);
         }
 
         /* Features Section */
         .features {
-            padding: 100px 40px;
-            background: white;
+            padding: 120px 40px;
+            background: var(--white);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
         }
 
         .features-container {
@@ -262,7 +365,16 @@
         .feature {
             text-align: center;
             opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .feature:hover {
+            background: var(--light-gray);
+            transform: translateY(-4px);
         }
 
         .feature:nth-child(1) { animation-delay: 0.1s; }
@@ -277,43 +389,66 @@
         }
 
         .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 24px;
             display: inline-block;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(20%);
         }
 
         .feature:hover .feature-icon {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            filter: grayscale(0%);
         }
 
         .feature-title {
-            font-size: 20px;
+            font-family: var(--serif);
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            color: var(--dark);
         }
 
         .feature-description {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            max-width: 280px;
+            margin: 0 auto;
         }
 
         /* Section Title */
         .section-title {
-            font-size: 36px;
-            font-weight: 300;
+            font-family: var(--serif);
+            font-size: 42px;
+            font-weight: 400;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             letter-spacing: -1px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--cardinal);
         }
 
         .section-subtitle {
-            font-size: 16px;
+            font-size: 17px;
             color: var(--text-secondary);
             text-align: center;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 60px;
+            line-height: 1.6;
         }
 
         /* Footer */
@@ -354,36 +489,54 @@
             opacity: 0.6;
         }
 
-        /* Decorative Elements */
-        .decoration {
-            position: absolute;
+        /* Dynamic Background Elements */
+        .floating-gradient {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
             pointer-events: none;
+            animation: float-gradient 20s ease-in-out infinite;
+        }
+
+        .gradient-1 {
+            background: radial-gradient(circle, var(--cardinal) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+        }
+
+        .gradient-2 {
+            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-gradient {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Reading Indicator */
+        .reading-time {
+            position: fixed;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: center;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reading-time.visible {
             opacity: 0.5;
-        }
-
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            border: 1px solid var(--accent);
-            border-radius: 50%;
-            top: 10%;
-            right: -150px;
-            animation: rotate 30s linear infinite;
-        }
-
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            bottom: 10%;
-            left: -100px;
-            animation: rotate 25s linear infinite reverse;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         /* Mobile Menu */
@@ -494,25 +647,28 @@
         </div>
     </nav>
 
+    <!-- Dynamic Background -->
+    <div class="floating-gradient gradient-1"></div>
+    <div class="floating-gradient gradient-2"></div>
+    
+    <!-- Reading Indicator -->
+    <div class="reading-time" id="readingTime">5 MIN READ</div>
+
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Decorative Elements -->
-        <div class="decoration circle-1"></div>
-        <div class="decoration circle-2"></div>
-
         <div class="hero-content">
             <h1 class="hero-title">
-                Creative
-                <span>Technologist</span>
+                Building at the intersection of
+                <span>art & technology</span>
             </h1>
-            <p class="hero-subtitle">Entrepreneur • Author • Digital Artist</p>
+            <p class="hero-subtitle">Entrepreneur • Author • Digital Creator</p>
             <p class="hero-description">
-                Building at the intersection of art and technology. From iOS games to AI solutions, 
-                from children's books to digital platforms — crafting experiences that inspire and delight.
+                I create digital products, write books that matter, and explore the edges of what's possible 
+                with code and creativity. Currently building AI-powered experiences and reading 52 books a year.
             </p>
             <div class="hero-cta">
-                <a href="work.html" class="btn btn-primary">Explore My Work</a>
-                <a href="library.html" class="btn btn-secondary">Visit The Library</a>
+                <a href="work.html" class="btn btn-primary">View Projects</a>
+                <a href="library.html" class="btn btn-secondary">Reading List</a>
             </div>
         </div>
 
@@ -527,18 +683,18 @@
     <!-- Features Section -->
     <section class="features">
         <div class="features-container">
-            <h2 class="section-title">What I Do</h2>
+            <h2 class="section-title">Current Focus</h2>
             <p class="section-subtitle">
-                A diverse creative practice spanning technology, literature, and digital art
+                Exploring the frontiers of technology while maintaining a deep connection to storytelling and human creativity
             </p>
 
             <div class="features-grid">
                 <div class="feature">
-                    <div class="feature-icon">💻</div>
+                    <div class="feature-icon">🚀</div>
                     <h3 class="feature-title">Digital Products</h3>
                     <p class="feature-description">
-                        Creating innovative digital solutions from mobile apps to web platforms, 
-                        focusing on user experience and meaningful interactions.
+                        Building apps and platforms that solve real problems. From iOS games 
+                        to AI-powered tools, each project pushes boundaries.
                     </p>
                 </div>
 
@@ -553,19 +709,19 @@
 
                 <div class="feature">
                     <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Creative Arts</h3>
+                    <h3 class="feature-title">Art & Design</h3>
                     <p class="feature-description">
-                        Exploring the boundaries of digital art, music composition, and 
-                        visual storytelling through various mediums.
+                        Creating at the intersection of code and canvas. Digital art, 
+                        generative design, and visual experiments.
                     </p>
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">Innovation Lab</h3>
+                    <div class="feature-icon">🧪</div>
+                    <h3 class="feature-title">Research & Innovation</h3>
                     <p class="feature-description">
-                        Experimenting with AI, generative art, and emerging technologies 
-                        to push creative boundaries and explore new possibilities.
+                        Experimenting with AI, machine learning, and emerging tech. 
+                        Always learning, always building something new.
                     </p>
                 </div>
             </div>
@@ -605,8 +761,9 @@
             });
         });
 
-        // Navbar scroll effect
+        // Navbar scroll effect with smooth transitions
         const navbar = document.getElementById('navbar');
+        const readingTime = document.getElementById('readingTime');
         let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
@@ -616,6 +773,13 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+            }
+            
+            // Show reading time indicator after scrolling
+            if (currentScroll > 200) {
+                readingTime.classList.add('visible');
+            } else {
+                readingTime.classList.remove('visible');
             }
             
             lastScroll = currentScroll;
@@ -639,6 +803,79 @@
         document.querySelectorAll('.feature').forEach(feature => {
             feature.style.animationPlayState = 'paused';
             observer.observe(feature);
+        });
+
+        // Dynamic cursor effect on hero title
+        const heroTitle = document.querySelector('.hero-title');
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            if (heroTitle) {
+                heroTitle.style.transform = `perspective(1000px) rotateY(${mouseX * 0.05}deg) rotateX(${-mouseY * 0.05}deg)`;
+            }
+        });
+
+        // Parallax effect on scroll for hero content
+        const heroContent = document.querySelector('.hero-content');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.5;
+            
+            if (heroContent && scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${parallax}px)`;
+                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+
+        // Add micro-interactions to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.features').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
         });
     </script>
 </body>
