@@ -860,6 +860,27 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-secondary);
+        }
+
+        .no-results-content h3 {
+            font-family: var(--serif);
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--cardinal);
+        }
+
+        .no-results-content p {
+            font-size: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
         /* Mobile Menu */
         .menu-toggle {
             display: none;
@@ -1045,18 +1066,18 @@
             <h1 class="library-title">The Library</h1>
             <p class="library-subtitle">"A reader lives a thousand lives before he dies"</p>
             
-            <div class="reading-stats">
+            <div class="reading-stats" id="readingStats">
                 <div class="stat">
-                    <div class="stat-number">52</div>
+                    <div class="stat-number" id="booksPerYear">52</div>
                     <div class="stat-label">Books Per Year</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">260+</div>
+                    <div class="stat-number" id="totalBooks">0</div>
                     <div class="stat-label">Total Read</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-number">1</div>
-                    <div class="stat-label">Book Per Week</div>
+                    <div class="stat-number" id="booksThisYear">0</div>
+                    <div class="stat-label">This Year</div>
                 </div>
             </div>
         </div>
@@ -1064,18 +1085,8 @@
         <!-- Currently Reading -->
         <div class="currently-reading">
             <h2 class="currently-reading-title">CURRENTLY READING</h2>
-            <div class="current-book">
-                <div class="current-book-cover">📖</div>
-                <div class="current-book-info">
-                    <h3 class="current-book-title">The Creative Act</h3>
-                    <p class="current-book-author">Rick Rubin</p>
-                    <div class="reading-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill"></div>
-                        </div>
-                        <span>65%</span>
-                    </div>
-                </div>
+            <div class="current-book" id="currentBook">
+                <!-- Currently reading book will be loaded dynamically -->
             </div>
         </div>
 
@@ -1088,6 +1099,7 @@
                 <button class="filter-btn" data-filter="business">Business</button>
                 <button class="filter-btn" data-filter="technology">Technology</button>
                 <button class="filter-btn" data-filter="self-help">Self-Help</button>
+                <button class="filter-btn" data-filter="creativity">Creativity</button>
             </div>
             <div class="search-box">
                 <input type="text" class="search-input" placeholder="Search books...">
@@ -1096,157 +1108,15 @@
         </div>
 
         <!-- Books Grid -->
-        <div class="books-grid">
-            <!-- Book 1 -->
-            <div class="book-card" data-category="philosophy">
-                <div class="book-rating">★★★★★</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">📚</div>
-                <div class="book-info">
-                    <h3 class="book-title">No Longer Human</h3>
-                    <p class="book-author">Osamu Dazai</p>
-                    <p class="book-summary">
-                        A profound exploration of alienation and the human condition. Dazai's masterpiece delves into 
-                        the psyche of a man who feels disconnected from humanity.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Philosophy</span>
-                        <span class="book-tag">Japanese</span>
-                        <span class="book-tag">Classic</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 2 -->
-            <div class="book-card" data-category="fiction">
-                <div class="book-rating">★★★★☆</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">☕</div>
-                <div class="book-info">
-                    <h3 class="book-title">Before the Coffee Gets Cold</h3>
-                    <p class="book-author">Toshikazu Kawaguchi</p>
-                    <p class="book-summary">
-                        A magical story about a Tokyo café where customers can travel back in time, exploring themes 
-                        of regret, love, and the importance of living in the present.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Fiction</span>
-                        <span class="book-tag">Time Travel</span>
-                        <span class="book-tag">Japanese</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 3 -->
-            <div class="book-card" data-category="self-help">
-                <div class="book-rating">★★★★★</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🌟</div>
-                <div class="book-info">
-                    <h3 class="book-title">What I Know For Sure</h3>
-                    <p class="book-author">Oprah Winfrey</p>
-                    <p class="book-summary">
-                        Oprah's insights on gratitude, possibility, awe, clarity, and power. A collection of wisdom 
-                        gained through experience and reflection.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Self-Help</span>
-                        <span class="book-tag">Memoir</span>
-                        <span class="book-tag">Inspiration</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 4 -->
-            <div class="book-card" data-category="philosophy">
-                <div class="book-rating">★★★★★</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🧭</div>
-                <div class="book-info">
-                    <h3 class="book-title">The Alchemist</h3>
-                    <p class="book-author">Paulo Coelho</p>
-                    <p class="book-summary">
-                        A mystical story about following your dreams. Santiago's journey teaches us about listening 
-                        to our hearts and recognizing opportunity.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Philosophy</span>
-                        <span class="book-tag">Adventure</span>
-                        <span class="book-tag">Classic</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 5 -->
-            <div class="book-card" data-category="business">
-                <div class="book-rating">★★★★☆</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">💡</div>
-                <div class="book-info">
-                    <h3 class="book-title">Zero to One</h3>
-                    <p class="book-author">Peter Thiel</p>
-                    <p class="book-summary">
-                        Notes on startups and how to build the future. Thiel challenges conventional thinking about 
-                        innovation and competition in business.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Business</span>
-                        <span class="book-tag">Startups</span>
-                        <span class="book-tag">Innovation</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 6 -->
-            <div class="book-card" data-category="technology">
-                <div class="book-rating">★★★★★</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🤖</div>
-                <div class="book-info">
-                    <h3 class="book-title">Life 3.0</h3>
-                    <p class="book-author">Max Tegmark</p>
-                    <p class="book-summary">
-                        An exploration of AI and its implications for the future of life. Tegmark examines scenarios 
-                        for humanity in the age of artificial intelligence.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Technology</span>
-                        <span class="book-tag">AI</span>
-                        <span class="book-tag">Future</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 7 -->
-            <div class="book-card" data-category="philosophy">
-                <div class="book-rating">★★★★★</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">🏛️</div>
-                <div class="book-info">
-                    <h3 class="book-title">Meditations</h3>
-                    <p class="book-author">Marcus Aurelius</p>
-                    <p class="book-summary">
-                        Personal writings of the Roman Emperor on Stoic philosophy. Timeless wisdom on virtue, 
-                        mortality, and the nature of human existence.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Philosophy</span>
-                        <span class="book-tag">Stoicism</span>
-                        <span class="book-tag">Classic</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Book 8 -->
-            <div class="book-card" data-category="fiction">
-                <div class="book-rating">★★★★☆</div>
-                <div class="book-cover" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">🌙</div>
-                <div class="book-info">
-                    <h3 class="book-title">Norwegian Wood</h3>
-                    <p class="book-author">Haruki Murakami</p>
-                    <p class="book-summary">
-                        A nostalgic story of loss and burgeoning sexuality. Murakami's poignant exploration of 
-                        love and loneliness in 1960s Tokyo.
-                    </p>
-                    <div class="book-tags">
-                        <span class="book-tag">Fiction</span>
-                        <span class="book-tag">Romance</span>
-                        <span class="book-tag">Japanese</span>
-                    </div>
-                </div>
+        <div class="books-grid" id="booksGrid">
+            <!-- Books will be dynamically loaded here -->
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-content">
+                <h3>📚 No Books Found</h3>
+                <p>Try adjusting your search criteria or filters to find more books.</p>
             </div>
         </div>
     </div>
@@ -1283,241 +1153,422 @@
         </div>
     </div>
 
+    <!-- Load books data -->
+    <script src="books.js"></script>
+    
     <script>
-        // Mobile menu toggle with enhanced interactions
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        // Dynamic Library System
+        let allBooks = [];
+        let filteredBooks = [];
+        let currentFilter = 'all';
+        let currentSearchTerm = '';
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect with smooth transitions
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+        // Initialize the library
+        function initializeLibrary() {
+            if (typeof books === 'undefined') {
+                console.error('Books data not loaded. Please ensure books.js is included.');
+                return;
             }
             
-            lastScroll = currentScroll;
-        });
+            allBooks = books;
+            filteredBooks = [...allBooks];
+            
+            renderCurrentlyReading();
+            updateStatistics();
+            renderBooks();
+            setupEventListeners();
+            addDynamicStyles();
+            
+            // Initialize animations
+            setTimeout(() => {
+                initializeAnimations();
+            }, 500);
+        }
 
-        // Enhanced filter functionality with animations
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const bookCards = document.querySelectorAll('.book-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-
-                bookCards.forEach((card, index) => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
+        // Render currently reading book
+        function renderCurrentlyReading() {
+            const currentBook = getCurrentlyReading();
+            const currentBookContainer = document.getElementById('currentBook');
+            
+            if (currentBook) {
+                const bookCover = createBookCover(currentBook, true);
+                currentBookContainer.innerHTML = `
+                    ${bookCover}
+                    <div class="current-book-info">
+                        <h3 class="current-book-title">${currentBook.title}</h3>
+                        <p class="current-book-author">${currentBook.author}</p>
+                        <div class="reading-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${currentBook.progress || 0}%"></div>
+                            </div>
+                            <span>${currentBook.progress || 0}%</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Animate progress bar
+                setTimeout(() => {
+                    const progressFill = currentBookContainer.querySelector('.progress-fill');
+                    if (progressFill) {
+                        progressFill.style.width = '0%';
                         setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 50);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
+                            progressFill.style.width = `${currentBook.progress || 0}%`;
+                        }, 100);
                     }
-                });
-            });
-        });
+                }, 1000);
+            } else {
+                currentBookContainer.innerHTML = `
+                    <div class="current-book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📚</div>
+                    <div class="current-book-info">
+                        <h3 class="current-book-title">No Book Currently Being Read</h3>
+                        <p class="current-book-author">Add a book with "currentlyReading: true" in books.js</p>
+                    </div>
+                `;
+            }
+        }
 
-        // Enhanced search functionality
-        const searchInput = document.querySelector('.search-input');
+        // Create book cover with image fallback
+        function createBookCover(book, isCurrentBook = false) {
+            const sizeClass = isCurrentBook ? 'current-book-cover' : 'book-cover';
+            const coverHtml = `
+                <div class="${sizeClass}" style="background: ${book.coverGradient};">
+                    <img src="${book.coverImage}" alt="${book.title} cover" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                         onload="this.nextElementSibling.style.display='none';"
+                         style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                    <div style="display: flex; align-items: center; justify-content: center; font-size: inherit; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                        ${book.coverEmoji}
+                    </div>
+                </div>
+            `;
+            return coverHtml;
+        }
 
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
+        // Generate star rating
+        function generateStarRating(rating) {
+            const fullStars = '★'.repeat(rating);
+            const emptyStars = '☆'.repeat(5 - rating);
+            return fullStars + emptyStars;
+        }
 
-            bookCards.forEach((card, index) => {
-                const title = card.querySelector('.book-title').textContent.toLowerCase();
-                const author = card.querySelector('.book-author').textContent.toLowerCase();
-                const summary = card.querySelector('.book-summary').textContent.toLowerCase();
-
-                if (title.includes(searchTerm) || author.includes(searchTerm) || summary.includes(searchTerm)) {
-                    card.style.display = 'block';
+        // Render books grid
+        function renderBooks() {
+            const booksGrid = document.getElementById('booksGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredBooks.length === 0) {
+                booksGrid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            const booksHtml = filteredBooks.map((book, index) => `
+                <div class="book-card" data-category="${book.category}" data-book-id="${book.id}">
+                    <div class="book-rating">${generateStarRating(book.rating)}</div>
+                    ${createBookCover(book)}
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">${book.author}</p>
+                        <p class="book-summary">${book.summary}</p>
+                        <div class="book-tags">
+                            ${book.tags.map(tag => `<span class="book-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            booksGrid.innerHTML = booksHtml;
+            setupBookCardListeners();
+            
+            // Trigger enter animations
+            setTimeout(() => {
+                document.querySelectorAll('.book-card').forEach((card, index) => {
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
-                    }, index * 30);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 200);
-                }
-            });
-        });
-
-        // Enhanced modal functionality
-        const modal = document.getElementById('bookModal');
-        const modalClose = document.getElementById('modalClose');
-
-        bookCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const title = card.querySelector('.book-title').textContent;
-                const author = card.querySelector('.book-author').textContent;
-                const summary = card.querySelector('.book-summary').textContent;
-
-                modal.querySelector('.modal-title').textContent = title;
-                modal.querySelector('.modal-author').textContent = author;
-                modal.querySelector('.modal-body p').textContent = summary;
-
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        modalClose.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Enhanced intersection observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animations
-        document.querySelectorAll('.stat, .book-card, .filter-section').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Add micro-interactions to filter buttons
-        filterBtns.forEach(btn => {
-            btn.addEventListener('mouseenter', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(140, 21, 21, 0.3);
-                    transform: scale(0);
-                    animation: ripple-animation 0.6s ease-out;
-                    pointer-events: none;
-                    left: ${x}px;
-                    top: ${y}px;
-                    width: 20px;
-                    height: 20px;
-                    margin-left: -10px;
-                    margin-top: -10px;
-                `;
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-
-            .book-card {
-                opacity: 0;
-                animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                animation-play-state: paused;
-            }
-
-            .book-card:nth-child(1) { animation-delay: 0.1s; }
-            .book-card:nth-child(2) { animation-delay: 0.2s; }
-            .book-card:nth-child(3) { animation-delay: 0.3s; }
-            .book-card:nth-child(4) { animation-delay: 0.4s; }
-            .book-card:nth-child(5) { animation-delay: 0.5s; }
-            .book-card:nth-child(6) { animation-delay: 0.6s; }
-
-            @keyframes slideInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(40px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .filter-section {
-                opacity: 0;
-                animation: fadeIn 0.8s ease forwards;
-                animation-play-state: paused;
-            }
-
-            @keyframes fadeIn {
-                to {
-                    opacity: 1;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Add reading progress animation
-        const progressFill = document.querySelector('.progress-fill');
-        if (progressFill) {
-            const targetWidth = progressFill.style.width || '65%';
-            progressFill.style.width = '0%';
-            
-            setTimeout(() => {
-                progressFill.style.width = targetWidth;
-            }, 1000);
+                    }, index * 100);
+                });
+            }, 50);
         }
 
-        // Keyboard accessibility
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
+        // Update statistics
+        function updateStatistics() {
+            const stats = getBookStats();
+            
+            document.getElementById('totalBooks').textContent = stats.total;
+            document.getElementById('booksThisYear').textContent = stats.booksThisYear;
+            document.getElementById('booksPerYear').textContent = stats.booksPerYear;
+        }
+
+        // Filter books
+        function filterBooks(category) {
+            currentFilter = category;
+            applyFilters();
+        }
+
+        // Search books
+        function searchBooks(searchTerm) {
+            currentSearchTerm = searchTerm.toLowerCase();
+            applyFilters();
+        }
+
+        // Apply both filters and search
+        function applyFilters() {
+            filteredBooks = allBooks.filter(book => {
+                // Category filter
+                const categoryMatch = currentFilter === 'all' || book.category === currentFilter;
+                
+                // Search filter
+                const searchMatch = !currentSearchTerm || 
+                    book.title.toLowerCase().includes(currentSearchTerm) ||
+                    book.author.toLowerCase().includes(currentSearchTerm) ||
+                    book.summary.toLowerCase().includes(currentSearchTerm) ||
+                    book.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm));
+                
+                return categoryMatch && searchMatch;
+            });
+            
+            renderBooks();
+        }
+
+        // Setup book card event listeners
+        function setupBookCardListeners() {
+            document.querySelectorAll('.book-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const bookId = parseInt(card.dataset.bookId);
+                    const book = allBooks.find(b => b.id === bookId);
+                    if (book) {
+                        showBookModal(book);
+                    }
+                });
+            });
+        }
+
+        // Show book modal with extended information
+        function showBookModal(book) {
+            const modal = document.getElementById('bookModal');
+            
+            // Update modal content
+            modal.querySelector('.modal-title').textContent = book.title;
+            modal.querySelector('.modal-author').textContent = book.author;
+            
+            const modalBody = modal.querySelector('.modal-body');
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Summary</h3>
+                    <p>${book.summary}</p>
+                </div>
+                
+                ${book.favoriteQuote ? `
+                <div class="modal-quote">
+                    ${book.favoriteQuote}
+                </div>
+                ` : ''}
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Key Takeaways</h3>
+                    <ul>
+                        ${book.keyTakeaways.map(takeaway => `<li>${takeaway}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Recommendation</h3>
+                    <p>${book.recommendedFor}</p>
+                </div>
+                
+                ${book.personalNotes ? `
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Personal Notes</h3>
+                    <p>${book.personalNotes}</p>
+                </div>
+                ` : ''}
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Details</h3>
+                    <p><strong>Rating:</strong> ${generateStarRating(book.rating)} (${book.rating}/5)</p>
+                    <p><strong>Category:</strong> ${book.category}</p>
+                    <p><strong>Year Read:</strong> ${book.yearRead}</p>
+                    ${book.purchaseLink ? `<p><strong><a href="${book.purchaseLink}" target="_blank" rel="noopener noreferrer">Purchase Link</a></strong></p>` : ''}
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Mobile menu
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Navbar scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Filter buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterBooks(btn.dataset.filter);
+                });
+                
+                // Add ripple effect
+                btn.addEventListener('mouseenter', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(140, 21, 21, 0.3);
+                        transform: scale(0);
+                        animation: ripple-animation 0.6s ease-out;
+                        pointer-events: none;
+                        left: ${x}px;
+                        top: ${y}px;
+                        width: 20px;
+                        height: 20px;
+                        margin-left: -10px;
+                        margin-top: -10px;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', (e) => {
+                searchBooks(e.target.value);
+            });
+            
+            // Modal functionality
+            const modal = document.getElementById('bookModal');
+            const modalClose = document.getElementById('modalClose');
+            
+            modalClose.addEventListener('click', () => {
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
-            }
-        });
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Keyboard accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Add dynamic styles
+        function addDynamicStyles() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple-animation {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+
+                .book-card {
+                    opacity: 0;
+                    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                    animation-play-state: paused;
+                    transform: translateY(40px);
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                @keyframes slideInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(40px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .filter-section {
+                    opacity: 0;
+                    animation: fadeIn 0.8s ease forwards;
+                    animation-play-state: paused;
+                }
+
+                @keyframes fadeIn {
+                    to {
+                        opacity: 1;
+                    }
+                }
+                
+                .book-cover img {
+                    transition: transform 0.3s ease;
+                }
+                
+                .book-card:hover .book-cover img {
+                    transform: scale(1.05);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat, .filter-section').forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Initialize library when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLibrary);
     </script>
 </body>
 </html>
