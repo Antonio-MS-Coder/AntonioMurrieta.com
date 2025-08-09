@@ -380,6 +380,42 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+        
+        .control-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        .control-group select,
+        .control-group input[type="range"] {
+            width: 100px;
+            padding: 4px 8px;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .control-group input[type="checkbox"] {
+            margin-right: 4px;
+        }
+        
+        #interactive-canvas.grid-overlay {
+            background-image: 
+                linear-gradient(rgba(140, 21, 21, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(140, 21, 21, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
         .control-btn {
@@ -508,14 +544,28 @@
 
         .pattern-display {
             width: 100%;
-            height: 300px;
-            background: var(--light-gray);
             margin: 40px 0;
             position: relative;
             overflow: hidden;
             border-radius: 12px;
             border: 2px solid var(--border-light);
             box-shadow: inset 0 4px 16px rgba(46, 45, 41, 0.06);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--white);
+        }
+        
+        #patternCanvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        #patternCanvas:hover {
+            transform: scale(1.02);
         }
 
         /* Mobile Menu */
@@ -951,20 +1001,110 @@
                 <button class="color-btn" style="background: var(--warm-gray);" data-color="#544948"></button>
             </div>
 
+            <!-- Enhanced Canvas Controls -->
             <div class="canvas-controls">
+                <div class="control-group">
+                    <label>Tool:</label>
+                    <select id="toolSelect">
+                        <option value="brush">Brush</option>
+                        <option value="eraser">Eraser</option>
+                        <option value="line">Line</option>
+                        <option value="rectangle">Rectangle</option>
+                        <option value="circle">Circle</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Brush Type:</label>
+                    <select id="brushType">
+                        <option value="pen">Pen</option>
+                        <option value="marker">Marker</option>
+                        <option value="spray">Spray</option>
+                        <option value="calligraphy">Calligraphy</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Size: <span id="brushSizeValue">3</span>px</label>
+                    <input type="range" id="brushSize" min="1" max="50" value="3">
+                </div>
+                <div class="control-group">
+                    <label>Opacity: <span id="opacityValue">100</span>%</label>
+                    <input type="range" id="opacity" min="10" max="100" value="100">
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="shapeFill"> Fill
+                    </label>
+                    <label>
+                        <input type="checkbox" id="shapeStroke" checked> Stroke
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="pressureSensitive"> Pressure
+                    </label>
+                    <label>
+                        <input type="checkbox" id="gridToggle"> Grid
+                    </label>
+                </div>
+            </div>
+            <div class="canvas-controls">
+                <button class="control-btn" id="undoBtn">Undo (Ctrl+Z)</button>
+                <button class="control-btn" id="redoBtn">Redo (Ctrl+Y)</button>
                 <button class="control-btn" id="clearCanvas">Clear</button>
                 <button class="control-btn" id="randomPattern">Random Pattern</button>
                 <button class="control-btn" id="saveArt">Save Art</button>
             </div>
         </div>
 
-        <!-- Pattern Generator -->
+        <!-- Enhanced Pattern Generator -->
         <div class="pattern-generator">
             <h2>Pattern Generator</h2>
-            <div class="pattern-display" id="patternDisplay"></div>
+            <div class="pattern-display" id="patternDisplay">
+                <canvas id="patternCanvas" width="600" height="300"></canvas>
+            </div>
+            <div class="canvas-controls">
+                <div class="control-group">
+                    <label>Pattern Type:</label>
+                    <select id="patternType">
+                        <option value="geometric">Geometric</option>
+                        <option value="organic">Organic</option>
+                        <option value="fractal">Fractal</option>
+                        <option value="tessellation">Tessellation</option>
+                        <option value="noise">Noise</option>
+                        <option value="mandala">Mandala</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Complexity: <span id="complexityValue">5</span></label>
+                    <input type="range" id="complexity" min="1" max="10" value="5">
+                </div>
+                <div class="control-group">
+                    <label>Scale: <span id="scaleValue">1</span></label>
+                    <input type="range" id="patternScale" min="0.1" max="3" step="0.1" value="1">
+                </div>
+                <div class="control-group">
+                    <label>Color Scheme:</label>
+                    <select id="colorScheme">
+                        <option value="stanford">Stanford</option>
+                        <option value="monochrome">Monochrome</option>
+                        <option value="rainbow">Rainbow</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="ocean">Ocean</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="patternAnimation"> Animate
+                    </label>
+                    <label>
+                        <input type="checkbox" id="patternTileable"> Tileable
+                    </label>
+                </div>
+            </div>
             <div class="canvas-controls">
                 <button class="control-btn" id="generatePattern">Generate New</button>
-                <button class="control-btn" id="animatePattern">Animate</button>
+                <button class="control-btn" id="exportPattern">Export PNG</button>
+                <button class="control-btn" id="randomizePattern">Randomize All</button>
             </div>
         </div>
     </div>
@@ -1235,13 +1375,36 @@
             }
         });
 
-        // Interactive Canvas
+        // Interactive Canvas - Enhanced Draw with Me
         const canvas = document.getElementById('interactive-canvas');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
         let currentColor = '#8C1515';
+        let currentBrushSize = 3;
+        let currentOpacity = 1.0;
+        let currentBrushType = 'pen';
+        let currentTool = 'brush';
+        let isErasing = false;
         let lastX = 0;
         let lastY = 0;
+        let undoStack = [];
+        let redoStack = [];
+        let isGridVisible = false;
+        let isPressureSensitive = false;
+        
+        // Shape drawing state
+        let isDrawingShape = false;
+        let shapeStartX = 0;
+        let shapeStartY = 0;
+        let currentShape = 'line';
+        let shapeFill = false;
+        let shapeStroke = true;
+        
+        // Pressure simulation
+        let mouseSpeed = 0;
+        let lastMouseTime = 0;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
 
         // Resize canvas for mobile
         function resizeCanvas() {
@@ -1249,81 +1412,465 @@
                 canvas.width = window.innerWidth - 40;
                 canvas.height = 300;
             }
+            saveCanvasState(); // Save state after resize
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
+        
+        // Canvas state management
+        function saveCanvasState() {
+            if (undoStack.length > 50) undoStack.shift(); // Limit stack size
+            undoStack.push(canvas.toDataURL());
+            redoStack = []; // Clear redo stack when new action is performed
+        }
+        
+        function undo() {
+            if (undoStack.length > 1) {
+                redoStack.push(undoStack.pop());
+                const previousState = undoStack[undoStack.length - 1];
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = previousState;
+            }
+        }
+        
+        function redo() {
+            if (redoStack.length > 0) {
+                const nextState = redoStack.pop();
+                undoStack.push(nextState);
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = nextState;
+            }
+        }
+        
+        // Enhanced drawing functions
+        function calculatePressure(speed) {
+            if (!isPressureSensitive) return 1;
+            return Math.max(0.1, Math.min(1, 1 - (speed / 2000)));
+        }
+        
+        function getEffectiveBrushSize(pressure = 1) {
+            return currentBrushSize * pressure;
+        }
+        
+        function drawSpray(x, y, size, opacity) {
+            const density = Math.floor(size * 2);
+            for (let i = 0; i < density; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const radius = Math.random() * size;
+                const sprayX = x + Math.cos(angle) * radius;
+                const sprayY = y + Math.sin(angle) * radius;
+                
+                ctx.globalAlpha = opacity * Math.random() * 0.5;
+                ctx.fillStyle = currentColor;
+                ctx.beginPath();
+                ctx.arc(sprayX, sprayY, Math.random() * 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function drawCalligraphy(x1, y1, x2, y2, size, opacity) {
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const angle = Math.atan2(dy, dx);
+            const length = Math.sqrt(dx * dx + dy * dy);
+            
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = size;
+            ctx.lineCap = 'round';
+            
+            // Create calligraphy effect by varying width
+            const steps = Math.max(1, Math.floor(length / 2));
+            for (let i = 0; i <= steps; i++) {
+                const t = i / steps;
+                const x = x1 + dx * t;
+                const y = y1 + dy * t;
+                const width = size * (0.5 + 0.5 * Math.sin(t * Math.PI));
+                
+                ctx.lineWidth = width;
+                if (i === 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
+        
+        function drawMarker(x1, y1, x2, y2, size, opacity) {
+            ctx.save();
+            ctx.globalAlpha = opacity * 0.7;
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = size * 1.5;
+            ctx.lineCap = 'square';
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            ctx.restore();
+        }
+        
+        function drawShape(x1, y1, x2, y2, shape) {
+            ctx.save();
+            ctx.globalAlpha = currentOpacity;
+            
+            if (shapeStroke) {
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = currentBrushSize;
+            }
+            
+            if (shapeFill) {
+                ctx.fillStyle = currentColor;
+            }
+            
+            switch(shape) {
+                case 'line':
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    if (shapeStroke) ctx.stroke();
+                    break;
+                    
+                case 'rectangle':
+                    const width = x2 - x1;
+                    const height = y2 - y1;
+                    if (shapeFill) ctx.fillRect(x1, y1, width, height);
+                    if (shapeStroke) ctx.strokeRect(x1, y1, width, height);
+                    break;
+                    
+                case 'circle':
+                    const radius = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, radius, 0, 2 * Math.PI);
+                    if (shapeFill) ctx.fill();
+                    if (shapeStroke) ctx.stroke();
+                    break;
+            }
+            
+            ctx.restore();
+        }
+        
+        // Initialize canvas state
+        saveCanvasState();
 
-        // Drawing functionality
+        // Enhanced Drawing functionality
         canvas.addEventListener('mousedown', (e) => {
-            isDrawing = true;
-            const rect = canvas.getBoundingClientRect();
-            lastX = e.clientX - rect.left;
-            lastY = e.clientY - rect.top;
-        });
-
-        canvas.addEventListener('mousemove', (e) => {
-            if (!isDrawing) return;
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+            
+            if (['line', 'rectangle', 'circle'].includes(currentTool)) {
+                isDrawingShape = true;
+                shapeStartX = x;
+                shapeStartY = y;
+                saveCanvasState(); // Save state before shape drawing
+            } else {
+                isDrawing = true;
+                lastX = x;
+                lastY = y;
+                
+                // Calculate initial mouse speed
+                const now = Date.now();
+                if (lastMouseTime > 0) {
+                    const timeDiff = now - lastMouseTime;
+                    const distance = Math.sqrt(Math.pow(x - lastMouseX, 2) + Math.pow(y - lastMouseY, 2));
+                    mouseSpeed = distance / timeDiff;
+                } else {
+                    mouseSpeed = 0;
+                }
+                lastMouseTime = now;
+                lastMouseX = x;
+                lastMouseY = y;
+            }
+        });
 
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = currentColor;
-            ctx.lineWidth = 3;
-            ctx.lineCap = 'round';
-            ctx.stroke();
-
-            // Add glow effect
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = currentColor;
-            ctx.stroke();
-            ctx.shadowBlur = 0;
-
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Update mouse speed for pressure calculation
+            const now = Date.now();
+            if (lastMouseTime > 0) {
+                const timeDiff = now - lastMouseTime;
+                const distance = Math.sqrt(Math.pow(x - lastMouseX, 2) + Math.pow(y - lastMouseY, 2));
+                mouseSpeed = distance / (timeDiff || 1);
+            }
+            lastMouseTime = now;
+            lastMouseX = x;
+            lastMouseY = y;
+            
+            if (isDrawingShape) {
+                // Preview shape while drawing
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                    
+                    // Draw preview shape
+                    ctx.save();
+                    ctx.globalAlpha = 0.5;
+                    drawShape(shapeStartX, shapeStartY, x, y, currentTool);
+                    ctx.restore();
+                };
+                img.src = undoStack[undoStack.length - 1];
+                return;
+            }
+            
+            if (!isDrawing) return;
+            
+            const pressure = calculatePressure(mouseSpeed);
+            const effectiveSize = getEffectiveBrushSize(pressure);
+            const effectiveOpacity = currentOpacity * (isPressureSensitive ? pressure : 1);
+            
+            switch(currentBrushType) {
+                case 'pen':
+                    ctx.globalAlpha = effectiveOpacity;
+                    ctx.strokeStyle = currentTool === 'eraser' ? '#FFFFFF' : currentColor;
+                    ctx.globalCompositeOperation = currentTool === 'eraser' ? 'destination-out' : 'source-over';
+                    ctx.lineWidth = effectiveSize;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    
+                    // Add subtle glow effect
+                    if (currentTool !== 'eraser') {
+                        ctx.shadowBlur = Math.max(1, effectiveSize / 3);
+                        ctx.shadowColor = currentColor;
+                        ctx.stroke();
+                        ctx.shadowBlur = 0;
+                    }
+                    break;
+                    
+                case 'marker':
+                    drawMarker(lastX, lastY, x, y, effectiveSize, effectiveOpacity);
+                    break;
+                    
+                case 'spray':
+                    drawSpray(x, y, effectiveSize, effectiveOpacity);
+                    break;
+                    
+                case 'calligraphy':
+                    drawCalligraphy(lastX, lastY, x, y, effectiveSize, effectiveOpacity);
+                    break;
+            }
+            
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.globalAlpha = 1;
+            
             lastX = x;
             lastY = y;
         });
 
         canvas.addEventListener('mouseup', () => {
-            isDrawing = false;
+            if (isDrawingShape) {
+                const rect = canvas.getBoundingClientRect();
+                const currentMouseX = event.clientX - rect.left;
+                const currentMouseY = event.clientY - rect.top;
+                
+                // Restore canvas state and draw final shape
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                    drawShape(shapeStartX, shapeStartY, currentMouseX, currentMouseY, currentTool);
+                    saveCanvasState();
+                };
+                img.src = undoStack[undoStack.length - 1];
+                
+                isDrawingShape = false;
+            } else if (isDrawing) {
+                isDrawing = false;
+                saveCanvasState();
+            }
         });
 
         canvas.addEventListener('mouseleave', () => {
-            isDrawing = false;
+            if (isDrawing) {
+                isDrawing = false;
+                saveCanvasState();
+            }
+            if (isDrawingShape) {
+                isDrawingShape = false;
+            }
         });
 
-        // Touch support for mobile
+        // Enhanced Touch support for mobile
         canvas.addEventListener('touchstart', (e) => {
-            isDrawing = true;
-            const rect = canvas.getBoundingClientRect();
-            const touch = e.touches[0];
-            lastX = touch.clientX - rect.left;
-            lastY = touch.clientY - rect.top;
-        });
-
-        canvas.addEventListener('touchmove', (e) => {
-            if (!isDrawing) return;
             e.preventDefault();
             const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0];
             const x = touch.clientX - rect.left;
             const y = touch.clientY - rect.top;
+            
+            if (['line', 'rectangle', 'circle'].includes(currentTool)) {
+                isDrawingShape = true;
+                shapeStartX = x;
+                shapeStartY = y;
+                saveCanvasState();
+            } else {
+                isDrawing = true;
+                lastX = x;
+                lastY = y;
+            }
+        });
 
-            ctx.beginPath();
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = currentColor;
-            ctx.lineWidth = 3;
-            ctx.lineCap = 'round';
-            ctx.stroke();
-
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left;
+            const y = touch.clientY - rect.top;
+            
+            if (isDrawingShape) {
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                    ctx.save();
+                    ctx.globalAlpha = 0.5;
+                    drawShape(shapeStartX, shapeStartY, x, y, currentTool);
+                    ctx.restore();
+                };
+                img.src = undoStack[undoStack.length - 1];
+                return;
+            }
+            
+            if (!isDrawing) return;
+            
+            const effectiveSize = currentBrushSize;
+            const effectiveOpacity = currentOpacity;
+            
+            switch(currentBrushType) {
+                case 'pen':
+                    ctx.globalAlpha = effectiveOpacity;
+                    ctx.strokeStyle = currentTool === 'eraser' ? '#FFFFFF' : currentColor;
+                    ctx.globalCompositeOperation = currentTool === 'eraser' ? 'destination-out' : 'source-over';
+                    ctx.lineWidth = effectiveSize;
+                    ctx.lineCap = 'round';
+                    ctx.beginPath();
+                    ctx.moveTo(lastX, lastY);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    break;
+                    
+                case 'marker':
+                    drawMarker(lastX, lastY, x, y, effectiveSize, effectiveOpacity);
+                    break;
+                    
+                case 'spray':
+                    drawSpray(x, y, effectiveSize, effectiveOpacity);
+                    break;
+                    
+                case 'calligraphy':
+                    drawCalligraphy(lastX, lastY, x, y, effectiveSize, effectiveOpacity);
+                    break;
+            }
+            
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.globalAlpha = 1;
+            
             lastX = x;
             lastY = y;
         });
 
-        canvas.addEventListener('touchend', () => {
-            isDrawing = false;
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (isDrawingShape) {
+                const rect = canvas.getBoundingClientRect();
+                const lastTouch = e.changedTouches[0];
+                const currentTouchX = lastTouch.clientX - rect.left;
+                const currentTouchY = lastTouch.clientY - rect.top;
+                
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                    drawShape(shapeStartX, shapeStartY, currentTouchX, currentTouchY, currentTool);
+                    saveCanvasState();
+                };
+                img.src = undoStack[undoStack.length - 1];
+                
+                isDrawingShape = false;
+            } else if (isDrawing) {
+                isDrawing = false;
+                saveCanvasState();
+            }
+        });
+
+        // Enhanced Control Event Handlers
+        
+        // Tool selection
+        document.getElementById('toolSelect').addEventListener('change', (e) => {
+            currentTool = e.target.value;
+            canvas.style.cursor = currentTool === 'eraser' ? 'grabbing' : 'crosshair';
+        });
+        
+        // Brush type selection
+        document.getElementById('brushType').addEventListener('change', (e) => {
+            currentBrushType = e.target.value;
+        });
+        
+        // Brush size control
+        document.getElementById('brushSize').addEventListener('input', (e) => {
+            currentBrushSize = parseInt(e.target.value);
+            document.getElementById('brushSizeValue').textContent = currentBrushSize;
+        });
+        
+        // Opacity control
+        document.getElementById('opacity').addEventListener('input', (e) => {
+            currentOpacity = parseInt(e.target.value) / 100;
+            document.getElementById('opacityValue').textContent = e.target.value;
+        });
+        
+        // Shape fill/stroke options
+        document.getElementById('shapeFill').addEventListener('change', (e) => {
+            shapeFill = e.target.checked;
+        });
+        
+        document.getElementById('shapeStroke').addEventListener('change', (e) => {
+            shapeStroke = e.target.checked;
+        });
+        
+        // Pressure sensitivity toggle
+        document.getElementById('pressureSensitive').addEventListener('change', (e) => {
+            isPressureSensitive = e.target.checked;
+        });
+        
+        // Grid toggle
+        document.getElementById('gridToggle').addEventListener('change', (e) => {
+            isGridVisible = e.target.checked;
+            canvas.classList.toggle('grid-overlay', isGridVisible);
+        });
+        
+        // Undo/Redo buttons
+        document.getElementById('undoBtn').addEventListener('click', undo);
+        document.getElementById('redoBtn').addEventListener('click', redo);
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
+                e.preventDefault();
+                undo();
+            } else if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || (e.key === 'z' && e.shiftKey))) {
+                e.preventDefault();
+                redo();
+            }
         });
 
         // Color palette
@@ -1338,6 +1885,7 @@
         // Canvas controls
         document.getElementById('clearCanvas').addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            saveCanvasState();
         });
 
         document.getElementById('randomPattern').addEventListener('click', () => {
@@ -1366,38 +1914,384 @@
             link.click();
         });
 
-        // Pattern Generator
-        const patternDisplay = document.getElementById('patternDisplay');
+        // Enhanced Pattern Generator
+        let patternSystem = null;
         
-        function generatePattern() {
-            const patterns = [
-                'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(140, 21, 21, 0.1) 10px, rgba(140, 21, 21, 0.1) 20px)',
-                'repeating-radial-gradient(circle at 50% 50%, transparent, transparent 10px, rgba(0, 107, 184, 0.1) 10px, rgba(0, 107, 184, 0.1) 20px)',
-                'repeating-conic-gradient(from 0deg at 50% 50%, #8C1515 0deg, #006CB8 60deg, #009B76 120deg)',
-                'linear-gradient(45deg, #8C1515 25%, transparent 25%, transparent 75%, #8C1515 75%, #8C1515), linear-gradient(45deg, #8C1515 25%, transparent 25%, transparent 75%, #8C1515 75%, #8C1515)',
-            ];
+        function initPatternGenerator() {
+            const canvas = document.getElementById('patternCanvas');
+            const ctx = canvas.getContext('2d');
+            let animationId = null;
+            let animationTime = 0;
             
-            patternDisplay.style.background = patterns[Math.floor(Math.random() * patterns.length)];
-            patternDisplay.style.backgroundSize = `${Math.random() * 100 + 20}px ${Math.random() * 100 + 20}px`;
+            // Color schemes
+            const colorSchemes = {
+                stanford: ['#8C1515', '#B83A3A', '#006CB8', '#009B76', '#E98300', '#2E2D29'],
+                monochrome: ['#000000', '#333333', '#666666', '#999999', '#CCCCCC', '#FFFFFF'],
+                rainbow: ['#FF0000', '#FF8000', '#FFFF00', '#80FF00', '#00FF00', '#00FF80', '#00FFFF', '#0080FF', '#0000FF', '#8000FF', '#FF00FF', '#FF0080'],
+                sunset: ['#FF6B35', '#F7931E', '#FFD23F', '#06FFA5', '#118AB2', '#073B4C'],
+                ocean: ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51', '#E63946']
+            };
+            
+            function getColors() {
+                const scheme = document.getElementById('colorScheme').value;
+                return colorSchemes[scheme] || colorSchemes.stanford;
+            }
+            
+            function drawGeometric(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                for (let i = 0; i < complexity * 3; i++) {
+                    const angle = (i / (complexity * 3)) * Math.PI * 2 + time * 0.01;
+                    const radius = 50 + (i * 15) * scale;
+                    
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+                    
+                    ctx.fillStyle = colors[i % colors.length];
+                    ctx.globalAlpha = 0.7;
+                    
+                    ctx.save();
+                    ctx.translate(x, y);
+                    ctx.rotate(angle + time * 0.02);
+                    
+                    if (i % 3 === 0) {
+                        ctx.fillRect(-10 * scale, -10 * scale, 20 * scale, 20 * scale);
+                    } else if (i % 3 === 1) {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 10 * scale, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.beginPath();
+                        ctx.moveTo(0, -15 * scale);
+                        ctx.lineTo(-13 * scale, 7.5 * scale);
+                        ctx.lineTo(13 * scale, 7.5 * scale);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                    
+                    ctx.restore();
+                }
+                ctx.globalAlpha = 1;
+            }
+            
+            function drawOrganic(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < complexity * 5; i++) {
+                    const x = (Math.sin(i + time * 0.001) + 1) * canvas.width / 2;
+                    const y = (Math.cos(i * 0.8 + time * 0.0015) + 1) * canvas.height / 2;
+                    const size = (Math.sin(i * 0.5 + time * 0.002) + 1) * 20 * scale + 10;
+                    
+                    ctx.fillStyle = colors[i % colors.length];
+                    ctx.globalAlpha = 0.6;
+                    
+                    ctx.beginPath();
+                    for (let j = 0; j < 12; j++) {
+                        const angle = (j / 12) * Math.PI * 2;
+                        const r = size + Math.sin(j * 3 + time * 0.01) * size * 0.3;
+                        const px = x + Math.cos(angle) * r;
+                        const py = y + Math.sin(angle) * r;
+                        
+                        if (j === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+            
+            function drawFractal(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                function sierpinski(x1, y1, x2, y2, x3, y3, depth) {
+                    if (depth === 0) {
+                        ctx.fillStyle = colors[depth % colors.length];
+                        ctx.globalAlpha = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(x1, y1);
+                        ctx.lineTo(x2, y2);
+                        ctx.lineTo(x3, y3);
+                        ctx.closePath();
+                        ctx.fill();
+                        return;
+                    }
+                    
+                    const mx1 = (x1 + x2) / 2;
+                    const my1 = (y1 + y2) / 2;
+                    const mx2 = (x2 + x3) / 2;
+                    const my2 = (y2 + y3) / 2;
+                    const mx3 = (x3 + x1) / 2;
+                    const my3 = (y3 + y1) / 2;
+                    
+                    sierpinski(x1, y1, mx1, my1, mx3, my3, depth - 1);
+                    sierpinski(mx1, my1, x2, y2, mx2, my2, depth - 1);
+                    sierpinski(mx3, my3, mx2, my2, x3, y3, depth - 1);
+                }
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const size = 150 * scale;
+                
+                sierpinski(
+                    centerX, centerY - size,
+                    centerX - size, centerY + size,
+                    centerX + size, centerY + size,
+                    Math.min(complexity, 6)
+                );
+                ctx.globalAlpha = 1;
+            }
+            
+            function drawMandala(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                for (let layer = 0; layer < complexity; layer++) {
+                    const radius = (layer + 1) * 20 * scale;
+                    const segments = (layer + 1) * 6;
+                    
+                    for (let i = 0; i < segments; i++) {
+                        const angle = (i / segments) * Math.PI * 2 + time * 0.005;
+                        const x = centerX + Math.cos(angle) * radius;
+                        const y = centerY + Math.sin(angle) * radius;
+                        
+                        ctx.fillStyle = colors[(layer + i) % colors.length];
+                        ctx.globalAlpha = 0.7;
+                        
+                        ctx.save();
+                        ctx.translate(x, y);
+                        ctx.rotate(angle + time * 0.01);
+                        
+                        // Draw petal shape
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, 8 * scale, 15 * scale, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                        
+                        ctx.restore();
+                    }
+                }
+                ctx.globalAlpha = 1;
+            }
+            
+            function drawTessellation(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const tileSize = 30 * scale;
+                const cols = Math.ceil(canvas.width / tileSize) + 1;
+                const rows = Math.ceil(canvas.height / tileSize) + 1;
+                
+                for (let i = 0; i < cols; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        const x = i * tileSize;
+                        const y = j * tileSize;
+                        const offset = (i + j) % 2 ? tileSize / 2 : 0;
+                        
+                        ctx.fillStyle = colors[(i + j + Math.floor(time * 0.01)) % colors.length];
+                        ctx.globalAlpha = 0.8;
+                        
+                        ctx.save();
+                        ctx.translate(x + tileSize/2, y + tileSize/2 + offset);
+                        ctx.rotate(time * 0.002 + (i + j) * 0.1);
+                        
+                        // Draw hexagon
+                        ctx.beginPath();
+                        for (let k = 0; k < 6; k++) {
+                            const angle = (k / 6) * Math.PI * 2;
+                            const px = Math.cos(angle) * tileSize * 0.4;
+                            const py = Math.sin(angle) * tileSize * 0.4;
+                            
+                            if (k === 0) ctx.moveTo(px, py);
+                            else ctx.lineTo(px, py);
+                        }
+                        ctx.closePath();
+                        ctx.fill();
+                        
+                        ctx.restore();
+                    }
+                }
+                ctx.globalAlpha = 1;
+            }
+            
+            function drawNoise(time = 0) {
+                const colors = getColors();
+                const complexity = parseInt(document.getElementById('complexity').value);
+                const scale = parseFloat(document.getElementById('patternScale').value);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const x = (i / 4) % canvas.width;
+                    const y = Math.floor((i / 4) / canvas.width);
+                    
+                    // Simple noise function
+                    const noise = Math.sin(x * 0.01 * complexity + time * 0.001) * 
+                                 Math.cos(y * 0.01 * complexity + time * 0.0015) * 
+                                 Math.sin((x + y) * 0.005 * complexity + time * 0.002);
+                    
+                    const colorIndex = Math.floor((noise + 1) * 0.5 * colors.length);
+                    const color = colors[Math.abs(colorIndex) % colors.length];
+                    
+                    // Convert hex to RGB
+                    const r = parseInt(color.slice(1, 3), 16);
+                    const g = parseInt(color.slice(3, 5), 16);
+                    const b = parseInt(color.slice(5, 7), 16);
+                    
+                    data[i] = r;
+                    data[i + 1] = g;
+                    data[i + 2] = b;
+                    data[i + 3] = 255 * 0.8; // Alpha
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            function render(time = 0) {
+                const patternType = document.getElementById('patternType').value;
+                
+                switch(patternType) {
+                    case 'geometric':
+                        drawGeometric(time);
+                        break;
+                    case 'organic':
+                        drawOrganic(time);
+                        break;
+                    case 'fractal':
+                        drawFractal(time);
+                        break;
+                    case 'mandala':
+                        drawMandala(time);
+                        break;
+                    case 'tessellation':
+                        drawTessellation(time);
+                        break;
+                    case 'noise':
+                        drawNoise(time);
+                        break;
+                    default:
+                        drawGeometric(time);
+                }
+            }
+            
+            function animate() {
+                animationTime++;
+                render(animationTime);
+                if (document.getElementById('patternAnimation').checked) {
+                    animationId = requestAnimationFrame(animate);
+                }
+            }
+            
+            patternSystem = {
+                render: () => render(animationTime),
+                startAnimation: () => {
+                    if (!animationId && document.getElementById('patternAnimation').checked) {
+                        animate();
+                    }
+                },
+                stopAnimation: () => {
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
+                },
+                export: () => {
+                    const link = document.createElement('a');
+                    link.download = `pattern-${Date.now()}.png`;
+                    link.href = canvas.toDataURL();
+                    link.click();
+                },
+                randomize: () => {
+                    const patterns = ['geometric', 'organic', 'fractal', 'mandala', 'tessellation', 'noise'];
+                    const schemes = ['stanford', 'monochrome', 'rainbow', 'sunset', 'ocean'];
+                    
+                    document.getElementById('patternType').value = patterns[Math.floor(Math.random() * patterns.length)];
+                    document.getElementById('colorScheme').value = schemes[Math.floor(Math.random() * schemes.length)];
+                    document.getElementById('complexity').value = Math.floor(Math.random() * 10) + 1;
+                    document.getElementById('patternScale').value = (Math.random() * 2.9 + 0.1).toFixed(1);
+                    
+                    // Update display values
+                    document.getElementById('complexityValue').textContent = document.getElementById('complexity').value;
+                    document.getElementById('scaleValue').textContent = document.getElementById('patternScale').value;
+                    
+                    render(animationTime);
+                }
+            };
+            
+            // Initial render
+            render();
         }
 
-        document.getElementById('generatePattern').addEventListener('click', generatePattern);
-        generatePattern(); // Initial pattern
+        // Initialize pattern generator
+        initPatternGenerator();
 
-        document.getElementById('animatePattern').addEventListener('click', () => {
-            patternDisplay.style.animation = 'rotatePattern 10s linear infinite';
+        // Pattern Generator Event Handlers
+        document.getElementById('generatePattern').addEventListener('click', () => {
+            if (patternSystem) patternSystem.render();
+        });
+        
+        document.getElementById('exportPattern').addEventListener('click', () => {
+            if (patternSystem) patternSystem.export();
+        });
+        
+        document.getElementById('randomizePattern').addEventListener('click', () => {
+            if (patternSystem) patternSystem.randomize();
+        });
+        
+        document.getElementById('patternType').addEventListener('change', () => {
+            if (patternSystem) patternSystem.render();
+        });
+        
+        document.getElementById('colorScheme').addEventListener('change', () => {
+            if (patternSystem) patternSystem.render();
+        });
+        
+        document.getElementById('complexity').addEventListener('input', (e) => {
+            document.getElementById('complexityValue').textContent = e.target.value;
+            if (patternSystem) patternSystem.render();
+        });
+        
+        document.getElementById('patternScale').addEventListener('input', (e) => {
+            document.getElementById('scaleValue').textContent = e.target.value;
+            if (patternSystem) patternSystem.render();
+        });
+        
+        document.getElementById('patternAnimation').addEventListener('change', (e) => {
+            if (patternSystem) {
+                if (e.target.checked) {
+                    patternSystem.startAnimation();
+                } else {
+                    patternSystem.stopAnimation();
+                }
+            }
         });
 
-        // Add rotation animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rotatePattern {
-                from { transform: rotate(0deg) scale(1); }
-                50% { transform: rotate(180deg) scale(1.1); }
-                to { transform: rotate(360deg) scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
 
         // Modal System
         function openModal(modalId) {
@@ -1902,7 +2796,7 @@
             }
         }
 
-        // FRACTAL EXPLORER EXPERIMENT
+        // ENHANCED FRACTAL EXPLORER EXPERIMENT
         let fractalSystem = null;
 
         function initFractals() {
@@ -1911,88 +2805,129 @@
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
 
-            let centerX = 0;
+            let centerX = -0.5;
             let centerY = 0;
             let zoom = 1;
             let maxIterations = 100;
+            let juliaC = { real: -0.7, imag: 0.27015 };
+            let isDragging = false;
+            let dragStartX = 0;
+            let dragStartY = 0;
+            let lastCenterX = centerX;
+            let lastCenterY = centerY;
 
+            // Enhanced Mandelbrot calculation with smooth coloring
             function mandelbrot(x, y) {
                 let real = x;
                 let imag = y;
                 let iterations = 0;
                 
-                while (iterations < maxIterations) {
+                while (iterations < maxIterations && (real * real + imag * imag) <= 4) {
                     const realNew = real * real - imag * imag + x;
                     const imagNew = 2 * real * imag + y;
-                    
-                    if (realNew * realNew + imagNew * imagNew > 4) {
-                        break;
-                    }
                     
                     real = realNew;
                     imag = imagNew;
                     iterations++;
                 }
                 
+                // Smooth coloring using escape time algorithm
+                if (iterations < maxIterations) {
+                    const logZn = Math.log(real * real + imag * imag) / 2;
+                    const nu = Math.log(logZn / Math.log(2)) / Math.log(2);
+                    return iterations + 1 - nu;
+                }
+                
                 return iterations;
             }
 
-            function julia(x, y) {
-                const cReal = -0.7;
-                const cImag = 0.27015;
+            // Enhanced Julia set calculation with smooth coloring
+            function julia(x, y, cReal = juliaC.real, cImag = juliaC.imag) {
                 let real = x;
                 let imag = y;
                 let iterations = 0;
                 
-                while (iterations < maxIterations) {
+                while (iterations < maxIterations && (real * real + imag * imag) <= 4) {
                     const realNew = real * real - imag * imag + cReal;
                     const imagNew = 2 * real * imag + cImag;
-                    
-                    if (realNew * realNew + imagNew * imagNew > 4) {
-                        break;
-                    }
                     
                     real = realNew;
                     imag = imagNew;
                     iterations++;
                 }
                 
+                // Smooth coloring
+                if (iterations < maxIterations) {
+                    const logZn = Math.log(real * real + imag * imag) / 2;
+                    const nu = Math.log(logZn / Math.log(2)) / Math.log(2);
+                    return iterations + 1 - nu;
+                }
+                
                 return iterations;
             }
 
+            // Enhanced color mapping with smooth gradients
             function getColor(iterations, palette) {
-                if (iterations === maxIterations) return '#000000';
+                if (iterations >= maxIterations) return [0, 0, 0]; // Return RGB array for performance
                 
-                const t = iterations / maxIterations;
+                const t = Math.min(1, iterations / maxIterations);
+                const smoothT = Math.sin(t * Math.PI * 0.5); // Smooth transition
                 
                 switch (palette) {
                     case 'cardinal':
-                        const r = Math.floor(140 + t * 115);
-                        const g = Math.floor(21 + t * 50);
-                        const b = Math.floor(21 + t * 50);
-                        return `rgb(${r},${g},${b})`;
+                        return [
+                            Math.floor(20 + smoothT * 220 + Math.sin(t * 6) * 30),
+                            Math.floor(10 + smoothT * 100 + Math.sin(t * 8) * 20),
+                            Math.floor(10 + smoothT * 100 + Math.sin(t * 10) * 20)
+                        ];
                     
                     case 'rainbow':
-                        const hue = (t * 360) % 360;
-                        return `hsl(${hue}, 100%, 50%)`;
+                        const hue = (t * 360 + Math.sin(t * 4) * 30) % 360;
+                        const [r, g, b] = hslToRgb(hue, 100, 50 + Math.sin(t * 3) * 20);
+                        return [Math.floor(r), Math.floor(g), Math.floor(b)];
                     
                     case 'blue':
-                        const blueR = Math.floor(t * 100);
-                        const blueG = Math.floor(t * 150);
-                        const blueB = Math.floor(200 + t * 55);
-                        return `rgb(${blueR},${blueG},${blueB})`;
+                        return [
+                            Math.floor(smoothT * 150 + Math.sin(t * 5) * 50),
+                            Math.floor(50 + smoothT * 200 + Math.sin(t * 7) * 30),
+                            Math.floor(100 + smoothT * 155 + Math.sin(t * 9) * 25)
+                        ];
                     
                     case 'fire':
-                        const fireR = Math.floor(255 * t);
-                        const fireG = Math.floor(100 * t);
-                        const fireB = Math.floor(20 * t);
-                        return `rgb(${fireR},${fireG},${fireB})`;
+                        return [
+                            Math.floor(80 + smoothT * 175 + Math.sin(t * 4) * 40),
+                            Math.floor(smoothT * 150 + Math.sin(t * 6) * 30),
+                            Math.floor(smoothT * 80 + Math.sin(t * 8) * 20)
+                        ];
                     
                     default:
-                        return `rgb(${Math.floor(t*255)},${Math.floor(t*255)},${Math.floor(t*255)})`;
+                        const gray = Math.floor(smoothT * 255);
+                        return [gray, gray, gray];
                 }
             }
+            
+            // HSL to RGB conversion helper
+            function hslToRgb(h, s, l) {
+                h /= 360;
+                s /= 100;
+                l /= 100;
+                
+                const c = (1 - Math.abs(2 * l - 1)) * s;
+                const x = c * (1 - Math.abs((h * 6) % 2 - 1));
+                const m = l - c / 2;
+                
+                let r, g, b;
+                if (h < 1/6) [r, g, b] = [c, x, 0];
+                else if (h < 2/6) [r, g, b] = [x, c, 0];
+                else if (h < 3/6) [r, g, b] = [0, c, x];
+                else if (h < 4/6) [r, g, b] = [0, x, c];
+                else if (h < 5/6) [r, g, b] = [x, 0, c];
+                else [r, g, b] = [c, 0, x];
+                
+                return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
+            }
 
+            // Optimized rendering with progressive loading
             function render() {
                 const imageData = ctx.createImageData(canvas.width, canvas.height);
                 const data = imageData.data;
@@ -2001,64 +2936,205 @@
                 const palette = document.getElementById('colorPalette').value;
                 maxIterations = parseInt(document.getElementById('maxIterations').value);
                 
-                for (let px = 0; px < canvas.width; px++) {
-                    for (let py = 0; py < canvas.height; py++) {
-                        const x = (px - canvas.width / 2) / (canvas.width / 4 / zoom) + centerX;
-                        const y = (py - canvas.height / 2) / (canvas.height / 4 / zoom) + centerY;
+                // Calculate scale and offset for mapping pixels to complex plane
+                const scale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                const offsetX = centerX - (canvas.width * scale) / 2;
+                const offsetY = centerY - (canvas.height * scale) / 2;
+                
+                // Render in chunks for better performance
+                let pixelCount = 0;
+                const totalPixels = canvas.width * canvas.height;
+                
+                const renderChunk = () => {
+                    const chunkSize = Math.min(2000, totalPixels - pixelCount);
+                    
+                    for (let i = 0; i < chunkSize; i++) {
+                        const px = pixelCount % canvas.width;
+                        const py = Math.floor(pixelCount / canvas.width);
                         
-                        const iterations = fractalType === 'mandelbrot' ? mandelbrot(x, y) : julia(x, y);
-                        const color = getColor(iterations, palette);
+                        const x = offsetX + px * scale;
+                        const y = offsetY + py * scale;
                         
-                        const rgb = color.match(/\\d+/g);
-                        const index = (py * canvas.width + px) * 4;
+                        let iterations;
+                        if (fractalType === 'mandelbrot') {
+                            iterations = mandelbrot(x, y);
+                        } else {
+                            iterations = julia(x, y);
+                        }
                         
-                        data[index] = parseInt(rgb[0]);     // Red
-                        data[index + 1] = parseInt(rgb[1]); // Green
-                        data[index + 2] = parseInt(rgb[2]); // Blue
-                        data[index + 3] = 255;             // Alpha
+                        const [r, g, b] = getColor(iterations, palette);
+                        const index = pixelCount * 4;
+                        
+                        data[index] = r;     // Red
+                        data[index + 1] = g; // Green  
+                        data[index + 2] = b; // Blue
+                        data[index + 3] = 255; // Alpha
+                        
+                        pixelCount++;
                     }
-                }
+                    
+                    // Update canvas with current progress
+                    ctx.putImageData(imageData, 0, 0);
+                    
+                    // Update progress info
+                    const progress = (pixelCount / totalPixels * 100).toFixed(1);
+                    document.getElementById('fractalInfo').innerHTML = 
+                        `Rendering: ${progress}% | Zoom: ${zoom.toFixed(2)}x | Iterations: ${maxIterations}<br>Click to zoom in | Shift+Click to zoom out | Drag to pan`;
+                    
+                    if (pixelCount < totalPixels) {
+                        requestAnimationFrame(renderChunk);
+                    } else {
+                        // Rendering complete
+                        document.getElementById('fractalInfo').innerHTML = 
+                            `Zoom: ${zoom.toFixed(2)}x | Iterations: ${maxIterations}<br>Click to zoom in | Shift+Click to zoom out | Drag to pan`;
+                    }
+                };
                 
-                ctx.putImageData(imageData, 0, 0);
-                
-                // Update info display
-                document.getElementById('fractalInfo').innerHTML = 
-                    `Zoom: ${zoom.toFixed(2)}x | Iterations: ${maxIterations}<br>Click to zoom in | Right-click to zoom out`;
+                renderChunk();
             }
 
-            canvas.addEventListener('click', (e) => {
+            // Enhanced mouse interaction with zoom, pan, and Julia interaction
+            canvas.addEventListener('mousedown', (e) => {
                 const rect = canvas.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
-                centerX += (x - canvas.width / 2) / (canvas.width / 4 / zoom);
-                centerY += (y - canvas.height / 2) / (canvas.height / 4 / zoom);
-                zoom *= 2;
+                if (e.button === 0) { // Left click
+                    if (e.shiftKey) {
+                        // Shift+Click to zoom out
+                        zoom = Math.max(0.001, zoom / 2);
+                        render();
+                    } else {
+                        // Start dragging
+                        isDragging = true;
+                        dragStartX = x;
+                        dragStartY = y;
+                        lastCenterX = centerX;
+                        lastCenterY = centerY;
+                        canvas.style.cursor = 'grabbing';
+                    }
+                }
+            });
+            
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (isDragging) {
+                    // Pan the fractal
+                    const scale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                    const dx = (x - dragStartX) * scale;
+                    const dy = (y - dragStartY) * scale;
+                    
+                    centerX = lastCenterX - dx;
+                    centerY = lastCenterY - dy;
+                    
+                    render();
+                } else if (document.getElementById('fractalType').value === 'julia') {
+                    // Interactive Julia set - mouse position controls the c parameter
+                    const scale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                    const mouseX = (x - canvas.width / 2) * scale;
+                    const mouseY = (y - canvas.height / 2) * scale;
+                    
+                    // Map mouse position to Julia constant
+                    juliaC.real = (mouseX / canvas.width) * 4 - 2;
+                    juliaC.imag = (mouseY / canvas.height) * 4 - 2;
+                    
+                    // Debounce rendering for smoother interaction
+                    clearTimeout(juliaC.renderTimeout);
+                    juliaC.renderTimeout = setTimeout(render, 50);
+                }
+            });
+            
+            canvas.addEventListener('mouseup', (e) => {
+                if (e.button === 0 && !e.shiftKey && !isDragging) {
+                    // Click to zoom in
+                    const rect = canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const scale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                    const clickX = centerX - (canvas.width * scale) / 2 + x * scale;
+                    const clickY = centerY - (canvas.height * scale) / 2 + y * scale;
+                    
+                    centerX = clickX;
+                    centerY = clickY;
+                    zoom *= 2;
+                    
+                    render();
+                }
+                
+                isDragging = false;
+                canvas.style.cursor = 'crosshair';
+            });
+            
+            canvas.addEventListener('mouseleave', () => {
+                isDragging = false;
+                canvas.style.cursor = 'crosshair';
+            });
+            
+            // Prevent context menu
+            canvas.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+            
+            // Mouse wheel zoom
+            canvas.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const scale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                const mouseX = centerX - (canvas.width * scale) / 2 + x * scale;
+                const mouseY = centerY - (canvas.height * scale) / 2 + y * scale;
+                
+                const zoomFactor = e.deltaY > 0 ? 0.8 : 1.25;
+                zoom = Math.max(0.001, Math.min(1000000, zoom * zoomFactor));
+                
+                // Keep mouse position fixed during zoom
+                const newScale = 4 / (zoom * Math.min(canvas.width, canvas.height));
+                centerX = mouseX + (canvas.width * newScale) / 2 - x * newScale;
+                centerY = mouseY + (canvas.height * newScale) / 2 - y * newScale;
                 
                 render();
             });
 
-            canvas.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                zoom = Math.max(1, zoom / 2);
-                render();
-            });
-
+            // Initial render
             render();
 
             fractalSystem = {
                 render,
+                canvas,
+                ctx,
                 reset: () => {
-                    centerX = 0;
+                    centerX = -0.5;
                     centerY = 0;
                     zoom = 1;
+                    juliaC = { real: -0.7, imag: 0.27015 };
                     render();
                 },
                 save: () => {
                     const link = document.createElement('a');
-                    link.download = 'fractal.png';
+                    link.download = `fractal-${Date.now()}.png`;
                     link.href = canvas.toDataURL();
                     link.click();
+                },
+                setJuliaC: (real, imag) => {
+                    juliaC.real = real;
+                    juliaC.imag = imag;
+                    if (document.getElementById('fractalType').value === 'julia') {
+                        render();
+                    }
+                },
+                getZoom: () => zoom,
+                getCenter: () => ({ x: centerX, y: centerY }),
+                setView: (cx, cy, z) => {
+                    centerX = cx;
+                    centerY = cy;
+                    zoom = z;
+                    render();
                 }
             };
         }
