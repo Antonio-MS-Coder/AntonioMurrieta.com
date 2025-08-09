@@ -235,7 +235,11 @@ function getBookStats() {
     };
 }
 
-// Export for use in library.html
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { books, getCurrentlyReading, getBooksByCategory, searchBooks, getBookStats };
+// Make functions available globally for library.html
+if (typeof window !== 'undefined') {
+    window.books = books;
+    window.getCurrentlyReading = getCurrentlyReading;
+    window.getBooksByCategory = getBooksByCategory;
+    window.searchBooks = searchBooks;
+    window.getBookStats = getBookStats;
 }
