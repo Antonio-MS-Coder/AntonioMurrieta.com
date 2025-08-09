@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonio Murrieta - Digital Playground</title>
-    <meta name="description" content="Enter the creative universe of Antonio Murrieta - where code meets art, stories meet pixels, and imagination has no limits.">
+    <title>Antonio Murrieta - Digital Creator</title>
+    <meta name="description" content="Digital creator, author, and technologist crafting experiences at the intersection of art and code.">
     
     <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Antonio Murrieta - Digital Playground">
-    <meta property="og:description" content="Digital artist, creative technologist, and storyteller crafting experiences at the intersection of art and code.">
+    <meta property="og:title" content="Antonio Murrieta - Digital Creator">
+    <meta property="og:description" content="Entrepreneur, author, and creative technologist building at the intersection of art and technology.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com">
     
@@ -20,46 +20,32 @@
         }
 
         :root {
-            --electric-blue: #00D9FF;
-            --hot-pink: #FF0099;
-            --lime: #BFFF00;
-            --purple: #7B61FF;
-            --yellow: #FFE500;
-            --black: #0A0A0A;
-            --white: #FAFAFA;
+            --primary: #1a1a1a;
+            --secondary: #f9f9f9;
+            --accent: #FF6B35;
+            --accent-light: #FF8C61;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --border: #e0e0e0;
+            --max-width: 1400px;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--white);
-            color: var(--black);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            cursor: none;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 40px;
-            height: 40px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.2s cubic-bezier(0.23, 1, 0.320, 1);
-        }
-
-        .cursor-inner {
-            width: 100%;
-            height: 100%;
-            background: var(--hot-pink);
-            border-radius: 50%;
-            transform: scale(1);
-            transition: transform 0.3s ease;
-        }
-
-        .cursor.hover .cursor-inner {
-            transform: scale(1.5);
-            background: var(--lime);
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -67,39 +53,38 @@
             position: fixed;
             top: 0;
             width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 30px 50px;
-            mix-blend-mode: difference;
+            padding: 20px 40px;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 40px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--hot-pink);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--primary);
             text-decoration: none;
-            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .logo::after {
-            content: "●";
-            position: absolute;
-            right: -15px;
-            top: -5px;
-            color: var(--lime);
-            font-size: 12px;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .logo:hover {
+            color: var(--accent);
         }
 
         .nav-links {
@@ -109,207 +94,131 @@
         }
 
         .nav-links a {
-            color: var(--black);
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            position: relative;
+            font-size: 14px;
+            letter-spacing: 0.5px;
             transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--hot-pink);
+            position: relative;
         }
 
         .nav-links a::after {
-            content: "";
+            content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -3px;
             left: 0;
             width: 0;
-            height: 3px;
-            background: var(--lime);
+            height: 1px;
+            background: var(--accent);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-
-        /* Generative Background Pattern */
-        .pattern-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .pattern-element {
-            position: absolute;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .squiggle {
-            width: 100px;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,50 Q30,20 50,50 T90,50" stroke="%23FF0099" stroke-width="5" fill="none" stroke-linecap="round"/></svg>') no-repeat center;
-            background-size: contain;
-        }
-
-        .dot-grid {
-            width: 150px;
-            height: 150px;
-            background-image: radial-gradient(circle, var(--electric-blue) 2px, transparent 2px);
-            background-size: 20px 20px;
-            opacity: 0.5;
-        }
-
-        .zigzag {
-            width: 120px;
-            height: 60px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60"><polyline points="0,30 20,10 40,30 60,10 80,30 100,10 120,30" stroke="%23BFFF00" stroke-width="4" fill="none"/></svg>') no-repeat center;
-            background-size: contain;
-        }
-
-        .blob {
-            width: 200px;
-            height: 200px;
-            background: var(--purple);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            opacity: 0.1;
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(30px) rotate(240deg); }
-        }
-
-        @keyframes morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-        }
-
-        /* Hero Content */
-        .hero-content {
-            text-align: center;
-            z-index: 10;
+            padding: 120px 40px 80px;
             position: relative;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
-            font-size: clamp(60px, 10vw, 140px);
-            font-weight: 900;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 300;
+            letter-spacing: -3px;
+            margin-bottom: 30px;
             line-height: 0.9;
-            margin-bottom: 20px;
-            position: relative;
         }
 
-        .title-word {
-            display: inline-block;
-            position: relative;
-        }
-
-        .title-word:nth-child(1) {
-            color: var(--hot-pink);
-            transform: rotate(-5deg);
-        }
-
-        .title-word:nth-child(2) {
-            color: var(--electric-blue);
-            transform: rotate(3deg);
-            margin-left: 20px;
+        .hero-title span {
+            display: block;
+            font-weight: 600;
+            color: var(--accent);
         }
 
         .hero-subtitle {
-            font-size: clamp(18px, 3vw, 28px);
-            margin: 30px 0;
-            font-weight: 500;
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin: 30px auto;
+            margin: 0 auto 40px;
+            line-height: 1.8;
         }
 
-        .hero-subtitle span {
-            display: inline-block;
-            padding: 5px 10px;
-            margin: 5px;
-            transform: rotate(-1deg);
-        }
-
-        .hero-subtitle span:nth-child(odd) {
-            background: var(--yellow);
-            transform: rotate(1deg);
-        }
-
-        .hero-subtitle span:nth-child(even) {
-            background: var(--lime);
-            transform: rotate(-1deg);
-        }
-
-        /* CTA Buttons */
         .hero-cta {
-            margin-top: 50px;
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-btn {
-            padding: 20px 40px;
-            font-size: 18px;
-            font-weight: 700;
+        .btn {
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
-            border: 4px solid var(--black);
-            background: var(--white);
-            color: var(--black);
-            position: relative;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 6px 6px 0 var(--black);
+            cursor: pointer;
+            border: none;
+            display: inline-block;
         }
 
-        .cta-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 var(--black);
+        .btn-primary {
+            background: var(--accent);
+            color: white;
         }
 
-        .cta-btn.primary {
-            background: var(--hot-pink);
-            color: var(--white);
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
         }
 
-        .cta-btn.secondary {
-            background: var(--electric-blue);
-            color: var(--white);
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
         }
 
-        /* Floating Elements */
-        .floating-emoji {
-            position: absolute;
-            font-size: 40px;
-            animation: float-around 15s infinite ease-in-out;
-            z-index: 5;
-        }
-
-        @keyframes float-around {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, -50px) rotate(90deg); }
-            50% { transform: translate(-50px, -100px) rotate(180deg); }
-            75% { transform: translate(-100px, 50px) rotate(270deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* Scroll Indicator */
@@ -321,38 +230,196 @@
             animation: bounce 2s infinite;
         }
 
-        .scroll-indicator svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--black);
-        }
-
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 40px;
+            background: white;
+        }
+
+        .features-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .feature {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.1s; }
+        .feature:nth-child(2) { animation-delay: 0.2s; }
+        .feature:nth-child(3) { animation-delay: 0.3s; }
+        .feature:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 36px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px 40px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* Decorative Elements */
+        .decoration {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            top: 10%;
+            right: -150px;
+            animation: rotate 30s linear infinite;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            bottom: 10%;
+            left: -100px;
+            animation: rotate 25s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Mobile Menu */
         .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 5px;
         }
 
         .menu-toggle span {
-            width: 30px;
-            height: 4px;
-            background: var(--black);
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
             transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 20px;
+                padding: 15px 20px;
             }
 
             .nav-links {
@@ -361,10 +428,11 @@
                 right: -100%;
                 width: 100%;
                 height: 100vh;
-                background: var(--white);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: 30px;
                 transition: right 0.3s ease;
             }
 
@@ -377,45 +445,48 @@
                 z-index: 1001;
             }
 
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
+            .hero {
+                padding: 120px 20px 80px;
             }
 
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(8px, -8px);
+            .btn {
+                width: 200px;
+                text-align: center;
             }
 
-            .hero-title {
-                font-size: 60px;
+            .features {
+                padding: 60px 20px;
             }
 
-            .cursor {
+            .features-grid {
+                gap: 40px;
+            }
+
+            .circle-1, .circle-2 {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor">
-        <div class="cursor-inner"></div>
-    </div>
-
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">AM</a>
-            <ul class="nav-links">
+            <a href="index.html" class="logo">ANTONIO MURRIETA</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">HOME</a></li>
                 <li><a href="work.html">WORK</a></li>
+                <li><a href="library.html">LIBRARY</a></li>
                 <li><a href="lab.html">LAB</a></li>
                 <li><a href="story.html">STORY</a></li>
                 <li><a href="connect.html">CONNECT</a></li>
             </ul>
-            <button class="menu-toggle">
+            <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -425,136 +496,150 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Generative Background Pattern -->
-        <div class="pattern-container" id="patternContainer"></div>
+        <!-- Decorative Elements -->
+        <div class="decoration circle-1"></div>
+        <div class="decoration circle-2"></div>
 
-        <!-- Floating Emojis -->
-        <div class="floating-emoji" style="top: 20%; left: 10%;">🎨</div>
-        <div class="floating-emoji" style="top: 70%; right: 15%;">🚀</div>
-        <div class="floating-emoji" style="bottom: 30%; left: 20%;">✨</div>
-        <div class="floating-emoji" style="top: 40%; right: 25%;">🎮</div>
-
-        <!-- Hero Content -->
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="title-word">ANTONIO</span>
-                <span class="title-word">MURRIETA</span>
+                Creative
+                <span>Technologist</span>
             </h1>
-            <p class="hero-subtitle">
-                <span>Digital Artist</span>
-                <span>Creative Coder</span>
-                <span>Storyteller</span>
-            </p>
-            <p style="font-size: 20px; margin: 30px auto; max-width: 500px; line-height: 1.6;">
-                Welcome to my digital playground where pixels dance, 
-                code creates art, and every project tells a story.
+            <p class="hero-subtitle">Entrepreneur • Author • Digital Artist</p>
+            <p class="hero-description">
+                Building at the intersection of art and technology. From iOS games to AI solutions, 
+                from children's books to digital platforms — crafting experiences that inspire and delight.
             </p>
             <div class="hero-cta">
-                <a href="work.html" class="cta-btn primary">EXPLORE MY WORK</a>
-                <a href="lab.html" class="cta-btn secondary">ENTER THE LAB</a>
+                <a href="work.html" class="btn btn-primary">Explore My Work</a>
+                <a href="library.html" class="btn btn-secondary">Visit The Library</a>
             </div>
         </div>
 
         <!-- Scroll Indicator -->
         <div class="scroll-indicator">
             <svg viewBox="0 0 24 24">
-                <path d="M12 4l-8 8h6v8h4v-8h6z" transform="rotate(180 12 12)"/>
+                <path d="M7 10l5 5 5-5H7z"/>
             </svg>
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <h2 class="section-title">What I Do</h2>
+            <p class="section-subtitle">
+                A diverse creative practice spanning technology, literature, and digital art
+            </p>
+
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">💻</div>
+                    <h3 class="feature-title">Digital Products</h3>
+                    <p class="feature-description">
+                        Creating innovative digital solutions from mobile apps to web platforms, 
+                        focusing on user experience and meaningful interactions.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Published Author</h3>
+                    <p class="feature-description">
+                        Writing for diverse audiences with books on Amazon, from children's 
+                        literature to self-improvement guides.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Creative Arts</h3>
+                    <p class="feature-description">
+                        Exploring the boundaries of digital art, music composition, and 
+                        visual storytelling through various mediums.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Innovation Lab</h3>
+                    <p class="feature-description">
+                        Experimenting with AI, generative art, and emerging technologies 
+                        to push creative boundaries and explore new possibilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://github.com/Antonio-MS-Coder" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/antoniomurrieta" target="_blank">LinkedIn</a>
+                <a href="https://instagram.com/antoniomurrieta" target="_blank">Instagram</a>
+                <a href="mailto:carlosantonio.murrieta@gmail.com">Email</a>
+            </div>
+            <p class="footer-copyright">
+                © 2024 Antonio Murrieta. Crafted with passion and code.
+            </p>
+        </div>
+    </footer>
+
     <script>
-        // Generate random pattern elements
-        const patternContainer = document.getElementById('patternContainer');
-        const patterns = ['squiggle', 'dot-grid', 'zigzag', 'blob'];
-        
-        for (let i = 0; i < 15; i++) {
-            const element = document.createElement('div');
-            const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
-            element.className = `pattern-element ${randomPattern}`;
-            element.style.left = Math.random() * 100 + '%';
-            element.style.top = Math.random() * 100 + '%';
-            element.style.animationDelay = Math.random() * 20 + 's';
-            element.style.animationDuration = (15 + Math.random() * 10) + 's';
-            patternContainer.appendChild(element);
-        }
-
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-            
-            cursorX += dx * 0.1;
-            cursorY += dy * 0.1;
-            
-            cursor.style.left = cursorX - 20 + 'px';
-            cursor.style.top = cursorY - 20 + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Cursor hover effect
-        document.querySelectorAll('a, button').forEach(element => {
-            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
         // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Parallax effect on mouse move
-        document.addEventListener('mousemove', (e) => {
-            const patterns = document.querySelectorAll('.pattern-element');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            patterns.forEach((pattern, index) => {
-                const speed = (index + 1) * 0.5;
-                const xOffset = (x - 0.5) * speed * 50;
-                const yOffset = (y - 0.5) * speed * 50;
-                pattern.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-            });
-        });
-
-        // Title animation on load
-        window.addEventListener('load', () => {
-            const titleWords = document.querySelectorAll('.title-word');
-            titleWords.forEach((word, index) => {
-                word.style.animation = `slideIn 0.6s ease-out ${index * 0.2}s forwards`;
-            });
-        });
-
-        // Add slide in animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(50px) rotate(0deg);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0) rotate(${Math.random() * 10 - 5}deg);
-                }
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        `;
-        document.head.appendChild(style);
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe features
+        document.querySelectorAll('.feature').forEach(feature => {
+            feature.style.animationPlayState = 'paused';
+            observer.observe(feature);
+        });
     </script>
 </body>
 </html>

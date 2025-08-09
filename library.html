@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Antonio Murrieta</title>
+    <meta name="description" content="Antonio's digital library - 52 books a year. Reviews, summaries, and recommendations from a voracious reader.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f5;
+            --accent: #FF6B35;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --hover: #FF8C61;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 20px 40px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Library Container */
+        .library-container {
+            max-width: 1400px;
+            margin: 100px auto 50px;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .library-header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .library-title {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .library-subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .reading-stats {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 10px 40px 10px 15px;
+            width: 300px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        /* Books Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .book-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .book-rating {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+
+        .book-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .book-summary {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .book-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .book-tag {
+            padding: 4px 10px;
+            background: var(--secondary);
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Book Modal */
+        .book-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .book-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            padding: 60px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .modal-author {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .modal-body {
+            line-height: 1.8;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .modal-quote {
+            padding: 20px;
+            background: var(--secondary);
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+            margin: 20px 0;
+        }
+
+        /* Currently Reading */
+        .currently-reading {
+            background: white;
+            border: 2px solid var(--accent);
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .currently-reading-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .current-book {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .current-book-cover {
+            width: 150px;
+            height: 200px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .current-book-info {
+            text-align: left;
+        }
+
+        .current-book-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .current-book-author {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .reading-progress {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 65%;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .library-container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reading-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .modal-content {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ANTONIO MURRIETA</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="work.html">WORK</a></li>
+                <li><a href="library.html" class="active">LIBRARY</a></li>
+                <li><a href="lab.html">LAB</a></li>
+                <li><a href="story.html">STORY</a></li>
+                <li><a href="connect.html">CONNECT</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Library Container -->
+    <div class="library-container">
+        <!-- Header -->
+        <div class="library-header">
+            <h1 class="library-title">The Library</h1>
+            <p class="library-subtitle">"A reader lives a thousand lives before he dies"</p>
+            
+            <div class="reading-stats">
+                <div class="stat">
+                    <div class="stat-number">52</div>
+                    <div class="stat-label">Books Per Year</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">260+</div>
+                    <div class="stat-label">Total Read</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Book Per Week</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Currently Reading -->
+        <div class="currently-reading">
+            <h2 class="currently-reading-title">CURRENTLY READING</h2>
+            <div class="current-book">
+                <div class="current-book-cover">📖</div>
+                <div class="current-book-info">
+                    <h3 class="current-book-title">The Creative Act</h3>
+                    <p class="current-book-author">Rick Rubin</p>
+                    <div class="reading-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span>65%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="philosophy">Philosophy</button>
+                <button class="filter-btn" data-filter="fiction">Fiction</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="self-help">Self-Help</button>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search books...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid">
+            <!-- Book 1 -->
+            <div class="book-card" data-category="philosophy">
+                <div class="book-rating">★★★★★</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">📚</div>
+                <div class="book-info">
+                    <h3 class="book-title">No Longer Human</h3>
+                    <p class="book-author">Osamu Dazai</p>
+                    <p class="book-summary">
+                        A profound exploration of alienation and the human condition. Dazai's masterpiece delves into 
+                        the psyche of a man who feels disconnected from humanity.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Philosophy</span>
+                        <span class="book-tag">Japanese</span>
+                        <span class="book-tag">Classic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="book-card" data-category="fiction">
+                <div class="book-rating">★★★★☆</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">☕</div>
+                <div class="book-info">
+                    <h3 class="book-title">Before the Coffee Gets Cold</h3>
+                    <p class="book-author">Toshikazu Kawaguchi</p>
+                    <p class="book-summary">
+                        A magical story about a Tokyo café where customers can travel back in time, exploring themes 
+                        of regret, love, and the importance of living in the present.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Fiction</span>
+                        <span class="book-tag">Time Travel</span>
+                        <span class="book-tag">Japanese</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-card" data-category="self-help">
+                <div class="book-rating">★★★★★</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">🌟</div>
+                <div class="book-info">
+                    <h3 class="book-title">What I Know For Sure</h3>
+                    <p class="book-author">Oprah Winfrey</p>
+                    <p class="book-summary">
+                        Oprah's insights on gratitude, possibility, awe, clarity, and power. A collection of wisdom 
+                        gained through experience and reflection.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Self-Help</span>
+                        <span class="book-tag">Memoir</span>
+                        <span class="book-tag">Inspiration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 4 -->
+            <div class="book-card" data-category="philosophy">
+                <div class="book-rating">★★★★★</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">🧭</div>
+                <div class="book-info">
+                    <h3 class="book-title">The Alchemist</h3>
+                    <p class="book-author">Paulo Coelho</p>
+                    <p class="book-summary">
+                        A mystical story about following your dreams. Santiago's journey teaches us about listening 
+                        to our hearts and recognizing opportunity.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Philosophy</span>
+                        <span class="book-tag">Adventure</span>
+                        <span class="book-tag">Classic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 5 -->
+            <div class="book-card" data-category="business">
+                <div class="book-rating">★★★★☆</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">💡</div>
+                <div class="book-info">
+                    <h3 class="book-title">Zero to One</h3>
+                    <p class="book-author">Peter Thiel</p>
+                    <p class="book-summary">
+                        Notes on startups and how to build the future. Thiel challenges conventional thinking about 
+                        innovation and competition in business.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Business</span>
+                        <span class="book-tag">Startups</span>
+                        <span class="book-tag">Innovation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 6 -->
+            <div class="book-card" data-category="technology">
+                <div class="book-rating">★★★★★</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🤖</div>
+                <div class="book-info">
+                    <h3 class="book-title">Life 3.0</h3>
+                    <p class="book-author">Max Tegmark</p>
+                    <p class="book-summary">
+                        An exploration of AI and its implications for the future of life. Tegmark examines scenarios 
+                        for humanity in the age of artificial intelligence.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Technology</span>
+                        <span class="book-tag">AI</span>
+                        <span class="book-tag">Future</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 7 -->
+            <div class="book-card" data-category="philosophy">
+                <div class="book-rating">★★★★★</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">🏛️</div>
+                <div class="book-info">
+                    <h3 class="book-title">Meditations</h3>
+                    <p class="book-author">Marcus Aurelius</p>
+                    <p class="book-summary">
+                        Personal writings of the Roman Emperor on Stoic philosophy. Timeless wisdom on virtue, 
+                        mortality, and the nature of human existence.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Philosophy</span>
+                        <span class="book-tag">Stoicism</span>
+                        <span class="book-tag">Classic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 8 -->
+            <div class="book-card" data-category="fiction">
+                <div class="book-rating">★★★★☆</div>
+                <div class="book-cover" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">🌙</div>
+                <div class="book-info">
+                    <h3 class="book-title">Norwegian Wood</h3>
+                    <p class="book-author">Haruki Murakami</p>
+                    <p class="book-summary">
+                        A nostalgic story of loss and burgeoning sexuality. Murakami's poignant exploration of 
+                        love and loneliness in 1960s Tokyo.
+                    </p>
+                    <div class="book-tags">
+                        <span class="book-tag">Fiction</span>
+                        <span class="book-tag">Romance</span>
+                        <span class="book-tag">Japanese</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Modal -->
+    <div class="book-modal" id="bookModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Book Title</h2>
+                <p class="modal-author">Author Name</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Summary</h3>
+                    <p>Full book summary will appear here...</p>
+                </div>
+                <div class="modal-quote">
+                    "A memorable quote from the book..."
+                </div>
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Key Takeaways</h3>
+                    <ul>
+                        <li>Important lesson 1</li>
+                        <li>Important lesson 2</li>
+                        <li>Important lesson 3</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Recommendation</h3>
+                    <p>Who should read this book and why...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const bookCards = document.querySelectorAll('.book-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                bookCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            bookCards.forEach(card => {
+                const title = card.querySelector('.book-title').textContent.toLowerCase();
+                const author = card.querySelector('.book-author').textContent.toLowerCase();
+                const summary = card.querySelector('.book-summary').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || author.includes(searchTerm) || summary.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('bookModal');
+        const modalClose = document.getElementById('modalClose');
+
+        bookCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('.book-title').textContent;
+                const author = card.querySelector('.book-author').textContent;
+                const summary = card.querySelector('.book-summary').textContent;
+
+                modal.querySelector('.modal-title').textContent = title;
+                modal.querySelector('.modal-author').textContent = author;
+                modal.querySelector('.modal-body p').textContent = summary;
+
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll animation for stats
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat').forEach(stat => {
+            observer.observe(stat);
+        });
+
+        // Add animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
