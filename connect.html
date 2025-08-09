@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect - Antonio Murrieta</title>
+    <meta name="description" content="Let's create something amazing together. Connect with Antonio Murrieta for collaborations, projects, or just to say hello.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --electric-blue: #00D9FF;
+            --hot-pink: #FF0099;
+            --lime: #BFFF00;
+            --purple: #7B61FF;
+            --yellow: #FFE500;
+            --orange: #FF6B35;
+            --mint: #00FFB7;
+            --black: #0A0A0A;
+            --white: #FAFAFA;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            cursor: none;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--hot-pink) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--electric-blue) 0%, transparent 70%);
+            bottom: -200px;
+            left: -200px;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 15px;
+            height: 15px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            background: var(--white);
+            border-radius: 50%;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+        }
+
+        .cursor.hover {
+            transform: scale(3);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 50px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--hot-pink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .nav-links a.active {
+            color: var(--hot-pink);
+        }
+
+        /* Connect Container */
+        .connect-container {
+            padding: 120px 50px 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Connect Header */
+        .connect-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .connect-title {
+            font-size: clamp(60px, 8vw, 120px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--hot-pink), var(--electric-blue), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .connect-subtitle {
+            font-size: 24px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Cards Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--white);
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--hot-pink) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-card:hover::before {
+            opacity: 0.2;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            border-color: var(--hot-pink);
+            box-shadow: 0 20px 40px rgba(255, 0, 153, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--lime);
+        }
+
+        .contact-info {
+            font-size: 16px;
+            opacity: 0.8;
+            word-break: break-all;
+        }
+
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Social Links */
+        .social-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .social-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--yellow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2) rotate(360deg);
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Message Section */
+        .message-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed var(--electric-blue);
+        }
+
+        .message-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--electric-blue);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--lime);
+            text-transform: uppercase;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 20px;
+            background: var(--hot-pink);
+            border: none;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+            background: var(--electric-blue);
+            transform: scale(1.05);
+        }
+
+        /* Fun Message */
+        .fun-message {
+            text-align: center;
+            margin: 60px 0;
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .fun-message span {
+            display: inline-block;
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        .fun-message span:nth-child(1) { animation-delay: 0s; }
+        .fun-message span:nth-child(2) { animation-delay: 0.1s; }
+        .fun-message span:nth-child(3) { animation-delay: 0.2s; }
+        .fun-message span:nth-child(4) { animation-delay: 0.3s; }
+        .fun-message span:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .connect-container {
+                padding: 120px 20px 50px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">AM</a>
+            <ul class="nav-links">
+                <li><a href="work.html">WORK</a></li>
+                <li><a href="lab.html">LAB</a></li>
+                <li><a href="story.html">STORY</a></li>
+                <li><a href="connect.html" class="active">CONNECT</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Connect Container -->
+    <div class="connect-container">
+        <!-- Header -->
+        <div class="connect-header">
+            <h1 class="connect-title">LET'S CONNECT</h1>
+            <p class="connect-subtitle">
+                Ready to create something extraordinary? Let's turn ideas into reality.
+            </p>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-method">Email</div>
+                <div class="contact-info">
+                    <a href="mailto:carlosantonio.murrieta@gmail.com" class="contact-link">
+                        carlosantonio.murrieta@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <div class="contact-method">Social</div>
+                <div class="contact-info">@antoniomurrieta</div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🌍</div>
+                <div class="contact-method">Location</div>
+                <div class="contact-info">Global Digital Nomad</div>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-section">
+            <h2 class="social-title">FIND ME ON</h2>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/antoniomurrieta" class="social-link" target="_blank" rel="noopener">
+                    in
+                </a>
+                <a href="https://instagram.com/antoniomurrieta" class="social-link" target="_blank" rel="noopener">
+                    ig
+                </a>
+                <a href="https://github.com/Antonio-MS-Coder" class="social-link" target="_blank" rel="noopener">
+                    gh
+                </a>
+                <a href="mailto:carlosantonio.murrieta@gmail.com" class="social-link">
+                    @
+                </a>
+            </div>
+        </div>
+
+        <!-- Message Form -->
+        <div class="message-section">
+            <h2 class="message-title">SEND A MESSAGE</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" class="form-textarea" required></textarea>
+                </div>
+                <button type="submit" class="form-button">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Fun Message -->
+        <div class="fun-message">
+            <span>L</span><span>E</span><span>T</span><span>'</span><span>S</span>
+            <span> </span>
+            <span>M</span><span>A</span><span>K</span><span>E</span>
+            <span> </span>
+            <span>M</span><span>A</span><span>G</span><span>I</span><span>C</span>
+            <span>!</span>
+        </div>
+    </div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = mouseX - 7.5 + 'px';
+            cursor.style.top = mouseY - 7.5 + 'px';
+        });
+
+        // Cursor hover effect
+        document.querySelectorAll('a, button, .contact-card, .social-link').forEach(element => {
+            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const subject = `Message from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            window.location.href = `mailto:carlosantonio.murrieta@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Show success message
+            alert('Opening your email client to send the message! 🚀');
+        });
+
+        // Animated background interaction
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const xOffset = (x - 0.5) * speed * 100;
+                const yOffset = (y - 0.5) * speed * 100;
+                shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Contact card animation on click
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const link = this.querySelector('.contact-link');
+                if (link) {
+                    window.location.href = link.href;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
