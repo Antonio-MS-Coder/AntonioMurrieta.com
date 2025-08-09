@@ -579,6 +579,180 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
+        /* Experiment Modal Overlays */
+        .experiment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(46, 45, 41, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .experiment-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .modal-title {
+            font-family: var(--serif);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 400;
+            margin: 0;
+            color: white;
+        }
+
+        .modal-close {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: white;
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+
+        .experiment-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .experiment-canvas {
+            width: 100%;
+            height: 400px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            cursor: crosshair;
+            background: white;
+            display: block;
+        }
+
+        .experiment-controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 12px;
+        }
+
+        .param-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .param-control label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .param-control input[type="range"] {
+            width: 100px;
+            accent-color: var(--cardinal);
+        }
+
+        .param-control input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .experiment-btn {
+            padding: 12px 24px;
+            background: var(--cardinal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+        }
+
+        .experiment-btn:hover {
+            background: var(--cardinal-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.3);
+        }
+
+        .experiment-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Fractal specific styles */
+        .fractal-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-family: monospace;
+            z-index: 10;
+        }
+
+        /* 3D Canvas styles */
+        .threejs-canvas {
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            background: #000;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -655,6 +829,37 @@
             .pattern-generator {
                 padding: 40px 20px;
                 margin: 80px 0;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .experiment-container {
+                padding: 20px;
+            }
+
+            .experiment-canvas {
+                height: 300px;
+            }
+
+            .experiment-controls {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .param-control {
+                min-width: 100px;
+            }
+
+            .modal-header {
+                margin-bottom: 20px;
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
         }
     </style>
@@ -778,6 +983,245 @@
             </p>
         </div>
     </footer>
+
+    <!-- Experiment Modals -->
+    <!-- Particle Physics Modal -->
+    <div class="experiment-modal" id="particlesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Particle Physics System</h2>
+                <button class="modal-close" onclick="closeModal('particlesModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="particlesCanvas"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Particle Count</label>
+                        <input type="range" id="particleCount" min="50" max="300" value="150" onchange="updateParticles()">
+                        <span id="particleCountValue">150</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Speed</label>
+                        <input type="range" id="particleSpeed" min="0.5" max="3" step="0.1" value="1.5" onchange="updateParticles()">
+                        <span id="particleSpeedValue">1.5</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Connection Distance</label>
+                        <input type="range" id="connectionDistance" min="50" max="150" value="100" onchange="updateParticles()">
+                        <span id="connectionDistanceValue">100</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Mouse Attraction</label>
+                        <input type="range" id="mouseAttraction" min="0" max="100" value="50" onchange="updateParticles()">
+                        <span id="mouseAttractionValue">50</span>
+                    </div>
+                    <button class="experiment-btn" onclick="resetParticles()">Reset</button>
+                    <button class="experiment-btn" onclick="pauseParticles()" id="pauseParticlesBtn">Pause</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wave Generator Modal -->
+    <div class="experiment-modal" id="wavesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Wave Generator</h2>
+                <button class="modal-close" onclick="closeModal('wavesModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="wavesCanvas"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Frequency</label>
+                        <input type="range" id="waveFrequency" min="0.01" max="0.1" step="0.001" value="0.03" onchange="updateWaves()">
+                        <span id="waveFrequencyValue">0.03</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Amplitude</label>
+                        <input type="range" id="waveAmplitude" min="20" max="150" value="80" onchange="updateWaves()">
+                        <span id="waveAmplitudeValue">80</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Speed</label>
+                        <input type="range" id="waveSpeed" min="0.01" max="0.1" step="0.001" value="0.05" onchange="updateWaves()">
+                        <span id="waveSpeedValue">0.05</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Wave Count</label>
+                        <input type="range" id="waveCount" min="1" max="5" value="3" onchange="updateWaves()">
+                        <span id="waveCountValue">3</span>
+                    </div>
+                    <button class="experiment-btn" onclick="randomizeWaves()">Randomize</button>
+                    <button class="experiment-btn" onclick="pauseWaves()" id="pauseWavesBtn">Pause</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glitch Art Modal -->
+    <div class="experiment-modal" id="glitchModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Glitch Art Generator</h2>
+                <button class="modal-close" onclick="closeModal('glitchModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="glitchCanvas"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>RGB Shift</label>
+                        <input type="range" id="rgbShift" min="1" max="20" value="5" onchange="updateGlitch()">
+                        <span id="rgbShiftValue">5</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Scan Lines</label>
+                        <input type="range" id="scanLines" min="1" max="10" value="3" onchange="updateGlitch()">
+                        <span id="scanLinesValue">3</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Noise Level</label>
+                        <input type="range" id="noiseLevel" min="0.1" max="1" step="0.1" value="0.3" onchange="updateGlitch()">
+                        <span id="noiseLevelValue">0.3</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Pixel Sort</label>
+                        <input type="range" id="pixelSort" min="0" max="100" value="20" onchange="updateGlitch()">
+                        <span id="pixelSortValue">20</span>
+                    </div>
+                    <button class="experiment-btn" onclick="generateNewGlitch()">Generate New</button>
+                    <button class="experiment-btn" onclick="saveGlitch()">Save Glitch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fractal Explorer Modal -->
+    <div class="experiment-modal" id="fractalsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Fractal Explorer</h2>
+                <button class="modal-close" onclick="closeModal('fractalsModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <div style="position: relative;">
+                    <canvas class="experiment-canvas" id="fractalsCanvas"></canvas>
+                    <div class="fractal-info" id="fractalInfo">
+                        Zoom: 1x | Iterations: 100<br>
+                        Click to zoom in | Right-click to zoom out
+                    </div>
+                </div>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Max Iterations</label>
+                        <input type="range" id="maxIterations" min="50" max="500" value="100" onchange="updateFractals()">
+                        <span id="maxIterationsValue">100</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Color Palette</label>
+                        <select id="colorPalette" onchange="updateFractals()">
+                            <option value="cardinal">Cardinal</option>
+                            <option value="rainbow">Rainbow</option>
+                            <option value="blue">Ocean Blue</option>
+                            <option value="fire">Fire</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Fractal Type</label>
+                        <select id="fractalType" onchange="updateFractals()">
+                            <option value="mandelbrot">Mandelbrot</option>
+                            <option value="julia">Julia Set</option>
+                        </select>
+                    </div>
+                    <button class="experiment-btn" onclick="resetFractal()">Reset View</button>
+                    <button class="experiment-btn" onclick="saveFractal()">Save Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Visualizer Modal -->
+    <div class="experiment-modal" id="audioModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Sound Visualizer</h2>
+                <button class="modal-close" onclick="closeModal('audioModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="audioCanvas"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Visualization</label>
+                        <select id="visualizationType" onchange="updateAudioVisualizer()">
+                            <option value="bars">Frequency Bars</option>
+                            <option value="circular">Circular</option>
+                            <option value="waveform">Waveform</option>
+                            <option value="particles">Particle Field</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Sensitivity</label>
+                        <input type="range" id="audioSensitivity" min="1" max="5" step="0.5" value="2" onchange="updateAudioVisualizer()">
+                        <span id="audioSensitivityValue">2</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Smoothing</label>
+                        <input type="range" id="audioSmoothing" min="0" max="0.9" step="0.1" value="0.5" onchange="updateAudioVisualizer()">
+                        <span id="audioSmoothingValue">0.5</span>
+                    </div>
+                    <button class="experiment-btn" onclick="startAudioCapture()" id="audioToggleBtn">Start Microphone</button>
+                    <button class="experiment-btn" onclick="generateTestTone()">Test Tone</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Playground Modal -->
+    <div class="experiment-modal" id="3dModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">3D Playground</h2>
+                <button class="modal-close" onclick="closeModal('3dModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <div id="threejsContainer" style="width: 100%; height: 400px; border: 2px solid var(--border-light); border-radius: 12px; background: #000;"></div>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Shape</label>
+                        <select id="shapeType" onchange="update3DScene()">
+                            <option value="cube">Cube</option>
+                            <option value="sphere">Sphere</option>
+                            <option value="torus">Torus</option>
+                            <option value="icosahedron">Icosahedron</option>
+                            <option value="multiple">Multiple Shapes</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Rotation Speed</label>
+                        <input type="range" id="rotationSpeed" min="0" max="0.1" step="0.001" value="0.01" onchange="update3DScene()">
+                        <span id="rotationSpeedValue">0.01</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Wireframe</label>
+                        <input type="checkbox" id="wireframeMode" onchange="update3DScene()">
+                    </div>
+                    <div class="param-control">
+                        <label>Color</label>
+                        <select id="shapeColor" onchange="update3DScene()">
+                            <option value="cardinal">Cardinal Red</option>
+                            <option value="blue">Stanford Blue</option>
+                            <option value="green">Forest Green</option>
+                            <option value="rainbow">Rainbow</option>
+                        </select>
+                    </div>
+                    <button class="experiment-btn" onclick="reset3DScene()">Reset Camera</button>
+                    <button class="experiment-btn" onclick="randomize3DScene()">Randomize</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <script>
         // Navigation scroll effect
@@ -955,13 +1399,1100 @@
         `;
         document.head.appendChild(style);
 
+        // Modal System
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Initialize the specific experiment when opened
+            switch(modalId) {
+                case 'particlesModal':
+                    initParticles();
+                    break;
+                case 'wavesModal':
+                    initWaves();
+                    break;
+                case 'glitchModal':
+                    initGlitch();
+                    break;
+                case 'fractalsModal':
+                    initFractals();
+                    break;
+                case 'audioModal':
+                    initAudioVisualizer();
+                    break;
+                case '3dModal':
+                    init3DScene();
+                    break;
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Cleanup the specific experiment when closed
+            switch(modalId) {
+                case 'particlesModal':
+                    stopParticles();
+                    break;
+                case 'wavesModal':
+                    stopWaves();
+                    break;
+                case 'audioModal':
+                    stopAudioCapture();
+                    break;
+                case '3dModal':
+                    cleanup3DScene();
+                    break;
+            }
+        }
+
         // Experiment cards interaction
         document.querySelectorAll('.experiment').forEach(card => {
             card.addEventListener('click', () => {
                 const experiment = card.dataset.experiment;
-                alert(`🚀 ${experiment.toUpperCase()} experiment coming soon! This will be an interactive ${experiment} experience.`);
+                openModal(experiment + 'Modal');
             });
         });
+
+        // PARTICLE PHYSICS EXPERIMENT
+        let particleSystem = null;
+
+        function initParticles() {
+            const canvas = document.getElementById('particlesCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            const particles = [];
+            let animationId;
+            let mouseX = 0;
+            let mouseY = 0;
+            let isPaused = false;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = (Math.random() - 0.5) * 2;
+                    this.radius = Math.random() * 3 + 1;
+                    this.originalVx = this.vx;
+                    this.originalVy = this.vy;
+                }
+
+                update() {
+                    const speed = parseFloat(document.getElementById('particleSpeed').value);
+                    const mouseAttraction = parseFloat(document.getElementById('mouseAttraction').value) / 1000;
+                    
+                    // Mouse attraction
+                    const dx = mouseX - this.x;
+                    const dy = mouseY - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        this.vx += dx * mouseAttraction;
+                        this.vy += dy * mouseAttraction;
+                    }
+                    
+                    // Apply speed multiplier
+                    this.x += this.vx * speed;
+                    this.y += this.vy * speed;
+                    
+                    // Bounce off walls
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.vx = -this.vx;
+                        this.x = Math.max(0, Math.min(canvas.width, this.x));
+                    }
+                    if (this.y < 0 || this.y > canvas.height) {
+                        this.vy = -this.vy;
+                        this.y = Math.max(0, Math.min(canvas.height, this.y));
+                    }
+                    
+                    // Apply friction
+                    this.vx *= 0.99;
+                    this.vy *= 0.99;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#8C1515';
+                    ctx.fill();
+                    
+                    // Glow effect
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#8C1515';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            function createParticles() {
+                const count = parseInt(document.getElementById('particleCount').value);
+                particles.length = 0;
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function drawConnections() {
+                const connectionDistance = parseInt(document.getElementById('connectionDistance').value);
+                ctx.strokeStyle = 'rgba(140, 21, 21, 0.2)';
+                ctx.lineWidth = 1;
+                
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < connectionDistance) {
+                            const opacity = 1 - (distance / connectionDistance);
+                            ctx.strokeStyle = `rgba(140, 21, 21, ${opacity * 0.5})`;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                if (!isPaused) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Update and draw particles
+                    particles.forEach(particle => {
+                        particle.update();
+                        particle.draw();
+                    });
+                    
+                    // Draw connections
+                    drawConnections();
+                }
+                
+                animationId = requestAnimationFrame(animate);
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+
+            createParticles();
+            animate();
+
+            particleSystem = {
+                particles,
+                animationId,
+                createParticles,
+                isPaused: () => isPaused,
+                pause: () => { isPaused = !isPaused; },
+                stop: () => { 
+                    cancelAnimationFrame(animationId);
+                    particles.length = 0;
+                }
+            };
+        }
+
+        function updateParticles() {
+            if (particleSystem) {
+                particleSystem.createParticles();
+            }
+            // Update display values
+            document.getElementById('particleCountValue').textContent = document.getElementById('particleCount').value;
+            document.getElementById('particleSpeedValue').textContent = document.getElementById('particleSpeed').value;
+            document.getElementById('connectionDistanceValue').textContent = document.getElementById('connectionDistance').value;
+            document.getElementById('mouseAttractionValue').textContent = document.getElementById('mouseAttraction').value;
+        }
+
+        function resetParticles() {
+            if (particleSystem) {
+                particleSystem.createParticles();
+            }
+        }
+
+        function pauseParticles() {
+            if (particleSystem) {
+                particleSystem.pause();
+                document.getElementById('pauseParticlesBtn').textContent = particleSystem.isPaused() ? 'Resume' : 'Pause';
+            }
+        }
+
+        function stopParticles() {
+            if (particleSystem) {
+                particleSystem.stop();
+                particleSystem = null;
+            }
+        }
+
+        // WAVE GENERATOR EXPERIMENT
+        let waveSystem = null;
+
+        function initWaves() {
+            const canvas = document.getElementById('wavesCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            let animationId;
+            let time = 0;
+            let isPaused = false;
+
+            function drawWave(offset, color, alpha = 1) {
+                const frequency = parseFloat(document.getElementById('waveFrequency').value);
+                const amplitude = parseFloat(document.getElementById('waveAmplitude').value);
+                const speed = parseFloat(document.getElementById('waveSpeed').value);
+                
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.globalAlpha = alpha;
+                ctx.lineWidth = 2;
+                
+                for (let x = 0; x <= canvas.width; x += 2) {
+                    const y = canvas.height / 2 + Math.sin((x * frequency) + (time * speed) + offset) * amplitude;
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            }
+
+            function animate() {
+                if (!isPaused) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Create gradient background
+                    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                    gradient.addColorStop(0, 'rgba(140, 21, 21, 0.05)');
+                    gradient.addColorStop(0.5, 'rgba(0, 107, 184, 0.05)');
+                    gradient.addColorStop(1, 'rgba(0, 155, 118, 0.05)');
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    const waveCount = parseInt(document.getElementById('waveCount').value);
+                    const colors = ['#8C1515', '#006CB8', '#009B76', '#E98300', '#B83A3A'];
+                    
+                    for (let i = 0; i < waveCount; i++) {
+                        const offset = (i * Math.PI * 2) / waveCount;
+                        const alpha = 0.8 - (i * 0.1);
+                        drawWave(offset, colors[i % colors.length], alpha);
+                    }
+                    
+                    time += 1;
+                }
+                
+                animationId = requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            waveSystem = {
+                animationId,
+                isPaused: () => isPaused,
+                pause: () => { isPaused = !isPaused; },
+                stop: () => { cancelAnimationFrame(animationId); }
+            };
+        }
+
+        function updateWaves() {
+            // Update display values
+            document.getElementById('waveFrequencyValue').textContent = document.getElementById('waveFrequency').value;
+            document.getElementById('waveAmplitudeValue').textContent = document.getElementById('waveAmplitude').value;
+            document.getElementById('waveSpeedValue').textContent = document.getElementById('waveSpeed').value;
+            document.getElementById('waveCountValue').textContent = document.getElementById('waveCount').value;
+        }
+
+        function randomizeWaves() {
+            document.getElementById('waveFrequency').value = (Math.random() * 0.09 + 0.01).toFixed(3);
+            document.getElementById('waveAmplitude').value = Math.floor(Math.random() * 130 + 20);
+            document.getElementById('waveSpeed').value = (Math.random() * 0.09 + 0.01).toFixed(3);
+            document.getElementById('waveCount').value = Math.floor(Math.random() * 4 + 1);
+            updateWaves();
+        }
+
+        function pauseWaves() {
+            if (waveSystem) {
+                waveSystem.pause();
+                document.getElementById('pauseWavesBtn').textContent = waveSystem.isPaused() ? 'Resume' : 'Pause';
+            }
+        }
+
+        function stopWaves() {
+            if (waveSystem) {
+                waveSystem.stop();
+                waveSystem = null;
+            }
+        }
+
+        // GLITCH ART EXPERIMENT
+        let glitchSystem = null;
+
+        function initGlitch() {
+            const canvas = document.getElementById('glitchCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            // Create base image
+            createBaseImage();
+            generateNewGlitch();
+
+            function createBaseImage() {
+                // Create a colorful base pattern
+                const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height)/2);
+                gradient.addColorStop(0, '#8C1515');
+                gradient.addColorStop(0.3, '#006CB8');
+                gradient.addColorStop(0.6, '#009B76');
+                gradient.addColorStop(1, '#E98300');
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add some geometric shapes
+                ctx.fillStyle = '#FFFFFF';
+                for (let i = 0; i < 5; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const size = Math.random() * 100 + 50;
+                    ctx.fillRect(x, y, size, size);
+                }
+                
+                ctx.beginPath();
+                ctx.strokeStyle = '#2E2D29';
+                ctx.lineWidth = 5;
+                for (let i = 0; i < 10; i++) {
+                    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                }
+                ctx.stroke();
+            }
+
+            glitchSystem = { canvas, ctx, createBaseImage };
+        }
+
+        function generateNewGlitch() {
+            if (!glitchSystem) return;
+            
+            const { canvas, ctx, createBaseImage } = glitchSystem;
+            
+            // Recreate base image
+            createBaseImage();
+            
+            // Get original image data
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            
+            const rgbShift = parseInt(document.getElementById('rgbShift').value);
+            const scanLines = parseInt(document.getElementById('scanLines').value);
+            const noiseLevel = parseFloat(document.getElementById('noiseLevel').value);
+            const pixelSort = parseInt(document.getElementById('pixelSort').value);
+            
+            // Apply RGB shift
+            applyRGBShift(data, canvas.width, canvas.height, rgbShift);
+            
+            // Apply scan lines
+            applyScanLines(data, canvas.width, canvas.height, scanLines);
+            
+            // Apply noise
+            applyNoise(data, noiseLevel);
+            
+            // Apply pixel sorting effect
+            if (pixelSort > 0) {
+                applyPixelSort(data, canvas.width, canvas.height, pixelSort);
+            }
+            
+            // Apply the modified data back to canvas
+            ctx.putImageData(imageData, 0, 0);
+        }
+
+        function applyRGBShift(data, width, height, shift) {
+            const shiftedData = new Uint8ClampedArray(data);
+            
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const idx = (y * width + x) * 4;
+                    
+                    // Red channel shift
+                    const redShiftX = Math.max(0, Math.min(width - 1, x + shift));
+                    const redIdx = (y * width + redShiftX) * 4;
+                    data[idx] = shiftedData[redIdx];
+                    
+                    // Blue channel shift
+                    const blueShiftX = Math.max(0, Math.min(width - 1, x - shift));
+                    const blueIdx = (y * width + blueShiftX) * 4;
+                    data[idx + 2] = shiftedData[blueIdx + 2];
+                }
+            }
+        }
+
+        function applyScanLines(data, width, height, intensity) {
+            for (let y = 0; y < height; y += intensity) {
+                for (let x = 0; x < width; x++) {
+                    const idx = (y * width + x) * 4;
+                    data[idx] = Math.max(0, data[idx] - 50);     // Red
+                    data[idx + 1] = Math.max(0, data[idx + 1] - 50); // Green
+                    data[idx + 2] = Math.max(0, data[idx + 2] - 50); // Blue
+                }
+            }
+        }
+
+        function applyNoise(data, level) {
+            for (let i = 0; i < data.length; i += 4) {
+                if (Math.random() < level) {
+                    const noise = (Math.random() - 0.5) * 100;
+                    data[i] = Math.max(0, Math.min(255, data[i] + noise));
+                    data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noise));
+                    data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noise));
+                }
+            }
+        }
+
+        function applyPixelSort(data, width, height, intensity) {
+            // Sort pixels in horizontal strips
+            for (let y = 0; y < height; y += Math.floor(100 / intensity)) {
+                const row = [];
+                for (let x = 0; x < width; x++) {
+                    const idx = (y * width + x) * 4;
+                    row.push({
+                        r: data[idx],
+                        g: data[idx + 1],
+                        b: data[idx + 2],
+                        a: data[idx + 3],
+                        brightness: (data[idx] + data[idx + 1] + data[idx + 2]) / 3
+                    });
+                }
+                
+                // Sort by brightness
+                row.sort((a, b) => a.brightness - b.brightness);
+                
+                // Put sorted pixels back
+                for (let x = 0; x < width; x++) {
+                    const idx = (y * width + x) * 4;
+                    data[idx] = row[x].r;
+                    data[idx + 1] = row[x].g;
+                    data[idx + 2] = row[x].b;
+                    data[idx + 3] = row[x].a;
+                }
+            }
+        }
+
+        function updateGlitch() {
+            document.getElementById('rgbShiftValue').textContent = document.getElementById('rgbShift').value;
+            document.getElementById('scanLinesValue').textContent = document.getElementById('scanLines').value;
+            document.getElementById('noiseLevelValue').textContent = document.getElementById('noiseLevel').value;
+            document.getElementById('pixelSortValue').textContent = document.getElementById('pixelSort').value;
+            
+            generateNewGlitch();
+        }
+
+        function saveGlitch() {
+            if (glitchSystem) {
+                const link = document.createElement('a');
+                link.download = 'glitch-art.png';
+                link.href = glitchSystem.canvas.toDataURL();
+                link.click();
+            }
+        }
+
+        // FRACTAL EXPLORER EXPERIMENT
+        let fractalSystem = null;
+
+        function initFractals() {
+            const canvas = document.getElementById('fractalsCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            let centerX = 0;
+            let centerY = 0;
+            let zoom = 1;
+            let maxIterations = 100;
+
+            function mandelbrot(x, y) {
+                let real = x;
+                let imag = y;
+                let iterations = 0;
+                
+                while (iterations < maxIterations) {
+                    const realNew = real * real - imag * imag + x;
+                    const imagNew = 2 * real * imag + y;
+                    
+                    if (realNew * realNew + imagNew * imagNew > 4) {
+                        break;
+                    }
+                    
+                    real = realNew;
+                    imag = imagNew;
+                    iterations++;
+                }
+                
+                return iterations;
+            }
+
+            function julia(x, y) {
+                const cReal = -0.7;
+                const cImag = 0.27015;
+                let real = x;
+                let imag = y;
+                let iterations = 0;
+                
+                while (iterations < maxIterations) {
+                    const realNew = real * real - imag * imag + cReal;
+                    const imagNew = 2 * real * imag + cImag;
+                    
+                    if (realNew * realNew + imagNew * imagNew > 4) {
+                        break;
+                    }
+                    
+                    real = realNew;
+                    imag = imagNew;
+                    iterations++;
+                }
+                
+                return iterations;
+            }
+
+            function getColor(iterations, palette) {
+                if (iterations === maxIterations) return '#000000';
+                
+                const t = iterations / maxIterations;
+                
+                switch (palette) {
+                    case 'cardinal':
+                        const r = Math.floor(140 + t * 115);
+                        const g = Math.floor(21 + t * 50);
+                        const b = Math.floor(21 + t * 50);
+                        return `rgb(${r},${g},${b})`;
+                    
+                    case 'rainbow':
+                        const hue = (t * 360) % 360;
+                        return `hsl(${hue}, 100%, 50%)`;
+                    
+                    case 'blue':
+                        const blueR = Math.floor(t * 100);
+                        const blueG = Math.floor(t * 150);
+                        const blueB = Math.floor(200 + t * 55);
+                        return `rgb(${blueR},${blueG},${blueB})`;
+                    
+                    case 'fire':
+                        const fireR = Math.floor(255 * t);
+                        const fireG = Math.floor(100 * t);
+                        const fireB = Math.floor(20 * t);
+                        return `rgb(${fireR},${fireG},${fireB})`;
+                    
+                    default:
+                        return `rgb(${Math.floor(t*255)},${Math.floor(t*255)},${Math.floor(t*255)})`;
+                }
+            }
+
+            function render() {
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                const fractalType = document.getElementById('fractalType').value;
+                const palette = document.getElementById('colorPalette').value;
+                maxIterations = parseInt(document.getElementById('maxIterations').value);
+                
+                for (let px = 0; px < canvas.width; px++) {
+                    for (let py = 0; py < canvas.height; py++) {
+                        const x = (px - canvas.width / 2) / (canvas.width / 4 / zoom) + centerX;
+                        const y = (py - canvas.height / 2) / (canvas.height / 4 / zoom) + centerY;
+                        
+                        const iterations = fractalType === 'mandelbrot' ? mandelbrot(x, y) : julia(x, y);
+                        const color = getColor(iterations, palette);
+                        
+                        const rgb = color.match(/\\d+/g);
+                        const index = (py * canvas.width + px) * 4;
+                        
+                        data[index] = parseInt(rgb[0]);     // Red
+                        data[index + 1] = parseInt(rgb[1]); // Green
+                        data[index + 2] = parseInt(rgb[2]); // Blue
+                        data[index + 3] = 255;             // Alpha
+                    }
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+                
+                // Update info display
+                document.getElementById('fractalInfo').innerHTML = 
+                    `Zoom: ${zoom.toFixed(2)}x | Iterations: ${maxIterations}<br>Click to zoom in | Right-click to zoom out`;
+            }
+
+            canvas.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                centerX += (x - canvas.width / 2) / (canvas.width / 4 / zoom);
+                centerY += (y - canvas.height / 2) / (canvas.height / 4 / zoom);
+                zoom *= 2;
+                
+                render();
+            });
+
+            canvas.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                zoom = Math.max(1, zoom / 2);
+                render();
+            });
+
+            render();
+
+            fractalSystem = {
+                render,
+                reset: () => {
+                    centerX = 0;
+                    centerY = 0;
+                    zoom = 1;
+                    render();
+                },
+                save: () => {
+                    const link = document.createElement('a');
+                    link.download = 'fractal.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                }
+            };
+        }
+
+        function updateFractals() {
+            document.getElementById('maxIterationsValue').textContent = document.getElementById('maxIterations').value;
+            if (fractalSystem) {
+                fractalSystem.render();
+            }
+        }
+
+        function resetFractal() {
+            if (fractalSystem) {
+                fractalSystem.reset();
+            }
+        }
+
+        function saveFractal() {
+            if (fractalSystem) {
+                fractalSystem.save();
+            }
+        }
+
+        // SOUND VISUALIZER EXPERIMENT
+        let audioSystem = null;
+
+        function initAudioVisualizer() {
+            const canvas = document.getElementById('audioCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            let audioContext;
+            let analyser;
+            let microphone;
+            let dataArray;
+            let animationId;
+            let isCapturing = false;
+
+            audioSystem = {
+                isCapturing: () => isCapturing,
+                stop: () => {
+                    if (microphone) {
+                        microphone.getTracks().forEach(track => track.stop());
+                    }
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                    isCapturing = false;
+                }
+            };
+        }
+
+        function startAudioCapture() {
+            if (!audioSystem) return;
+            
+            if (audioSystem.isCapturing()) {
+                audioSystem.stop();
+                document.getElementById('audioToggleBtn').textContent = 'Start Microphone';
+                return;
+            }
+
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    const canvas = document.getElementById('audioCanvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const analyser = audioContext.createAnalyser();
+                    const microphone = audioContext.createMediaStreamSource(stream);
+                    
+                    analyser.fftSize = 256;
+                    const bufferLength = analyser.frequencyBinCount;
+                    const dataArray = new Uint8Array(bufferLength);
+                    
+                    microphone.connect(analyser);
+                    
+                    function visualize() {
+                        analyser.getByteFrequencyData(dataArray);
+                        
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        
+                        const visualizationType = document.getElementById('visualizationType').value;
+                        const sensitivity = parseFloat(document.getElementById('audioSensitivity').value);
+                        
+                        switch (visualizationType) {
+                            case 'bars':
+                                drawFrequencyBars(ctx, canvas, dataArray, sensitivity);
+                                break;
+                            case 'circular':
+                                drawCircularVisualizer(ctx, canvas, dataArray, sensitivity);
+                                break;
+                            case 'waveform':
+                                drawWaveform(ctx, canvas, dataArray, sensitivity);
+                                break;
+                            case 'particles':
+                                drawParticleField(ctx, canvas, dataArray, sensitivity);
+                                break;
+                        }
+                        
+                        requestAnimationFrame(visualize);
+                    }
+                    
+                    visualize();
+                    document.getElementById('audioToggleBtn').textContent = 'Stop Microphone';
+                    
+                    audioSystem = {
+                        ...audioSystem,
+                        stream,
+                        audioContext,
+                        isCapturing: () => true,
+                        stop: () => {
+                            stream.getTracks().forEach(track => track.stop());
+                            audioContext.close();
+                            document.getElementById('audioToggleBtn').textContent = 'Start Microphone';
+                        }
+                    };
+                })
+                .catch(err => {
+                    console.error('Error accessing microphone:', err);
+                    alert('Could not access microphone. Please ensure microphone permissions are granted.');
+                });
+        }
+
+        function drawFrequencyBars(ctx, canvas, dataArray, sensitivity) {
+            const barWidth = canvas.width / dataArray.length * 2;
+            let x = 0;
+            
+            for (let i = 0; i < dataArray.length; i++) {
+                const barHeight = (dataArray[i] / 255) * canvas.height * sensitivity;
+                
+                const red = Math.floor((i / dataArray.length) * 255);
+                const green = Math.floor((barHeight / canvas.height) * 255);
+                const blue = 100;
+                
+                ctx.fillStyle = `rgb(${red},${green},${blue})`;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                
+                x += barWidth + 1;
+            }
+        }
+
+        function drawCircularVisualizer(ctx, canvas, dataArray, sensitivity) {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(canvas.width, canvas.height) / 4;
+            
+            ctx.strokeStyle = '#8C1515';
+            ctx.lineWidth = 2;
+            
+            for (let i = 0; i < dataArray.length; i++) {
+                const angle = (i / dataArray.length) * Math.PI * 2;
+                const amplitude = (dataArray[i] / 255) * radius * sensitivity;
+                
+                const x1 = centerX + Math.cos(angle) * radius;
+                const y1 = centerY + Math.sin(angle) * radius;
+                const x2 = centerX + Math.cos(angle) * (radius + amplitude);
+                const y2 = centerY + Math.sin(angle) * (radius + amplitude);
+                
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            }
+        }
+
+        function drawWaveform(ctx, canvas, dataArray, sensitivity) {
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#006CB8';
+            ctx.beginPath();
+            
+            const sliceWidth = canvas.width / dataArray.length;
+            let x = 0;
+            
+            for (let i = 0; i < dataArray.length; i++) {
+                const v = (dataArray[i] / 255) * sensitivity;
+                const y = v * canvas.height / 2;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+                
+                x += sliceWidth;
+            }
+            
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.stroke();
+        }
+
+        function drawParticleField(ctx, canvas, dataArray, sensitivity) {
+            for (let i = 0; i < dataArray.length; i += 4) {
+                const amplitude = dataArray[i] / 255 * sensitivity;
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = amplitude * 20;
+                
+                if (amplitude > 0.1) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(140, 21, 21, ${amplitude})`;
+                    ctx.fill();
+                }
+            }
+        }
+
+        function updateAudioVisualizer() {
+            document.getElementById('audioSensitivityValue').textContent = document.getElementById('audioSensitivity').value;
+            document.getElementById('audioSmoothingValue').textContent = document.getElementById('audioSmoothing').value;
+        }
+
+        function generateTestTone() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 440; // A4 note
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 1);
+        }
+
+        function stopAudioCapture() {
+            if (audioSystem) {
+                audioSystem.stop();
+            }
+        }
+
+        // 3D PLAYGROUND EXPERIMENT
+        let scene3D = null;
+
+        function init3DScene() {
+            const container = document.getElementById('threejsContainer');
+            
+            // Initialize Three.js scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.setClearColor(0x000000);
+            container.appendChild(renderer.domElement);
+            
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Create initial shape
+            let currentMesh;
+            createShape();
+            
+            camera.position.z = 5;
+            
+            // Mouse controls
+            let mouseX = 0, mouseY = 0;
+            let targetRotationX = 0, targetRotationY = 0;
+            
+            container.addEventListener('mousemove', (event) => {
+                const rect = container.getBoundingClientRect();
+                mouseX = (event.clientX - rect.left) / container.offsetWidth * 2 - 1;
+                mouseY = -(event.clientY - rect.top) / container.offsetHeight * 2 + 1;
+                
+                targetRotationX = mouseY * 0.5;
+                targetRotationY = mouseX * 0.5;
+            });
+            
+            function createShape() {
+                if (currentMesh) {
+                    scene.remove(currentMesh);
+                }
+                
+                const shapeType = document.getElementById('shapeType').value;
+                const wireframe = document.getElementById('wireframeMode').checked;
+                const colorType = document.getElementById('shapeColor').value;
+                
+                let geometry;
+                switch (shapeType) {
+                    case 'cube':
+                        geometry = new THREE.BoxGeometry(2, 2, 2);
+                        break;
+                    case 'sphere':
+                        geometry = new THREE.SphereGeometry(1.5, 32, 32);
+                        break;
+                    case 'torus':
+                        geometry = new THREE.TorusGeometry(1, 0.5, 16, 100);
+                        break;
+                    case 'icosahedron':
+                        geometry = new THREE.IcosahedronGeometry(1.5, 0);
+                        break;
+                    case 'multiple':
+                        createMultipleShapes();
+                        return;
+                }
+                
+                let color;
+                switch (colorType) {
+                    case 'cardinal':
+                        color = 0x8C1515;
+                        break;
+                    case 'blue':
+                        color = 0x006CB8;
+                        break;
+                    case 'green':
+                        color = 0x009B76;
+                        break;
+                    case 'rainbow':
+                        color = Math.random() * 0xffffff;
+                        break;
+                    default:
+                        color = 0x8C1515;
+                }
+                
+                const material = new THREE.MeshPhongMaterial({
+                    color: color,
+                    wireframe: wireframe
+                });
+                
+                currentMesh = new THREE.Mesh(geometry, material);
+                scene.add(currentMesh);
+            }
+            
+            function createMultipleShapes() {
+                const shapes = [
+                    new THREE.BoxGeometry(1, 1, 1),
+                    new THREE.SphereGeometry(0.7, 16, 16),
+                    new THREE.TorusGeometry(0.7, 0.3, 8, 50)
+                ];
+                
+                const colors = [0x8C1515, 0x006CB8, 0x009B76];
+                
+                for (let i = 0; i < shapes.length; i++) {
+                    const material = new THREE.MeshPhongMaterial({
+                        color: colors[i],
+                        wireframe: document.getElementById('wireframeMode').checked
+                    });
+                    
+                    const mesh = new THREE.Mesh(shapes[i], material);
+                    mesh.position.x = (i - 1) * 2;
+                    scene.add(mesh);
+                }
+                
+                currentMesh = null; // Multiple objects, can't track single mesh
+            }
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                const rotationSpeed = parseFloat(document.getElementById('rotationSpeed').value);
+                
+                if (currentMesh) {
+                    // Smooth rotation towards mouse position
+                    currentMesh.rotation.x += (targetRotationX - currentMesh.rotation.x) * 0.05;
+                    currentMesh.rotation.y += (targetRotationY - currentMesh.rotation.y) * 0.05;
+                    
+                    // Auto rotation
+                    currentMesh.rotation.x += rotationSpeed;
+                    currentMesh.rotation.y += rotationSpeed;
+                } else {
+                    // Multiple shapes
+                    scene.children.forEach((child, index) => {
+                        if (child instanceof THREE.Mesh) {
+                            child.rotation.x += rotationSpeed * (1 + index * 0.5);
+                            child.rotation.y += rotationSpeed * (1 + index * 0.3);
+                        }
+                    });
+                }
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            scene3D = {
+                scene,
+                camera,
+                renderer,
+                container,
+                createShape,
+                reset: () => {
+                    camera.position.set(0, 0, 5);
+                    camera.lookAt(0, 0, 0);
+                },
+                cleanup: () => {
+                    if (renderer.domElement.parentNode) {
+                        renderer.domElement.parentNode.removeChild(renderer.domElement);
+                    }
+                    renderer.dispose();
+                }
+            };
+        }
+
+        function update3DScene() {
+            if (scene3D) {
+                scene3D.createShape();
+            }
+            document.getElementById('rotationSpeedValue').textContent = document.getElementById('rotationSpeed').value;
+        }
+
+        function reset3DScene() {
+            if (scene3D) {
+                scene3D.reset();
+            }
+        }
+
+        function randomize3DScene() {
+            const shapes = ['cube', 'sphere', 'torus', 'icosahedron', 'multiple'];
+            const colors = ['cardinal', 'blue', 'green', 'rainbow'];
+            
+            document.getElementById('shapeType').value = shapes[Math.floor(Math.random() * shapes.length)];
+            document.getElementById('shapeColor').value = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('rotationSpeed').value = (Math.random() * 0.05 + 0.005).toFixed(3);
+            document.getElementById('wireframeMode').checked = Math.random() > 0.5;
+            
+            update3DScene();
+        }
+
+        function cleanup3DScene() {
+            if (scene3D) {
+                scene3D.cleanup();
+                scene3D = null;
+            }
+        }
 
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
