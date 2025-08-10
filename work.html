@@ -467,6 +467,46 @@
             color: var(--cardinal);
         }
 
+        /* Try Me Button */
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: var(--cardinal);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-link:hover {
+            background: var(--cardinal-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140, 21, 21, 0.25);
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .project-link:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
         /* Dynamic Background Elements */
         .floating-gradient {
             position: fixed;
@@ -712,6 +752,7 @@
                         <span class="project-tag">Relationship</span>
                         <span class="project-tag">Social Impact</span>
                     </div>
+                    <a href="https://datecraft.antoniomurrieta.com/" target="_blank" class="project-link">Try Me →</a>
                 </div>
             </div>
 
@@ -732,6 +773,7 @@
                         <span class="project-tag">Narrative</span>
                         <span class="project-tag">Digital Art</span>
                     </div>
+                    <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" class="project-link">Listen on Spotify →</a>
                 </div>
             </div>
 
@@ -812,6 +854,10 @@
                         <span class="project-tag">Self-Development</span>
                         <span class="project-tag">Publishing</span>
                     </div>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <a href="https://www.amazon.com.mx/Prompts-cambiaron-vida-pueden-cambiar/dp/B0FD8CCNNX/" target="_blank" class="project-link">100 Prompts →</a>
+                        <a href="https://www.amazon.com.mx/Capi-Coraz%C3%B3n-que-Escucha-capibara/dp/B0FBFDM6ZV/" target="_blank" class="project-link">Capi y el Corazón →</a>
+                    </div>
                 </div>
             </div>
 
@@ -852,6 +898,7 @@
                         <span class="project-tag">Arcade</span>
                         <span class="project-tag">Ad-Free</span>
                     </div>
+                    <a href="https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone" target="_blank" class="project-link">Get on App Store →</a>
                 </div>
             </div>
 
@@ -872,6 +919,7 @@
                         <span class="project-tag">Memory</span>
                         <span class="project-tag">Offline</span>
                     </div>
+                    <a href="https://apps.apple.com/us/app/neuropairs/id6739889200" target="_blank" class="project-link">Get on App Store →</a>
                 </div>
             </div>
 
