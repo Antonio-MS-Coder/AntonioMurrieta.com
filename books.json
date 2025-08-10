@@ -1767,6 +1767,516 @@
       ],
       "favoriteQuote": "The more we open ourselves to receive from the world, the more we receive.",
       "recommendedFor": "Readers interested in counterculture and spiritual journeys"
+    },
+    {
+      "id": 77,
+      "title": "Gypsy Soul: Memoirs of a Hippie Kid",
+      "author": "Otto D.M.",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "🎸",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "An authentic view into the life of a child growing up in a hippie community in rural Montana, exploring themes of unconventional lifestyles.",
+      "tags": [
+        "Fiction",
+        "Memoir",
+        "Counterculture"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The environment shapes one's perspectives on materialism and conventional success",
+        "Societal judgment and legal issues often confront those in alternative lifestyles",
+        "The role of education differs significantly from mainstream paradigms",
+        "Personal identity and development within a hippie community"
+      ],
+      "favoriteQuote": "Societal judgment and legal issues often confront those in alternative lifestyles, exposing resilience and creativity to navigate.",
+      "recommendedFor": "Those interested in unconventional lifestyles and coming-of-age stories"
+    },
+    {
+      "id": 78,
+      "title": "Once Minutos",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🌹",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Explores love, sex, and self-discovery through Maria, a young Brazilian woman in Switzerland, questioning the essence of living fully versus merely existing.",
+      "tags": [
+        "Fiction",
+        "Romance",
+        "Philosophy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "What is more important in life, to live or to pretend to have lived?",
+        "The universe only makes sense when we have someone to share our emotions with",
+        "The greatest pleasure isn't sex, but the passion with which it's practiced",
+        "When I had nothing to lose, I received everything"
+      ],
+      "favoriteQuote": "A soldier does not go to war to kill the enemy, but to die for his country. A husband does not do things to complete himself with his partner, but to show that he would give up everything for her.",
+      "recommendedFor": "Readers seeking deeper understanding of love, pleasure, and personal truth"
+    },
+    {
+      "id": 79,
+      "title": "El Corazón de las Tinieblas",
+      "author": "Joseph Conrad",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🌑",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Goes into the human psyche amidst the brutality of imperialism in Africa, exploring darkness into the fragile boundaries between civilization and savagery.",
+      "tags": [
+        "Fiction",
+        "Classic",
+        "Philosophy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "True civilization is revealed as a thin layer, easily stripped away to expose the primal instincts beneath",
+        "Darkness serves as a mirror, forcing individuals to confront the monstrous within themselves",
+        "Madness often arises when isolation and power go unchecked",
+        "The corruption of ideals can transform initial good intentions into horrific outcomes"
+      ],
+      "favoriteQuote": "True civilization is revealed as a thin layer, easily stripped away to expose the primal instincts beneath.",
+      "recommendedFor": "Those interested in exploring the darkness of human nature and colonialism"
+    },
+    {
+      "id": 80,
+      "title": "Your Soul's Evolution",
+      "author": "Michael Bernard Beckwith",
+      "category": "self-help",
+      "rating": 4,
+      "coverEmoji": "🦋",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "A transformative guide that bridges spirituality and the human experience, exploring self-discovery, blending spiritual philosophy with actionable practices.",
+      "tags": [
+        "Self-Help",
+        "Spirituality",
+        "Growth"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Consciousness precedes outer birth - We don't end because we have",
+        "Life's experiences are temporary and reflective, urging us to reflect on our inner truths towards wider wisdom",
+        "Spiritual practice is about awareness that there are broader realities",
+        "The soul's journey involves balancing higher and humanity aspects"
+      ],
+      "favoriteQuote": "Life's experiences are temporary and reflective, urging us to reflect on our inner truths towards wider wisdom.",
+      "recommendedFor": "Those on a spiritual awakening and self-discovery journey"
+    },
+    {
+      "id": 81,
+      "title": "There's a Spiritual Solution to Every Problem",
+      "author": "Wayne W. Dyer",
+      "category": "self-help",
+      "rating": 5,
+      "coverEmoji": "✨",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Emphasizes surrendering to the universal \"spirit\" rooted in higher consciousness and aligning practices that shift one's vibration toward love, harmony, and acceptance.",
+      "tags": [
+        "Self-Help",
+        "Spirituality",
+        "Philosophy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "What you think about is what expands - Your thoughts shape where your energy gets directed",
+        "Problems are illusions created by the material mind",
+        "Successful people express their desires, ask for what they need",
+        "Accept and bless our lives, recognizing it is a necessary path to your present greater wisdom"
+      ],
+      "favoriteQuote": "Problems are illusions created by the material mind; solutions arise when you raise into higher states of non-separation consciousness.",
+      "recommendedFor": "Anyone looking to navigate life's challenges with grace and alignment"
+    },
+    {
+      "id": 82,
+      "title": "El Peregrino de Compostela",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🐚",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Through the teachings of the RAM tradition and the experiences along the way, the protagonist learns about the ordinary mysteries of life and faith.",
+      "tags": [
+        "Fiction",
+        "Spirituality",
+        "Journey"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The extraordinary lies in the way of ordinary people",
+        "Changing how we approach routine actions allows for the birth of a new self",
+        "The dangers of false illusions lies in fulfilling desires immediately",
+        "Fundamental conflicts involve struggles between faith and fear along our personal journey"
+      ],
+      "favoriteQuote": "Changing how we approach routine actions allows for the birth of a new self, living in our consciousness away of life.",
+      "recommendedFor": "Those on a spiritual journey seeking inner transformation"
+    },
+    {
+      "id": 83,
+      "title": "If Only I'd Known\\!",
+      "author": "Chelsey Brooke Cole",
+      "category": "self-help",
+      "rating": 4,
+      "coverEmoji": "💙",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Empowers readers to understand, identify, and navigate relationships with narcissists through patterns of narcissistic behavior.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Relationships"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Love bombing creates an illusion of perfection but is a tactic for manipulation",
+        "Trusting your intuition and physiological responses is essential in key relationships",
+        "Narcissists see people as objects, sources of validation rather than equals",
+        "Healing is not linear and requires boundaries and grief processing"
+      ],
+      "favoriteQuote": "The Narcissistic Cycle of Abuse involves idealizing, devaluing, discarding, and hoovering, moving in predictable patterns.",
+      "recommendedFor": "Those seeking to understand and heal from narcissistic relationships"
+    },
+    {
+      "id": 84,
+      "title": "Talking to My Daughter About the Economy",
+      "author": "Yanis Varoufakis",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "💰",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "A conversation, a simplifying complex economic concepts while tackling themes like the agricultural revolution, the role of markets, labor, and the nature of debt.",
+      "tags": [
+        "Business",
+        "Economics",
+        "Education"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Labor becomes a form of production - Only goods to value has a price",
+        "Every crisis in the foundation of all currencies",
+        "Entrepreneurs like time travelers, bringing value from the future",
+        "The economy is a soul-building prophecy that controls our behavior"
+      ],
+      "favoriteQuote": "Without trust in governments or institutions, money loses its value and future desires and needs remain confused for distance.",
+      "recommendedFor": "Anyone wanting to understand economics in accessible terms"
+    },
+    {
+      "id": 85,
+      "title": "The Mountain Is You",
+      "author": "Brianna Wiest",
+      "category": "self-help",
+      "rating": 5,
+      "coverEmoji": "⛰️",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Explores the transformative journey of self-reinvention and overcoming self-sabotage through psychological clashes between conscious desires and unconscious resistances.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Growth"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Your new life will cost you your old one - Embracing change means letting go of the past",
+        "Self-sabotage is often a defense mechanism, not an act of self-destruction",
+        "The importance of giving oneself credit for progress",
+        "It's not whether or not you feel like putting in the work, but whether or not you do it regardless"
+      ],
+      "favoriteQuote": "Healing requires fully experiencing the emotions we often try to avoid, acknowledging that this is a vital part of moving forward.",
+      "recommendedFor": "Those ready to face inner conflicts and embrace true change"
+    },
+    {
+      "id": 86,
+      "title": "Never Split the Difference",
+      "author": "Chris Voss",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🤝",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Revolutionizes the art of negotiation. A former FBI hostage negotiator introduces tactical listening and strategies to discover and influence the emotional seeds of the other party.",
+      "tags": [
+        "Business",
+        "Negotiation",
+        "Communication"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Tactical listening and mirroring helps to build rapport, gain valuable insights",
+        "Label emotions, don't dismiss them - Identifying and verbalizing the other party's feelings helps secure emotional atmosphere",
+        "Seek acknowledgment of understanding rather than agreement",
+        "Compromise often leads to suboptimal outcomes",
+        "Embrace getting told \"no\" before getting to \"yes\""
+      ],
+      "favoriteQuote": "Endorse your tactical. View it as a means to uncover and create value, not as a threat to be tolerated.",
+      "recommendedFor": "Anyone looking to improve negotiation and communication skills"
+    },
+    {
+      "id": 87,
+      "title": "Hackers & Painters",
+      "author": "Paul Graham",
+      "category": "technology",
+      "rating": 5,
+      "coverEmoji": "💻",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Explores the artistry and craftsmanship of programming, drawing parallels between coders and painters.",
+      "tags": [
+        "Technology",
+        "Programming",
+        "Creativity"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Unlike scientists who theorize, hackers build by continuously editing their work, similar to painters perfecting a canvas",
+        "Good design is timeless, the best design is to seek and solve technically for machines to operate",
+        "Wealth creation over wealth management: Focus on making things people want rather than merely managing existing assets",
+        "Great software is made not by committees but by individuals or small cohesive groups"
+      ],
+      "favoriteQuote": "Leverage technology for competitive advantage: Tackle harder problems that are beyond the reach of larger, less agile competitors.",
+      "recommendedFor": "Programmers, entrepreneurs, and creative technologists"
+    },
+    {
+      "id": 88,
+      "title": "Nexus",
+      "author": "Yuval Noah Harari",
+      "category": "philosophy",
+      "rating": 5,
+      "coverEmoji": "🕊️",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Explores the intricate relationships between power, truth, and information in shaping human society from the Stone Age to AI.",
+      "tags": [
+        "Philosophy",
+        "History",
+        "Technology"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Truth =/= reality: even if they match up, the truth can never capture the entirety of reality",
+        "Information is not just raw material for uncovering truth but also a powerful instrument used by populists",
+        "Homo sapiens dominate because of our unique ability to cooperate extensively in large groups",
+        "Fiction simplifies complex truths and reduces discomfort",
+        "Is ignorance strength? Duality between maintaining order through controlled narratives and the pursuit of truth"
+      ],
+      "favoriteQuote": "Information molds the human experience, extending beyond simple facts to influence global perceptions and societal structures.",
+      "recommendedFor": "Those interested in the power dynamics of information and truth"
+    },
+    {
+      "id": 89,
+      "title": "El Verano en que mi Madre tuvo los Ojos Verdes",
+      "author": "Tatiana Țîbuleac",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "👁️",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Chronicles a transformative relationships through the eyes of Aleksy, a painter struggling with his past during a transformative summer.",
+      "tags": [
+        "Fiction",
+        "Drama",
+        "Family"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Healing through confrontation: Aleksy's journey into his past",
+        "The duality of familial relationships: Love and resentment intertwined",
+        "The transformative power of forgiveness",
+        "Past traumas continue to influence the present"
+      ],
+      "favoriteQuote": "The complexities of parental bonds - profound personal movement and peace.",
+      "recommendedFor": "Readers who appreciate deeply emotional and introspective narratives"
+    },
+    {
+      "id": 90,
+      "title": "Slowness",
+      "author": "Milan Kundera",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "🐌",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "A philosophical adventure across themes of speed, memory, and the modern human condition examining the timeless pace of the 18th century with the frantic speed of modern life.",
+      "tags": [
+        "Fiction",
+        "Philosophy",
+        "Contemporary"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The allure of hedonism: Pleasure as not merely the absence of suffering but a profound experience that requires time",
+        "The ridgery of urgency: Modern society's pursuit of efficiency has induced everyone into making it a goal",
+        "The book discusses how personal and societal speeds impact memory",
+        "Dancers and politicians use public visibility not merely to be seen but to transmit genuine themselves to their audiences"
+      ],
+      "favoriteQuote": "The quality of our engagement with the world: Kundera encourages us to reclaim the pleasure of slow experiences as a counter to the increasingly rapid pace of modern life.",
+      "recommendedFor": "Those who appreciate philosophical fiction and cultural criticism"
+    },
+    {
+      "id": 91,
+      "title": "Pulling Your Own Strings",
+      "author": "Wayne W. Dyer",
+      "category": "self-help",
+      "rating": 5,
+      "coverEmoji": "🎭",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "A compelling guide on asserting personal independence and power, encouraging us to transcend a victim mentality and adopt a more proactive stance in controlling our lives.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Empowerment"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Victim mentality is often a learned behavior that can be unlearned",
+        "Challenge labels that do not resonate with your identity",
+        "Your life is the sum of your choices",
+        "Manage your emotional reactions and refuse to let others manipulate your feelings or decisions",
+        "Foster self-respect by teaching others how you wish to be treated"
+      ],
+      "favoriteQuote": "Your life is the sum of your choices.",
+      "recommendedFor": "Anyone feeling trapped by external circumstances or internal conflicts"
+    },
+    {
+      "id": 92,
+      "title": "El Poder de Estar Solo",
+      "author": "Brian Alba",
+      "category": "self-help",
+      "rating": 4,
+      "coverEmoji": "🧘",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "Dives into blood various philosophical ideas about solitude into a single narrative through self-discovery despite feeling the compulsive somewhere lonely.",
+      "tags": [
+        "Self-Help",
+        "Philosophy",
+        "Solitude"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Self-companionship is crucial: Being content alone is essential",
+        "Viewing perspective as allies rather than enemies can transform experiences",
+        "Recognizing and using difficult language to foster a healthy societal vision",
+        "Personal desires are seen as steps towards success and gratitude"
+      ],
+      "favoriteQuote": "Acknowledging mistakes in learning opportunities and choosing self-blame.",
+      "recommendedFor": "Those seeking to find strength and peace in solitude"
+    },
+    {
+      "id": 93,
+      "title": "Permanent Record",
+      "author": "Edward Snowden",
+      "category": "technology",
+      "rating": 5,
+      "coverEmoji": "🔐",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "An autobiographical account of a former intelligence contractor who became one of the most famous whistleblowers in history.",
+      "tags": [
+        "Technology",
+        "Privacy",
+        "Biography"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The power of information and surveillance: The American intelligence community collects vast amounts of data from citizens",
+        "There are Moral responsibilities that transcend professional obligations",
+        "Privacy vs security: The need for national security and the right to personal privacy",
+        "Impact of technology on human rights: Digital surveillance can undermine individual freedoms",
+        "Ethical considerations in intelligence: Ethics of government operations and the limits of lawful surveillance"
+      ],
+      "favoriteQuote": "Privacy is security. The need for national security and the right to personal privacy.",
+      "recommendedFor": "Those concerned about digital privacy and surveillance"
+    },
+    {
+      "id": 94,
+      "title": "Elon Musk",
+      "author": "Ashlee Vance",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🚀",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Chronicles the extraordinary life of one of the most intriguing entrepreneurs of our time, providing a detailed look into Musk's relentless drive and visionary ambitions.",
+      "tags": [
+        "Business",
+        "Biography",
+        "Innovation"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Innovation is driven by relentless pursuit and a clear vision for the future",
+        "Working towards a bigger \"smarter\" design attracts experts in ways money could never",
+        "Resilience: Be a little delusional and very persistent",
+        "Think in systems: Move fast. Optimize but not too early"
+      ],
+      "favoriteQuote": "Innovation is driven by relentless pursuit and a clear vision for the future.",
+      "recommendedFor": "Entrepreneurs and those interested in innovation and space exploration"
+    },
+    {
+      "id": 95,
+      "title": "Quantum Entanglement",
+      "author": "Jed Brody",
+      "category": "science",
+      "rating": 4,
+      "coverEmoji": "⚛️",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "An exploration into one of the most fascinating aspects of quantum physics, presenting complex topics in an accessible manner.",
+      "tags": [
+        "Science",
+        "Physics",
+        "Quantum"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Quantum entanglement defies classical physics: Particles can instantaneously affect each other across vast distances",
+        "The experimental approaches to understanding entanglement",
+        "Quantum entanglement has profound implications for the future of technology",
+        "The paradoxical nature of quantum reality that challenges traditional notions of space and time"
+      ],
+      "favoriteQuote": "Quantum entanglement has profound implications for the future of technology, including quantum computing and secure communications.",
+      "recommendedFor": "Those interested in quantum physics and cutting-edge science"
+    },
+    {
+      "id": 96,
+      "title": "Shoe Dog",
+      "author": "Phil Knight",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "👟",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Details the founding and building of Nike, one of the world's most iconic and innovative athletic brands.",
+      "tags": [
+        "Business",
+        "Memoir",
+        "Entrepreneurship"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Embrace risks and the unknown: Step into uncharted territory to find success",
+        "The power of perseverance: Knight emphasizes how his persistence through numerous challenges was crucial",
+        "Build a strong, cohesive team: Known as the \"Crazy Gang\"",
+        "Maintain integrity and authenticity: It helped steer Nike through many potential pitfalls",
+        "Value the journey: The process of building Nike, with all its highs and lows, was as rewarding as the outcomes"
+      ],
+      "favoriteQuote": "The power of perseverance. Throughout the narrative, Knight emphasizes how his persistence through numerous challenges was crucial to Nike's eventual success.",
+      "recommendedFor": "Entrepreneurs and anyone interested in business success stories"
+    },
+    {
+      "id": 97,
+      "title": "Unreasonable Hospitality",
+      "author": "Will Guidara",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🍽️",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Explores the transformative power of going above and beyond in the hospitality industry, sharing how exceptional service can create unforgettable experiences.",
+      "tags": [
+        "Business",
+        "Hospitality",
+        "Service"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Go beyond what is expected: Always strive to surprise and delight guests by providing more than they anticipate",
+        "Foster a culture of collaboration: Success is driven by a team that shares a vision of exceptional service",
+        "Embrace technology to enhance service",
+        "Commit to excellence: Every detail counts in crafting an outstanding guest experience",
+        "Apply hospitality principles universally: The 95-5% rule"
+      ],
+      "favoriteQuote": "It's not just about running a successful restaurant; it's about setting a new standard in any service-oriented field.",
+      "recommendedFor": "Business leaders, service professionals, and hospitality entrepreneurs"
     }
   ]
 }
