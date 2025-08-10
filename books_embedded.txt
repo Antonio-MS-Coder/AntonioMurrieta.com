@@ -1,0 +1,986 @@
+{
+        "id": 1,
+        "title": "The Midnight Library",
+        "author": "Matt Haig",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "This novel explores the idea of what could have happened, regrets and the impact choices we make have. It invites the reader to reflect on what makes life worth living. In general it digs into a diverse range of relatable themes.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffNever underestimate the big importance of small things.",
+                "\ufeff\ufeffDoing one thing differently is often the same as doing everything differently.",
+                "\ufeff\ufeffA pawn is never just a pawn. A pawn is a queen in waiting. All you need to do is find a way to keep moving forward. One square after the other."
+        ],
+        "favoriteQuote": "\ufeff\ufeffTo fear love is to fear life.",
+        "personalNotes": "I would absolutely recommend this book to anyone. It uses stories to translate philosophy (Specifically Emerson's and Thoreau's transcendentalism). It is reader friendly and definitely relevant in different stages of life.",
+        "currentlyReading": false
+},
+{
+        "id": 2,
+        "title": "Super Freakonomics",
+        "author": "Steven D. Levitt & Stephen J. Dubner",
+        "category": "business",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcbc",
+        "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+        "summary": "In this book the author uses microeconomics to understand diverse and interesting topics. They give a different perspective on global warming and politics, they explain our relationship with money and incentives through examples of prostitutes and monkeys.",
+        "tags": [
+                "Business"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in business",
+        "keyTakeaways": [
+                "\ufeff\ufeffMonkeys respond the same to a monetary system as humans. Which beg the question, to what extent are we actually rational?",
+                "\ufeff\ufeffEven complex topics such as global warming can have simple and cheap solutions. It's all about understanding the underlying mechanisms that give us the actual result."
+        ],
+        "favoriteQuote": "\ufeff\ufeffIt's all about incentives. Costs and gains.",
+        "personalNotes": "In general I would recommend the entire series of these authors. They give interesting real world examples to complex topics, leaving you intrigued, informed and more importantly curious to know more about underlying invisible incentive driven situations."
+},
+{
+        "id": 3,
+        "title": "Haz Lo Que Importa",
+        "author": "Oso Trava",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        "summary": "In general, this book talks about finding your purpose. It talks about the fears of getting started, and invites you to question where you invest your energy. It takes real examples of successful people, as well as ideas from diverse authors.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffPeople visualizes their future based on their past and present, without considering exponential growth factors.",
+                "\ufeff\ufeffWhat would the best year of your life would look like? What steps could you take to start getting closer.",
+                "\ufeff\ufeffIt is easy to be busy, but it is hard to be busy with the right things. Don only things that matters."
+        ],
+        "favoriteQuote": "\ufeff\ufeffDMS: Do Meaningful Shit. Direction, Movement, Meaning (significado).",
+        "personalNotes": "If you are looking for a push to start a project, this is a really good spark starter. It talks about entrepreneurship, but the concepts transcend into a way of living. It is like a mix of Buddhism and nihilism, with hints of pragmatism and capitalism. I would absolutely recommend it."
+},
+{
+        "id": 4,
+        "title": "Energ\u00eda Tu Poder",
+        "author": "Gaby Vargas",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "In general this book talks about energy spiritual energy from different perspectives. The author gives different examples and applications of how we relate to energy and the universe. It feels a little dispersed I wouldn't necessarily recommend it.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffYou can't control the wind, but you can adjust the sails.",
+                "\ufeff\ufeffWhen you go at your own pace, all that's out there is good music to dance to.",
+                "\ufeff\ufeffYou transmit what you feel, not what you say."
+        ],
+        "favoriteQuote": "\ufeff\ufeffEverything has a crack in it; and that's how the light gets in.",
+        "personalNotes": "In general this book talks about energy spiritual energy from different perspectives. The author gives different examples and applications of how we relate to energy and the universe. It feels a little dispersed I wouldn't necessarily recommend it."
+},
+{
+        "id": 5,
+        "title": "Fooled By Randomness",
+        "author": "Nassim Nicholas Taleb",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udfdb\ufe0f",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "In this book the author explores the role of luck and randomness in life. He deals with the markets, everyday misconceptions of statistics and the role emotions play in decision making.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffwe tend to confuse the absence of evidence with the evidence of absence.",
+                "\ufeff\ufeffWhen dealing with the real world, even experts tend to be played by their human side.",
+                "\ufeff\ufeffWe tend to underestimate the role luck plays in everyday life, and how \\"
+        ],
+        "favoriteQuote": "\ufeff\ufeffYou can't say all swans are white by observing 1,000 white ducks, but you can disprove that claim by only observing one black swan.",
+        "personalNotes": "In this book the author explores the role of luck and randomness in life. He deals with the markets, everyday misconceptions of statistics and the role emotions play in decision making."
+},
+{
+        "id": 6,
+        "title": "Surfear la vida",
+        "author": "Jaimal Yogis",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "In this book, the author talks about his personal journey. Dealing with his spiritual and vocacional struggles. Making an analogy between surf, zen Buddhism and life. It is well written, engaging and very profound.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffNot all knowledge is taught in the same school.",
+                "\ufeff\ufeffTrue insight is gained when we free ourselves from preconceived ideas.",
+                "\ufeff\ufeffLost is a dream, undecided is a perception, a mirage in the vast desert of life."
+        ],
+        "favoriteQuote": "\ufeff\ufeffBorrowed feathers never grow. You have to find your own path.",
+        "personalNotes": "I would absolutely recommend this book. It takes complex spiritual concepts and projects them into an interesting personal story. The only risk is you will want to learn how to surf, and become a monk."
+},
+{
+        "id": 7,
+        "title": "Don't Just Sit There",
+        "author": "Biet Simkim",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        "summary": "44 Insights to get your meditation practice off the cushion and into the real world. This book is a delight to read. It is human, it is interesting and insightful. The author shares her life, her struggles, and the spiritual path she's found to deal with it.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffYou are not the voice in your head, you are the one that hears it.",
+                "\ufeff\ufeffMeditation should be about shocking the status quo mentality through conscious shocks. Taking different and uncommon actions.",
+                "\ufeff\ufeffNothing outside your soul will free you."
+        ],
+        "favoriteQuote": "\ufeff\ufeffMeditation is first about clarifying who you truly are, only then can you begging to create who you want to be.",
+        "personalNotes": "If you want to find your spiritual path. Deepen your connection with yourself, with life, with the divine, I would absolutely recommend this book. It is a great way to deal with incorporating spirituality with everyday life."
+},
+{
+        "id": 8,
+        "title": "La Teor\u00eda de los Sentimientos Morales",
+        "author": "Adam Smith",
+        "category": "business",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcbc",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "In this book the author explores the limits of self interest, virtues and his view on ethics. It is interesting to see how his vision on morality gets lost with a distortion of his ideas of wealth and economics.",
+        "tags": [
+                "Business"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in business",
+        "keyTakeaways": [
+                "\ufeff\ufeffPrudence is the highest form of virtue.",
+                "\ufeff\ufeffThere's a social approval to morality. Specifically we approve & admire self control.",
+                "\ufeff\ufeffHe makes an invitation for self sacrifice to achieve the greater good."
+        ],
+        "favoriteQuote": "\ufeff\ufeffSympathy is and expression of self love, we project in others. It is not an act of egocentrism.",
+        "personalNotes": "It definitely gives a different perspective on the typical interpretation of Smith. It is interesting to see he was one of the first defenders of conscious consumption, and the impact we have as consumers."
+},
+{
+        "id": 9,
+        "title": "La Revoluci\u00f3n De La Glucosa",
+        "author": "Jessie Inchausp\u00e9",
+        "category": "technology",
+        "rating": 5,
+        "coverEmoji": "\u26a1",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "We have all heard that sugar is not good for us, but in this book the author goes deep into the reasons. She explains the science behind glucose and how we process it. As well as the consequences and tips for when we want to consume sugar.",
+        "tags": [
+                "Technology"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in technology",
+        "keyTakeaways": [
+                "\ufeff\ufeffWhat we eat matters, but also the order in which we eat it.",
+                "\ufeff\ufeffOnly 12% of Americans are metabolically healthy.",
+                "\ufeff\ufeffThe underlying problem is the velocity with which glucose is absorbed. We can't process it too fast."
+        ],
+        "favoriteQuote": "\ufeff\ufeffOur body is constantly sending us messages, but how can we listen to our body?",
+        "personalNotes": "In general if you are interested in nutrition and overall health it is a must read. The author takes complex topics and makes them accessible to the reader. It is well written, backed by science, and interesting."
+},
+{
+        "id": 10,
+        "title": "Laughable Loves",
+        "author": "Milan Kundera",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "In this recollection of stories the author explores diverse themes surrounding love. It talks about sex, death, aging, memory, self perseption and outer perception. It is an invitation to questions our paradigms surrounding love.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffTo what extent are we responsible for other's people's emotions, specifically when they love us?",
+                "\ufeff\ufeffWhat is the role of imagination in erotic love? To what extent is erotic love constructed in the mind. To what extent memory plays a role?",
+                "\ufeff\ufeffCan the act of rejection become an act of love when self hate is present?"
+        ],
+        "favoriteQuote": "\ufeff\ufeffHow does our behavior create our identity, and to what extent can we change (or impact) others behaviors through our change?",
+        "personalNotes": "In this recollection of stories the author explores diverse themes surrounding love. It talks about sex, death, aging, memory, self perseption and outer perception. It is an invitation to questions our paradigms surrounding love."
+},
+{
+        "id": 11,
+        "title": "\u041como",
+        "author": "Michael Ende",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf19",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "In this novel the author explores diverse topics such as childhood, imagination, our production-obsessed society, capitalism and a reflection on time.",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffWe live in an over pragmatic (utilitarian) society. If it doesn't have a productive end, it shouldn't exist.",
+                "\ufeff\ufeffIn general is a beautiful criticism to the way in which we relate to the consumption of things, and friends.",
+                "\ufeff\ufeffIt reminds me of byung-chul's \\"
+        ],
+        "favoriteQuote": "\ufeff\ufeffWhat does it mean to live, to save time?",
+        "personalNotes": "In this novel the author explores diverse topics such as childhood, imagination, our production-obsessed society, capitalism and a reflection on time."
+},
+{
+        "id": 12,
+        "title": "Before the coffee gets cold",
+        "author": "Toshikazu Kawaguchi",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udfad",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "In this novel the author explores time travel but from an interpersonal humanistic perspective. What would happen if you could time travel to talk to someone but only the time it takes a cup of coffee to get cold; knowing you can't change the present no matter what you say? Would your future change?",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffIt is too easy to get stuck in the past and become a living ghost. You have to let go off the past to create a future.",
+                "\ufeff\ufeffYou never know when will the last time you see a person. It is easy to get lost in the everyday unimportant business. Make sure you treasure the time with your loved ones.",
+                "\ufeff\ufeffHaving the right conversation can be trascendental. You can resignify the past, and specifically your understanding of the past. Changing your relationship with yourself and with the future."
+        ],
+        "favoriteQuote": "We don't really understand people's motivation for doing things. Openly talking about the important things is the only way to truly know what they think.",
+        "personalNotes": "This book is a beautiful collection of different stories answering the same question mentioned before. It is well written, personal, vulnerable, deep and will definitely give you things to reflect on. I would absolutely recommend this book if you like good stories."
+},
+{
+        "id": 13,
+        "title": "Chocolate Sin Grasa",
+        "author": "Slavoj \u017di\u017eek",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+        "summary": "A thought-provoking book by Slavoj \u017di\u017eek.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffHe explores the limits of pleasure in a post sexual revolution era. Talking about different levels of hedonistic pleasure.",
+                "\ufeff\ufeffHe argues that we are in a post idealogic time.",
+                "\ufeff\ufeffHe touches upon communism, capitalism, and the need for new regulatory institutions in relationship to ecological issues."
+        ],
+        "favoriteQuote": "\ufeff\ufeffIt is zizek's view on the modern society.",
+        "personalNotes": "In general terms it's a good criticism to modern society. I don't fully agree with him, but definitely recommend it."
+},
+{
+        "id": 14,
+        "title": "The Subtle Art Of Not Giving a F*ck",
+        "author": "Mark Manson",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "A counterintuitive approach to living a good life. In this book the author modernizes ideas of great thinkers such as Buddha, Heidegger, Kant and Becker. He gives a pragmatic approach to filosophy for the everyday life.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffIt's not about not having problems, but choosing the problems you enjoy solving.",
+                "\ufeff\ufeffAction generates traction. Failure is the way forward.",
+                "\ufeff\ufeffAct as if everything was your responsibility and things will radically change. With great responsibility comes great power."
+        ],
+        "favoriteQuote": "\ufeff\ufeffLiving a calm life is not about not caring, it's about choosing what to care about.",
+        "personalNotes": "In general it's a good book, it is a little vulgar and oversimplifies certain concepts, but it's a good start to get closer to the ideas of this thinkers."
+},
+{
+        "id": 15,
+        "title": "The Denial Of Death",
+        "author": "Ernest Becker",
+        "category": "self-help",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf1f",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "In this book the author deals with death and it's implications (he wrote the book in his deathbed). He deals with the issues of Identity, the existential dualism, sexuality and the construction of heroism. He gives a broad perspective using authors such as kierkegaard, Freud and Adler.",
+        "tags": [
+                "Self-help"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in self-help",
+        "keyTakeaways": [
+                "\ufeff\ufeffWe deal with the issue of death by looking for transcendence constructing identity symbols. Building heroic life projects.",
+                "\ufeff\ufeffThe guilt of sexuality comes from the reminder that we are a dying body by getting us closer to the experience of our body and further from the \\"
+        ],
+        "favoriteQuote": "\ufeff\ufeffWe live in a constant existential dualism between the belief of an infinite soul and a finite and decadent body.",
+        "personalNotes": "In general the book is a good in depth analysis of one of the most important human problems. It shows us the way we die to teach us how to live. It talks way more about sexuality and Freudian psychology than I would expect, but it helps a lot deal with the anxiety of the undeniable truth of our future death."
+},
+{
+        "id": 16,
+        "title": "How To Make\nDisease\nDisappear",
+        "author": "Dr. Rangan Chatterjee",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        "summary": "In this book the author explores the idea of chronic diseases as a result of habits. It talks about health with an integral vision, giving specific actions to improving overall life quality.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffWe have an epidemic of people in emergency mode. We need to relax using techniques from positive psychology to reduce overall cortisol.",
+                "\ufeff\ufeffLimmit the use of social media, and the overall phone notifications.",
+                "\ufeff\ufeffEat in company, without technology. Connection and conscious eating."
+        ],
+        "favoriteQuote": "\ufeff\ufeffChange your habits and you will change your biology.",
+        "personalNotes": "I would recommend this book as a practical guide to start in a holistic health journey. If you are looking to live a healthier and more energetic life, this is a good starting point."
+},
+{
+        "id": 17,
+        "title": "the Festival Of Insignificance.",
+        "author": "Milan Kundera",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+        "summary": "In this collection of anecdotes the author invites us to question the role of humor towards life. It takes an existential approach, making us reflect on themes such as love, laughter, identity and loyalty.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeffThere is great power in silence, in insignificance. There are silences that scream.",
+                "\ufeff\ufeffIt's all about perspective and interpretation. Hermeneutics applied to life. There is not a real meaning, life is just a festival of insignificance."
+        ],
+        "favoriteQuote": "\ufeff\ufeffDeath becomes the old death soon, only a very few transcend.",
+        "personalNotes": "In general it is a very quick and enjoyable read. Kundera is a great author, with a compelling way of writing. Superficially this book might seem random, but the truth is the stories complement each other. It jumps to different periods, and different contexts, but in general they are all interesting. It has a historical humanistic point of view."
+},
+{
+        "id": 18,
+        "title": "The Unbearable Lightness of Being",
+        "author": "Milan Kundera",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcda",
+        "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+        "summary": "This book, and this author has shaped the way in which I see love and it's relationship to sex. It is philosophical at its root, but it is wrapped in a complex romantic novel. What does it mean to love? To be free? What about God and the denial of death?",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffAnyone whose goal is \\",
+                "\ufeff\ufeffMaking love with a woman and sleeping with a woman are two separate passions, not merely different but opposite.",
+                "\ufeff\ufeffThere is no perfection, only life."
+        ],
+        "favoriteQuote": "\ufeff\ufeffWhen the heart speaks, the mind finds it indecent to object.",
+        "personalNotes": "I had already read this masterpiece time ago, but neither me nor the story are the same. It is not a light reading, but it has hidden gems all over waiting for you to discover them. It is worth the effort of reading it. I would absolutely recommend Kundera and specifically this book."
+},
+{
+        "id": 19,
+        "title": "The CourageTo Be Disliked",
+        "author": "Ichiro Kishimi & Fumitake Koga",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "The Japanese Phenomenon That Shows You How to Change Your Life and Achieve Real Happiness. The author explores and modernizes Adlerian's psychology through dialogues. He deals with happiness, life, the separation of tasks and trauma. In general I love how empowering and strong Adler's ideas can be.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeffEvery problem is an interpersonal problem.",
+                "\ufeff\ufeffSeparation of tasks: learn what's yours, and what's not if the consequences are yours, then it is your task to handle).",
+                "\ufeffThere is a use in feeling inferior as long as it doesn't become an inferiority complex."
+        ],
+        "favoriteQuote": "\ufeff\ufeffHe rejects Freud's deterministic view on trauma. He argues that behavior has to have a present goal, not a past incentive.",
+        "personalNotes": "The Japanese Phenomenon That Shows You How to Change Your Life and Achieve Real Happiness. The author explores and modernizes Adlerian's psychology through dialogues. He deals with happiness, life, the separation of tasks and trauma. In general I love how empowering and strong Adler's ideas can be."
+},
+{
+        "id": 20,
+        "title": "The Devil and Miss Prym",
+        "author": "Paulo Coelho",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+        "summary": "Another great piece of Paulo Coelho. With this masterpiece he challenges our preconceptions of good and evil. It makes us accomplices of a very perverse dilemma. It is and invitation for us to question what would we be willing to do for money? What's the role of good and evil in everyday life.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffThe story of one person is the story of all people.",
+                "\ufeffWhat's the role of fear and what power does it have in our lives?",
+                "\ufeff\ufeffIf you could magically fulfill your biggest dream, what fears would emerge?"
+        ],
+        "favoriteQuote": "\ufeff\ufeffWhat are the limits to morality when given the real trascendental opportunities.",
+        "personalNotes": "In general it is a good book to reflect in the oldest dilemma of mankind Are we good or evil by nature? If you have ever had a difficult situation where you had an imposible choice, this is a good companion of thought."
+},
+{
+        "id": 21,
+        "title": "Hacking\nDarwin: Genetic Engineering\nand the\nFuture of Humanity",
+        "author": "Jamie Metzl",
+        "category": "technology",
+        "rating": 5,
+        "coverEmoji": "\ud83e\udd16",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "In this book the author describes the current biological technological potential. It touches themes from the evolution of sexual reproduction, to global politics and philosophical dilemmas. It gives a deep and interesting overview of this industry and its challenges.",
+        "tags": [
+                "Technology"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in technology",
+        "keyTakeaways": [
+                "\ufeff\ufeffWhy is God not playing God? and to what extent do we have the right to modify human life, even if to improve it?"
+        ],
+        "favoriteQuote": "\ufeff\ufeffIf we are looking for the healthiest way of life for humans, why should we not use the capability to modify genes for improvement. And to what extent is it inmoral not to use this technology?",
+        "personalNotes": "In general I would definitely recommend this book. It doesn't go into detail on the underlying science (it is more of a conceptual book), but it does give a broad idea of the possibilities we have today. Definitely eye opening and very interesting."
+},
+{
+        "id": 22,
+        "title": "Essentialism: The Disciplined Pursuit of Less",
+        "author": "Greg Mckeown",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "'-----",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffBe conscious and critical with the decisions you make",
+                "\ufeff\ufeffAsk tough, but insightful questions. There's always a trade off",
+                "\ufeff\ufeffIf it is not a definite yes, it's a clear no"
+        ],
+        "favoriteQuote": "\ufeff\ufeffNot choosing is a choice in itself that leads others to choose for us",
+        "personalNotes": "'-----"
+},
+{
+        "id": 23,
+        "title": "La Empresa Consciente: C\u00f3mo Construir Valor A Trav\u00e9s de Valores",
+        "author": "Fredy Kofman",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcad",
+        "coverGradient": "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+        "summary": "In this book the author explores the role of the individual, the collective, and the market in ethics. This is a development book that talks about business. In general a very eclectic read, it includes Buddhism, diverse ethical perspectives and pragmatic examples.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffIntegrity: simple, yet not easy. Prioritize long term success over short term gains.",
+                "\ufeff\ufeffThere's no higher liberty than discipline.",
+                "\ufeff\ufeffResponsibility: The ability to respond (and more importantly of consciously choosing how to response)."
+        ],
+        "favoriteQuote": "\ufeff\ufeffWhat does it mean to be successful? What's success beyond success?",
+        "personalNotes": "In general this book has a bunch of useful ideas. I do think the author jumps from one idea (and author cited) to other, but it is worth reading."
+},
+{
+        "id": 24,
+        "title": "Think Like A Freak",
+        "author": "Steven D. Levitt & Stephen J. Dubner",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "In this book the authors of Freakonomics share their approach to finding interesting and original insights to old problems.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffIt's all about the incentives",
+                "\ufeff\ufeffIt's ok not to know",
+                "\ufeff\ufeffDon't be afraid of the \\"
+        ],
+        "favoriteQuote": "\ufeff\ufeffAsking questions differently will get you different answers",
+        "personalNotes": "In this book the authors of Freakonomics share their approach to finding interesting and original insights to old problems."
+},
+{
+        "id": 25,
+        "title": "Los Secretos De La Mente Millonaria",
+        "author": "T. Harv Eker",
+        "category": "self-help",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcaa",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "In this book the author focuses on the beliefs surrounding money-making. It contrasts rich people and poor people ideas about money.\nI like the approach because it's an invitation to switching the inner narrative using examples.",
+        "tags": [
+                "Self-help"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in self-help",
+        "keyTakeaways": [
+                "\ufeff\ufeffRich people play the game to win, poor people play the game to minimize the loss. The rich focus on opportunities, the poor on obstacles. The rich focus on value, the poor on cost.",
+                "\ufeff\ufeffIt is not enough to be in the right place at the right time. You have to be the right person, in the right place and time. Rich people continue to prepare themselves.",
+                "\ufeff\ufeffThere is no such thing as rick victims. Switch your attitude towards life, and life will switch its attitude towards you. Go from being a know-it all to a learn-it-all"
+        ],
+        "favoriteQuote": "\ufeff\ufeffIf your subconscious pattern isn't programmed correctly, nothing will truly change.",
+        "personalNotes": "I would absolutely recommend this book. It reminds me of the psychology of money, but instead of giving historic examples, it focuses on beliefs you should interiorize. It obviously talks about money, but the concepts transcend monetary abundance."
+},
+{
+        "id": 26,
+        "title": "El Efecto Wow.",
+        "author": "Mari Carmen Obreg\u00f3n",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udfdb\ufe0f",
+        "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+        "summary": "This book was written by an expert in special events. She talks about how to create unique experiences. She gives a recipe to \"Wow\" moments, also applying her principles to everyday life. It's a good mix between business and self development.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffIf your dreams don't scare you, you are not dreaming big enough.",
+                "\ufeff\ufeffIt's all about where you focus. You just have to train your mind to see what you are seeking. What you seek, is also seeking you.",
+                "\ufeff\ufeffWe don't want to only be spectators anymore. We want to be co-creators of the experiences."
+        ],
+        "favoriteQuote": "\ufeff\ufeffEverything you do in life prepares you to be who you are now. This is what shapes your individuality. Creating your charm.",
+        "personalNotes": "This is a very light reading, but it has a couple of interesting ideas to share. It has a Buddhists undertone, but also very specific business concepts. It gives you a framework of thinking about experiences that facilitates the innovation when designing them. I would recommend it if you want to start a business or design an experience."
+},
+{
+        "id": 27,
+        "title": "The Witch of Portobello",
+        "author": "Paulo Coelho",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udfad",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "There are authors which books feel like magic. Paulo Coelho is one of those, he's one of my favorite authors. I thought hippie (another book of his) was my favorite, officially he's outdone himself. In this book he tells the story of Athena, an orphan gypsy, who becomes a great master.",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffDesire is never satisfied because once they are satisfied they cease to exist. If you want more, you are not happy.",
+                "\ufeff\ufeffGetting lost is the best way of finding interesting places.",
+                "\ufeff\ufeffWe live poisoned by preconceived ideas. Dare to question, and be different, there's where the magic lies."
+        ],
+        "favoriteQuote": "\ufeff\ufeffSilence is as important as noice when creating music. Life is about finding and cultivating your rhythm.",
+        "personalNotes": "I would recommend this book to anyone. It is a beautiful story, profound, with lots of complex teachings. Specially if you have suffered burnout, or are as intense as me, make this a priority."
+},
+{
+        "id": 28,
+        "title": "No Longer Human",
+        "author": "Osamu Dazai",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "In this book we follow Oba Yozo's life, an isolated, afraid and depressed man from Japanese upper class. The author explores the existential fears of being human, deals with dense topics such as suicide, phobias, economic and family pressures, love. It makes us question what does it mean to be human, and to adapt to human conventions.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffWhat is society but the individual (self will. When does the collective end, and the individual starts.",
+                "\ufeff\ufeffWe are used to cultural submission. Not wanting anything but being unable to say no to anything. To what extent are we free?",
+                "\ufeff\ufeffIsolation and self rejection. The constant anxiety's \\"
+        ],
+        "favoriteQuote": "\ufeff\ufeffHuman life is filed with many pure, happy, serene examples of insincerity. Of people deceiving one another without any wound being inflicted in one another.",
+        "personalNotes": "In general it is a great way to empathize with people struggling with mental health issues. This book does a great job at describing everyday life through the lenses of a very specific situation, and yet showing the reality of a vast sector of the population. In general it is a great reading, I would absolutely recommend it."
+},
+{
+        "id": 29,
+        "title": "SIGNS: The\nSecret Language\nof the Universe",
+        "author": "Laura Lynne Jackson",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "In this book, the author deals with one of the biggest questions, death and it's relationship with the living. They give examples of ways in which\n\"the other side\" communicates with the living. Even if you are a skeptic like me, it has interesting examples of real people experiencing weird and unique situations.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeffThere's something you always leave when meeting someone.",
+                "\ufeff\ufeffBeliefs don't matter as much as experiences.",
+                "\ufeff\ufeffPeople enter your life either as a blessing or a lesson."
+        ],
+        "favoriteQuote": "\ufeff\ufeffSometimes it's a blessing not getting what we want. Trust your team of light.",
+        "personalNotes": "In general I would recommend this book, specifically if you have lost someone recently. I'm not sure to what extent it is the other side, or the subconscious, giving us signals, but either way I like the message. Overall the book gives hope that there's our loved ones watching over"
+},
+{
+        "id": 30,
+        "title": "Bulletproof Problem Solving: The One Skill That Changes Everything",
+        "author": "Charles Conn & Robert McLean",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "If you are interested in understanding the consulting world this is a book you need. It opens a window to understand how McKinsey breaks down complex problems and attempts to solve them. It uses real examples to implement a specific 7 step methodology.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffWe are looking for the 20% we can influence to have the 80% of the impact.",
+                "\ufeff\ufeffMake sure your categories are MECE (Mutually Exclusive, Collectively Exhausting.",
+                "\ufeff\ufeffUse heuristics to create hypotheses you can later test."
+        ],
+        "favoriteQuote": "\ufeff\ufeffUse tools such as logic trees to deeply understand the problem from diverse perspectives. Ask questions to explore uncommon paths.",
+        "personalNotes": "In general it is a good book, it is well written and has compelling examples. It is a little technical at times, but overall helpful."
+},
+{
+        "id": 31,
+        "title": "Flourish",
+        "author": "Martin E. P. Seligman",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "In this book the author explains in broad and pragmatic terms the positive psychology movement. He proposes well-being as an economic metric for political success with his model PERMA. He invites the reader to question the end goal of wealth growth, as well as giving individual an actionable practices for a better life.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffThere's a direct correlation between having a clear Ikigai (purpose) and a general well-being.",
+                "\ufeff\ufeffThere's conclusive evidence between optimism and well-being (both mentally and physically). As well as a reduction in risk for cardiovascular deaths.",
+                "\ufeff\ufeffWe are moving into nietzsche's third state of development (the child), and we have to start to question to what can we say yes as a progressing society."
+        ],
+        "favoriteQuote": "\ufeff\ufeffPERMA: Positive emotions, Engagement, Relationships, Meaning, and Accomplishment.",
+        "personalNotes": "In this book the author explains in broad and pragmatic terms the positive psychology movement. He proposes well-being as an economic metric for political success with his model PERMA. He invites the reader to question the end goal of wealth growth, as well as giving individual an actionable practices for a better life."
+},
+{
+        "id": 32,
+        "title": "El Monje Que Vendi\u00f3 Su Ferrari",
+        "author": "Robin S. Sharma",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "A classic of human development. This author uses interesting storytelling to share its view on life, and specifically on the lessons it wants to share with the reader. It is direct and straightforward, as well as easy to read.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffI can't love if I don't know how to love myself.",
+                "\ufeffThere is no objective reality. Where there is tragedy for someone, there is the seed of opportunity for someone else.",
+                "\ufeffI've had dreams and I've had nightmares. I have overcome my nightmares thanks to my dreams. Start living from your imagination, not your memory"
+        ],
+        "favoriteQuote": "\ufeff\ufeffFailure is necessary for the expansion of the person. Accept it as the teacher it is. There are no errors. Just lessons.",
+        "personalNotes": "This book is a great starting point for anyone that feels lost. I had already read this book years ago, but neither me nor the book are the same. It is simple, easy to read and truly deep. It confronts you to the paradigms you might have interjected years ago, and questions the beliefs that are determining the way you live."
+},
+{
+        "id": 33,
+        "title": "Homo Deus: A Brief History of Tomorrow",
+        "author": "Yuval Noah Harari",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udfad",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "In this book the author explores the relationship between technology, religion, and the future to come.",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffWe are walking into a post humanistic era.",
+                "\ufeff\ufeffIf our free will is created from chemical reactions are we free?",
+                "\ufeff\ufeffData is king, we are moving towards hiperconected reality where algorithms know us better than we know ourselves."
+        ],
+        "favoriteQuote": "\ufeff\ufeffHe explores our relationship with the homodeus (Super humans), through an analogy between us and animals.",
+        "personalNotes": "In this book the author explores the relationship between technology, religion, and the future to come."
+},
+{
+        "id": 34,
+        "title": "La Psicolog\u00eda \nDel Dinero:  C\u00f3mo Piensan Los Ricos",
+        "author": "Morgan Housel",
+        "category": "business",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcbc",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "This book gives a fresh perspective to an overwritten topic.\nThis \"business\" book translates economics from econs (rational people to real people. It humanizes the market, and gives interesting insights to this complex subject.",
+        "tags": [
+                "Business"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in business",
+        "keyTakeaways": [
+                "\ufeff\ufeffYour personal experience with money represents 0.00000001% of what has happened in the world, but it represents 80% of how you relate to money.",
+                "\ufeff\ufeffIt's not about being rational, but being reasonable.",
+                "\ufeffIt's not about getting the most efficient results according to the market, it's about being able to sleep at night."
+        ],
+        "favoriteQuote": "\ufeff\ufeffHistory never repeats itself. Man always does.",
+        "personalNotes": "In general I would definitely recommend this book to anyone. It is easy to read, it gives pragmatical and punctual actions to improve your relationship with money. Also it uses overall absorbing stories to simplify the concepts."
+},
+{
+        "id": 35,
+        "title": "Exhalaci\u00f3n",
+        "author": "Ted Chiang",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83e\uddd8",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "Through this compendium of short stories the author explores different futuristic or technological scenarios. In general it helps us explore the philosophical, psychological and anthropological implications of new tech through interesting stories.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffTo what extent can and should we love virtual conscious beings?",
+                "\ufeff\ufeffHow would your life change if you could talk to a you that choose differently at some point in your life. And what if you could see the impact those little changes have in the rest of the world?",
+                "\ufeff\ufeffIf we were to discover that we can send messages back in time, but they couldn't alter the outcomes, what would the social and individual implications be?"
+        ],
+        "favoriteQuote": "\ufeff\ufeffTo what extent has writing affected our memory, and our ability to tell stories?",
+        "personalNotes": "In general I would recommend some of the stories, I wouldn't recommend it as an entire book. Having said that, It does give a lot from which to question our way of life. It deals with ideas such as time travel and determinism, memory and technology advancement, the rights of Al, and the risks of knowing there are other realities in which you chose a different path."
+},
+{
+        "id": 36,
+        "title": "The Romantic Manifesto",
+        "author": "Ayn Rand",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcdd",
+        "coverGradient": "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+        "summary": "In this book the author talks about art, it's use and the profound contradiction between literary currents. She is a great author, a great thinker. This book gives and inside in the thought process of her writing.",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffRomanticism is a value oriented, morality centered, movement. It's material is not journalistic, but the abstract, the essential.",
+                "\ufeff\ufeffThe purpose of literature should be to portrait who we ought to be, not who we are.",
+                "\ufeff\ufeffArt is a Selected recreation of reality. An artist does not fake reality, it stylizes it."
+        ],
+        "favoriteQuote": "\ufeff\ufeffAn important underlying conflict between naturalists and romantics is determinism versus freedom.",
+        "personalNotes": "In general I would definitely recommend this book, and particularly this author. It gives a structured and deep understanding on art as a philosophical system. Would also recommend her novels."
+},
+{
+        "id": 37,
+        "title": "La Soledad De Un Cuerpo Acostumbrado A La Herida",
+        "author": "Elvira Sastre",
+        "category": "technology",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcbb",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "In this little book of poetry the author talks about profound topics such as love, pain, loneliness, freedom, silence. It is vulnerable, deep, well written and relatable. She balances being deeply personal with sharing human motifs.",
+        "tags": [
+                "Technology"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in technology",
+        "keyTakeaways": [
+                "\ufeff\ufeffPuedes seguir enamorada de alguien que has dejado de querer?",
+                "\ufeff\ufeffHe dicho tantas veces tu nombre que he conseguido perderle el miedo, pero no se que hacer con su rastro.",
+                "\ufeff\ufeffCiegas de amor, y borrachas de fuego."
+        ],
+        "favoriteQuote": "\ufeff\ufeffLa Soledad es mirar a unos ojos que no te miran.",
+        "personalNotes": "In this little book of poetry the author talks about profound topics such as love, pain, loneliness, freedom, silence. It is vulnerable, deep, well written and relatable. She balances being deeply personal with sharing human motifs."
+},
+{
+        "id": 38,
+        "title": "Experimentation\nWorks",
+        "author": "Stefan H. Thomke",
+        "category": "technology",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udd2c",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "In this book the author gives a general overview of the rapid experimentation methodology. They talk about the challenges, good practices and advantages.",
+        "tags": [
+                "Technology"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in technology",
+        "keyTakeaways": [
+                "\ufeff\ufeffSacrifice short term gains, for long term knowledge.",
+                "\ufeff\ufeffMeaningful learning comes from unexpected (well documented) results.",
+                "\ufeff\ufeffSignificant improvement comes from small incremental changes that generate a big impact."
+        ],
+        "favoriteQuote": "\ufeff\ufeffEverything that can be tested, should be tested.",
+        "personalNotes": "In general this is an interesting view on the application of the scientific method and technology in the real world. The author uses real experiments by real companies to illustrate its points. It is eye opening to see the power to which we have access through data."
+},
+{
+        "id": 39,
+        "title": "10% Human: How Your Body's Microbes Hold the Key to Health and Happiness",
+        "author": "Alanna Collen",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+        "summary": "In this book the author talks about the new biological discovery of the positive (and necessary) impact of bacteria. They talk about autism, obesity, depression, and the correlation with gut health.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffThe ratio between \\",
+                "\ufeff\ufeffWe have to be careful when killing \\",
+                "\ufeff\ufeffThere's been cases where anxiety, depression and obesity has been successfully cured through bacteria transplant."
+        ],
+        "favoriteQuote": "\ufeff\ufeffThere are 9 bacteria per human gene in the human body.",
+        "personalNotes": "\ufeff\ufeffIn general it is an easy to read book about biology and microbes. It gives a broad insight into this world with various and diverse mundane examples. It is a refreshing perspective on common topics. If you are interested in science I would definitely recommend."
+},
+{
+        "id": 40,
+        "title": "What I Know For Sure",
+        "author": "Oprah Winfrey",
+        "category": "self-help",
+        "rating": 5,
+        "coverEmoji": "\u2728",
+        "coverGradient": "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+        "summary": "One of the biggest challenges for someone who is constantly growing, learning and teaching is knowing what they know for sure. In this book Oprah reflects on the things that have stood the test of time.",
+        "tags": [
+                "Self-help"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in self-help",
+        "keyTakeaways": [
+                "\ufeff\ufeffHealing the wounds of the past is one of the most challenging and worthwhile challenges.",
+                "\ufeff\ufeffLife is full of delightful treasures, if we take the time to appreciate them.",
+                "\ufeff\ufeffEvery action, thought, and feeling is motivated by an intention."
+        ],
+        "favoriteQuote": "\ufeff\ufeffWe are each responsible for our life. You must be fearless enough to give yourself the love you did not receive.",
+        "personalNotes": "In general I would absolutely recommend this book. It is a delight to read. It has insightful and thoughtful ideas. It has interesting examples told through intense and extensive personal experiences. Oprah, thanks for sharing with us."
+},
+{
+        "id": 41,
+        "title": "$mart Money",
+        "author": "Leonardo Vilchis",
+        "category": "creativity",
+        "rating": 5,
+        "coverEmoji": "\u270f\ufe0f",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "Aprende a invertir como los inversionistas mas inteligentes del mundo. ",
+        "tags": [
+                "Creativity"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in creativity",
+        "keyTakeaways": [
+                "\ufeffThe greatest asset is information.",
+                "\ufeff\ufeffWhen analyzing where to invest you should look at the context, the industry, the most important players (companies), and who do you think can over deliver on their promise to market.",
+                "\ufeff\ufeffThe monetary system is a game. Just don't assume it is a cero sum game."
+        ],
+        "favoriteQuote": "\ufeff\ufeffThe more investors in a stock market, the more successful companies there will be in that country.",
+        "personalNotes": "In general it was too light for my taste, but if you don't know where to start learning about investing I would recommend this book. If you already have some basic knowledge I would look for more robust books."
+},
+{
+        "id": 42,
+        "title": "The untethered soul",
+        "author": "Michael A. Singer",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83c\udf0c",
+        "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+        "summary": "In this book the author explores the relationship with oneself, the outer world, as well as God and Death",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffHow do we define ourselves?",
+                "\ufeff\ufeffSince we have experiences, we can't be those experiences, we must be the thing experiencing them. Consciousness.",
+                "\ufeff\ufeffDeath is our friend. It gives meaning to life."
+        ],
+        "favoriteQuote": "\ufeff\ufeffWho are we?",
+        "personalNotes": "In this book the author explores the relationship with oneself, the outer world, as well as God and Death"
+},
+{
+        "id": 43,
+        "title": "The One Thing: The Surprisingly Simple Truth Behind Extraordinary Results.",
+        "author": "Gary Keller & Jay Papsan",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcad",
+        "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+        "summary": "This book talks about searching and choosing the one thing that will make everything else not matter. It is about learning to prioritize and organize your life, it is well written, and gives specific examples.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffLife isn't about finding yourself, life is about creating yourself.",
+                "\ufeff\ufeffVisualize the process and not only the outcome. Connect today with all your tomorrows.",
+                "\ufeff\ufeffEven if you are in the right track you will get run over if you just stand there."
+        ],
+        "favoriteQuote": "\ufeff\ufeffNot everything matters equally. Focusing is about saying no. Do purposely less.",
+        "personalNotes": "In general I would definitely recommend this book if you are a scattered or disorganized person. It helps find focus and direction with concrete exercises and actionable concepts."
+},
+{
+        "id": 44,
+        "title": "C\u00f3mo Hacer Que Te Pasen Cosas Buenas",
+        "author": "Marian Rojas Estap\u00e9",
+        "category": "philosophy",
+        "rating": 5,
+        "coverEmoji": "\ud83d\udcd6",
+        "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+        "summary": "In this book, the author goes deep into biological details of how our mind works. She also talks a little about her personal experience, and finally gives advice on how to live a better life from a psychiatric perspective.",
+        "tags": [
+                "Philosophy"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in philosophy",
+        "keyTakeaways": [
+                "\ufeff\ufeffLaughter is the smallest distance between two people.",
+                "\ufeff\ufeffFocus more on how to get out of the problem, not on the problem.",
+                "\ufeff\ufeffThe way you project yourself stimulates the creative areas of the brain."
+        ],
+        "favoriteQuote": "\ufeff\ufeffThe quality of relationships is the only real predictor of longevity and happiness.",
+        "personalNotes": "In general it is an information dense book. It touches upon topics that other books cover, but backed by science and some personal stories. In general I find it interesting, but is not a light book. If you are interested in emotional intelligence, or psychology I would recommend this book."
+},
+{
+        "id": 45,
+        "title": "Targeted",
+        "author": "Brittany Kaiser ",
+        "category": "fiction",
+        "rating": 5,
+        "coverEmoji": "\u2728",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "The Cambridge Analytica Whistleblower's\nInside Story of How Big Data, Trump, and Facebook Broke Democracy and How It Can Happen Again.",
+        "tags": [
+                "Fiction"
+        ],
+        "yearRead": 2023,
+        "recommendedFor": "Readers interested in fiction",
+        "keyTakeaways": [
+                "\ufeff\ufeffPeople don't just vote on Election Day, they vote everyday with the choices (and patterns) of everyday life.",
+                "\ufeffThe problem was not Facebook or the SCL group (political consultancy owner of Cambridge Analytica), it is big data and the amount of information we, unaware, give away.",
+                "\ufeff\ufeffThe laws are only as good as the technologies to enforce them. We need to reshape the data system to ensure our privacy and security."
+        ],
+        "favoriteQuote": "In this book the author narrates its story in relationship with the American elections of 2016. She also talks about how people were deeply manipulated, and talks about the future of data security.",
+        "personalNotes": "In general, if you like data, politics, history or computer science I would absolutely recommend this book. I didn't put into perspective the impact of data and social media had, not only in the US, but around the world (including the Mexican elections). It is a personal, well narrated story, with high social relevance."
+}

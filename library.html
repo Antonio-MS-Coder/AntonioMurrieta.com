@@ -1263,6 +1263,44 @@
         async function loadBooksData() {
             try {
                 console.log('Fetching books.json...');
+                
+                // Check if we're running locally (file://) or on a server
+                const isLocal = window.location.protocol === 'file:';
+                
+                if (isLocal) {
+                    console.log('Running locally with file:// protocol');
+                    console.log('For full functionality, please either:');
+                    console.log('1. Run a local server: python3 -m http.server 8080');
+                    console.log('2. View on GitHub Pages: https://antonio-ms-coder.github.io/AntonioMurrieta.com/library.html');
+                    
+                    // Show message to user
+                    const notice = document.createElement('div');
+                    notice.style.cssText = `
+                        position: fixed;
+                        top: 80px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: var(--cardinal);
+                        color: white;
+                        padding: 12px 24px;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        z-index: 9999;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                    `;
+                    notice.innerHTML = `
+                        <strong>Local Viewing Mode</strong><br>
+                        Showing sample books. For all 45 books, 
+                        <a href="https://antonio-ms-coder.github.io/AntonioMurrieta.com/library.html" 
+                           style="color: white; text-decoration: underline;">view on GitHub Pages</a>
+                    `;
+                    document.body.appendChild(notice);
+                    
+                    // Return sample data
+                    return getEmbeddedBooks();
+                }
+                
+                // For GitHub Pages or server, fetch the JSON
                 const response = await fetch('books.json', {
                     method: 'GET',
                     headers: {
@@ -1283,7 +1321,7 @@
                 // Validate the data structure
                 if (!data || !data.books || !Array.isArray(data.books)) {
                     console.error('Invalid data structure in books.json');
-                    return [];
+                    return getEmbeddedBooks();
                 }
                 
                 console.log(`Found ${data.books.length} books in JSON`);
@@ -1291,16 +1329,50 @@
             } catch (error) {
                 console.error('Error loading books:', error);
                 console.error('Error details:', error.message);
+                console.log('Using embedded books data as fallback');
                 
-                // Don't use fallback - show the actual error
-                document.getElementById('booksGrid').innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
-                        <p>Error loading books: ${error.message}</p>
-                        <p style="margin-top: 10px; font-size: 14px;">Please check the browser console for details.</p>
-                    </div>
-                `;
-                return [];
+                // Use embedded data as fallback
+                return getEmbeddedBooks();
             }
+        }
+        
+        // Embedded books data for local viewing
+        function getEmbeddedBooks() {
+            // Return a sample of books for local development
+            // When viewing locally, please use a local server (python3 -m http.server)
+            // or view on GitHub Pages for full functionality
+            return [
+                {
+                    "id": 1,
+                    "title": "The Midnight Library",
+                    "author": "Matt Haig",
+                    "category": "philosophy",
+                    "rating": 5,
+                    "coverEmoji": "🧘",
+                    "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                    "summary": "This novel explores the idea of what could have happened, regrets and the impact choices we make have.",
+                    "tags": ["Philosophy"],
+                    "yearRead": 2023,
+                    "keyTakeaways": ["Never underestimate the big importance of small things."],
+                    "favoriteQuote": "The only way to learn is to live.",
+                    "recommendedFor": "Readers interested in philosophy"
+                },
+                {
+                    "id": 2,
+                    "title": "Man's Search for Meaning",
+                    "author": "Viktor Frankl",
+                    "category": "philosophy",
+                    "rating": 5,
+                    "coverEmoji": "🕊️",
+                    "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    "summary": "This novel serves as an important lesson on perspective and meaning.",
+                    "tags": ["Philosophy"],
+                    "yearRead": 2023,
+                    "keyTakeaways": ["Everything can be taken from a man but one thing."],
+                    "favoriteQuote": "The last of the human freedoms.",
+                    "recommendedFor": "Anyone seeking purpose"
+                }
+            ];
         }
 
         // Helper functions
