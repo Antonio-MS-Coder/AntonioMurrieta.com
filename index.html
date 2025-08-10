@@ -624,117 +624,210 @@
                 display: none;
             }
         }
-        /* Features Section Redesign Override */
-        .features-header {
+        /* Features Section - Modern Minimal Redesign */
+        .features-intro {
+            max-width: 680px;
+            margin: 0 auto 80px;
             text-align: center;
-            margin-bottom: 80px;
         }
         
-        .features-label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--cardinal);
-            margin-bottom: 16px;
-            text-transform: uppercase;
+        .features-intro h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
         }
         
-        .features-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 32px !important;
-        }
-        
-        .feature-large {
-            background: var(--white);
-            border: 1px solid var(--border-light);
-            padding: 40px !important;
-            text-align: left !important;
-        }
-        
-        .feature-large:hover {
-            border-color: var(--cardinal);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-        
-        .feature-number {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            font-size: 60px;
-            font-weight: 700;
-            color: #f5f5f5;
-            font-family: var(--sans);
-            line-height: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover .feature-number {
-            color: var(--cardinal);
-            opacity: 0.15;
-        }
-        
-        .feature-stats {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            font-size: 13px;
-            color: var(--cardinal);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            margin-top: 20px;
-        }
-        
-        .feature-stats span:nth-child(2) {
-            color: var(--border-light);
-        }
-        
-        .features-cta {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-light);
-            margin-top: 40px;
-        }
-        
-        .features-cta p {
+        .features-intro p {
+            font-size: 18px;
             color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        .features-intro p strong {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        /* Clean Grid Layout */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cardinal), var(--cardinal-light));
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .feature-card:hover {
+            border-color: var(--border-light);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        
+        .feature-emoji {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+            filter: grayscale(0);
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
             margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .feature-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--warm-gray);
+            padding-top: 16px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .feature-meta-tag {
+            background: var(--light-gray);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .feature-card:hover .feature-meta-tag {
+            background: rgba(140, 21, 21, 0.08);
+            color: var(--cardinal);
+        }
+        
+        /* Bottom CTA Section */
+        .features-bottom {
+            text-align: center;
+            padding: 40px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            margin-top: 60px;
+        }
+        
+        .features-bottom h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+        
+        .features-bottom p {
+            color: var(--text-secondary);
             font-size: 16px;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .feature-link {
             color: var(--cardinal);
             text-decoration: none;
             font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 15px;
+            transition: all 0.2s ease;
             position: relative;
-            display: inline-block;
+            padding: 8px 0;
         }
         
         .feature-link::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 6px;
             left: 0;
-            width: 0;
-            height: 2px;
+            width: 100%;
+            height: 1px;
             background: var(--cardinal);
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
         .feature-link:hover::after {
-            width: 100%;
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .feature-link span {
+            margin-left: 4px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        
+        .feature-link:hover span {
+            transform: translateX(3px);
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .features-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .feature-number {
-                font-size: 40px;
-                top: 30px;
-                right: 30px;
+            .feature-card {
+                padding: 24px;
+            }
+            
+            .features-bottom {
+                padding: 32px 24px;
+            }
+            
+            .features-links {
+                flex-direction: column;
+                gap: 16px;
             }
         }
     </style>
@@ -793,74 +886,93 @@
         </div>
     </section>
 
-    <!-- Features Section - Redesigned -->
-    <section class="features">
+    <!-- Features Section - Minimal & Approachable -->
+    <section class="features" id="features">
         <div class="features-container">
-            <div class="features-header">
-                <p class="features-label">WHAT I DO</p>
-                <h2 class="section-title">Creating at Multiple Scales</h2>
-                <p class="section-subtitle">
-                    From intimate stories to global products, each project represents a commitment to craft and impact
+            <div class="features-intro">
+                <h2>Here's what I'm building</h2>
+                <p>
+                    I love creating things that matter. Whether it's an app that makes someone's day easier, 
+                    a story that sparks imagination, or an experiment that pushes boundaries — 
+                    <strong>every project starts with curiosity</strong>.
                 </p>
             </div>
 
             <div class="features-grid">
-                <div class="feature feature-large">
-                    <div class="feature-number">01</div>
-                    <h3 class="feature-title">Digital Innovation</h3>
-                    <p class="feature-description">
-                        Architecting the future through code. Currently shipping iOS apps, AI experiments, and web experiences that transform how people interact with technology.
+                <article class="feature-card">
+                    <span class="feature-emoji">🚀</span>
+                    <h3>Apps & Digital Products</h3>
+                    <p>
+                        Building iOS apps and web experiences that real people actually use. 
+                        From productivity tools to creative games, I focus on clean design and delightful interactions.
                     </p>
-                    <div class="feature-stats">
-                        <span>5+ Apps Published</span>
-                        <span>•</span>
-                        <span>10K+ Users</span>
+                    <div class="feature-meta">
+                        <span class="feature-meta-tag">Swift</span>
+                        <span class="feature-meta-tag">React</span>
+                        <span class="feature-meta-tag">AI/ML</span>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature feature-large">
-                    <div class="feature-number">02</div>
-                    <h3 class="feature-title">Literary Works</h3>
-                    <p class="feature-description">
-                        Crafting narratives that resonate across generations. Published author bridging children's imagination with adult introspection through Amazon bestsellers.
+                <article class="feature-card">
+                    <span class="feature-emoji">📚</span>
+                    <h3>Writing & Stories</h3>
+                    <p>
+                        Published author exploring both children's wonder and grown-up questions. 
+                        Currently reading 52 books a year and sharing what resonates.
                     </p>
-                    <div class="feature-stats">
-                        <span>2 Books Published</span>
-                        <span>•</span>
-                        <span>52 Books/Year Read</span>
+                    <div class="feature-meta">
+                        <span class="feature-meta-tag">Fiction</span>
+                        <span class="feature-meta-tag">Essays</span>
+                        <span class="feature-meta-tag">Reviews</span>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature feature-large">
-                    <div class="feature-number">03</div>
-                    <h3 class="feature-title">Creative Expression</h3>
-                    <p class="feature-description">
-                        Blending algorithms with aesthetics. Exploring generative art, digital installations, and the spaces where mathematics becomes beauty.
+                <article class="feature-card">
+                    <span class="feature-emoji">🎨</span>
+                    <h3>Creative Experiments</h3>
+                    <p>
+                        Playing at the intersection of art and code. Generative visuals, interactive experiences, 
+                        and finding beauty in algorithms.
                     </p>
-                    <div class="feature-stats">
-                        <span>AI Art</span>
-                        <span>•</span>
-                        <span>Interactive Design</span>
+                    <div class="feature-meta">
+                        <span class="feature-meta-tag">p5.js</span>
+                        <span class="feature-meta-tag">WebGL</span>
+                        <span class="feature-meta-tag">AI Art</span>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature feature-large">
-                    <div class="feature-number">04</div>
-                    <h3 class="feature-title">Research Lab</h3>
-                    <p class="feature-description">
-                        Pioneering tomorrow's possibilities. Deep diving into machine learning, quantum computing concepts, and the philosophical implications of artificial consciousness.
+                <article class="feature-card">
+                    <span class="feature-emoji">🔬</span>
+                    <h3>Research & Learning</h3>
+                    <p>
+                        Always exploring what's next. Deep dives into machine learning, philosophy of technology, 
+                        and whatever rabbit hole seems interesting this week.
                     </p>
-                    <div class="feature-stats">
-                        <span>Active Experiments</span>
-                        <span>•</span>
-                        <span>Open Source</span>
+                    <div class="feature-meta">
+                        <span class="feature-meta-tag">Open Source</span>
+                        <span class="feature-meta-tag">Teaching</span>
+                        <span class="feature-meta-tag">Writing</span>
                     </div>
-                </div>
+                </article>
             </div>
 
-            <div class="features-cta">
-                <p>Curious about the process?</p>
-                <a href="story.html" class="feature-link">Read My Story →</a>
+            <div class="features-bottom">
+                <h3>Want to explore together?</h3>
+                <p>
+                    I'm always excited to connect with people who love building things. 
+                    Let's chat about your next project, exchange book recommendations, or just geek out about code.
+                </p>
+                <nav class="features-links" aria-label="Explore sections">
+                    <a href="work.html" class="feature-link">
+                        See my work<span>→</span>
+                    </a>
+                    <a href="library.html" class="feature-link">
+                        Browse my library<span>→</span>
+                    </a>
+                    <a href="connect.html" class="feature-link">
+                        Get in touch<span>→</span>
+                    </a>
+                </nav>
             </div>
         </div>
     </section>
