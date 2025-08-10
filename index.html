@@ -624,6 +624,119 @@
                 display: none;
             }
         }
+        /* Features Section Redesign Override */
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .features-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--cardinal);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 32px !important;
+        }
+        
+        .feature-large {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            padding: 40px !important;
+            text-align: left !important;
+        }
+        
+        .feature-large:hover {
+            border-color: var(--cardinal);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .feature-number {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 60px;
+            font-weight: 700;
+            color: #f5f5f5;
+            font-family: var(--sans);
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover .feature-number {
+            color: var(--cardinal);
+            opacity: 0.15;
+        }
+        
+        .feature-stats {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--cardinal);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+        }
+        
+        .feature-stats span:nth-child(2) {
+            color: var(--border-light);
+        }
+        
+        .features-cta {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-light);
+            margin-top: 40px;
+        }
+        
+        .features-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .feature-link {
+            color: var(--cardinal);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .feature-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cardinal);
+            transition: width 0.3s ease;
+        }
+        
+        .feature-link:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .feature-number {
+                font-size: 40px;
+                top: 30px;
+                right: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -680,50 +793,74 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section - Redesigned -->
     <section class="features">
         <div class="features-container">
-            <h2 class="section-title">Current Focus</h2>
-            <p class="section-subtitle">
-                Exploring the frontiers of technology while maintaining a deep connection to storytelling and human creativity
-            </p>
+            <div class="features-header">
+                <p class="features-label">WHAT I DO</p>
+                <h2 class="section-title">Creating at Multiple Scales</h2>
+                <p class="section-subtitle">
+                    From intimate stories to global products, each project represents a commitment to craft and impact
+                </p>
+            </div>
 
             <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">Digital Products</h3>
+                <div class="feature feature-large">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">Digital Innovation</h3>
                     <p class="feature-description">
-                        Building apps and platforms that solve real problems. From iOS games 
-                        to AI-powered tools, each project pushes boundaries.
+                        Architecting the future through code. Currently shipping iOS apps, AI experiments, and web experiences that transform how people interact with technology.
                     </p>
+                    <div class="feature-stats">
+                        <span>5+ Apps Published</span>
+                        <span>•</span>
+                        <span>10K+ Users</span>
+                    </div>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">📚</div>
-                    <h3 class="feature-title">Published Author</h3>
+                <div class="feature feature-large">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">Literary Works</h3>
                     <p class="feature-description">
-                        Writing for diverse audiences with books on Amazon, from children's 
-                        literature to self-improvement guides.
+                        Crafting narratives that resonate across generations. Published author bridging children's imagination with adult introspection through Amazon bestsellers.
                     </p>
+                    <div class="feature-stats">
+                        <span>2 Books Published</span>
+                        <span>•</span>
+                        <span>52 Books/Year Read</span>
+                    </div>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Art & Design</h3>
+                <div class="feature feature-large">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">Creative Expression</h3>
                     <p class="feature-description">
-                        Creating at the intersection of code and canvas. Digital art, 
-                        generative design, and visual experiments.
+                        Blending algorithms with aesthetics. Exploring generative art, digital installations, and the spaces where mathematics becomes beauty.
                     </p>
+                    <div class="feature-stats">
+                        <span>AI Art</span>
+                        <span>•</span>
+                        <span>Interactive Design</span>
+                    </div>
                 </div>
 
-                <div class="feature">
-                    <div class="feature-icon">🧪</div>
-                    <h3 class="feature-title">Research & Innovation</h3>
+                <div class="feature feature-large">
+                    <div class="feature-number">04</div>
+                    <h3 class="feature-title">Research Lab</h3>
                     <p class="feature-description">
-                        Experimenting with AI, machine learning, and emerging tech. 
-                        Always learning, always building something new.
+                        Pioneering tomorrow's possibilities. Deep diving into machine learning, quantum computing concepts, and the philosophical implications of artificial consciousness.
                     </p>
+                    <div class="feature-stats">
+                        <span>Active Experiments</span>
+                        <span>•</span>
+                        <span>Open Source</span>
+                    </div>
                 </div>
+            </div>
+
+            <div class="features-cta">
+                <p>Curious about the process?</p>
+                <a href="story.html" class="feature-link">Read My Story →</a>
             </div>
         </div>
     </section>
