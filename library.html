@@ -1472,15 +1472,11 @@
             booksGrid.innerHTML = booksHtml;
             setupBookCardListeners();
             
-            // Trigger enter animations
-            setTimeout(() => {
-                document.querySelectorAll('.book-card').forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }, 50);
+            // Immediately make cards visible (fix for invisible books)
+            document.querySelectorAll('.book-card').forEach((card) => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
         }
 
         // Update statistics
@@ -1741,10 +1737,9 @@
                 }
 
                 .book-card {
-                    opacity: 0;
+                    opacity: 1;
                     animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                    animation-play-state: paused;
-                    transform: translateY(40px);
+                    transform: translateY(0);
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
 
@@ -1760,9 +1755,8 @@
                 }
 
                 .filter-section, .year-filter-section {
-                    opacity: 0;
+                    opacity: 1;
                     animation: fadeIn 0.8s ease forwards;
-                    animation-play-state: paused;
                 }
 
                 @keyframes fadeIn {
