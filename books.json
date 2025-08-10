@@ -1030,6 +1030,189 @@
       ],
       "favoriteQuote": "In this book the author narrates its story in relationship with the American elections of 2016. She also talks about how people were deeply manipulated, and talks about the future of data security.",
       "personalNotes": "In general, if you like data, politics, history or computer science I would absolutely recommend this book. I didn't put into perspective the impact of data and social media had, not only in the US, but around the world (including the Mexican elections). It is a personal, well narrated story, with high social relevance."
+    },
+    {
+      "id": 46,
+      "title": "El Inversionista de Enfrente",
+      "author": "Moisés Cosío Koltés",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "💵",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "In this book, the author explores the topic of money, focusing on strategies for growth and investing wisely to ensure prosperity.",
+      "tags": [
+        "Business",
+        "Finance",
+        "Investment"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Money is a vehicle for growth and security",
+        "Invest in stocks for growth, prefer individual companies over funds",
+        "Financial freedom means having enough passive income to cover expenses"
+      ],
+      "favoriteQuote": "Money is a vehicle for growth and has enabled human experience and relationship with money.",
+      "recommendedFor": "Anyone looking to improve their financial literacy and investment strategies"
+    },
+    {
+      "id": 47,
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "author": "Douglas Adams",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🌌",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "A comedic science fiction adventure that follows Arthur Dent through the galaxy after Earth is destroyed.",
+      "tags": [
+        "Fiction",
+        "Science Fiction",
+        "Comedy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Don't Panic",
+        "The answer to life, universe and everything is 42",
+        "Always know where your towel is"
+      ],
+      "favoriteQuote": "Don't Panic.",
+      "recommendedFor": "Anyone who enjoys humorous science fiction and existential comedy"
+    },
+    {
+      "id": 48,
+      "title": "The E-Myth Enterprise",
+      "author": "Michael E. Gerber",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🏢",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Delves into the essential of transforming an idea into a successful business, focusing on the importance of systems and processes.",
+      "tags": [
+        "Business",
+        "Entrepreneurship"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The entrepreneurial dream must be tested in reality",
+        "Build systems and processes to scale effectively",
+        "The first product of a business is the business itself"
+      ],
+      "favoriteQuote": "The entrepreneurial dream must run into business, but it is the management that makes a business from that dream.",
+      "recommendedFor": "Entrepreneurs looking to build scalable businesses"
+    },
+    {
+      "id": 49,
+      "title": "Before We Say Goodbye",
+      "author": "Toshikazu Kawaguchi",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "☕",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "Returns to the magical café from Before the Coffee Gets Cold, exploring new stories about second chances and closure.",
+      "tags": [
+        "Fiction",
+        "Japanese Literature"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "What remains unsaid also remains unforgiven",
+        "Goodbyes are not the end, they are chances to see beginnings",
+        "There are many crossroads in life, all require steps from what happened"
+      ],
+      "favoriteQuote": "What remains unsaid also remains unforgiven.",
+      "recommendedFor": "Readers who enjoy magical realism and emotional stories"
+    },
+    {
+      "id": 50,
+      "title": "Romancing the Room",
+      "author": "James Wappel & Bruce Reitz",
+      "category": "creativity",
+      "rating": 4,
+      "coverEmoji": "🎨",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "A comprehensive guide to captivating and engaging any audience, with strategies to charm your audience from the first word.",
+      "tags": [
+        "Creativity",
+        "Communication",
+        "Public Speaking"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Good communication is like a good blind date, first impressions are critical",
+        "Audience before content: listen while talking and be ready to adapt",
+        "Be SMART: Simple, step by step, Memorable, Saying is believing"
+      ],
+      "favoriteQuote": "For a good story: remember the J Ms: Meaning, memorable and moving. And the ABCs: Any letter, chronological.",
+      "recommendedFor": "Anyone looking to improve their public speaking and presentation skills"
+    },
+    {
+      "id": 51,
+      "title": "Zero to One",
+      "author": "Peter Thiel",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🚀",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "A compelling exploration of innovation, entrepreneurship, and the quest for new frontiers in technology and business.",
+      "tags": [
+        "Business",
+        "Startups",
+        "Innovation"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "What important truth do very few people agree with you on?",
+        "Winning is better than losing, but everyone loses when the fight is not worth fighting",
+        "Competition and capitalism are natural enemies",
+        "A corporation is a conspiracy to change the world"
+      ],
+      "favoriteQuote": "Success is never accidental. Be a monopoly of one. You are not a lottery ticket.",
+      "recommendedFor": "Anyone passionate about creating something truly new in a world obsessed with incremental gains"
+    },
+    {
+      "id": 52,
+      "title": "HBR Supply Chain",
+      "author": "Harvard Business Review",
+      "category": "business",
+      "rating": 4,
+      "coverEmoji": "📦",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "A collection of insightful articles offering a rich exploration of the dynamics, challenges, and complexities within resilience, innovation, and adaptability in navigating the complexities of global supply chains.",
+      "tags": [
+        "Business",
+        "Supply Chain",
+        "Management"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Guru Khanna: \"historically net always generated risks\" - 5% Black swans + Unpredictable events, rumors + Underinvestment and resilience",
+        "Simplifying the supply chain through reshoring and nearshoring",
+        "Just in Time (JIT) vs Just in Case: balancing the costs of inventory"
+      ],
+      "favoriteQuote": "The aim should not be to avoid shocks but rather how to adapt and learn even from past days disruption in inventory.",
+      "recommendedFor": "Supply chain professionals and business leaders"
+    },
+    {
+      "id": 53,
+      "title": "HBR Artificial Intelligence",
+      "author": "Harvard Business Review",
+      "category": "technology",
+      "rating": 4,
+      "coverEmoji": "🤖",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Insights on AI development, business operations, and the broader ethical and economic implications.",
+      "tags": [
+        "Technology",
+        "AI",
+        "Business"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The increasing accuracy and affordability of AI predictions suggest a future where it serves as economic agents",
+        "Scherer's Paradox: We know more than we can tell, also challenges of communicating knowledge in AI",
+        "Between 50% - 70% of companies are actively pursuing AI development"
+      ],
+      "favoriteQuote": "Governments need to focus on improving education, ethics, and not focus too much on reducing the gap for advancement towards general intelligence.",
+      "recommendedFor": "Business leaders navigating AI transformation"
     }
   ]
 }
