@@ -1550,6 +1550,223 @@
       ],
       "favoriteQuote": "Choice architecture, the subtle ways of structuring human choices, shapes how humans make decisions.",
       "recommendedFor": "Anyone interested in behavioral economics and decision-making"
+    },
+    {
+      "id": 68,
+      "title": "Cat's Cradle",
+      "author": "Kurt Vonnegut",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "❄️",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Dark humor and inventive terminology to explore themes of human purpose, the absurdity of institutional norms, and the perennial transformation of technologies.",
+      "tags": [
+        "Fiction",
+        "Satire",
+        "Science Fiction"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "To what extent our desire for \"progress\", for something better, will destroy what we have?",
+        "Science is a religion that worships knowledge without ever discovering what they are doing",
+        "Everything must have a purpose? asked God. \"Certainly\" said man",
+        "People never suggestion are denying lessons from god"
+      ],
+      "favoriteQuote": "Everything must have a purpose? asked God. \"Certainly\" said man. Then I leave it to you to think of one for all this, said God. And He went away.",
+      "recommendedFor": "Readers who enjoy dark satire and existential themes"
+    },
+    {
+      "id": 69,
+      "title": "Against Empathy",
+      "author": "Paul Bloom",
+      "category": "philosophy",
+      "rating": 5,
+      "coverEmoji": "❤️‍🩹",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Challenges the conventional wisdom that empathy is an absolute moral guide, arguing that empathy's focused emotional response can lead to injustice and irrational decisions.",
+      "tags": [
+        "Philosophy",
+        "Psychology",
+        "Ethics"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Empathy is an unreliable moral guide, often leading to biased and disproportionate responses",
+        "Distinguishing between empathy and compassion is crucial",
+        "In professional fields such as medicine, empathy might hinder objective and effective practices",
+        "Empathy can exacerbate biases, emphasizing the suffering of individuals over the greater needs of the many"
+      ],
+      "favoriteQuote": "Empathy's narrow focus can obstruct necessary long-term gains, misleading our perceptions of right and wrong.",
+      "recommendedFor": "Those interested in moral philosophy and rational decision-making"
+    },
+    {
+      "id": 70,
+      "title": "Awakening Your Psychic Strengths",
+      "author": "John Holland",
+      "category": "self-help",
+      "rating": 3,
+      "coverEmoji": "🔮",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "An enriching guide that teaches readers to harness their psychic abilities to enhance their spiritual connections and personal growth.",
+      "tags": [
+        "Self-Help",
+        "Spirituality",
+        "Psychic"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Every person must let go to help them learn emotional and psychic controls through vibrating resonant therapists",
+        "Each of the seven chakras governs specific physical and emotional aspects of our lives, affecting overall well-being",
+        "The colors and energies of auras provide insights into a person's health emotional and psychic state",
+        "Learning to manage your negative abilities to renal for psychic connection and develop more meaningful communication"
+      ],
+      "favoriteQuote": "Psychic abilities are a natural extension of our traditional five senses to perceive more subtle spiritual energies.",
+      "recommendedFor": "Those interested in developing intuition and spiritual abilities"
+    },
+    {
+      "id": 71,
+      "title": "Brida",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "🌙",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Explores the mystical journey of self-discovery through spiritual and romantic quest, where the visible world is the mere shadow of the invisible.",
+      "tags": [
+        "Fiction",
+        "Spirituality",
+        "Romance"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "When you find your path, you must not be afraid. You need to have sufficient courage to make mistakes",
+        "When you're in love, you're capable of learning everything and reaching things you had never dared even to think",
+        "People give flowers as presents because flowers contain true meaning of love",
+        "Making our life worth living requires taking risks. Nothing is at risk, nothing gained"
+      ],
+      "favoriteQuote": "When you find your path, you must not be afraid. You need to have sufficient courage to make mistakes. Disappointment, defeat, and despair are the tools God uses to show us the way.",
+      "recommendedFor": "Readers seeking spiritual and romantic narratives"
+    },
+    {
+      "id": 72,
+      "title": "To Be a Cat",
+      "author": "Matt Haig",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "🐱",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Offers a look into the consequences of whimsical desires through a story about longing for simplicity, exploring themes of identity, the complexity of desires, and the power of love.",
+      "tags": [
+        "Fiction",
+        "Young Adult",
+        "Fantasy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Wishing to escape problems through simple solutions can lead to unexpected complications",
+        "A single negative experience doesn't dictate the entirety of life",
+        "Our deepest desires can become prisons when they manifest",
+        "Love remains the strongest force, capable of providing true fulfillment"
+      ],
+      "favoriteQuote": "What we think we want, we don't always know best.",
+      "recommendedFor": "Young adult readers and those who enjoy stories about perspective"
+    },
+    {
+      "id": 73,
+      "title": "Crónica de una Muerte Anunciada",
+      "author": "Gabriel García Márquez",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🗡️",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Explores themes of honor, fate, and the inescapable nature of human page events through collective narration.",
+      "tags": [
+        "Fiction",
+        "Latin Literature",
+        "Mystery"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Collective inertia is often as culpable as tragedy as the act itself",
+        "Ego-driven actions can predestine individuals to tragic ends",
+        "Silent social codes and blind beliefs can lead to deadly consequences",
+        "The game for absolute truth can obscure deeper understandings of human events"
+      ],
+      "favoriteQuote": "Fate is a soothing notion and it seems our lives follow more overlapping and perhaps less clear-cut fulfilling prophecies.",
+      "recommendedFor": "Lovers of Latin American literature and tragic narratives"
+    },
+    {
+      "id": 74,
+      "title": "The Creative Act",
+      "author": "Rick Rubin",
+      "category": "creativity",
+      "rating": 5,
+      "coverEmoji": "⭕",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "A deeply philosophical and spiritual exploration, presenting art not just as a product but as a way of life.",
+      "tags": [
+        "Creativity",
+        "Art",
+        "Philosophy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The object is not to make art, it is to be in that state that makes creating art inevitable",
+        "What ultimately makes a great work is the grand total of the source",
+        "The personal is the universal",
+        "Rules are mere suggestions and should be tested, not followed",
+        "Some things are too important to be taken seriously"
+      ],
+      "favoriteQuote": "The object is not to make art, it is to be in that state that makes creating art inevitable.",
+      "recommendedFor": "Artists and creatives seeking deeper understanding of the creative process"
+    },
+    {
+      "id": 75,
+      "title": "Felicidad - Inteligencia Emocional",
+      "author": "Rocío Velázquez",
+      "category": "self-help",
+      "rating": 4,
+      "coverEmoji": "🌻",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Challenges traditional views that equate happiness with joy, emphasizing the importance of embracing all emotional experiences.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Happiness"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Ideological pressures to pursue happiness can create unrealistic life expectations",
+        "Gratitude is pivotal in enhancing life satisfaction across various happiness studies",
+        "Strong human connections and serving greater purposes are key to true happiness",
+        "Corporate cultures that prioritize positive environments contribute significantly to employee satisfaction"
+      ],
+      "favoriteQuote": "Happiness involves embracing a full spectrum of emotions, not just the absence of negative ones.",
+      "recommendedFor": "Those seeking a balanced approach to emotional well-being"
+    },
+    {
+      "id": 76,
+      "title": "Hippie",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "☮️",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Captures the 1970s hippie culture, reflecting on themes of freedom, love, and spiritual exploration.",
+      "tags": [
+        "Fiction",
+        "Travel",
+        "Spirituality"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Challenges societal norms and fosters authentic self-expression beyond conventional expectations",
+        "When you find your path, you must not be afraid. You need to have sufficient courage to make mistakes",
+        "Deep human connections challenge traditional boundaries",
+        "In the exploration of altered states, spiritual journeys parallel physical ones"
+      ],
+      "favoriteQuote": "The more we open ourselves to receive from the world, the more we receive.",
+      "recommendedFor": "Readers interested in counterculture and spiritual journeys"
     }
   ]
 }
