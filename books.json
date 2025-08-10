@@ -1213,6 +1213,343 @@
       ],
       "favoriteQuote": "Governments need to focus on improving education, ethics, and not focus too much on reducing the gap for advancement towards general intelligence.",
       "recommendedFor": "Business leaders navigating AI transformation"
+    },
+    {
+      "id": 54,
+      "title": "Doing AI",
+      "author": "Richard Heimann",
+      "category": "technology",
+      "rating": 5,
+      "coverEmoji": "🧠",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Deals with the pragmatic aspects of applying AI in solving real-world problems, emphasizing a problem-first approach rather than solution-centering.",
+      "tags": [
+        "Technology",
+        "AI",
+        "Business"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Solutions should be as simple as possible but no simpler",
+        "When creating value, prioritize function over beauty",
+        "No single solution excels in all scenarios; success in AI requires aligning algorithms closely with the specific problem",
+        "AI not just as technology but as a broad field of research"
+      ],
+      "favoriteQuote": "To what extent will collaboration with AI redefine our understanding of intelligence?",
+      "recommendedFor": "Anyone looking to understand practical AI implementation"
+    },
+    {
+      "id": 55,
+      "title": "Hidden Potential",
+      "author": "Adam Grant",
+      "category": "self-help",
+      "rating": 5,
+      "coverEmoji": "💎",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Explores the depths of human capacity beyond conventional talent, focusing on the transformative power of motivation, resilience, and growth.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Growth"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "True potential is fueled by unusual motivation, not just raw talent",
+        "Growth thrives in discomfort—becoming a \"creature of discomfort\" is essential",
+        "Constructive advice is more forward-looking and impactful than feedback",
+        "Striving for \"perfectly acceptable\" is more productive than chasing perfection",
+        "We can't afford to waste a brain"
+      ],
+      "favoriteQuote": "Collective intelligence grows from pro-social skills, not just individual brilliance.",
+      "recommendedFor": "Those wanting to foster environments that nurture collective intelligence"
+    },
+    {
+      "id": 56,
+      "title": "Building Moonshots",
+      "author": "Tamara Carleton & William Cockayne",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🚀",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "An inspirational guide that champions the pursuit of revolutionary ideas—moonshots—that have the potential to alter our world dramatically.",
+      "tags": [
+        "Business",
+        "Innovation",
+        "Strategy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Visioning and Strategic Paranoia: Achieving groundbreaking success requires balancing ambitious future visions with vigilance",
+        "Success in realizing moonshots hinges on the ability to evolve and maintain a growth mindset",
+        "Firm beliefs in the potential for change act as catalysts for making that change a reality",
+        "Innovation thrives on multidisciplinary collaboration"
+      ],
+      "favoriteQuote": "Collective intelligence and skills trump individual achievement. Monumental goals are more attainable through radical collaboration.",
+      "recommendedFor": "Those daring to dream of a better future"
+    },
+    {
+      "id": 57,
+      "title": "Adulterio",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 4,
+      "coverEmoji": "🍒",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "Explores the emotional and spiritual crisis of living under the comfort of routine, questioning the nature of love, passion, and fulfillment.",
+      "tags": [
+        "Fiction",
+        "Romance",
+        "Philosophy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Life is suspicious; the routine should endure as short as possible",
+        "The light that we reflect is not ours but from emotions of others",
+        "Love does not need to be understood, just felt",
+        "The biggest distance between heaven and hell is yourself"
+      ],
+      "favoriteQuote": "Everything vulnerable unlocks the depth of human connection.",
+      "recommendedFor": "Readers exploring the complexities of happiness and fulfillment"
+    },
+    {
+      "id": 58,
+      "title": "Desobediencia Civil",
+      "author": "Henry David Thoreau",
+      "category": "philosophy",
+      "rating": 5,
+      "coverEmoji": "✊",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Advocates for individual resistance to government policies that contradict moral values, emphasizing the primacy of personal conscience over legal mandates.",
+      "tags": [
+        "Philosophy",
+        "Politics",
+        "Ethics"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Government morality should supersede legal obligations, especially under unjust governance",
+        "Democratic systems are flawed when they legitimize injustices such as slavery and aggressive wars",
+        "True social change cannot be achieved solely through political engagement; core principles must remain non-politicized",
+        "Individuals must seek moral independence to reject societal norms and laws conflicting with personal justice"
+      ],
+      "favoriteQuote": "A life of simplicity and self-reliance frees individuals from societal constraints and superficial needs.",
+      "recommendedFor": "Those questioning the balance of law and morality in civic life"
+    },
+    {
+      "id": 59,
+      "title": "Conscious",
+      "author": "Annaka Harris",
+      "category": "philosophy",
+      "rating": 4,
+      "coverEmoji": "🧠",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "A captivating exploration of one of the most profound mysteries in science and philosophy - the nature of consciousness, examining how subjective experience emerges.",
+      "tags": [
+        "Philosophy",
+        "Neuroscience",
+        "Consciousness"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The emergence of consciousness from neurological networks is intricately linked to objective experiences collectively",
+        "Our intuitions about consciousness can be deceptive, often leading to misconceptions about its nature",
+        "Consciousness results from the complex integration and editing of sensory information",
+        "Human behavior and consciousness can be significantly influenced by parasites, hormones and unconscious processes"
+      ],
+      "favoriteQuote": "The mystery of how subjective experience arises remains one of the most intriguing and least understood aspects of human existence.",
+      "recommendedFor": "Anyone interested in the foundations of consciousness and the human mind"
+    },
+    {
+      "id": 60,
+      "title": "Más Fuerte que la Adversidad",
+      "author": "Walter Riso",
+      "category": "self-help",
+      "rating": 4,
+      "coverEmoji": "💪",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Examines how adversities can serve as crucial growth opportunities, exploring strategies for developing resilience and authentic strength to navigate life challenges.",
+      "tags": [
+        "Self-Help",
+        "Psychology",
+        "Resilience"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Essential bodily must be, highly which wisdom is focus energy on what truly matters",
+        "Challenges are opportunities for growth, providing valuable lessons",
+        "Full commitment to endeavors is crucial for achieving meaningful success and satisfaction",
+        "Transcending the fear of others opinions is essential for authentic living"
+      ],
+      "favoriteQuote": "Direct confrontation with fears reduces their intimidation, revealing their manageable nature.",
+      "recommendedFor": "Those seeking to build resilience and overcome adversity"
+    },
+    {
+      "id": 61,
+      "title": "En Agosto Nos Vemos",
+      "author": "Gabriel García Márquez",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🌺",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "A narrative rich with passion, travel, and introspection, delving into the complexities of love and desire through the lens of profound influence of societal norms on personal identity.",
+      "tags": [
+        "Fiction",
+        "Latin Literature",
+        "Romance"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Exploring desire for recognition, Marquez reveals how societal demands clash with our authentic selves",
+        "Love and passion challenge societal expectations",
+        "Through dying a woman is a trade illuminated maturity",
+        "Navigation most of intimacy and recognizing boundaries"
+      ],
+      "favoriteQuote": "Boundaries of mortgages and lawn walrus relationships; acceptance is definitely recommended.",
+      "recommendedFor": "Lovers of Latin American literature and magical realism"
+    },
+    {
+      "id": 62,
+      "title": "El Alienista",
+      "author": "J.M. Machado de Assis",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "🏥",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Explores the fluid and often undistinguishable boundaries between sanity and madness through the story of a psychiatrist who questions the conventional definitions of mental health.",
+      "tags": [
+        "Fiction",
+        "Brazilian Literature",
+        "Satire"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "The boundaries defining sanity are subjective and socially constructed",
+        "A person where present prevails, the most authorized becomes sane determining the necessary of madness",
+        "Power corrupts, particularly when deciding mental conditions",
+        "The absurd himself may embody madness, turning the diagnosis back on the practitioner"
+      ],
+      "favoriteQuote": "In a society where present prevails, the most authorized becomes sane determining the necessary of madness.",
+      "recommendedFor": "Readers who enjoy satire and questioning societal norms"
+    },
+    {
+      "id": 63,
+      "title": "Allen Carr's Easy Way to Quit Emotional Eating",
+      "author": "Allen Carr",
+      "category": "self-help",
+      "rating": 5,
+      "coverEmoji": "🍽️",
+      "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "summary": "A transformative approach to breaking free from emotional eating by challenging the perceived pleasures and fears associated with food addiction.",
+      "tags": [
+        "Self-Help",
+        "Health",
+        "Psychology"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Look from misery from emotional eating negates any short-term pleasure derived from junk food",
+        "Fear is the primary driver of addiction, underpinning emotional eating habits",
+        "Recognizing the true flavors of food beyond sugar addiction reveals the absence of genuine pleasure",
+        "Using willpower to quit junk food is ineffective because it does not alter underlying attitudes towards food"
+      ],
+      "favoriteQuote": "Using substitutes for junk food perpetuates the false difficulty of quitting, hindering true progress.",
+      "recommendedFor": "Anyone struggling with emotional eating patterns"
+    },
+    {
+      "id": 64,
+      "title": "Against Democracy",
+      "author": "Jason Brennan",
+      "category": "philosophy",
+      "rating": 5,
+      "coverEmoji": "🗳️",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "Critically examines democracy, arguing that low-information voters significantly compromise the system through ignorance and bias.",
+      "tags": [
+        "Philosophy",
+        "Politics",
+        "Democracy"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Good intentions of many potential with vows is defeated enough to raise concerns significant constitutions for democracy",
+        "Political knowledge is crucial for meaningful democratic participation, creating what argument could prevent decisions that worsen current political problems",
+        "Distributing political power among more knowledgeable citizens could improve democratic outcomes",
+        "Political tribalism and ignorance create societal challenges beyond individual democracy"
+      ],
+      "favoriteQuote": "The effectiveness of traditional democratic systems is invalidating the mass voting from insufficient voter participation.",
+      "recommendedFor": "Those questioning democratic systems and political participation"
+    },
+    {
+      "id": 65,
+      "title": "Veronika Decides to Die",
+      "author": "Paulo Coelho",
+      "category": "fiction",
+      "rating": 5,
+      "coverEmoji": "💊",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "Explores the irony of choosing between madness and conformity, going deep into the essence of our actions and societal definitions.",
+      "tags": [
+        "Fiction",
+        "Philosophy",
+        "Mental Health"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Collective society is the cause of madness: challenging conventional perspectives",
+        "Living is meant not to be dull approach but to following the flow",
+        "Personal identity should be self-determined, not dictated by external influences",
+        "What seems can be our labels and expectations we gave to up"
+      ],
+      "favoriteQuote": "Personal identity should be self-determined, not dictated by external influences.",
+      "recommendedFor": "Readers seeking powerful introspection about life and society"
+    },
+    {
+      "id": 66,
+      "title": "Why Is Sex Fun?",
+      "author": "Jared Diamond",
+      "category": "science",
+      "rating": 4,
+      "coverEmoji": "❤️",
+      "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "summary": "Examines human sexuality from an evolutionary perspective, comparing human sexual behavior with other species.",
+      "tags": [
+        "Science",
+        "Evolution",
+        "Biology"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Pair bonding evolved to ensure cooperation and support for offspring survival",
+        "Long-term monogamous relationships support stable family structures and child-rearing potential better",
+        "Recognized parental involvement in humans strengthens family bonds and enhances parental duties",
+        "Human rouge sexual signals create activity without clear evolutionary basis indicating recreational and bonding"
+      ],
+      "favoriteQuote": "Human monogamy has various biological and social factors that ensure human survival and reproductive success.",
+      "recommendedFor": "Those interested in evolutionary biology and human behavior"
+    },
+    {
+      "id": 67,
+      "title": "Nudge",
+      "author": "Richard H. Thaler & Cass R. Sunstein",
+      "category": "business",
+      "rating": 5,
+      "coverEmoji": "🐘",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "Discusses how small changes in our environment can significantly influence behavior, improving health, wealth, and happiness through choice architecture.",
+      "tags": [
+        "Business",
+        "Psychology",
+        "Behavioral Economics"
+      ],
+      "yearRead": 2024,
+      "keyTakeaways": [
+        "Libertarian paternalism leverages choice architecture to guide decisions without coercion",
+        "Default settings and automatic enrollment exploit behavioral inertia",
+        "Behaviors are often contagious, with social influences work as poor pressure reinforcing behaviors",
+        "Nudges can emerge to help make decisions in a societal environment"
+      ],
+      "favoriteQuote": "Choice architecture, the subtle ways of structuring human choices, shapes how humans make decisions.",
+      "recommendedFor": "Anyone interested in behavioral economics and decision-making"
     }
   ]
 }
