@@ -1262,24 +1262,44 @@
         // Fetch books from JSON
         async function loadBooksData() {
             try {
+                console.log('Fetching books.json...');
                 const response = await fetch('books.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const data = await response.json();
+                console.log('Successfully loaded JSON data:', data);
+                
+                // Validate the data structure
+                if (!data || !data.books || !Array.isArray(data.books)) {
+                    console.error('Invalid data structure in books.json');
+                    return [];
+                }
+                
+                console.log(`Found ${data.books.length} books in JSON`);
                 return data.books;
             } catch (error) {
                 console.error('Error loading books:', error);
+                console.log('Using fallback data for testing...');
+                
                 // Return fallback data if JSON fails to load
                 return [
                     {
                         id: 1,
-                        title: "No Longer Human",
-                        author: "Osamu Dazai",
+                        title: "The Midnight Library",
+                        author: "Matt Haig",
                         category: "philosophy",
                         rating: 5,
-                        coverEmoji: "📚",
-                        coverGradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                        summary: "A profound exploration of alienation and the human condition.",
-                        tags: ["Philosophy", "Japanese", "Classic"],
-                        yearRead: 2024
+                        coverEmoji: "🧘",
+                        coverGradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                        summary: "This novel explores the idea of what could have happened, regrets and the impact choices we make have.",
+                        tags: ["Philosophy"],
+                        yearRead: 2023,
+                        keyTakeaways: ["Never underestimate the big importance of small things."],
+                        favoriteQuote: "The only way to learn is to live.",
+                        recommendedFor: "Readers interested in philosophy"
                     }
                 ];
             }
@@ -1323,23 +1343,36 @@
         
         // Initialize the library
         async function initializeLibrary() {
-            // Load books from JSON
-            const books = await loadBooksData();
-            console.log('Loaded', books.length, 'books from JSON');
-            
-            allBooks = books;
-            filteredBooks = [...allBooks];
-            
-            renderCurrentlyReading();
-            updateStatistics();
-            renderBooks();
-            setupEventListeners();
-            addDynamicStyles();
-            
-            // Initialize animations
-            setTimeout(() => {
-                initializeAnimations();
-            }, 500);
+            try {
+                console.log('Starting library initialization...');
+                
+                // Load books from JSON
+                const books = await loadBooksData();
+                console.log('Loaded', books ? books.length : 0, 'books from JSON');
+                
+                if (!books || books.length === 0) {
+                    console.error('No books loaded! Check books.json');
+                    document.getElementById('booksGrid').innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-secondary);">No books found. Please check if books.json is loading correctly.</p>';
+                    return;
+                }
+                
+                allBooks = books;
+                filteredBooks = [...allBooks];
+                
+                renderCurrentlyReading();
+                updateStatistics();
+                renderBooks();
+                setupEventListeners();
+                addDynamicStyles();
+                
+                // Initialize animations
+                setTimeout(() => {
+                    initializeAnimations();
+                }, 500);
+            } catch (error) {
+                console.error('Error initializing library:', error);
+                document.getElementById('booksGrid').innerHTML = '<p style="text-align: center; padding: 40px; color: var(--text-secondary);">Error loading library: ' + error.message + '</p>';
+            }
         }
 
         // Render currently reading book
@@ -1770,7 +1803,12 @@
         }
 
         // Initialize library when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializeLibrary);
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting initialization...');
+            initializeLibrary().catch(error => {
+                console.error('Critical error:', error);
+            });
+        });
     </script>
 </body>
 </html>
