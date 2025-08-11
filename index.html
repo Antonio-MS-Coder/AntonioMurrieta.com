@@ -88,9 +88,9 @@
         }
 
         .logo {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
             color: var(--dark);
             text-decoration: none;
             transition: all 0.2s ease;
@@ -117,18 +117,19 @@
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 32px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.5px;
             transition: all 0.2s ease;
             position: relative;
+            text-transform: uppercase;
         }
 
         .nav-links a::after {
@@ -154,6 +155,8 @@
         .nav-links a.active {
             color: var(--dark);
             font-weight: 600;
+            border-bottom: 2px solid var(--cardinal);
+            padding-bottom: 2px;
         }
 
         /* Hero Section */
@@ -873,10 +876,6 @@
                 I create digital products, write books that matter, and explore the edges of what's possible 
                 with code and creativity. Currently building AI-powered experiences and reading 52 books a year.
             </p>
-            <div class="hero-cta">
-                <a href="work.html" class="btn btn-primary">View Projects</a>
-                <a href="library.html" class="btn btn-secondary">Reading List</a>
-            </div>
         </div>
 
         <!-- Scroll Indicator -->
