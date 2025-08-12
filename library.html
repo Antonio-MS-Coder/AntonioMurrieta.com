@@ -421,6 +421,7 @@
             border-color: var(--cardinal);
         }
 
+        /* Star ratings removed from book cards for cleaner design
         .book-rating {
             position: absolute;
             top: 24px;
@@ -429,7 +430,7 @@
             font-size: 16px;
             font-weight: 600;
             z-index: 1;
-        }
+        } */
 
         .book-cover {
             width: 100%;
@@ -1443,7 +1444,6 @@
             
             const booksHtml = filteredBooks.map((book, index) => `
                 <div class="book-card" data-category="${book.category}" data-book-id="${book.id}">
-                    <div class="book-rating">${generateStarRating(book.rating)}</div>
                     ${createBookCover(book)}
                     <div class="book-info">
                         <h3 class="book-title">${book.title}</h3>
