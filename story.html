@@ -3,14 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story - Antonio Murrieta</title>
-    <meta name="description" content="The journey of Antonio Murrieta - from curious student to digital artist, entrepreneur, and creative technologist.">
+    <title>Antonio Murrieta - Business Intelligence Expert & Tech Leader | Professional Journey</title>
+    <meta name="description" content="Discover Antonio Murrieta's professional journey: Business Intelligence expert, AI specialist, and strategic consultant in Mexico. From Lake Forest Academy to Tec de Monterrey, leading digital transformation and social impact initiatives.">
+    <meta name="keywords" content="Antonio Murrieta, Business Intelligence Mexico, AI consultant, data analytics expert, Tec de Monterrey, strategic consulting, digital transformation, Mexican tech leader, entrepreneurship, DIDI analytics, INC Monterrey">
+    <meta name="author" content="Antonio Murrieta">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://antoniomurrieta.com/story.html">
     
     <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Story - Antonio Murrieta">
-    <meta property="og:description" content="The journey of Antonio Murrieta - from curious student to digital artist, entrepreneur, and creative technologist.">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Antonio Murrieta - Business Intelligence Expert & Tech Leader">
+    <meta property="og:description" content="Business Intelligence specialist with expertise in AI, data analytics, and strategic consulting. Leading digital transformation initiatives in Mexico.">
+    <meta property="og:type" content="profile">
     <meta property="og:url" content="https://antoniomurrieta.com/story.html">
+    <meta property="og:image" content="https://antoniomurrieta.com/images/antonio-murrieta-professional.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_MX">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antonio Murrieta - Business Intelligence Expert">
+    <meta name="twitter:description" content="Business Intelligence specialist, AI consultant, and strategic leader driving innovation in Mexico.">
+    <meta name="twitter:image" content="https://antoniomurrieta.com/images/antonio-murrieta-professional.jpg">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Antonio Murrieta",
+        "jobTitle": "Business Intelligence Specialist & Strategic Consultant",
+        "description": "Business Intelligence expert with specialization in AI, data analytics, and digital transformation",
+        "url": "https://antoniomurrieta.com",
+        "sameAs": [
+            "https://linkedin.com/in/antoniomurrieta",
+            "https://github.com/antoniomurrieta"
+        ],
+        "alumniOf": [
+            {
+                "@type": "EducationalOrganization",
+                "name": "Tecnológico de Monterrey",
+                "sameAs": "https://tec.mx"
+            },
+            {
+                "@type": "EducationalOrganization",
+                "name": "Lake Forest Academy"
+            }
+        ],
+        "knowsAbout": [
+            "Business Intelligence",
+            "Artificial Intelligence",
+            "Data Analytics",
+            "Strategic Consulting",
+            "Digital Marketing",
+            "Python Programming",
+            "SQL",
+            "Machine Learning",
+            "Leadership",
+            "Entrepreneurship"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Life Changing Knowledge"
+        },
+        "nationality": "Mexican",
+        "knowsLanguage": ["Spanish", "English"]
+    }
+    </script>
     
     <style>
         * {
@@ -20,21 +78,30 @@
         }
 
         :root {
-            /* Stanford-inspired palette with warmth */
+            /* Professional palette with sophisticated accents */
             --cardinal: #8C1515;
             --cardinal-light: #B83A3A;
-            --dark: #2E2D29;
+            --cardinal-dark: #6B1010;
+            --dark: #1A1A1A;
             --warm-gray: #544948;
-            --light-gray: #F4F4F4;
+            --light-gray: #F8F8F8;
             --white: #FFFFFF;
             --accent-blue: #006CB8;
             --accent-green: #009B76;
-            --text-primary: #2E2D29;
+            --accent-gold: #D4AF37;
+            --text-primary: #1A1A1A;
             --text-secondary: #544948;
             --border-light: #E5E5E5;
+            --success: #28A745;
+            --gradient-start: #8C1515;
+            --gradient-end: #006CB8;
             --max-width: 1200px;
             --serif: 'Crimson Text', Georgia, serif;
             --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.15);
         }
 
         ::selection {
@@ -47,7 +114,7 @@
 
         body {
             font-family: var(--sans);
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+            background: var(--white);
             color: var(--text-primary);
             line-height: 1.6;
             font-size: 16px;
@@ -55,6 +122,22 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(140, 21, 21, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 108, 184, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(0, 155, 118, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Smooth Scroll */
@@ -162,14 +245,196 @@
             max-width: var(--max-width);
             margin: 0 auto;
             position: relative;
+            z-index: 1;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cardinal) 0%, var(--accent-blue) 50%, var(--accent-green) 100%);
+        }
+        
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+            font-family: var(--sans);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        /* CV Download Section */
+        .cv-section {
+            margin: 80px 0;
+            padding: 60px;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-dark) 100%);
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .cv-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .cv-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cv-title {
+            font-family: var(--serif);
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+        
+        .cv-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--white);
+            color: var(--cardinal);
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cv-download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--cardinal);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: 0;
+        }
+        
+        .cv-download-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cv-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            color: var(--white);
+        }
+        
+        .cv-download-btn span,
+        .cv-download-btn svg {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cv-download-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         /* Hero Section */
         .story-hero {
             text-align: center;
-            margin-bottom: 120px;
+            margin-bottom: 80px;
             position: relative;
             animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-light) 100%);
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInUp {
@@ -185,7 +450,7 @@
 
         .story-title {
             font-family: var(--serif);
-            font-size: clamp(56px, 8vw, 88px);
+            font-size: clamp(48px, 7vw, 72px);
             font-weight: 400;
             letter-spacing: -2px;
             margin-bottom: 32px;
@@ -245,6 +510,68 @@
             opacity: 0.3;
         }
 
+        /* Timeline Section Header */
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .timeline-header h2 {
+            font-family: var(--serif);
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .timeline-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--cardinal);
+        }
+        
+        .timeline-filters {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 24px;
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn.active {
+            background: var(--cardinal);
+            color: var(--white);
+            border-color: var(--cardinal);
+        }
+        
+        .filter-btn:hover:not(.active) {
+            border-color: var(--cardinal);
+            color: var(--cardinal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
         /* Timeline */
         .timeline {
             position: relative;
@@ -293,15 +620,56 @@
             padding: 40px;
             background: var(--white);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
+            border-radius: 16px;
             position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .timeline-content.type-education {
+            border-left: 4px solid var(--accent-blue);
+        }
+        
+        .timeline-content.type-work {
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .timeline-content.type-achievement {
+            border-left: 4px solid var(--accent-gold);
         }
 
         .timeline-content:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(140, 21, 21, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .timeline-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .timeline-content.type-education .timeline-badge {
+            background: rgba(0, 108, 184, 0.1);
+            color: var(--accent-blue);
+        }
+        
+        .timeline-content.type-work .timeline-badge {
+            background: rgba(0, 155, 118, 0.1);
+            color: var(--accent-green);
+        }
+        
+        .timeline-content.type-achievement .timeline-badge {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-gold);
         }
 
         .timeline-item:nth-child(odd) .timeline-content {
@@ -382,20 +750,36 @@
             font-size: 16px;
             line-height: 1.7;
             color: var(--text-secondary);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .timeline-skill {
+            padding: 4px 12px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .timeline-emoji {
             font-size: 32px;
             position: absolute;
             top: -16px;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover .timeline-emoji {
+            transform: scale(1.2) rotate(10deg);
         }
 
-        .timeline-content:hover .timeline-emoji {
-            filter: grayscale(0%);
-        }
 
         .timeline-item:nth-child(odd) .timeline-emoji {
             right: 30px;
@@ -545,126 +929,168 @@
             font-weight: 400;
         }
 
-        /* Books Section */
-        .books-section {
-            margin: 120px 0 80px;
-        }
-
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .book-card {
-            background: var(--white);
-            padding: 30px 20px;
+        /* Call to Action Section */
+        .cta-section {
+            margin: 120px 0;
+            padding: 80px 60px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            border-radius: 24px;
             text-align: center;
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
-
-        .book-card::before {
+        
+        .cta-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(140, 21, 21, 0.05), transparent);
-            transition: left 0.6s;
-        }
-
-        .book-card:hover::before {
-            left: 100%;
-        }
-
-        .book-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(140, 21, 21, 0.1);
-            border-color: var(--cardinal);
-        }
-
-        .book-emoji {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            filter: grayscale(20%);
-        }
-
-        .book-card:hover .book-emoji {
-            transform: scale(1.1);
-            filter: grayscale(0%);
-        }
-
-        .book-title {
-            font-family: var(--serif);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--dark);
-            line-height: 1.4;
-        }
-
-        .book-author {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Dynamic Background Elements */
-        .floating-gradient {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            pointer-events: none;
-            animation: float-gradient 20s ease-in-out infinite;
-        }
-
-        .gradient-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
             background: radial-gradient(circle, var(--cardinal) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
+            opacity: 0.1;
+            animation: float-gradient 15s ease-in-out infinite;
         }
-
-        .gradient-2 {
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
             background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
-            bottom: -300px;
-            left: -300px;
-            animation-delay: -10s;
+            opacity: 0.1;
+            animation: float-gradient 15s ease-in-out infinite reverse;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-title {
+            font-family: var(--serif);
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .cta-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--cardinal) 0%, var(--cardinal-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(140, 21, 21, 0.3);
+        }
+        
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(140, 21, 21, 0.4);
+        }
+        
+        .cta-btn-secondary {
+            background: var(--white);
+            color: var(--cardinal);
+            border: 2px solid var(--cardinal);
+        }
+        
+        .cta-btn-secondary:hover {
+            background: var(--cardinal);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(140, 21, 21, 0.2);
         }
 
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border-light);
+            z-index: 1100;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cardinal) 0%, var(--accent-blue) 50%, var(--accent-green) 100%);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
         @keyframes float-gradient {
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Reading Indicator */
-        .reading-time {
+        /* Scroll to Top Button */
+        .scroll-to-top {
             position: fixed;
-            top: 50%;
+            bottom: 40px;
             right: 40px;
-            transform: translateY(-50%) rotate(90deg);
-            transform-origin: center;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
+            width: 56px;
+            height: 56px;
+            background: var(--cardinal);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
         }
-
-        .reading-time.visible {
-            opacity: 0.5;
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            background: var(--cardinal-dark);
+        }
+        
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
 
         /* Mobile Menu */
@@ -819,33 +1245,88 @@
         </div>
     </nav>
 
-    <!-- Dynamic Background -->
-    <div class="floating-gradient gradient-1"></div>
-    <div class="floating-gradient gradient-2"></div>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
     
-    <!-- Reading Indicator -->
-    <div class="reading-time" id="readingTime">8 MIN READ</div>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M7 14l5-5 5 5z"/>
+        </svg>
+    </button>
 
     <!-- Story Container -->
     <div class="story-container">
         <!-- Hero Section -->
         <div class="story-hero">
+            <div class="hero-badge">Business Intelligence Expert</div>
             <h1 class="story-title">
-                My <span>Story</span>
+                From Vision to <span>Impact</span>
             </h1>
             <p class="story-quote">
-                My goal in life is to become a world-class industry leader giving back to my community.
-                Through technology, entrepreneurship, and continuous learning,
-                I'm building bridges between innovation and social impact.
+                Building bridges between technology and humanity, one innovation at a time.
+                My journey from international education to becoming a business intelligence leader
+                is driven by a commitment to excellence and social impact.
             </p>
         </div>
+        
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="52">0</div>
+                <div class="stat-label">Books Read Annually</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="250">0</div>
+                <div class="stat-label">Team Members Led</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Languages Spoken</div>
+            </div>
+        </div>
+        
+        <!-- CV Download Section -->
+        <div class="cv-section">
+            <div class="cv-content">
+                <h2 class="cv-title">Ready to Connect?</h2>
+                <p class="cv-subtitle">
+                    Download my comprehensive CV to explore my full professional journey,
+                    technical expertise, and leadership experience.
+                </p>
+                <a href="/Users/tonomurrieta/Downloads/CV_july_24.pdf" download="Antonio_Murrieta_CV.pdf" class="cv-download-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2a1 1 0 011 1v10.586l2.707-2.707a1 1 0 111.414 1.414l-4.414 4.414a1 1 0 01-1.414 0l-4.414-4.414a1 1 0 111.414-1.414L11 13.586V3a1 1 0 011-1zM5 17a1 1 0 011 1v2h12v-2a1 1 0 112 0v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2a1 1 0 011-1z"/>
+                    </svg>
+                    <span>Download Professional CV</span>
+                </a>
+            </div>
+        </div>
 
+        <!-- Timeline Section -->
+        <div class="timeline-header">
+            <h2>Professional Journey</h2>
+            <div class="timeline-filters">
+                <button class="filter-btn active" data-filter="all">All Experiences</button>
+                <button class="filter-btn" data-filter="education">Education</button>
+                <button class="filter-btn" data-filter="work">Work</button>
+                <button class="filter-btn" data-filter="achievement">Achievements</button>
+            </div>
+        </div>
+        
         <!-- Timeline -->
         <div class="timeline">
             <!-- Lake Forest Academy -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="education">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-education">
+                    <span class="timeline-badge">Education</span>
                     <span class="timeline-emoji">🌍</span>
                     <div class="timeline-year">2015-2017</div>
                     <h3 class="timeline-title">Lake Forest Academy</h3>
@@ -855,13 +1336,19 @@
                         Discovered creativity through theater, woodworking, and glass melting. This experience 
                         opened my eyes to diverse perspectives and ignited my passion for cross-cultural collaboration.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">International Collaboration</span>
+                        <span class="timeline-skill">Creative Arts</span>
+                        <span class="timeline-skill">English Fluency</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Tec de Monterrey High School -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="education achievement">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-achievement">
+                    <span class="timeline-badge">Achievement</span>
                     <span class="timeline-emoji">🎓</span>
                     <div class="timeline-year">2017-2020</div>
                     <h3 class="timeline-title">TecIB Program - Campus Santa Fe</h3>
@@ -871,13 +1358,20 @@
                         half a million pesos for schools in Oaxaca. Led Carnero leadership program, served as 
                         SaPrepa student government president, and participated in Earth x sustainability summit.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Leadership</span>
+                        <span class="timeline-skill">Social Impact</span>
+                        <span class="timeline-skill">Event Management</span>
+                        <span class="timeline-skill">Fundraising</span>
+                    </div>
                 </div>
             </div>
 
             <!-- University -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="education achievement">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-education">
+                    <span class="timeline-badge">Education</span>
                     <span class="timeline-emoji">🚀</span>
                     <div class="timeline-year">2021-2025</div>
                     <h3 class="timeline-title">Business Intelligence & AI - Tec de Monterrey</h3>
@@ -887,13 +1381,20 @@
                         INC Monterrey, LATAM's largest entrepreneurship congress, managing 250+ volunteers. 
                         Gained international experience in Germany while strengthening technical expertise.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Business Intelligence</span>
+                        <span class="timeline-skill">Artificial Intelligence</span>
+                        <span class="timeline-skill">Team Management</span>
+                        <span class="timeline-skill">Strategic Planning</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Work Experience: Camp Pocono -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="work">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-work">
+                    <span class="timeline-badge">Work Experience</span>
                     <span class="timeline-emoji">⛺</span>
                     <div class="timeline-year">Summer 2021 & 2022</div>
                     <h3 class="timeline-title">Camp Pocono Trails - Group Leader</h3>
@@ -903,13 +1404,19 @@
                         and evening activities. This experience strengthened my leadership abilities and 
                         reinforced my commitment to helping others achieve their personal goals.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Team Leadership</span>
+                        <span class="timeline-skill">Mentoring</span>
+                        <span class="timeline-skill">Program Management</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Work Experience: DIDI -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="work">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-work">
+                    <span class="timeline-badge">Work Experience</span>
                     <span class="timeline-emoji">📊</span>
                     <div class="timeline-year">March - September 2023</div>
                     <h3 class="timeline-title">DIDI - Performance Marketing Intern</h3>
@@ -919,29 +1426,43 @@
                         for data manipulation and dashboard creation. This role deepened my expertise in 
                         data-driven decision making and marketing optimization.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Data Analytics</span>
+                        <span class="timeline-skill">SQL</span>
+                        <span class="timeline-skill">Marketing Optimization</span>
+                        <span class="timeline-skill">Dashboard Creation</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Work Experience: Life Changing Knowledge -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="work">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-work">
+                    <span class="timeline-badge">Current Role</span>
                     <span class="timeline-emoji">💡</span>
                     <div class="timeline-year">2019-Present</div>
-                    <h3 class="timeline-title">Life Changing Knowledge</h3>
+                    <h3 class="timeline-title">Life Changing Knowledge - Business Consultant</h3>
                     <p class="timeline-description">
                         Started as Marketing Content Strategist (2019-2022), managing social media campaigns, 
                         analyzing data with Facebook Ads & Google Analytics. Currently serving as Business 
                         Consultant, leading digitalization efforts, managing the Academy platform, producing 
                         online courses, and providing strategic consulting to improve business operations.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Strategic Consulting</span>
+                        <span class="timeline-skill">Digital Transformation</span>
+                        <span class="timeline-skill">Platform Management</span>
+                        <span class="timeline-skill">Content Strategy</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Digital Artist & Author -->
-            <div class="timeline-item">
+            <div class="timeline-item" data-category="achievement">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content type-achievement">
+                    <span class="timeline-badge">Creative Ventures</span>
                     <span class="timeline-emoji">🎨</span>
                     <div class="timeline-year">2024-Present</div>
                     <h3 class="timeline-title">Digital Renaissance</h3>
@@ -951,6 +1472,12 @@
                         technology, and human experience while maintaining a commitment to reading 52 books per year 
                         to fuel continuous learning and creative inspiration.
                     </p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Publishing</span>
+                        <span class="timeline-skill">iOS Development</span>
+                        <span class="timeline-skill">AI Solutions</span>
+                        <span class="timeline-skill">Creative Writing</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1009,32 +1536,21 @@
             </p>
         </div>
 
-        <!-- Books Section -->
-        <div class="books-section">
-            <h2 class="section-title">Currently Reading</h2>
-            <p class="section-subtitle">
-                Part of my commitment to reading 52 books per year for continuous learning and inspiration
-            </p>
-            <div class="books-grid">
-                <div class="book-card">
-                    <div class="book-emoji">📖</div>
-                    <div class="book-title">No Longer Human</div>
-                    <div class="book-author">Osamu Dazai</div>
-                </div>
-                <div class="book-card">
-                    <div class="book-emoji">📚</div>
-                    <div class="book-title">Before the Coffee Gets Cold</div>
-                    <div class="book-author">Toshikazu Kawaguchi</div>
-                </div>
-                <div class="book-card">
-                    <div class="book-emoji">📕</div>
-                    <div class="book-title">What I Know For Sure</div>
-                    <div class="book-author">Oprah Winfrey</div>
-                </div>
-                <div class="book-card">
-                    <div class="book-emoji">📘</div>
-                    <div class="book-title">The Alchemist</div>
-                    <div class="book-author">Paulo Coelho</div>
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Let's Build Something Extraordinary</h2>
+                <p class="cta-text">
+                    Whether you're looking for strategic consulting, business intelligence expertise,
+                    or innovative digital solutions, I'm here to help transform your vision into reality.
+                </p>
+                <div class="cta-buttons">
+                    <a href="connect.html" class="cta-btn cta-btn-primary">
+                        Start a Conversation
+                    </a>
+                    <a href="work.html" class="cta-btn cta-btn-secondary">
+                        View My Work
+                    </a>
                 </div>
             </div>
         </div>
@@ -1058,28 +1574,120 @@
             });
         });
 
-        // Navbar scroll effect
+        // Navbar scroll effect and progress bar
         const navbar = document.getElementById('navbar');
-        const readingTime = document.getElementById('readingTime');
+        const progressBar = document.getElementById('progressBar');
+        const scrollToTop = document.getElementById('scrollToTop');
         let lastScroll = 0;
+
+        function updateProgressBar() {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = (window.pageYOffset / scrollHeight) * 100;
+            progressBar.style.width = `${scrollProgress}%`;
+        }
 
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             
+            // Navbar effect
             if (currentScroll > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
             
-            // Show reading time indicator after scrolling
-            if (currentScroll > 200) {
-                readingTime.classList.add('visible');
+            // Update progress bar
+            updateProgressBar();
+            
+            // Show/hide scroll to top button
+            if (currentScroll > 500) {
+                scrollToTop.classList.add('visible');
             } else {
-                readingTime.classList.remove('visible');
+                scrollToTop.classList.remove('visible');
             }
             
             lastScroll = currentScroll;
+        });
+
+        // Scroll to top functionality
+        scrollToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animated counter for stats
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        }
+
+        // Observe stats for animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Timeline filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                // Filter timeline items
+                timelineItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        if (item.dataset.category && item.dataset.category.includes(filter)) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
         });
 
         // Smooth reveal animations on scroll
@@ -1103,24 +1711,34 @@
         });
 
         // Observe other animated elements
-        document.querySelectorAll('.skill-card, .book-card').forEach(card => {
+        document.querySelectorAll('.skill-card').forEach(card => {
             observer.observe(card);
         });
 
         // Parallax effect on scroll for hero content
         const heroContent = document.querySelector('.story-hero');
+        const cvSection = document.querySelector('.cv-section');
         
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.3;
+            const parallax = scrolled * 0.2;
             
             if (heroContent && scrolled < window.innerHeight) {
                 heroContent.style.transform = `translateY(${parallax}px)`;
             }
+            
+            // Subtle parallax for CV section
+            if (cvSection) {
+                const cvRect = cvSection.getBoundingClientRect();
+                if (cvRect.top < window.innerHeight && cvRect.bottom > 0) {
+                    const cvParallax = (window.innerHeight - cvRect.top) * 0.05;
+                    cvSection.style.transform = `translateY(${-cvParallax}px)`;
+                }
+            }
         });
 
         // Add micro-interactions to cards
-        document.querySelectorAll('.skill-card, .book-card, .timeline-content').forEach(card => {
+        document.querySelectorAll('.skill-card, .timeline-content, .cv-download-btn').forEach(card => {
             card.addEventListener('mouseenter', function(e) {
                 const rect = this.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -1168,8 +1786,9 @@
                 const windowHeight = window.innerHeight;
                 
                 if (rect.top < windowHeight && rect.bottom > 0) {
+                    const progress = 1 - (rect.top / windowHeight);
                     dot.style.background = 'var(--cardinal)';
-                    dot.style.boxShadow = '0 0 0 8px rgba(140, 21, 21, 0.2)';
+                    dot.style.boxShadow = `0 0 0 ${8 + progress * 4}px rgba(140, 21, 21, ${0.2 - progress * 0.1})`;
                 } else {
                     dot.style.background = 'var(--warm-gray)';
                     dot.style.boxShadow = '0 0 0 4px var(--border-light)';
@@ -1181,7 +1800,34 @@
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
             document.body.style.transition = 'opacity 0.3s ease';
+            
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelector('.hero-badge')?.classList.add('animate');
+                document.querySelector('.story-title')?.classList.add('animate');
+            }, 100);
         });
+
+        // Enhanced timeline interaction
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.addEventListener('click', function() {
+                // Add a subtle pulse effect on click
+                this.style.animation = 'pulse 0.3s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 300);
+            });
+        });
+
+        // Add pulse animation
+        const pulseStyle = document.createElement('style');
+        pulseStyle.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+            }
+        `;
+        document.head.appendChild(pulseStyle);
     </script>
 </body>
 </html>
