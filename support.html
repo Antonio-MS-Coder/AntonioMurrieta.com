@@ -398,6 +398,35 @@
             margin-top: 0;
         }
 
+        /* Contact Options */
+        .contact-options {
+            text-align: center;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 2px solid var(--border-light);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-options h3 {
+            font-family: var(--serif);
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .email-button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(140, 21, 21, 0.25) !important;
+        }
+
+        .email-button-secondary:hover {
+            background: var(--cardinal) !important;
+            color: white !important;
+            border-color: var(--cardinal) !important;
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         footer {
             background: var(--light-gray);
@@ -585,29 +614,45 @@
                 </a>
             </div>
 
-            <div class="contact-form">
-                <h3>Send us a Message</h3>
-                <form id="supportForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
+            <div class="contact-options">
+                <h3>Get in Touch</h3>
+                <p style="margin-bottom: 32px;">We're here to help with any questions or issues you may have with our apps.</p>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                    <a href="mailto:create@antoniomurrieta.com?subject=App%20Support%20Request" 
+                       style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; 
+                              background: var(--cardinal); color: white; text-decoration: none; 
+                              border-radius: 8px; font-weight: 600; font-size: 14px; 
+                              text-transform: uppercase; letter-spacing: 1px;
+                              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                              box-shadow: 0 4px 16px rgba(140, 21, 21, 0.2);">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Email Support
+                    </a>
+                    
+                    <a href="mailto:create@antoniomurrieta.com?subject=Feature%20Request" 
+                       style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; 
+                              background: var(--white); color: var(--cardinal); text-decoration: none; 
+                              border: 2px solid var(--cardinal); border-radius: 8px; 
+                              font-weight: 600; font-size: 14px; text-transform: uppercase; 
+                              letter-spacing: 1px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        Feature Request
+                    </a>
+                </div>
+                
+                <div style="margin-top: 40px; padding: 24px; background: var(--light-gray); border-radius: 12px;">
+                    <h4 style="margin-bottom: 12px; color: var(--dark); font-size: 18px;">Direct Email</h4>
+                    <p style="margin-bottom: 0;">
+                        <a href="mailto:create@antoniomurrieta.com" style="color: var(--cardinal); text-decoration: none; font-weight: 500;">
+                            create@antoniomurrieta.com
+                        </a>
+                    </p>
+                </div>
             </div>
         </section>
     </main>
@@ -637,34 +682,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Form submission
-        const supportForm = document.getElementById('supportForm');
-        supportForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Create mailto link
-            const subject = encodeURIComponent('App Support Request');
-            const body = encodeURIComponent(
-                `Name: ${formData.name} ${formData.lastName}\n` +
-                `Email: ${formData.email}\n\n` +
-                `Message:\n${formData.message}`
-            );
-            
-            window.location.href = `mailto:create@antoniomurrieta.com?subject=${subject}&body=${body}`;
-            
-            // Reset form
-            supportForm.reset();
-            
-            // Show success message
-            alert('Your message has been prepared. Please send it from your email client.');
-        });
     </script>
 </body>
 </html>
