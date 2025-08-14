@@ -614,43 +614,59 @@
                 </a>
             </div>
 
-            <div class="contact-options">
+            <div class="contact-form">
                 <h3>Get in Touch</h3>
-                <p style="margin-bottom: 32px;">We're here to help with any questions or issues you may have with our apps.</p>
+                <p style="margin-bottom: 32px; text-align: center;">We're here to help with any questions or issues you may have with our apps.</p>
                 
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-                    <a href="mailto:create@antoniomurrieta.com?subject=App%20Support%20Request" 
-                       style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; 
-                              background: var(--cardinal); color: white; text-decoration: none; 
-                              border-radius: 8px; font-weight: 600; font-size: 14px; 
-                              text-transform: uppercase; letter-spacing: 1px;
-                              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                              box-shadow: 0 4px 16px rgba(140, 21, 21, 0.2);">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                        Email Support
-                    </a>
+                <!-- Simple contact form using Web3Forms - works without backend -->
+                <form action="https://api.web3forms.com/submit" method="POST" id="supportForm">
+                    <!-- Replace with your actual email -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <!-- Get your free access key at https://web3forms.com -->
                     
-                    <a href="mailto:create@antoniomurrieta.com?subject=Feature%20Request" 
-                       style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; 
-                              background: var(--white); color: var(--cardinal); text-decoration: none; 
-                              border: 2px solid var(--cardinal); border-radius: 8px; 
-                              font-weight: 600; font-size: 14px; text-transform: uppercase; 
-                              letter-spacing: 1px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        Feature Request
-                    </a>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required style="width: 100%; padding: 12px 16px; border: 2px solid var(--border-light); border-radius: 8px; font-family: var(--sans); font-size: 16px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--white);">
+                            <option value="App Support Request">App Support Request</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <!-- Spam protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
+                    <button type="submit">Send Message</button>
+                </form>
                 
-                <div style="margin-top: 40px; padding: 24px; background: var(--light-gray); border-radius: 12px;">
+                <div id="form-message" style="margin-top: 20px; padding: 16px; border-radius: 8px; display: none;"></div>
+                
+                <div style="margin-top: 40px; padding: 24px; background: var(--light-gray); border-radius: 12px; text-align: center;">
                     <h4 style="margin-bottom: 12px; color: var(--dark); font-size: 18px;">Direct Email</h4>
-                    <p style="margin-bottom: 0;">
+                    <p style="margin-bottom: 8px;">
                         <a href="mailto:create@antoniomurrieta.com" style="color: var(--cardinal); text-decoration: none; font-weight: 500;">
                             create@antoniomurrieta.com
                         </a>
+                    </p>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin: 0;">
+                        If the form doesn't work, feel free to email us directly
                     </p>
                 </div>
             </div>
@@ -681,6 +697,79 @@
         menuIcon.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
+
+        // Handle form submission
+        const form = document.getElementById('supportForm');
+        const formMessage = document.getElementById('form-message');
+        
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                // Collect form data
+                const formData = new FormData(form);
+                
+                try {
+                    // Note: This requires a Web3Forms access key
+                    // For now, fallback to mailto
+                    const subject = formData.get('subject');
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const message = formData.get('message');
+                    
+                    // Create mailto link as fallback
+                    const mailtoLink = `mailto:create@antoniomurrieta.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`)}`;
+                    
+                    // Try to submit to Web3Forms if access key is configured
+                    if (formData.get('access_key') === 'YOUR_ACCESS_KEY_HERE') {
+                        // Fallback to mailto
+                        window.location.href = mailtoLink;
+                        
+                        // Show message
+                        formMessage.style.display = 'block';
+                        formMessage.style.background = '#fff3cd';
+                        formMessage.style.color = '#856404';
+                        formMessage.style.border = '1px solid #ffc107';
+                        formMessage.innerHTML = 'Opening your email client. If it doesn\'t open, please email us directly at create@antoniomurrieta.com';
+                        
+                        // Reset form
+                        form.reset();
+                    } else {
+                        // Submit to Web3Forms
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        if (response.ok) {
+                            formMessage.style.display = 'block';
+                            formMessage.style.background = '#d4edda';
+                            formMessage.style.color = '#155724';
+                            formMessage.style.border = '1px solid #c3e6cb';
+                            formMessage.innerHTML = 'Thank you! Your message has been sent successfully.';
+                            form.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    }
+                } catch (error) {
+                    formMessage.style.display = 'block';
+                    formMessage.style.background = '#f8d7da';
+                    formMessage.style.color = '#721c24';
+                    formMessage.style.border = '1px solid #f5c6cb';
+                    formMessage.innerHTML = 'There was an error sending your message. Please try emailing us directly.';
+                } finally {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
 
     </script>
 </body>
