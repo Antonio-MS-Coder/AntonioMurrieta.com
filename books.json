@@ -2670,6 +2670,165 @@
       "keyTakeaways": [],
       "favoriteQuote": "",
       "personalNotes": ""
+    },
+    {
+      "id": 118,
+      "title": "El Viejo y el Mar",
+      "author": "Ernest Hemingway",
+      "category": "fiction",
+      "rating": 5,
+      "coverImage": "book-covers/2023/el_viejo_y_el_mar.jpg",
+      "coverEmoji": "🐟",
+      "coverGradient": "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+      "summary": "In this classic novel we see the journey of the 'old man' fishing the biggest fish the town has ever seen. In general we see the struggle of being alone against challenges and the obstacles despite the experience. We see resilience, and passion through tough times.",
+      "tags": ["Fiction", "Classic", "Adventure"],
+      "yearRead": 2023,
+      "recommendedFor": "Those who appreciate classic literature and tales of perseverance",
+      "keyTakeaways": [
+        "Heroism is not about triumph or material success, but about personal struggle, integrity, and the will to keep striving",
+        "Take pride in personal abilities and achievements. Getting old and having more experience is a source of pride, not shame",
+        "Recognize the deep connection between all living beings. Everything is interconnected",
+        "Even in the face of overwhelming odds, one must not give up. The fisherman faces relentless struggle and yet shows the human spirit's capacity to endure hardship"
+      ],
+      "favoriteQuote": "This book is narrated in great detail. It catches you and captivates you in such a way that it feels like you are accompanying the fisherman.",
+      "personalNotes": "It is a very enjoyable read, I definitely recommend it."
+    },
+    {
+      "id": 119,
+      "title": "El Arte de Amar",
+      "author": "Erich Fromm",
+      "category": "philosophy",
+      "rating": 5,
+      "coverImage": "book-covers/2023/el_arte_de_amar.jpg",
+      "coverEmoji": "❤️",
+      "coverGradient": "linear-gradient(135deg, #e96443 0%, #904e95 100%)",
+      "summary": "In this book, the author takes a deep dive into the concept of love. We explore the different kinds of understanding love as an art, and to the sociological context of the world, as well as the spiritual implications of loving. It is highly theoretical, yet very down to earth.",
+      "tags": ["Philosophy", "Psychology", "Relationships"],
+      "yearRead": 2023,
+      "recommendedFor": "Anyone seeking to understand and improve the quality of their relationships",
+      "keyTakeaways": [
+        "It is an art, the fruit of learning. We have to learn to love",
+        "Falling in love and staying in love are not the same. Love is active concern. Love only begins to develop when we love someone we don't need",
+        "The basis of selfishness is the lack of self-love. They don't know how to love, including themselves",
+        "Parents' love of life is as contagious as their anxiety. Inherited perspectives",
+        "Love is giving. Giving constitutes the highest expression of potential, in the very act of giving I experience my strength, my wealth, my power. Giving produces more joy than receiving, not because it is a deprivation but because in the act of giving is the expression of my vitality"
+      ],
+      "favoriteQuote": "Love is giving. Giving constitutes the highest expression of potential.",
+      "personalNotes": "In general I think we all need to read this book. Even though I don't agree with its binary perspective on love, I do think there's a lot to learn and reflect from the ideas discussed in this book. It is not necessarily an easy read, but if you want to improve the quality of your relationships, I would absolutely recommend this book."
+    },
+    {
+      "id": 120,
+      "title": "Quantum Supremacy",
+      "author": "Michio Kaku",
+      "category": "technology",
+      "rating": 5,
+      "coverImage": "book-covers/2023/quantum_supremacy.jpg",
+      "coverEmoji": "⚛️",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "In this book the author explores the history, the present and the potential future of quantum computing. It is crazy to think the amount of doors and possibilities this technology enables. Cybersecurity, biology and health, energetic autonomy these are only examples of industries it can potentially radically transform. We are about to live one of the biggest transformations we have yet seen as a species.",
+      "tags": ["Technology", "Science", "Quantum Computing"],
+      "yearRead": 2023,
+      "recommendedFor": "Technology enthusiasts and those curious about the future of computing",
+      "keyTakeaways": [
+        "There are different approaches to creating quantum computers, using lasers, using low temperatures, crystals, etc. It is all about leveraging quantum states to run multiple operations at the same time",
+        "In theory quantum computers are infinitely faster than regular computers due to superposition",
+        "There are still problems to be solved given the probabilistic nature of the technology, but we are very close to doing unimaginable things",
+        "What if we could simulate complex molecules in minutes. What if we could mix technologies like AI and quantum computers to regulate nuclear fusion?",
+        "What are the implications of quantum physics and quantum computers on spirituality and religion? What does it mean that the quantum waves only collapse when measured?"
+      ],
+      "favoriteQuote": "We are about to live one of the biggest transformations we have yet seen as a species.",
+      "personalNotes": "In general if you like technology and want to see what the future holds from the mind of a leading expert, I would absolutely recommend this book. It was well written, backed by science, and very up to date. It gives enough context for you to understand the main ideas."
+    },
+    {
+      "id": 121,
+      "title": "Nonviolence",
+      "author": "Mark Kurlansky",
+      "category": "philosophy",
+      "rating": 5,
+      "coverImage": "book-covers/2023/nonviolence.jpg",
+      "coverEmoji": "✊",
+      "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
+      "summary": "In this book the author explores the history of non-violence. The active pursuit of peace through the resistance to the use of violence as a mean. It deals with topics such as politics, religion, power and rebellion. It focuses on the things we might learn from the resolution of previous conflicts.",
+      "tags": ["Philosophy", "History", "Politics"],
+      "yearRead": 2023,
+      "recommendedFor": "Those interested in political philosophy and conflict resolution",
+      "keyTakeaways": [
+        "A saint is less dangerous than a rebel. Stories of the death can be reinterpreted and retold",
+        "War is a constant act of reciprocal action. There are no innocents if involved in violence",
+        "The practice of violence changes the world, but the most probable change is a more violent world - Hannah Arendt",
+        "The justification of war or violence is as old as us. The argument that people deserved to be slaved was something Aristotle wrote about, Jefferson said all men were made equal, but blacks were less equal, ect. It is the oldest fallacy",
+        "Is the source of violence not human nature, but the lack of imagination? Do you have to be a perfect human being to refuse war? To what extent not doing everything right disqualifies progress or improvement?"
+      ],
+      "favoriteQuote": "The practice of violence changes the world, but the most probable change is a more violent world.",
+      "personalNotes": "In general I would absolutely recommend this book. Specially if you want to obtain a different perspective on contemporary conflicts. It explores the use of violence as a tool for political control. I found particularly interesting the relationship between religion and war."
+    },
+    {
+      "id": 122,
+      "title": "La ridícula idea de no volver a verte",
+      "author": "Rosa Montero",
+      "category": "fiction",
+      "rating": 5,
+      "coverImage": "book-covers/2023/la_ridicula_idea.jpg",
+      "coverEmoji": "💫",
+      "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+      "summary": "In this book the author uses the story of Marie Curie as a way to talk about her own life. It deals with topics such as women in a men dominated world, the lost of a loved one, family, professional success and pain.",
+      "tags": ["Fiction", "Biography", "Feminism"],
+      "yearRead": 2023,
+      "recommendedFor": "Readers interested in biographical fiction and women's stories",
+      "keyTakeaways": [
+        "The true pain is unspeakable. The first thing that pain tears from you are words",
+        "To live we have to narrate ourselves. It gives meaning to chaos. Now I know that I write to try to give evil and pain a meaning that I know they do not have",
+        "The fear of the masculine world of femininity, of women. What is the place of women in this world?",
+        "Excess of idealization for aesthetics. There are more valuable things that get overlooked",
+        "For women, the expectativas for the personal life and the professional achievements tend to get mixed up. Having a double standard vs men"
+      ],
+      "favoriteQuote": "To live we have to narrate ourselves. It gives meaning to chaos.",
+      "personalNotes": "In general it is a great piece of literature. It is well written, relatable, and personal. I like the historical parallel it creates to talk about the things that have changed, and the things that haven't. I would absolutely recommend this book. I knew Marie Curie was a badass, but not to what extent. Now I deeply admire not only her work, but her as a person."
+    },
+    {
+      "id": 123,
+      "title": "Pedro Páramo",
+      "author": "Juan Rulfo",
+      "category": "fiction",
+      "rating": 3,
+      "coverImage": "book-covers/2023/pedro_paramo.jpg",
+      "coverEmoji": "👻",
+      "coverGradient": "linear-gradient(135deg, #8b7355 0%, #4a4238 100%)",
+      "summary": "In this classic novel we see the story of a town narrated through memories and ghosts. The story begins when Juan Preciado goes to the town to find his parent Pedro Páramo. The story deals with topics such as abuse of power, love, death, legacy and memory.",
+      "tags": ["Fiction", "Mexican Literature", "Classic"],
+      "yearRead": 2023,
+      "recommendedFor": "Fans of magical realism and Mexican literature",
+      "keyTakeaways": [
+        "The pursuit of power and money can corrupt and destroy entire communities",
+        "The past and the present are deeply connected by the memories and the legacy of our actions",
+        "Love and sexual desire can be very powerful forces to motivate action",
+        "Reality is a construction of subjective interpretations. Influenced by personal perspectives as well as emotions"
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "In general it deals with important topics, but I didn't love it. The way in which it is narrated with short chapters, playing with time and characters makes it a little confusing. It is interesting to see a different Mexico, and to understand the power dynamics but I wouldn't necessarily recommend it."
+    },
+    {
+      "id": 124,
+      "title": "The 5 Love Languages",
+      "author": "Gary Chapman",
+      "category": "psychology",
+      "rating": 5,
+      "coverImage": "book-covers/2023/5_love_languages.jpg",
+      "coverEmoji": "💕",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "In this book the author talks about one of the most important topics in life, love. How we perceive and communicate love, what implications it has for relationships, and what are the main 5 languages we use. Giving practical real life examples.",
+      "tags": ["Psychology", "Relationships", "Self-Help"],
+      "yearRead": 2023,
+      "recommendedFor": "Anyone trying to improve their relationships",
+      "keyTakeaways": [
+        "Forgiveness is not a feeling but a commitment to not use the offense against the offender. 'You are not a failure because you have failed.'",
+        "We are influenced by our personality, but we are not controlled by it. We can learn to communicate love in other people's language",
+        "Distinguish between love as an action and love as a feeling",
+        "1. Words of affirmation. 2. Quality time. 3. Receiving gifts. 4. Acts of service. 5. Physical touch",
+        "What does it mean to love? What is loving behavior? How do we meet each other's needs to feel loved? Is it possible to love someone that you hate? How do we balance the different stages of life with loving when people change?"
+      ],
+      "favoriteQuote": "Forgiveness is not a feeling but a commitment to not use the offense against the offender.",
+      "personalNotes": "In general I would recommend this book to anyone trying to improve their relationships. It is insightful, enjoyable and well written. I think it is definitely a must read. Hopefully it transforms your relationships to have the love you deserve in your life. 🤍✨"
     }
   ]
 }
