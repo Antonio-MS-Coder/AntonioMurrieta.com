@@ -983,4 +983,82 @@
         ],
         "favoriteQuote": "In this book the author narrates its story in relationship with the American elections of 2016. She also talks about how people were deeply manipulated, and talks about the future of data security.",
         "personalNotes": "In general, if you like data, politics, history or computer science I would absolutely recommend this book. I didn't put into perspective the impact of data and social media had, not only in the US, but around the world (including the Mexican elections). It is a personal, well narrated story, with high social relevance."
+},
+{
+        "id": 46,
+        "title": "Stacker Rush",
+        "author": "Antonio Murrieta",
+        "category": "Apps",
+        "rating": 5,
+        "coverEmoji": "🎮",
+        "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "summary": "An engaging iOS arcade game built with SwiftUI, featuring dynamic gameplay mechanics, progressive challenges, achievement systems, and an integrated marketplace that creates an immersive gaming experience.",
+        "tags": [
+                "Swift",
+                "SwiftUI",
+                "Game Design"
+        ],
+        "yearRead": 2024,
+        "recommendedFor": "iOS gamers who enjoy arcade challenges",
+        "keyTakeaways": [
+                "SwiftUI can create smooth, performant gaming experiences",
+                "Progressive difficulty keeps players engaged",
+                "Achievement systems add replay value"
+        ],
+        "favoriteQuote": "Built with Swift, powered by fun.",
+        "personalNotes": "Available on the App Store. A personal project exploring game development with SwiftUI.",
+        "appStoreLink": "https://apps.apple.com/mx/app/stacker-rush/id6748520029",
+        "currentlyReading": false
+},
+{
+        "id": 47,
+        "title": "Viper Velocity",
+        "author": "Antonio Murrieta",
+        "category": "Apps",
+        "rating": 5,
+        "coverEmoji": "🐍",
+        "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "summary": "A fast-paced, ad-free snake game that challenges your reflexes through glowing arenas and dynamic obstacles. Collect coins, unlock custom snake costumes, and test your skills with increasingly tricky patterns in this pure arcade experience.",
+        "tags": [
+                "iOS",
+                "Arcade",
+                "Ad-Free"
+        ],
+        "yearRead": 2024,
+        "recommendedFor": "Players who love classic arcade games with modern twists",
+        "keyTakeaways": [
+                "Ad-free experiences enhance player enjoyment",
+                "Classic games can be reimagined for modern platforms",
+                "Customization features increase engagement"
+        ],
+        "favoriteQuote": "Speed, strategy, and style combined.",
+        "personalNotes": "A modern take on the classic snake game, built for iOS with a focus on pure gameplay without interruptions.",
+        "appStoreLink": "https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone",
+        "currentlyReading": false
+},
+{
+        "id": 48,
+        "title": "NeuroPairs",
+        "author": "Antonio Murrieta",
+        "category": "Apps",
+        "rating": 5,
+        "coverEmoji": "🧠",
+        "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "summary": "A beautifully designed memory game that puts your concentration to the test. Match pairs of colorful cards across multiple difficulty levels with an intuitive interface, perfect for brain training anytime, anywhere—even offline.",
+        "tags": [
+                "iOS",
+                "Memory",
+                "Offline"
+        ],
+        "yearRead": 2024,
+        "recommendedFor": "Anyone looking to improve memory and concentration",
+        "keyTakeaways": [
+                "Offline functionality is essential for mobile games",
+                "Simple mechanics can create engaging experiences",
+                "Brain training apps have broad appeal"
+        ],
+        "favoriteQuote": "Train your brain, anywhere you go.",
+        "personalNotes": "A memory training game designed with accessibility and offline play in mind. Perfect for cognitive exercise on the go.",
+        "appStoreLink": "https://apps.apple.com/us/app/neuropairs/id6739889200",
+        "currentlyReading": false
 }
