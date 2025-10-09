@@ -393,9 +393,13 @@
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             color: #0284c7;
         }
-        .project-card[data-project="art"] .project-visual { 
+        .project-card[data-project="art"] .project-visual {
             background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
             color: #7c3aed;
+        }
+        .project-card[data-project="elpesodelaire"] .project-visual {
+            background: linear-gradient(135deg, #f5f3f0 0%, #e8e5e0 100%);
+            color: #6b5b73;
         }
 
         .project-pattern {
@@ -513,6 +517,18 @@
         .project-link:hover::before {
             width: 300px;
             height: 300px;
+        }
+
+        /* Multiple Project Links Container */
+        .project-links-container {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .project-links-container .project-link {
+            margin-top: 0;
         }
 
         /* Dynamic Background Elements */
@@ -919,6 +935,29 @@
                         <span class="project-tag">Spanish</span>
                     </div>
                     <a href="https://www.amazon.com.mx/Capi-Coraz%C3%B3n-que-Escucha-capibara/dp/B0FBFDM6ZV/" target="_blank" class="project-link">Get on Amazon →</a>
+                </div>
+            </div>
+
+            <!-- El Peso del Aire Book -->
+            <div class="project-card" data-project="elpesodelaire" data-category="books">
+                <div class="project-visual" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp'); background-size: cover; background-position: center;">
+                    <div class="project-pattern"></div>
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Fine Art Photobook</span>
+                    <h3 class="project-title">El Peso del Aire</h3>
+                    <p class="project-description">
+                        A fine-art photobook exploring the intimate landscapes of love, absence, and healing. Through poetic imagery and lyrical prose, this visual narrative examines how everyday objects and spaces hold the weight of memory and the promise of renewal.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Photography</span>
+                        <span class="project-tag">Fine Art</span>
+                        <span class="project-tag">Poetry</span>
+                    </div>
+                    <div class="project-links-container">
+                        <a href="https://a.co/d/04LULkG" target="_blank" class="project-link">Spanish Edition →</a>
+                        <a href="https://a.co/d/1jpwmtB" target="_blank" class="project-link">English Edition →</a>
+                    </div>
                 </div>
             </div>
 
