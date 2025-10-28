@@ -108,7 +108,7 @@
             display: flex;
             align-items: center;
             padding: 6rem 2rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gradient-primary);
             position: relative;
             overflow: hidden;
         }
@@ -489,95 +489,167 @@
             left: 0;
         }
 
-        /* Pricing Section */
-        .pricing {
+        /* Download Section */
+        .download-section {
             padding: 5rem 2rem;
-            background: var(--background-light);
+            background: linear-gradient(180deg, var(--background-light) 0%, white 100%);
         }
 
-        .pricing-container {
-            max-width: 600px;
+        .download-container {
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .price-card {
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .download-card {
             background: white;
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .price-card::before {
+        .download-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            transform: skewY(-3deg);
-            transform-origin: top left;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
 
-        .price-content {
-            position: relative;
-            z-index: 1;
+        .download-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
         }
 
-        .price-tag {
-            background: white;
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .price-amount {
+        .platform-icon {
             font-size: 4rem;
-            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .download-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .platform-status {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ios-card .platform-status {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .ios-btn {
+            background: linear-gradient(135deg, #000000, #2a2a2a);
             color: white;
+        }
+
+        .ios-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .android-btn {
+            background: linear-gradient(135deg, #3ddc84, #4285f4);
+            color: white;
+        }
+
+        .android-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .android-btn.disabled:hover {
+            transform: none;
+        }
+
+        .download-card small {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .pricing-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(26, 127, 126, 0.3);
+            position: relative;
+        }
+
+        .price-badge {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.25rem;
             margin-bottom: 0.5rem;
         }
 
-        .price-amount sup {
-            font-size: 1.5rem;
+        .price-badge .currency {
+            font-size: 2rem;
+            font-weight: 600;
         }
 
-        .price-period {
-            color: rgba(255, 255, 255, 0.9);
+        .price-badge .amount {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+
+        .price-badge .period {
             font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .price-mxn {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-usd {
+            font-size: 1rem;
+            opacity: 0.9;
             margin-bottom: 2rem;
         }
 
-        .price-features {
+        .features-mini {
             list-style: none;
-            margin: 2rem 0;
+            text-align: left;
         }
 
-        .price-features li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #f3f4f6;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .price-features li:last-child {
-            border-bottom: none;
-        }
-
-        .price-features li::before {
-            content: "✓";
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
+        .features-mini li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
         }
 
         /* Vision Section */
@@ -714,17 +786,26 @@
                 margin-top: 2rem;
             }
 
-            .phone-mockup {
-                width: 250px;
+            .mockup-carousel {
+                width: 240px;
                 height: 500px;
+            }
+
+            .mockup-image {
+                max-width: 240px;
             }
 
             .problem-solution-container {
                 grid-template-columns: 1fr;
             }
 
-            .price-amount {
-                font-size: 3rem;
+            .download-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pricing-info {
+                order: -1;
             }
 
             .vision-stats {
@@ -809,27 +890,11 @@
                 <h1>Tu Asesor Financiero Personal con <span>IA</span></h1>
                 <p>Democratizando la educación financiera en Latinoamérica. Control total de tus finanzas con inteligencia artificial y privacidad absoluta.</p>
                 <div class="cta-buttons">
-                    <a href="#features" class="btn-primary">
-                        Descubre más <span>→</span>
+                    <a href="#download" class="btn-primary">
+                        Pruébalo ahora <span>↓</span>
                     </a>
-                    <a href="#pricing" class="btn-secondary">
-                        Ver precios
-                    </a>
-                </div>
-                <div class="store-buttons">
-                    <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank">
-                        <span class="store-icon">🍎</span>
-                        <div class="store-text">
-                            <small>Prueba Beta en</small>
-                            <span>TestFlight</span>
-                        </div>
-                    </a>
-                    <a href="#" class="store-btn android">
-                        <span class="store-icon">🤖</span>
-                        <div class="store-text">
-                            <small>Descarga en</small>
-                            <span>Google Play</span>
-                        </div>
+                    <a href="#features" class="btn-secondary">
+                        Conoce más
                     </a>
                 </div>
             </div>
@@ -906,48 +971,46 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="pricing-container">
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <div class="download-container">
             <div class="section-header fade-in">
-                <h2>Precio simple, valor extraordinario</h2>
-                <p>Sin letra pequeña, sin cargos ocultos</p>
+                <h2>Pruébalo tú mismo</h2>
+                <p>Descarga Abundia y transforma tu relación con el dinero</p>
             </div>
-            <div class="price-card fade-in">
-                <div class="price-content">
-                    <div class="price-tag">ACCESO COMPLETO</div>
-                    <div class="price-amount">
-                        <sup>$</sup>19
+            <div class="download-grid fade-in">
+                <div class="download-card ios-card">
+                    <div class="platform-icon">🍎</div>
+                    <h3>iOS</h3>
+                    <p class="platform-status">Beta disponible</p>
+                    <a href="https://testflight.apple.com/join/j3jAngCN" class="download-btn ios-btn" target="_blank">
+                        <span>Probar en TestFlight</span>
+                    </a>
+                    <small>Requiere iOS 15.0+</small>
+                </div>
+                <div class="pricing-info">
+                    <div class="price-badge">
+                        <span class="currency">$</span>
+                        <span class="amount">19</span>
+                        <span class="period">/mes</span>
                     </div>
-                    <div class="price-period">MXN al mes</div>
-                    <ul class="price-features">
-                        <li>Asesor IA ilimitado</li>
-                        <li>Control de gastos y deudas</li>
-                        <li>Metas financieras personalizadas</li>
-                        <li>Análisis y reportes detallados</li>
-                        <li>Sin anuncios</li>
-                        <li>Privacidad total garantizada</li>
-                        <li>Actualizaciones gratuitas</li>
+                    <p class="price-mxn">MXN</p>
+                    <p class="price-usd">o USD $0.99</p>
+                    <ul class="features-mini">
+                        <li>✨ Asesor IA ilimitado</li>
+                        <li>💳 Control total de gastos</li>
+                        <li>🎯 Metas personalizadas</li>
+                        <li>🔐 Privacidad garantizada</li>
                     </ul>
-                    <div class="store-buttons" style="justify-content: center; width: 100%;">
-                        <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank">
-                            <span class="store-icon">🍎</span>
-                            <div class="store-text">
-                                <small>Prueba Beta en</small>
-                                <span>TestFlight</span>
-                            </div>
-                        </a>
-                        <a href="#" class="store-btn android">
-                            <span class="store-icon">🤖</span>
-                            <div class="store-text">
-                                <small>Próximamente en</small>
-                                <span>Google Play</span>
-                            </div>
-                        </a>
-                    </div>
-                    <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
-                        También disponible: USD $0.99/mes
-                    </p>
+                </div>
+                <div class="download-card android-card">
+                    <div class="platform-icon">🤖</div>
+                    <h3>Android</h3>
+                    <p class="platform-status">Próximamente</p>
+                    <a href="#" class="download-btn android-btn disabled">
+                        <span>Coming Soon</span>
+                    </a>
+                    <small>Notifícame cuando esté listo</small>
                 </div>
             </div>
         </div>
@@ -981,7 +1044,7 @@
             <h2>Toma el control de tu futuro financiero hoy</h2>
             <p>Miles de personas ya están transformando su relación con el dinero</p>
             <div class="store-buttons" style="justify-content: center; width: 100%; margin-top: 2rem;">
-                <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank" style="background: white; color: black;">
+                <a href="https://testflight.apple.com/join/j3jAngCN" class="store-btn ios" target="_blank" style="background: white; color: black;">
                     <span class="store-icon">🍎</span>
                     <div class="store-text">
                         <small>Prueba Beta en</small>
