@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abundia - Tu Asesor Financiero Personal con IA</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Abundia es tu asesor financiero personal impulsado por IA. Controla gastos, gestiona deudas y alcanza tus metas financieras con privacidad total.">
+    <meta name="keywords" content="finanzas personales, IA, inteligencia artificial, asesor financiero, ahorro, inversión, LATAM, México">
+    <meta name="author" content="Antonio Murrieta">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Abundia - Tu Asesor Financiero Personal con IA">
+    <meta property="og:description" content="Democratizando la educación financiera en LATAM con inteligencia artificial, privacidad total y accesibilidad.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoniomurrieta.com/Abundia">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+        :root {
+            --primary-color: #1a7f7e;
+            --primary-dark: #145e5d;
+            --secondary-color: #2dd4bf;
+            --accent-color: #10b981;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --background-light: #f9fafb;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #1a7f7e 50%, #10b981 100%);
+            --gradient-secondary: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .cta-nav {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .store-btn {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 2px solid transparent;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .store-btn.ios {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+        }
+
+        .store-btn.ios:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .store-btn.android {
+            background: linear-gradient(135deg, #3ddc84, #4285f4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-btn.android::before {
+            content: 'Próximamente';
+            position: absolute;
+            top: -10px;
+            right: -30px;
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 30px;
+            font-size: 0.7rem;
+            transform: rotate(45deg);
+            font-weight: bold;
+        }
+
+        .store-btn .store-icon {
+            font-size: 1.5rem;
+        }
+
+        .store-btn .store-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .store-btn .store-text small {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .store-btn .store-text span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mockup-carousel {
+            position: relative;
+            width: 280px;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-image {
+            width: 100%;
+            height: auto;
+            max-width: 280px;
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.3));
+            animation: float-phone 3s ease-in-out infinite;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .mockup-image.active {
+            opacity: 1;
+        }
+
+        @keyframes float-phone {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .mockup-dots {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: var(--background-light);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .problem-solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem-box, .solution-box {
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 2px solid #fecaca;
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #bbf7d0;
+        }
+
+        .problem-box h3, .solution-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .problem-box h3 {
+            color: #dc2626;
+        }
+
+        .solution-box h3 {
+            color: #16a34a;
+        }
+
+        .problem-list, .solution-list {
+            list-style: none;
+        }
+
+        .problem-list li, .solution-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .problem-list li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .solution-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: var(--background-light);
+        }
+
+        .pricing-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: skewY(-3deg);
+            transform-origin: top left;
+        }
+
+        .price-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-tag {
+            background: white;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount sup {
+            font-size: 1.5rem;
+        }
+
+        .price-period {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .price-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li::before {
+            content: "✓";
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Vision Section */
+        .vision {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e3a8a, #312e81);
+            color: white;
+            text-align: center;
+        }
+
+        .vision-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vision h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .vision p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .vision-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .final-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 4rem;
+            border-radius: 30px;
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-visual {
+                margin-top: 2rem;
+            }
+
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+
+            .problem-solution-container {
+                grid-template-columns: 1fr;
+            }
+
+            .price-amount {
+                font-size: 3rem;
+            }
+
+            .vision-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-size: 3rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <img src="assets/Abundia/logo.png" alt="Abundia" style="width: 80px; height: 80px;" class="loader-logo">
+            <h2 style="color: var(--primary-color); margin-top: 1rem;">Abundia</h2>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/Abundia/logo.png" alt="Abundia Logo"> Abundia
+            </a>
+            <a href="#pricing" class="cta-nav">Comenzar Gratis</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Tu Asesor Financiero Personal con <span>IA</span></h1>
+                <p>Democratizando la educación financiera en Latinoamérica. Control total de tus finanzas con inteligencia artificial y privacidad absoluta.</p>
+                <div class="cta-buttons">
+                    <a href="#features" class="btn-primary">
+                        Descubre más <span>→</span>
+                    </a>
+                    <a href="#pricing" class="btn-secondary">
+                        Ver precios
+                    </a>
+                </div>
+                <div class="store-buttons">
+                    <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank">
+                        <span class="store-icon">🍎</span>
+                        <div class="store-text">
+                            <small>Prueba Beta en</small>
+                            <span>TestFlight</span>
+                        </div>
+                    </a>
+                    <a href="#" class="store-btn android">
+                        <span class="store-icon">🤖</span>
+                        <div class="store-text">
+                            <small>Descarga en</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in">
+                <div class="mockup-carousel">
+                    <img src="assets/Abundia/mockup1.png" alt="Abundia Dashboard" class="mockup-image active" id="mockup1">
+                    <img src="assets/Abundia/mockup2.png" alt="Abundia Asesor IA" class="mockup-image" id="mockup2">
+                    <img src="assets/Abundia/mockup3.png" alt="Abundia Análisis" class="mockup-image" id="mockup3">
+                    <div class="mockup-dots">
+                        <span class="dot active" onclick="showMockup(1)"></span>
+                        <span class="dot" onclick="showMockup(2)"></span>
+                        <span class="dot" onclick="showMockup(3)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header fade-in">
+                <h2>Todo lo que necesitas en una sola app</h2>
+                <p>Herramientas poderosas diseñadas para transformar tu relación con el dinero</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💳</div>
+                    <h3>Control de Gastos</h3>
+                    <p>Monitorea todos tus gastos y deudas desde una interfaz intuitiva. Categorización automática y análisis detallado de tus hábitos financieros.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Metas Financieras</h3>
+                    <p>Define objetivos claros de ahorro e inversión. Seguimiento visual de tu progreso con planes personalizados para alcanzar tus sueños.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✨</div>
+                    <h3>Asesor IA Personal</h3>
+                    <p>Recibe consejos financieros personalizados basados en tu situación real. Tu asesor virtual aprende de tus patrones y te guía hacia mejores decisiones.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Privacidad Total</h3>
+                    <p>Todos tus datos se procesan localmente en tu dispositivo. Nunca compartimos ni enviamos tu información personal a servidores externos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solution Section -->
+    <section class="problem-solution">
+        <div class="problem-solution-container">
+            <div class="problem-box fade-in">
+                <h3>😔 El Problema</h3>
+                <ul class="problem-list">
+                    <li>Sin acceso a asesoría financiera confiable</li>
+                    <li>Deudas mal gestionadas que crecen sin control</li>
+                    <li>Falta de claridad sobre metas de ahorro</li>
+                    <li>Herramientas complejas y costosas</li>
+                    <li>Riesgo de compartir datos personales</li>
+                </ul>
+            </div>
+            <div class="solution-box fade-in">
+                <h3>🚀 Nuestra Solución</h3>
+                <ul class="solution-list">
+                    <li>Asesor IA accesible para todos</li>
+                    <li>Control inteligente de deudas y pagos</li>
+                    <li>Planes claros con seguimiento visual</li>
+                    <li>Interfaz simple y precio accesible</li>
+                    <li>Procesamiento 100% local y privado</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-container">
+            <div class="section-header fade-in">
+                <h2>Precio simple, valor extraordinario</h2>
+                <p>Sin letra pequeña, sin cargos ocultos</p>
+            </div>
+            <div class="price-card fade-in">
+                <div class="price-content">
+                    <div class="price-tag">ACCESO COMPLETO</div>
+                    <div class="price-amount">
+                        <sup>$</sup>19
+                    </div>
+                    <div class="price-period">MXN al mes</div>
+                    <ul class="price-features">
+                        <li>Asesor IA ilimitado</li>
+                        <li>Control de gastos y deudas</li>
+                        <li>Metas financieras personalizadas</li>
+                        <li>Análisis y reportes detallados</li>
+                        <li>Sin anuncios</li>
+                        <li>Privacidad total garantizada</li>
+                        <li>Actualizaciones gratuitas</li>
+                    </ul>
+                    <div class="store-buttons" style="justify-content: center; width: 100%;">
+                        <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank">
+                            <span class="store-icon">🍎</span>
+                            <div class="store-text">
+                                <small>Prueba Beta en</small>
+                                <span>TestFlight</span>
+                            </div>
+                        </a>
+                        <a href="#" class="store-btn android">
+                            <span class="store-icon">🤖</span>
+                            <div class="store-text">
+                                <small>Próximamente en</small>
+                                <span>Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                        También disponible: USD $0.99/mes
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision">
+        <div class="vision-container fade-in">
+            <h2>Nuestra Visión</h2>
+            <p>Convertirnos en el asesor financiero digital de referencia en Latinoamérica, democratizando la educación y el control financiero con inteligencia artificial de manera segura, privada y escalable.</p>
+            <div class="vision-stats">
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Privacidad Local</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Asesoría Disponible</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">LATAM</div>
+                    <div class="stat-label">Enfoque Regional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-container fade-in">
+            <h2>Toma el control de tu futuro financiero hoy</h2>
+            <p>Miles de personas ya están transformando su relación con el dinero</p>
+            <div class="store-buttons" style="justify-content: center; width: 100%; margin-top: 2rem;">
+                <a href="https://testflight.apple.com/join/YourBetaLink" class="store-btn ios" target="_blank" style="background: white; color: black;">
+                    <span class="store-icon">🍎</span>
+                    <div class="store-text">
+                        <small>Prueba Beta en</small>
+                        <span>TestFlight</span>
+                    </div>
+                </a>
+                <a href="#" class="store-btn android" style="background: white; color: black;">
+                    <span class="store-icon">🤖</span>
+                    <div class="store-text">
+                        <small>Próximamente</small>
+                        <span>Google Play</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">💰 Abundia</div>
+            <div class="footer-links">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="copyright">
+                © 2024 Abundia. Todos los derechos reservados.
+                <br>Creado por <a href="https://antoniomurrieta.com" style="color: var(--primary-color);">Antonio Murrieta</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Hide loader when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mockup carousel functionality
+        let currentMockup = 1;
+        let autoRotateInterval;
+
+        function showMockup(num) {
+            // Clear all active states
+            document.querySelectorAll('.mockup-image').forEach(img => {
+                img.classList.remove('active');
+            });
+            document.querySelectorAll('.dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            // Set new active state
+            document.getElementById(`mockup${num}`).classList.add('active');
+            document.querySelectorAll('.dot')[num - 1].classList.add('active');
+            currentMockup = num;
+
+            // Reset auto-rotate timer
+            clearInterval(autoRotateInterval);
+            startAutoRotate();
+        }
+
+        function nextMockup() {
+            currentMockup = currentMockup >= 3 ? 1 : currentMockup + 1;
+            showMockup(currentMockup);
+        }
+
+        function startAutoRotate() {
+            autoRotateInterval = setInterval(nextMockup, 5000);
+        }
+
+        // Start auto-rotation when page loads
+        window.addEventListener('load', function() {
+            startAutoRotate();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add dynamic year to copyright
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.copyright').innerHTML =
+            `© ${currentYear} Abundia. Todos los derechos reservados.<br>
+            Creado por <a href="https://antoniomurrieta.com" style="color: var(--primary-color);">Antonio Murrieta</a>`;
+
+        // Animated counter for stats
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    // Add the suffix back if needed
+                    if (element.dataset.suffix) {
+                        element.innerHTML = end + element.dataset.suffix;
+                    }
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text === '100%') {
+                            stat.dataset.suffix = '%';
+                            animateValue(stat, 0, 100, 1500);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const visionStats = document.querySelector('.vision-stats');
+        if (visionStats) {
+            statsObserver.observe(visionStats);
+        }
+
+        // Mobile menu toggle (if needed in the future)
+        function toggleMobileMenu() {
+            console.log('Mobile menu functionality can be added here');
+        }
+
+        // Form submission handler (for future implementation)
+        function handleEmailSubmit(event) {
+            event.preventDefault();
+            console.log('Email submission functionality to be implemented');
+            alert('¡Gracias por tu interés! Te notificaremos cuando Abundia esté disponible.');
+        }
+
+        // Add event listeners to CTA buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-nav').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('¡Abundia estará disponible pronto! 🚀');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
