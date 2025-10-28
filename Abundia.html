@@ -157,9 +157,8 @@
         }
 
         .hero-content h1 span {
-            background: linear-gradient(45deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-color);
+            font-weight: 800;
         }
 
         .hero-content p {
@@ -299,6 +298,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: opacity 0.3s ease;
         }
 
         .mockup-image {
@@ -1129,7 +1129,7 @@
             <a href="#" class="logo">
                 <img src="assets/Abundia/logo.png" alt="Abundia Logo"> Abundia
             </a>
-            <a href="#pricing" class="cta-nav">Comenzar Gratis</a>
+            <a href="#download" class="cta-nav">Descargar</a>
         </div>
     </nav>
 
@@ -1406,12 +1406,32 @@
             observer.observe(el);
         });
 
-        // Parallax effect for hero section
+        // Parallax and fade effect for hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
+            const mockupCarousel = document.querySelector('.mockup-carousel');
+
             if (hero) {
                 hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+
+            // Fade out mockups on scroll for better text readability
+            if (mockupCarousel) {
+                const fadeStart = 50;
+                const fadeEnd = 300;
+                const scrollRange = fadeEnd - fadeStart;
+
+                if (scrolled <= fadeStart) {
+                    mockupCarousel.style.opacity = '1';
+                } else if (scrolled >= fadeEnd) {
+                    mockupCarousel.style.opacity = '0';
+                    mockupCarousel.style.pointerEvents = 'none';
+                } else {
+                    const opacity = 1 - (scrolled - fadeStart) / scrollRange;
+                    mockupCarousel.style.opacity = opacity;
+                    mockupCarousel.style.pointerEvents = opacity < 0.5 ? 'none' : 'auto';
+                }
             }
         });
 
