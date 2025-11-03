@@ -531,10 +531,13 @@
 
         .download-grid {
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
             margin-top: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .download-card {
@@ -1266,9 +1269,9 @@
             </div>
             <div class="hero-visual fade-in">
                 <div class="mockup-carousel">
-                    <img src="assets/Abundia/mockup1.png" alt="Abundia Dashboard" class="mockup-image active" id="mockup1">
-                    <img src="assets/Abundia/mockup2.png" alt="Abundia Asesor IA" class="mockup-image" id="mockup2">
-                    <img src="assets/Abundia/mockup3.png" alt="Abundia Análisis" class="mockup-image" id="mockup3">
+                    <img src="assets/Abundia/mockup1.png" alt="Abundia Metas Financieras" class="mockup-image active" id="mockup1">
+                    <img src="assets/Abundia/mockup2.png" alt="Abundia Control de Egresos" class="mockup-image" id="mockup2">
+                    <img src="assets/Abundia/mockup3.webp" alt="Abundia App" class="mockup-image" id="mockup3">
                     <div class="mockup-dots">
                         <span class="dot active" onclick="showMockup(1)"></span>
                         <span class="dot" onclick="showMockup(2)"></span>
@@ -1348,26 +1351,11 @@
                 <div class="download-card ios-card">
                     <div class="platform-icon">🍎</div>
                     <h3>iOS</h3>
-                    <p class="platform-status">Beta disponible</p>
-                    <a href="https://testflight.apple.com/join/j3jAngCN" class="download-btn ios-btn" target="_blank">
-                        <span>Probar en TestFlight</span>
+                    <p class="platform-status">Disponible ahora</p>
+                    <a href="https://apps.apple.com/mx/app/abundia/id6754313930" class="download-btn ios-btn" target="_blank">
+                        <span>Descargar en App Store</span>
                     </a>
                     <small>Requiere iOS 15.0+</small>
-                </div>
-                <div class="pricing-info">
-                    <div class="price-badge">
-                        <span class="currency">$</span>
-                        <span class="amount">19</span>
-                        <span class="period">/mes</span>
-                    </div>
-                    <p class="price-mxn">MXN</p>
-                    <p class="price-usd">o USD $0.99</p>
-                    <ul class="features-mini">
-                        <li>✨ Asesor IA ilimitado</li>
-                        <li>💳 Control total de gastos</li>
-                        <li>🎯 Metas personalizadas</li>
-                        <li>🔐 Privacidad garantizada</li>
-                    </ul>
                 </div>
                 <div class="download-card android-card">
                     <div class="platform-icon">🤖</div>
@@ -1410,11 +1398,11 @@
             <h2>Toma el control de tu futuro financiero hoy</h2>
             <p>Miles de personas ya están transformando su relación con el dinero</p>
             <div class="store-buttons" style="justify-content: center; width: 100%; margin-top: 2rem;">
-                <a href="https://testflight.apple.com/join/j3jAngCN" class="store-btn ios" target="_blank" style="background: white; color: black;">
+                <a href="https://apps.apple.com/mx/app/abundia/id6754313930" class="store-btn ios" target="_blank" style="background: white; color: black;">
                     <span class="store-icon">🍎</span>
                     <div class="store-text">
-                        <small>Prueba Beta en</small>
-                        <span>TestFlight</span>
+                        <small>Descarga en</small>
+                        <span>App Store</span>
                     </div>
                 </a>
                 <a href="#" class="store-btn android" style="background: white; color: black;">
