@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestural Symphony 4.0 - Neon Resonator</title>
+  <title>Gestural Symphony - Neon Resonator</title>
+  
+  <link rel="icon" href="data:,">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
   <script src="https://unpkg.com/ml5@1.0.1/dist/ml5.min.js"></script>
@@ -12,7 +14,7 @@
   <style>
     body { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: 'Helvetica Neue', sans-serif; }
     
-    /* Loading Overlay Styling */
+    /* Loading Overlay */
     #overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.9);
@@ -34,7 +36,7 @@
     .highlight-l { color: #00ffff; font-weight: bold; }
     .highlight-r { color: #ff0055; font-weight: bold; }
 
-    /* The Start Button */
+    /* Button */
     button {
       padding: 18px 50px; font-size: 16px; cursor: pointer;
       background: transparent; color: #555; 
@@ -61,8 +63,8 @@
 <div id="overlay">
   <div class="instruction-card">
     <h1>Neon Resonator</h1>
-    <p>✋ <span class="highlight-l">LEFT HAND (Melody):</span> Pinch Index & Thumb to pluck the digital strings. <br>Move Up for high notes, Down for low notes.</p>
-    <p>✊ <span class="highlight-r">RIGHT HAND (Rhythm):</span> Rotate wrist like a dial to warp time speed. <br>Open hand for loud drums, close fist to fade them out.</p>
+    <p>✋ <span class="highlight-l">LEFT HAND (Melody):</span> Pinch Index & Thumb to pluck strings. <br>Move Up/Down to change notes.</p>
+    <p>✊ <span class="highlight-r">RIGHT HAND (Rhythm):</span> Rotate wrist to change speed. <br>Open/Close hand to change volume.</p>
   </div>
   <button id="startBtn">Loading AI Models...</button>
 </div>
@@ -80,13 +82,13 @@ const HAND_CONNECTIONS = [
 // --- GLOBAL VARIABLES ---
 let video, handPose, hands = [];
 let modelsLoaded = false, isRunning = false;
-let particles = []; // Array to store active particles
+let particles = []; 
 
 // Audio Nodes
 let pluckSynth, drumKit, metalLoop;
-let pingPongDelay, reverbMaster, volMaster;
+let pingPongDelay, reverbMaster;
 
-// --- SETUP & INITIALIZATION ---
+// --- SETUP ---
 function preload() {
   handPose = ml5.handPose({ flipped: true, maxHands: 2 });
 }
@@ -96,12 +98,13 @@ function setup() {
   video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
   video.hide();
+  
   handPose.detectStart(video, gotHands);
 }
 
 function gotHands(results) {
   hands = results;
-  if (!modelsLoaded && hands.length > -1) { // Ensure it runs even if no hands initially detected but loaded
+  if (!modelsLoaded && hands.length > -1) {
     modelsLoaded = true;
     let btn = document.getElementById('startBtn');
     btn.innerText = "ENTER EXPERIENCE";
@@ -112,25 +115,22 @@ function gotHands(results) {
 
 async function initAudioAndStart() {
   await Tone.start();
-  console.log("Audio Context Started");
-
-  // --- AUDIO CHAIN SETUP ---
   
-  // Master Effects Chain
+  // Audio Chain
   reverbMaster = new Tone.Reverb({ decay: 4, wet: 0.5 }).toDestination();
   pingPongDelay = new Tone.PingPongDelay({ delayTime: "8n", feedback: 0.4, wet: 0.3 }).connect(reverbMaster);
 
-  // 1. NEW Melody Instrument: PluckSynth (Sounds like a guitar/harp)
+  // Melody Instrument
   pluckSynth = new Tone.PluckSynth({
     attackNoise: 1, dampening: 4000, resonance: 0.9
   }).connect(pingPongDelay);
   pluckSynth.volume.value = -5;
 
-  // 2. Rhythm Section
+  // Rhythm Instruments
   drumKit = new Tone.MembraneSynth({ volume: -20 }).toDestination();
   let hat = new Tone.MetalSynth({ frequency: 200, envelope: { decay: 0.05 }, volume: -25 }).toDestination();
 
-  // The Loop setup
+  // Loop
   metalLoop = new Tone.Loop((time) => {
     drumKit.triggerAttackRelease("C1", "8n", time);
     if (Math.random() > 0.5) hat.triggerAttackRelease("32n", time + 0.25);
@@ -140,19 +140,17 @@ async function initAudioAndStart() {
   Tone.Transport.start();
   metalLoop.start(0);
 
-  // Transition UI
+  // Transition
   isRunning = true;
   document.getElementById('overlay').style.opacity = '0';
   setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 800);
 }
 
-// --- MAIN DRAW LOOP ---
+// --- DRAW LOOP ---
 function draw() {
-  // Subtle trail effect for neon look (draw semi-transparent background)
-  background(0, 15); 
+  background(0, 15); // Trail effect
 
   if (isRunning) {
-    // Manage Particles
     updateAndDrawParticles();
     
     if(hands.length > 0) {
@@ -163,7 +161,7 @@ function draw() {
   }
 }
 
-// --- INTERACTION LOGIC ---
+// --- INTERACTION ---
 function processInteraction() {
   let statusText = "";
 
@@ -176,7 +174,7 @@ function processInteraction() {
     let wrist = hand.keypoints[0];
     let midKnuckle = hand.keypoints[9];
 
-    // Map coords
+    // Coordinates
     let ix = map(index.x, 0, video.width, 0, width);
     let iy = map(index.y, 0, video.height, 0, height);
     let tx = map(thumb.x, 0, video.width, 0, width);
@@ -184,40 +182,36 @@ function processInteraction() {
     let wx = map(wrist.x, 0, video.width, 0, width);
     let wy = map(wrist.y, 0, video.height, 0, height);
 
-    // Draw Neon Skeleton
-    let handColor = isLeftHandScreen ? [0, 255, 255] : [255, 0, 85]; // Cyan vs Pink/Red
+    // Draw Skeleton
+    let handColor = isLeftHandScreen ? [0, 255, 255] : [255, 0, 85];
     drawNeonSkeleton(hand, handColor);
 
-    // --- LEFT HAND (MELODY PLUCK) ---
+    // --- LEFT HAND (MELODY) ---
     if (isLeftHandScreen) {
       let pinchDist = dist(index.x, index.y, thumb.x, thumb.y);
       
-      // Visual connection line that gets brighter closer
+      // Visual Connection
       if(pinchDist < 80) {
          let brightness = map(pinchDist, 0, 80, 255, 50);
          stroke(0, 255, 255, brightness); strokeWeight(2);
          line(ix, iy, tx, ty);
       }
 
-      // TRIGGER POINT (< 25 distance)
+      // Trigger Note
       if (pinchDist < 25) { 
-        // Map Y position to a Pentatonic Scale for pleasant sounds
-        // Using a specific set of frequencies for a cleaner sound than raw mapping
+        // Pentatonic Scale
         let notes = ["C3", "D3", "E3", "G3", "A3", "C4", "D4", "E4"];
         let noteIndex = floor(map(iy, height, 0, 0, notes.length));
         noteIndex = constrain(noteIndex, 0, notes.length -1);
         let selectedNote = notes[noteIndex];
 
-        // PluckSynth only triggers attack, it decays naturally
         pluckSynth.triggerAttack(selectedNote, Tone.now());
-        
-        // SPAWN PARTICLES at midpoint of pinch
         spawnParticles((ix+tx)/2, (iy+ty)/2, handColor, 10);
         statusText += `PLUCKING: ${selectedNote} | `;
       }
     }
 
-    // --- RIGHT HAND (RHYTHM DIAL) ---
+    // --- RIGHT HAND (RHYTHM) ---
     if (isRightHandScreen) {
       let ang = atan2(midKnuckle.y - wrist.y, midKnuckle.x - wrist.x);
       let targetBPM = map(ang, -2, 2, 60, 220);
@@ -228,14 +222,13 @@ function processInteraction() {
       let vol = map(spread, 40, 140, -40, -5);
       drumKit.volume.rampTo(constrain(vol, -60, 0), 0.1);
 
-      // Visual Dial using particles
+      // Visuals
       let dialX = wx + cos(ang) * 80;
       let dialY = wy + sin(ang) * 80;
-      // Spawn a few subtle particles along the dial direction
       if(frameCount % 5 === 0) spawnParticles(dialX, dialY, handColor, 2, true);
 
       push();
-      translate(wx, wy);rotate(ang);
+      translate(wx, wy); rotate(ang);
       fill(handColor); noStroke(); textSize(14);
       text(Math.round(targetBPM), 90, 5);
       pop();
@@ -247,28 +240,27 @@ function processInteraction() {
 
 // --- PARTICLE SYSTEM ---
 class Particle {
-  constructor(x, y, colorVals, is Subtle) {
+  // FIXED TYPO BELOW: 'isSubtle'
+  constructor(x, y, colorVals, isSubtle) {
     this.pos = createVector(x, y);
-    // Random velocity spreading out
     this.vel = p5.Vector.random2D().mult(random(1, 5));
     this.color = colorVals;
     this.life = 255;
     this.size = random(4, 12);
-    this.isSubtle = isSubtle; // For rhythm hand dial
+    this.isSubtle = isSubtle; 
   }
 
   update() {
     this.pos.add(this.vel);
-    this.life -= this.isSubtle ? 15 : 8; // Fade speed
-    this.size *= 0.95; // Shrink over time
+    this.life -= this.isSubtle ? 15 : 8; 
+    this.size *= 0.95; 
   }
 
   draw() {
     noStroke();
-    // Neon glow effect using transparent layers
     fill(this.color[0], this.color[1], this.color[2], this.life * 0.5);
     circle(this.pos.x, this.pos.y, this.size * 1.5);
-    fill(255, 255, 255, this.life); // Bright white center
+    fill(255, 255, 255, this.life); 
     circle(this.pos.x, this.pos.y, this.size);
   }
 }
@@ -287,22 +279,19 @@ function updateAndDrawParticles() {
   }
 }
 
-// --- NEON SKELETON DRAWER ---
+// --- SKELETON DRAWER ---
 function drawNeonSkeleton(hand, c) {
-  // Glow effect: draw thicker transparent line first
   stroke(c[0], c[1], c[2], 80); strokeWeight(8);
   drawLines(hand);
-  // Core line: thinner and brighter
   stroke(c[0], c[1], c[2], 200); strokeWeight(3);
   drawLines(hand);
-
-  // Joints with glowing center
+  
   noStroke();
   for (let k of hand.keypoints) {
     let x = map(k.x, 0, video.width, 0, width);
     let y = map(k.y, 0, video.height, 0, height);
-    fill(c[0], c[1], c[2], 100); circle(x, y, 12); // Outer glow
-    fill(255, 255, 255, 200); circle(x, y, 5); // Inner core
+    fill(c[0], c[1], c[2], 100); circle(x, y, 12);
+    fill(255, 255, 255, 200); circle(x, y, 5);
   }
 }
 
