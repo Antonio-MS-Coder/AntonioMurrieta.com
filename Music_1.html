@@ -3,115 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestural Symphony 2.0</title>
+  <title>Gestural Symphony 3.0</title>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
   <script src="https://unpkg.com/ml5@1.0.1/dist/ml5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
   <style>
-    body { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: sans-serif; }
+    body { margin: 0; padding: 0; background: #050505; overflow: hidden; font-family: 'Helvetica Neue', sans-serif; }
     
+    /* Loading / Start Overlay */
     #overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(5px);
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      z-index: 10; color: white; transition: opacity 0.5s;
+      z-index: 100; color: white; transition: opacity 0.8s ease;
     }
     
-    .instruction-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px;
-      text-align: left; margin-bottom: 30px;
+    .instruction-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .inst-box { border: 1px solid #333; padding: 15px; border-radius: 8px; background: #111; }
-    h2 { color: #00ffcc; margin-top: 0; font-size: 18px; }
-    
+
+    h1 { letter-spacing: 3px; font-weight: 300; margin-bottom: 20px; color: #fff; }
+    p { color: #aaa; line-height: 1.6; margin: 10px 0; font-size: 16px; }
+    strong { color: #00ffcc; }
+
+    /* The Button */
     button {
-      padding: 15px 40px; font-size: 18px; cursor: pointer;
-      background: #444; color: #888; border: none; font-weight: bold;
-      border-radius: 30px; transition: all 0.3s;
+      padding: 16px 40px; font-size: 16px; cursor: pointer;
+      background: transparent; color: #666; 
+      border: 1px solid #444; font-weight: 600; letter-spacing: 1px;
+      border-radius: 50px; transition: all 0.3s ease;
+      text-transform: uppercase;
+      pointer-events: none; /* Locked until AI loads */
     }
-    button.ready { background: #00ffcc; color: #000; box-shadow: 0 0 25px #00ffcc; }
-    
+
+    /* Active State */
+    button.ready {
+      background: #00ffcc; color: #000; border-color: #00ffcc;
+      pointer-events: all; box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+    }
+    button.ready:hover { transform: scale(1.05); background: #fff; box-shadow: 0 0 50px rgba(255, 255, 255, 0.6); }
+
+    /* Heads Up Display */
     #hud {
-      position: absolute; bottom: 20px; left: 20px; color: #00ffcc;
-      font-family: monospace; font-size: 14px; pointer-events: none;
+      position: absolute; bottom: 30px; left: 30px; color: rgba(255,255,255,0.5);
+      font-family: monospace; font-size: 12px; pointer-events: none;
+      text-transform: uppercase; letter-spacing: 1px;
     }
+
+    /* Back Button */
+    #exit {
+      position: absolute; top: 20px; right: 20px; text-decoration: none;
+      color: rgba(255,255,255,0.3); font-size: 24px; z-index: 200;
+    }
+    #exit:hover { color: white; }
   </style>
 </head>
 <body>
 
-<div id="overlay">
-  <h1>GESTURAL SYMPHONY 2.0</h1>
-  
-  <div class="instruction-grid">
-    <div class="inst-box">
-      <h2>👈 LEFT HAND (Melody)</h2>
-      <p>• <b>PINCH (Thumb+Index)</b> to Play Sound.</p>
-      <p>• <b>Move Up/Down:</b> Change Pitch.</p>
-      <p>• <b>Move Left/Right:</b> Change Distortion.</p>
-    </div>
-    <div class="inst-box">
-      <h2>👉 RIGHT HAND (Rhythm)</h2>
-      <p>• <b>Rotate Wrist:</b> Warps Time (Speed).</p>
-      <p>• <b>Open/Close Hand:</b> Controls Drum Volume.</p>
-    </div>
-  </div>
+<a href="/" id="exit">✕</a>
 
-  <button id="startBtn">LOADING AI...</button>
+<div id="overlay">
+  <div class="instruction-card">
+    <h1>Gestural Symphony</h1>
+    <p>✋ <strong>LEFT HAND:</strong> Pinch index & thumb to play synth. <br>Move Up/Down for Pitch. Move Side-to-Side for Distortion.</p>
+    <p>✊ <strong>RIGHT HAND:</strong> Rotate wrist to warp time. <br>Open/Close hand to control volume.</p>
+  </div>
+  <button id="startBtn">Initializing AI...</button>
 </div>
 
-<div id="hud">Waiting for input...</div>
+<div id="hud">System Standby</div>
 
 <script>
-// --- CONFIGURATION ---
+// --- MANUAL CONNECTION MAP (Fixes the crash) ---
+const HAND_CONNECTIONS = [
+  [0, 1], [1, 2], [2, 3], [3, 4],       // Thumb
+  [0, 5], [5, 6], [6, 7], [7, 8],       // Index
+  [0, 9], [9, 10], [10, 11], [11, 12],  // Middle
+  [0, 13], [13, 14], [14, 15], [15, 16],// Ring
+  [0, 17], [17, 18], [18, 19], [19, 20] // Pinky
+];
+
+// --- VARIABLES ---
 let video;
 let handPose;
 let hands = [];
 let modelsLoaded = false;
-let isAudioStarted = false;
+let isRunning = false;
 
-// --- AUDIO NODES ---
-let synth; // The Pinch Synth
-let beat;  // The Background Loop
-let drumKit; 
-let distEffect; // Distortion
-let volNode; // Master Volume
-
-// --- STATE TRACKING ---
-let currentBPM = 120;
-let isPinching = false;
-let pinchDist = 0;
+// Audio
+let synth, drumKit, metal, distEffect, reverb, loop;
+let volNode;
 
 function preload() {
+  // Load HandPose with flipped video setting
   handPose = ml5.handPose({ flipped: true, maxHands: 2 });
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  
+  // Setup Webcam
   video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
   video.hide();
 
-  handPose.detectStart(video, (results) => {
-    hands = results;
-    if(!modelsLoaded) {
-      modelsLoaded = true;
-      let btn = document.getElementById('startBtn');
-      btn.innerText = "START EXPERIENCE";
-      btn.classList.add("ready");
-      btn.onclick = startSystem;
-    }
-  });
+  // Start Detection
+  handPose.detectStart(video, gotHands);
 }
 
-// --- AUDIO ENGINE ---
-async function startSystem() {
-  await Tone.start();
+function gotHands(results) {
+  hands = results;
   
-  // 1. Synth (Theremin style)
+  // Only enable button once the first detection happens (ensures AI is ready)
+  if (!modelsLoaded) {
+    modelsLoaded = true;
+    let btn = document.getElementById('startBtn');
+    btn.innerText = "Start Experience";
+    btn.classList.add("ready");
+    
+    // Attach Click Event ONLY when ready
+    btn.addEventListener('click', initAudioAndStart);
+  }
+}
+
+// --- AUDIO INITIALIZATION ---
+async function initAudioAndStart() {
+  // 1. Resume Context (Fixes "AudioContext was not allowed to start")
+  await Tone.start();
+  console.log("Audio Context Started");
+
+  // 2. Setup Instruments
   distEffect = new Tone.Distortion(0.0).toDestination();
-  let reverb = new Tone.Reverb(2).connect(distEffect);
+  reverb = new Tone.Reverb(2.5).connect(distEffect);
   
   synth = new Tone.DuoSynth({
     vibratoAmount: 0.5,
@@ -121,148 +154,168 @@ async function startSystem() {
     voice1: { volume: -10, oscillator: { type: "sine" } }
   }).connect(reverb);
 
-  // 2. Drums (Rhythm)
   drumKit = new Tone.MembraneSynth({ volume: -20 }).toDestination();
-  let metal = new Tone.MetalSynth({ 
-    frequency: 200, envelope: { decay: 0.1, release: 0.1 }, volume: -15 
+  metal = new Tone.MetalSynth({ 
+    frequency: 200, envelope: { decay: 0.1, release: 0.1 }, volume: -25 
   }).toDestination();
 
-  // Create a Loop
-  beat = new Tone.Loop(time => {
+  // 3. Setup Loop (Fixes timing warning by using 'time' param)
+  loop = new Tone.Loop((time) => {
     drumKit.triggerAttackRelease("C1", "8n", time);
-    if (Math.random() > 0.5) metal.triggerAttackRelease("32n", time + 0.25);
-  }, "4n").start(0);
+    if (Math.random() > 0.6) {
+      metal.triggerAttackRelease("32n", time + 0.25); // Off-beat hi-hat
+    }
+  }, "4n");
 
+  Tone.Transport.bpm.value = 100;
   Tone.Transport.start();
-  
-  isAudioStarted = true;
-  document.getElementById('overlay').style.opacity = 0;
-  setTimeout(() => document.getElementById('overlay').style.display = 'none', 500);
+  loop.start(0);
+
+  // 4. UI Transition
+  isRunning = true;
+  document.getElementById('overlay').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('overlay').style.display = 'none';
+  }, 800);
 }
 
 function draw() {
-  background(10);
-  
-  // Draw Video Feintly
+  background(10, 10, 15); // Slightly blue-black
+
+  // Draw Video (Subtle)
   push();
-  tint(100, 100); 
+  tint(255, 40); 
   image(video, 0, 0, width, height);
   pop();
 
-  if (!isAudioStarted) return;
-
-  // Process Hands
-  handleGestures();
+  if (isRunning && hands.length > 0) {
+    processInteraction();
+  } else if (isRunning) {
+    document.getElementById('hud').innerText = "LOOKING FOR HANDS...";
+  }
 }
 
-function handleGestures() {
-  let hudText = "";
+function processInteraction() {
+  let statusText = "";
 
   for (let hand of hands) {
-    // Identify Left vs Right (Note: 'Left' in ml5 is usually the person's left)
-    let isRight = hand.handedness === "Left"; // Mirroring quirk: Left on screen is Right Hand
-    let isLeft = hand.handedness === "Right"; // Right on screen is Left Hand
-    
+    // Mirroring logic: 'Left' detected is actually user's Right hand on screen
+    let isRightHand = hand.handedness === "Left"; 
+    let isLeftHand = hand.handedness === "Right";
+
     let index = hand.keypoints[8];
     let thumb = hand.keypoints[4];
     let wrist = hand.keypoints[0];
-    let middle = hand.keypoints[9];
+    let middle = hand.keypoints[9]; // Middle finger base/tip helper
 
-    let x = map(index.x, 0, video.width, 0, width);
-    let y = map(index.y, 0, video.height, 0, height);
+    // Map coordinates to screen
+    let ix = map(index.x, 0, video.width, 0, width);
+    let iy = map(index.y, 0, video.height, 0, height);
     let wx = map(wrist.x, 0, video.width, 0, width);
     let wy = map(wrist.y, 0, video.height, 0, height);
 
-    drawHandSkeleton(hand, isLeft ? [0, 255, 200] : [255, 0, 100]);
+    // Draw Skeleton
+    drawSkeleton(hand, isLeftHand ? [0, 255, 200] : [255, 0, 100]);
 
-    // --- LEFT HAND: THE PINCH SYNTH ---
-    if (isLeft) {
-      // 1. Calculate Pinch
-      let pDist = dist(index.x, index.y, thumb.x, thumb.y);
-      let pinchThreshold = 30; // How close needs to be to count as pinch
+    // --- LEFT HAND LOGIC (SYNTH) ---
+    if (isLeftHand) {
+      let pinchDist = dist(index.x, index.y, thumb.x, thumb.y);
       
-      if (pDist < pinchThreshold) {
-        // PINCHED: PLAY SOUND
-        let note = map(y, height, 0, 100, 800); // Y = Pitch
-        let distortion = map(x, 0, width, 0, 1); // X = Distortion
+      // Visual Pinch Line
+      if(pinchDist < 60) {
+         stroke(0, 255, 200, map(pinchDist, 0, 60, 255, 0));
+         let tx = map(thumb.x, 0, video.width, 0, width);
+         let ty = map(thumb.y, 0, video.height, 0, height);
+         line(ix, iy, tx, ty);
+      }
+
+      if (pinchDist < 30) { // Pinch Trigger
+        let note = map(iy, height, 0, 100, 700);
+        let distAmt = map(ix, 0, width, 0, 0.8);
         
-        synth.triggerAttack(note, Tone.now());
-        distEffect.distortion = distortion;
-        
-        // Visuals
-        noFill(); stroke(0, 255, 200); strokeWeight(3);
-        circle(x, y, 50 + Math.random()*20);
-        hudText += "LEFT: PLAYING | ";
+        // Trigger synth if not already sounding (or update params)
+        synth.triggerAttack(note, Tone.now()); 
+        distEffect.distortion = distAmt;
+
+        // Visual Feedback
+        noFill(); stroke(0, 255, 200);
+        circle(ix, iy, 40 + random(10));
+        statusText += "MELODY ACTIVE | ";
       } else {
-        // RELEASED
         synth.triggerRelease(Tone.now() + 0.1);
-        hudText += "LEFT: HOVER | ";
       }
     }
 
-    // --- RIGHT HAND: THE TIME WARPER ---
-    if (isRight) {
-      // 1. Rotation (Angle between Wrist and Middle Finger)
-      let angle = atan2(middle.y - wrist.y, middle.x - wrist.x);
-      // Map angle to BPM (roughly -1.5 to 1.5 radians)
-      let newBPM = map(angle, -2, 2, 60, 300);
-      newBPM = constrain(newBPM, 60, 400);
+    // --- RIGHT HAND LOGIC (RHYTHM) ---
+    if (isRightHand) {
+      // Rotation Calculation (Angle between Wrist and Middle Finger Knuckle)
+      // Index 9 is middle finger MCP (knuckle)
+      let midKnuckle = hand.keypoints[9];
+      let ang = atan2(midKnuckle.y - wrist.y, midKnuckle.x - wrist.x);
       
-      Tone.Transport.bpm.rampTo(newBPM, 0.1);
+      // Map angle to BPM (approx -1.5 to 1.5 range usually)
+      let targetBPM = map(ang, -2, 2, 60, 200);
+      targetBPM = constrain(targetBPM, 50, 250);
       
-      // 2. Open Hand vs Closed (Volume)
-      // Check distance of fingertips to wrist
+      // Smoothly ramp BPM
+      Tone.Transport.bpm.rampTo(targetBPM, 0.2);
+
+      // Volume Control (Hand Openness)
       let spread = dist(index.x, index.y, wrist.x, wrist.y);
-      let vol = map(spread, 50, 150, -30, 0); // Open = Loud, Fist = Quiet
+      let vol = map(spread, 50, 150, -30, 0);
       drumKit.volume.rampTo(constrain(vol, -60, 0), 0.1);
 
-      // Visuals for Rotation
+      // Visuals
       push();
       translate(wx, wy);
-      rotate(angle);
-      stroke(255, 0, 100, 100); strokeWeight(2);
-      line(0, 0, 100, 0); // Angle indicator
+      rotate(ang);
+      stroke(255, 0, 100, 100);
+      line(0, 0, 80, 0); // Dial Needle
       noStroke(); fill(255, 0, 100);
-      text(Math.floor(newBPM) + " BPM", 110, 0);
+      text(Math.round(targetBPM) + " BPM", 90, 5);
       pop();
       
-      hudText += "RIGHT: " + Math.floor(newBPM) + " BPM";
+      statusText += `RHYTHM: ${Math.round(targetBPM)} BPM`;
     }
   }
-  
-  document.getElementById('hud').innerText = hudText;
+
+  document.getElementById('hud').innerText = statusText || "Ready for Input";
 }
 
-// Stylized Skeleton Drawer
-function drawHandSkeleton(hand, color) {
-  stroke(color[0], color[1], color[2], 150);
+// --- SAFE SKELETON DRAWER ---
+function drawSkeleton(hand, colorVals) {
+  stroke(colorVals[0], colorVals[1], colorVals[2], 200);
   strokeWeight(2);
   
-  // Draw Connections
-  let connections = ml5.handPose.getConnections();
-  for (let i = 0; i < connections.length; i++) {
-    let pointA = hand.keypoints[connections[i][0]];
-    let pointB = hand.keypoints[connections[i][1]];
+  // Use our HARDCODED connection map
+  for (let i = 0; i < HAND_CONNECTIONS.length; i++) {
+    let pair = HAND_CONNECTIONS[i];
+    let a = hand.keypoints[pair[0]];
+    let b = hand.keypoints[pair[1]];
     
-    let x1 = map(pointA.x, 0, video.width, 0, width);
-    let y1 = map(pointA.y, 0, video.height, 0, height);
-    let x2 = map(pointB.x, 0, video.width, 0, width);
-    let y2 = map(pointB.y, 0, video.height, 0, height);
+    // Map raw video coords to canvas
+    let x1 = map(a.x, 0, video.width, 0, width);
+    let y1 = map(a.y, 0, video.height, 0, height);
+    let x2 = map(b.x, 0, video.width, 0, width);
+    let y2 = map(b.y, 0, video.height, 0, height);
     
     line(x1, y1, x2, y2);
   }
   
   // Draw Joints
   noStroke();
-  fill(color);
-  for (let k of hand.keypoints) {
-    let x = map(k.x, 0, video.width, 0, width);
-    let y = map(k.y, 0, video.height, 0, height);
-    circle(x, y, 6);
+  fill(colorVals[0], colorVals[1], colorVals[2]);
+  for (let j = 0; j < hand.keypoints.length; j++) {
+    let kp = hand.keypoints[j];
+    let x = map(kp.x, 0, video.width, 0, width);
+    let y = map(kp.y, 0, video.height, 0, height);
+    circle(x, y, 5);
   }
 }
 
-function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 </script>
 </body>
 </html>
