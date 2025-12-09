@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Invisible Instrument</title>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-  <script src="https://unpkg.com/ml5@0.20.0/dist/ml5.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@1.0.1/dist/ml5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
   <style>
     body {
@@ -17,35 +18,75 @@
       font-family: 'Courier New', Courier, monospace;
       color: white;
     }
+    
+    /* Overlay for Start/Loading */
     #overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 10;
       text-align: center;
+      transition: opacity 0.5s;
     }
-    button {
-      padding: 15px 30px;
-      font-size: 20px;
+
+    h1 { margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+    p { color: #aaa; margin-bottom: 30px; }
+
+    /* The Button */
+    #startBtn {
+      padding: 15px 40px;
+      font-size: 18px;
       cursor: pointer;
-      background: #00ffcc;
-      border: none;
+      background: #444; /* Grey initially */
+      color: #888;
+      border: 1px solid #555;
       font-weight: bold;
-      margin-top: 20px;
+      pointer-events: none; /* Disabled initially */
+      transition: all 0.3s;
+      border-radius: 5px;
     }
+
+    /* Button Active State */
+    #startBtn.ready {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      pointer-events: all;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    }
+
+    #startBtn.ready:hover {
+      transform: scale(1.05);
+      background: #fff;
+    }
+
+    /* Back Button */
+    #closeBtn {
+      position: absolute;
+      top: 20px; right: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 20;
+      opacity: 0.5;
+    }
+    #closeBtn:hover { opacity: 1; }
   </style>
 </head>
 <body>
 
+<a href="/" id="closeBtn" title="Back to Portfolio">✕</a>
+
 <div id="overlay">
   <h1>The Invisible Instrument</h1>
-  <p>Allow Camera Access. Use Headphones for best results.</p>
-  <p>Left Hand (High): Pitch | Right Hand (Low): Reverb | Fast Move: Drum | Open Mouth: Wah-Wah</p>
-  <button onclick="startExperience()">CLICK TO START</button>
+  <p>Camera access required • Use Headphones</p>
+  
+  <button id="startBtn">LOADING AI MODELS...</button>
 </div>
 
 <script>
@@ -55,22 +96,21 @@ let handPose;
 let faceMesh;
 let hands = [];
 let faces = [];
+let modelsLoaded = false;
 
 // Audio Components
-let synth, drum, filter, reverb, loop;
+let synth, drum, filter, reverb;
 let isAudioStarted = false;
 
 // Tracking State
 let prevHandX = 0;
 let prevHandY = 0;
-let lastWinkTime = 0;
-let isRecording = false;
 
 // Visuals
 let particles = [];
 
 function preload() {
-  // Initialize tracking models
+  // Load the models
   handPose = ml5.handPose({ flipped: true });
   faceMesh = ml5.faceMesh({ flipped: true });
 }
@@ -79,13 +119,31 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   
   // Webcam Setup
-  video = createCapture(VIDEO);
+  video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
   video.hide();
 
-  // Start tracking
-  handPose.detectStart(video, (results) => { hands = results; });
-  faceMesh.detectStart(video, (results) => { faces = results; });
+  // Start Tracking
+  handPose.detectStart(video, (results) => {
+    hands = results;
+    checkLoadStatus();
+  });
+  
+  faceMesh.detectStart(video, (results) => {
+    faces = results;
+    checkLoadStatus();
+  });
+}
+
+// Check if we are receiving data, then enable button
+function checkLoadStatus() {
+  if (!modelsLoaded) {
+    modelsLoaded = true;
+    let btn = document.getElementById('startBtn');
+    btn.innerText = "CLICK TO START";
+    btn.classList.add("ready");
+    btn.onclick = startExperience;
+  }
 }
 
 // --- AUDIO SETUP (Tone.js) ---
@@ -106,7 +164,7 @@ async function startAudio() {
     envelope: { attack: 0.1, decay: 0.1, sustain: 0.3, release: 1 }
   }).connect(reverb);
 
-  // 2. The Drum (Kick/Tom)
+  // 2. The Drum
   drum = new Tone.MembraneSynth().toDestination();
 
   isAudioStarted = true;
@@ -114,93 +172,81 @@ async function startAudio() {
 
 function startExperience() {
   startAudio();
-  document.getElementById('overlay').style.display = 'none';
+  // Fade out overlay
+  document.getElementById('overlay').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('overlay').style.display = 'none';
+  }, 500);
 }
 
 function draw() {
   background(20);
   
-  // Draw Video (Mirrored and stylized)
+  // Draw Video (Ghostly effect)
   push();
-  translate(width, 0);
-  scale(-1, 1);
-  tint(255, 100); // Ghostly effect
+  tint(255, 80); 
   image(video, 0, 0, width, height);
   pop();
 
-  // Draw Interface Zones
   drawZones();
 
-  // Process Interactions
   if (isAudioStarted) {
     handleHands();
     handleFace();
   }
 
-  // Draw Visual Particles
   updateParticles();
 }
 
-// --- CORE INTERACTION LOGIC ---
+// --- LOGIC ---
 
 function drawZones() {
-  stroke(255, 50);
-  strokeWeight(2);
+  stroke(255, 30);
+  strokeWeight(1);
   line(width/2, 0, width/2, height);
   line(0, height/2, width, height/2);
   
   noStroke();
-  fill(255, 20);
-  // Zone 1: Top Left (Pitch)
-  text("PITCH ZONE", 20, 30);
-  // Zone 2: Bottom Right (Reverb)
-  text("FX ZONE", width/2 + 20, height/2 + 30);
+  fill(255, 50);
+  textSize(14);
+  text("PITCH", 20, 30);
+  text("FX / REVERB", width/2 + 20, height/2 + 30);
 }
 
 function handleHands() {
   if (hands.length > 0) {
-    let hand = hands[0]; // Focus on primary hand for simplicity or loop through all
-    
-    // Get Index Finger Tip
+    let hand = hands[0];
     let indexFinger = hand.keypoints[8]; 
     
-    // Normalize coordinates to canvas
-    let x = map(indexFinger.x, 0, 640, 0, width);
-    let y = map(indexFinger.y, 0, 480, 0, height);
+    // Normalize coordinates to canvas size
+    // Note: Video is 640x480, we map to window size
+    let x = map(indexFinger.x, 0, video.width, 0, width);
+    let y = map(indexFinger.y, 0, video.height, 0, height);
 
-    // Visual Marker
+    // Marker
     fill(0, 255, 200);
-    noStroke();
-    circle(x, y, 20);
+    circle(x, y, 15);
 
-    // --- LOGIC: LEFT HAND (Top-Left Quad) ---
-    // In mirrored view: Left side of screen is user's Right hand usually, 
-    // but let's stick to screen coordinates for simplicity.
+    // Zone 1: Pitch (Top Left)
     if (x < width/2 && y < height/2) {
-      // Map Y height to Pitch (Higher Y = Lower Pitch usually, let's invert)
       let note = map(y, height/2, 0, 200, 800); 
-      synth.set({ oscillator: { type: "sine" } }); // Smooth sound
+      synth.set({ oscillator: { type: "sine" } });
       synth.triggerAttackRelease(note, "8n");
-      
-      // Visual Feedback
-      stroke(0, 255, 200);
+      stroke(0, 255, 200, 100);
       line(x, y, 0, y);
     }
 
-    // --- LOGIC: RIGHT HAND (Bottom-Right Quad) ---
+    // Zone 2: Reverb (Bottom Right)
     if (x > width/2 && y > height/2) {
-      // Map Y to Reverb Decay
       let damp = map(y, height/2, height, 0.1, 5);
       reverb.decay = damp;
-      
-      // Visual Feedback
-      fill(255, 0, 100, 100);
-      circle(x, y, damp * 20);
+      fill(255, 0, 100, 50);
+      circle(x, y, damp * 30);
     }
 
-    // --- LOGIC: VELOCITY (Percussion) ---
+    // Velocity / Drum
     let vel = dist(x, y, prevHandX, prevHandY);
-    if (vel > 50) { // Threshold for fast movement
+    if (vel > 60) { // Speed threshold
       drum.triggerAttackRelease("C1", "8n");
       createParticle(x, y);
     }
@@ -213,40 +259,32 @@ function handleHands() {
 function handleFace() {
   if (faces.length > 0) {
     let face = faces[0];
-
-    // MediaPipe Facemesh indices: 
-    // Top Lip: 13, Bottom Lip: 14
+    
+    // Lip points
     let topLip = face.keypoints[13];
     let bottomLip = face.keypoints[14];
     
-    // Eye indices (Left: 374, 386 | Right: 145, 159 approx) 
-    // Simplified wink detection using eyelid distance
-    
-    // 1. MOUTH OPENING (Wah Effect)
+    // Calculate mouth opening
+    // We map raw video coordinates to create a ratio
     let mouthDist = dist(topLip.x, topLip.y, bottomLip.x, bottomLip.y);
     
-    if (mouthDist > 10) { // Threshold for "open"
-       let freq = map(mouthDist, 10, 60, 200, 3000);
+    if (mouthDist > 15) { 
+       let freq = map(mouthDist, 15, 80, 200, 3000);
        filter.baseFrequency = freq;
        
-       // Visual
        noFill();
        stroke(255, 255, 0);
-       circle(width/2, height/2, mouthDist * 10);
+       let visualX = map(topLip.x, 0, video.width, 0, width);
+       let visualY = map(topLip.y, 0, video.height, 0, height);
+       circle(visualX, visualY, mouthDist * 5);
     } else {
        filter.baseFrequency = 200;
     }
   }
 }
 
-// --- VISUAL EFFECTS SYSTEM ---
-
 function createParticle(x, y) {
-  particles.push({
-    x: x, y: y,
-    size: 50,
-    life: 255
-  });
+  particles.push({ x: x, y: y, size: 50, life: 255 });
 }
 
 function updateParticles() {
@@ -255,13 +293,12 @@ function updateParticles() {
     noStroke();
     fill(255, p.life);
     circle(p.x, p.y, p.size);
-    p.size += 2;
-    p.life -= 10;
+    p.size += 3;
+    p.life -= 15;
     if (p.life <= 0) particles.splice(i, 1);
   }
 }
 
-// Responsive Window
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
