@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Invisible Instrument</title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@0.20.0/dist/ml5.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      overflow: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+    }
+    #overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      text-align: center;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      background: #00ffcc;
+      border: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="overlay">
+  <h1>The Invisible Instrument</h1>
+  <p>Allow Camera Access. Use Headphones for best results.</p>
+  <p>Left Hand (High): Pitch | Right Hand (Low): Reverb | Fast Move: Drum | Open Mouth: Wah-Wah</p>
+  <button onclick="startExperience()">CLICK TO START</button>
+</div>
+
+<script>
+// --- GLOBAL VARIABLES ---
+let video;
+let handPose;
+let faceMesh;
+let hands = [];
+let faces = [];
+
+// Audio Components
+let synth, drum, filter, reverb, loop;
+let isAudioStarted = false;
+
+// Tracking State
+let prevHandX = 0;
+let prevHandY = 0;
+let lastWinkTime = 0;
+let isRecording = false;
+
+// Visuals
+let particles = [];
+
+function preload() {
+  // Initialize tracking models
+  handPose = ml5.handPose({ flipped: true });
+  faceMesh = ml5.faceMesh({ flipped: true });
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  
+  // Webcam Setup
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+
+  // Start tracking
+  handPose.detectStart(video, (results) => { hands = results; });
+  faceMesh.detectStart(video, (results) => { faces = results; });
+}
+
+// --- AUDIO SETUP (Tone.js) ---
+async function startAudio() {
+  await Tone.start();
+  
+  // 1. The Melodic Synth
+  filter = new Tone.AutoFilter({
+    frequency: 1,
+    baseFrequency: 200,
+    octaves: 2.6
+  }).toDestination().start();
+  
+  reverb = new Tone.Reverb({ decay: 1.5, preDelay: 0.01 }).connect(filter);
+  
+  synth = new Tone.PolySynth(Tone.Synth, {
+    oscillator: { type: "sawtooth" },
+    envelope: { attack: 0.1, decay: 0.1, sustain: 0.3, release: 1 }
+  }).connect(reverb);
+
+  // 2. The Drum (Kick/Tom)
+  drum = new Tone.MembraneSynth().toDestination();
+
+  isAudioStarted = true;
+}
+
+function startExperience() {
+  startAudio();
+  document.getElementById('overlay').style.display = 'none';
+}
+
+function draw() {
+  background(20);
+  
+  // Draw Video (Mirrored and stylized)
+  push();
+  translate(width, 0);
+  scale(-1, 1);
+  tint(255, 100); // Ghostly effect
+  image(video, 0, 0, width, height);
+  pop();
+
+  // Draw Interface Zones
+  drawZones();
+
+  // Process Interactions
+  if (isAudioStarted) {
+    handleHands();
+    handleFace();
+  }
+
+  // Draw Visual Particles
+  updateParticles();
+}
+
+// --- CORE INTERACTION LOGIC ---
+
+function drawZones() {
+  stroke(255, 50);
+  strokeWeight(2);
+  line(width/2, 0, width/2, height);
+  line(0, height/2, width, height/2);
+  
+  noStroke();
+  fill(255, 20);
+  // Zone 1: Top Left (Pitch)
+  text("PITCH ZONE", 20, 30);
+  // Zone 2: Bottom Right (Reverb)
+  text("FX ZONE", width/2 + 20, height/2 + 30);
+}
+
+function handleHands() {
+  if (hands.length > 0) {
+    let hand = hands[0]; // Focus on primary hand for simplicity or loop through all
+    
+    // Get Index Finger Tip
+    let indexFinger = hand.keypoints[8]; 
+    
+    // Normalize coordinates to canvas
+    let x = map(indexFinger.x, 0, 640, 0, width);
+    let y = map(indexFinger.y, 0, 480, 0, height);
+
+    // Visual Marker
+    fill(0, 255, 200);
+    noStroke();
+    circle(x, y, 20);
+
+    // --- LOGIC: LEFT HAND (Top-Left Quad) ---
+    // In mirrored view: Left side of screen is user's Right hand usually, 
+    // but let's stick to screen coordinates for simplicity.
+    if (x < width/2 && y < height/2) {
+      // Map Y height to Pitch (Higher Y = Lower Pitch usually, let's invert)
+      let note = map(y, height/2, 0, 200, 800); 
+      synth.set({ oscillator: { type: "sine" } }); // Smooth sound
+      synth.triggerAttackRelease(note, "8n");
+      
+      // Visual Feedback
+      stroke(0, 255, 200);
+      line(x, y, 0, y);
+    }
+
+    // --- LOGIC: RIGHT HAND (Bottom-Right Quad) ---
+    if (x > width/2 && y > height/2) {
+      // Map Y to Reverb Decay
+      let damp = map(y, height/2, height, 0.1, 5);
+      reverb.decay = damp;
+      
+      // Visual Feedback
+      fill(255, 0, 100, 100);
+      circle(x, y, damp * 20);
+    }
+
+    // --- LOGIC: VELOCITY (Percussion) ---
+    let vel = dist(x, y, prevHandX, prevHandY);
+    if (vel > 50) { // Threshold for fast movement
+      drum.triggerAttackRelease("C1", "8n");
+      createParticle(x, y);
+    }
+
+    prevHandX = x;
+    prevHandY = y;
+  }
+}
+
+function handleFace() {
+  if (faces.length > 0) {
+    let face = faces[0];
+
+    // MediaPipe Facemesh indices: 
+    // Top Lip: 13, Bottom Lip: 14
+    let topLip = face.keypoints[13];
+    let bottomLip = face.keypoints[14];
+    
+    // Eye indices (Left: 374, 386 | Right: 145, 159 approx) 
+    // Simplified wink detection using eyelid distance
+    
+    // 1. MOUTH OPENING (Wah Effect)
+    let mouthDist = dist(topLip.x, topLip.y, bottomLip.x, bottomLip.y);
+    
+    if (mouthDist > 10) { // Threshold for "open"
+       let freq = map(mouthDist, 10, 60, 200, 3000);
+       filter.baseFrequency = freq;
+       
+       // Visual
+       noFill();
+       stroke(255, 255, 0);
+       circle(width/2, height/2, mouthDist * 10);
+    } else {
+       filter.baseFrequency = 200;
+    }
+  }
+}
+
+// --- VISUAL EFFECTS SYSTEM ---
+
+function createParticle(x, y) {
+  particles.push({
+    x: x, y: y,
+    size: 50,
+    life: 255
+  });
+}
+
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    noStroke();
+    fill(255, p.life);
+    circle(p.x, p.y, p.size);
+    p.size += 2;
+    p.life -= 10;
+    if (p.life <= 0) particles.splice(i, 1);
+  }
+}
+
+// Responsive Window
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+</body>
+</html>
