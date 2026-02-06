@@ -88,13 +88,14 @@
         }
 
         .logo {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
             color: var(--dark);
             text-decoration: none;
             transition: all 0.2s ease;
             position: relative;
+            white-space: nowrap;
         }
 
         .logo::after {
@@ -102,12 +103,6 @@
             color: var(--cardinal);
             font-weight: 700;
             position: absolute;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .logo:hover {
@@ -116,18 +111,19 @@
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 32px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.5px;
             transition: all 0.2s ease;
             position: relative;
+            text-transform: uppercase;
         }
 
         .nav-links a::after {
