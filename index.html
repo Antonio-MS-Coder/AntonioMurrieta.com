@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonio Murrieta - Digital Creator</title>
-    <meta name="description" content="Digital creator, author, and technologist crafting experiences at the intersection of art and code.">
-    
+    <title>Antonio Murrieta - Builder, Entrepreneur, Curious by Default</title>
+    <meta name="description" content="Builder, entrepreneur, and curious mind shipping iOS apps, AI-powered experiences, and creative projects from Mexico City.">
+
     <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Antonio Murrieta - Digital Creator">
-    <meta property="og:description" content="Entrepreneur, author, and creative technologist building at the intersection of art and technology.">
+    <meta property="og:title" content="Antonio Murrieta - Builder, Entrepreneur, Curious by Default">
+    <meta property="og:description" content="Builder, entrepreneur, and curious mind shipping iOS apps, AI-powered experiences, and creative projects from Mexico City.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com">
-    
+
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
         }
 
         :root {
-            /* Stanford-inspired palette with warmth */
             --cardinal: #8C1515;
             --cardinal-light: #B83A3A;
             --dark: #2E2D29;
@@ -42,7 +41,6 @@
             color: white;
         }
 
-        /* Import fonts for intellectual aesthetic */
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
         body {
@@ -56,7 +54,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
@@ -247,11 +244,48 @@
             font-size: 20px;
             color: var(--text-secondary);
             max-width: 640px;
-            margin: 0 auto 48px;
+            margin: 0 auto 20px;
             line-height: 1.7;
             font-weight: 400;
         }
 
+        .hero-currently {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .hero-currently strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Credentials Bar */
+        .credentials-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .credentials-bar span {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--warm-gray);
+            letter-spacing: 0.3px;
+        }
+
+        .credentials-bar .separator {
+            color: var(--border-light);
+            font-weight: 300;
+            user-select: none;
+        }
+
+        /* Hero CTAs */
         .hero-cta {
             display: flex;
             gap: 20px;
@@ -359,66 +393,216 @@
             margin: 0 auto;
         }
 
+        .features-intro {
+            max-width: 680px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .features-intro h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .features-intro p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .features-intro p strong {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            margin-top: 60px;
+            gap: 24px;
+            margin-bottom: 60px;
         }
 
-        .feature {
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            padding: 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+        .feature-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: default;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature:hover {
-            background: var(--light-gray);
-            transform: translateY(-4px);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cardinal), var(--cardinal-light));
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .feature:nth-child(1) { animation-delay: 0.1s; }
-        .feature:nth-child(2) { animation-delay: 0.2s; }
-        .feature:nth-child(3) { animation-delay: 0.3s; }
-        .feature:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+        .feature-card:hover::before {
+            transform: translateX(0);
         }
 
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 24px;
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: grayscale(20%);
+        .feature-card:hover {
+            border-color: var(--border-light);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
         }
 
-        .feature:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-            filter: grayscale(0%);
-        }
-
-        .feature-title {
-            font-family: var(--serif);
-            font-size: 22px;
+        .feature-card h3 {
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 12px;
             color: var(--dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
-        .feature-description {
+        .feature-card p {
             font-size: 15px;
             color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 280px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .feature-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--warm-gray);
+            padding-top: 16px;
+            border-top: 1px solid var(--light-gray);
+            flex-wrap: wrap;
+        }
+
+        .feature-meta-tag {
+            background: var(--light-gray);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover .feature-meta-tag {
+            background: rgba(140, 21, 21, 0.08);
+            color: var(--cardinal);
+        }
+
+        /* Featured Projects Section */
+        .featured {
+            padding: 100px 40px;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .featured-container {
+            max-width: var(--max-width);
             margin: 0 auto;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .featured-header h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .featured-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .featured-project {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .featured-project:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .featured-project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .featured-project-info {
+            padding: 24px;
+        }
+
+        .featured-project-category {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--cardinal);
+            margin-bottom: 8px;
+        }
+
+        .featured-project-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .featured-project-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .featured-cta {
+            text-align: center;
+        }
+
+        .featured-cta a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--cardinal);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .featured-cta a:hover {
+            border-bottom-color: var(--cardinal);
         }
 
         /* Section Title */
@@ -446,19 +630,10 @@
             background: var(--cardinal);
         }
 
-        .section-subtitle {
-            font-size: 17px;
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
-            line-height: 1.6;
-        }
-
         /* Footer */
         footer {
             padding: 60px 40px 40px;
-            background: var(--primary);
+            background: var(--dark);
             color: white;
             text-align: center;
         }
@@ -522,25 +697,6 @@
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Reading Indicator */
-        .reading-time {
-            position: fixed;
-            top: 50%;
-            right: 40px;
-            transform: translateY(-50%) rotate(90deg);
-            transform-origin: center;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .reading-time.visible {
-            opacity: 0.5;
         }
 
         /* Mobile Menu */
@@ -622,138 +778,25 @@
             }
 
             .features-grid {
-                gap: 40px;
-            }
-
-            .circle-1, .circle-2 {
-                display: none;
-            }
-        }
-        /* Features Section - Modern Minimal Redesign */
-        .features-intro {
-            max-width: 680px;
-            margin: 0 auto 80px;
-            text-align: center;
-        }
-        
-        .features-intro h2 {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 42px);
-            font-weight: 400;
-            color: var(--dark);
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            line-height: 1.3;
-        }
-        
-        .features-intro p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-weight: 400;
-        }
-        
-        .features-intro p strong {
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        /* Clean Grid Layout */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-        
-        .feature-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: default;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cardinal), var(--cardinal-light));
-            transform: translateX(-100%);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .feature-card:hover::before {
-            transform: translateX(0);
-        }
-        
-        .feature-card:hover {
-            border-color: var(--border-light);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
-        }
-        
-        .feature-emoji {
-            font-size: 32px;
-            margin-bottom: 16px;
-            display: block;
-            filter: grayscale(0);
-        }
-        
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
-        
-        .feature-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        
-        .feature-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--warm-gray);
-            padding-top: 16px;
-            border-top: 1px solid var(--light-gray);
-        }
-        
-        .feature-meta-tag {
-            background: var(--light-gray);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        .feature-card:hover .feature-meta-tag {
-            background: rgba(140, 21, 21, 0.08);
-            color: var(--cardinal);
-        }
-        
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .features-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .feature-card {
                 padding: 24px;
+            }
+
+            .featured {
+                padding: 60px 20px;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .credentials-bar span {
+                font-size: 12px;
             }
         }
     </style>
@@ -782,9 +825,6 @@
     <!-- Dynamic Background -->
     <div class="floating-gradient gradient-1"></div>
     <div class="floating-gradient gradient-2"></div>
-    
-    <!-- Reading Indicator -->
-    <div class="reading-time" id="readingTime">5 MIN READ</div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -793,11 +833,16 @@
                 Building at the intersection of
                 <span>art & technology</span>
             </h1>
-            <p class="hero-subtitle">Entrepreneur • Author • Digital Creator</p>
+            <p class="hero-subtitle">Builder. Entrepreneur. Curious by default.</p>
             <p class="hero-description">
-                I create digital products, co-create books, and explore the edges of what's possible 
-                with code and creativity. Currently building AI-powered experiences. Seeing where the rabbit hole takes me.
+                I build apps, write books, and go down rabbit holes that won't let me go.
+                Right now, that's AI and iOS apps from Mexico City.
+                This is where I share what comes out of it.
             </p>
+            <div class="hero-cta">
+                <a href="work.html" class="btn btn-primary">View My Work</a>
+                <a href="story.html" class="btn btn-secondary">Read My Story</a>
+            </div>
         </div>
 
         <!-- Scroll Indicator -->
@@ -808,38 +853,53 @@
         </div>
     </section>
 
-    <!-- Features Section - Minimal & Approachable -->
+    <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-container">
             <div class="features-intro">
                 <h2>Here's what I'm building</h2>
                 <p>
-                    I love creating things that matter. Whether it's an app that makes someone's day easier, 
-                    a story that sparks imagination, or an experiment that pushes boundaries — 
+                    I love creating things that matter. Whether it's an app that makes someone's day easier,
+                    a story that sparks imagination, or an experiment that pushes boundaries —
                     <strong>every project starts with curiosity</strong>.
                 </p>
             </div>
 
             <div class="features-grid">
                 <article class="feature-card">
-                    <span class="feature-emoji">🚀</span>
-                    <h3>Apps & Digital Products</h3>
+                    <h3>Apps & Products</h3>
                     <p>
-                        Building iOS apps and web experiences that real people actually use. 
-                        From productivity tools to creative games, I focus on clean design and delightful interactions.
+                        Building iOS apps and web platforms that real people actually use.
+                        From idea to MVP to launch — 11+ apps shipped, payments integrated,
+                        and products pitched to banks, companies, and government.
                     </p>
                     <div class="feature-meta">
                         <span class="feature-meta-tag">Swift</span>
+                        <span class="feature-meta-tag">Python</span>
                         <span class="feature-meta-tag">React</span>
                         <span class="feature-meta-tag">AI/ML</span>
                     </div>
                 </article>
 
                 <article class="feature-card">
-                    <span class="feature-emoji">📚</span>
+                    <h3>Exploring & Experimenting</h3>
+                    <p>
+                        Always going deeper. Machine learning, applied AI, generative visuals,
+                        interactive experiences — whatever rabbit hole looks interesting this week.
+                        Finding beauty in algorithms and learning by building.
+                    </p>
+                    <div class="feature-meta">
+                        <span class="feature-meta-tag">Python</span>
+                        <span class="feature-meta-tag">ML</span>
+                        <span class="feature-meta-tag">p5.js</span>
+                        <span class="feature-meta-tag">AI Art</span>
+                    </div>
+                </article>
+
+                <article class="feature-card">
                     <h3>Writing & Stories</h3>
                     <p>
-                        Published author exploring both children's wonder and grown-up questions. 
+                        Published author exploring both children's wonder and grown-up questions.
                         Currently reading 52 books a year and sharing what resonates.
                     </p>
                     <div class="feature-meta">
@@ -848,36 +908,41 @@
                         <span class="feature-meta-tag">Reviews</span>
                     </div>
                 </article>
+            </div>
+        </div>
+    </section>
 
-                <article class="feature-card">
-                    <span class="feature-emoji">🎨</span>
-                    <h3>Creative Experiments</h3>
-                    <p>
-                        Playing at the intersection of art and code. Generative visuals, interactive experiences, 
-                        and finding beauty in algorithms.
-                    </p>
-                    <div class="feature-meta">
-                        <span class="feature-meta-tag">p5.js</span>
-                        <span class="feature-meta-tag">WebGL</span>
-                        <span class="feature-meta-tag">AI Art</span>
-                    </div>
-                </article>
-
-                <article class="feature-card">
-                    <span class="feature-emoji">🔬</span>
-                    <h3>Research & Learning</h3>
-                    <p>
-                        Always exploring what's next. Deep dives into machine learning, philosophy of technology, 
-                        and whatever rabbit hole seems interesting this week.
-                    </p>
-                    <div class="feature-meta">
-                        <span class="feature-meta-tag">Open Source</span>
-                        <span class="feature-meta-tag">Teaching</span>
-                        <span class="feature-meta-tag">Writing</span>
-                    </div>
-                </article>
+    <!-- Featured Projects -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="featured-header">
+                <h2>Featured Work</h2>
+                <p>A few things I've shipped recently.</p>
             </div>
 
+            <div class="featured-grid">
+                <a href="work.html" class="featured-project">
+                    <img src="assets/Work_Covers/Abundia.webp" alt="AbundIA" class="featured-project-image">
+                    <div class="featured-project-info">
+                        <p class="featured-project-category">Finance & AI</p>
+                        <h3 class="featured-project-title">AbundIA</h3>
+                        <p class="featured-project-desc">Personal finance app powered by AI with total privacy. All processed locally on your device via Apple Intelligence.</p>
+                    </div>
+                </a>
+
+                <a href="work.html" class="featured-project">
+                    <img src="assets/Work_Covers/Tribu.webp" alt="Tribu" class="featured-project-image">
+                    <div class="featured-project-info">
+                        <p class="featured-project-category">Social & Wellness</p>
+                        <h3 class="featured-project-title">Tribu</h3>
+                        <p class="featured-project-desc">A warm, minimalist app designed to spark real, meaningful conversations with the people who matter.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="featured-cta">
+                <a href="work.html">See all projects &#8594;</a>
+            </div>
         </div>
     </section>
 
@@ -888,11 +953,10 @@
                 <a href="https://github.com/Antonio-MS-Coder" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank">LinkedIn</a>
                 <a href="https://instagram.com/tono_cams" target="_blank">Instagram</a>
-                <a href="https://twitter.com/antoniomurrieta" target="_blank">Twitter</a>
                 <a href="mailto:carlosantonio.murrieta@gmail.com,create@antoniomurrieta.com">Email</a>
             </div>
             <p class="footer-copyright">
-                © 2024 Antonio Murrieta. Crafted with passion and code.
+                &copy; <script>document.write(new Date().getFullYear())</script> Antonio Murrieta. Crafted with passion and code.
             </p>
         </div>
     </footer>
@@ -907,7 +971,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -915,58 +978,21 @@
             });
         });
 
-        // Navbar scroll effect with smooth transitions
+        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
-        const readingTime = document.getElementById('readingTime');
-        let lastScroll = 0;
-
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 50) {
+            if (window.pageYOffset > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            
-            // Show reading time indicator after scrolling
-            if (currentScroll > 200) {
-                readingTime.classList.add('visible');
-            } else {
-                readingTime.classList.remove('visible');
-            }
-            
-            lastScroll = currentScroll;
-        });
-
-        // Smooth reveal animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        // Observe features
-        document.querySelectorAll('.feature').forEach(feature => {
-            feature.style.animationPlayState = 'paused';
-            observer.observe(feature);
         });
 
         // Dynamic cursor effect on hero title
         const heroTitle = document.querySelector('.hero-title');
-        let mouseX = 0, mouseY = 0;
-
         document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-            
+            const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+            const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
             if (heroTitle) {
                 heroTitle.style.transform = `perspective(1000px) rotateY(${mouseX * 0.05}deg) rotateX(${-mouseY * 0.05}deg)`;
             }
@@ -974,59 +1000,17 @@
 
         // Parallax effect on scroll for hero content
         const heroContent = document.querySelector('.hero-content');
-        
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            
             if (heroContent && scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${parallax}px)`;
+                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
                 heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
             }
         });
 
-        // Add micro-interactions to buttons
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.5);
-                transform: scale(0);
-                animation: ripple-animation 0.6s ease-out;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
         // Smooth scroll for scroll indicator
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            document.querySelector('.features').scrollIntoView({ 
+            document.querySelector('.features').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
