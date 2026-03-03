@@ -2334,19 +2334,27 @@
     {
       "id": 98,
       "title": "El camino de YC",
-      "author": "",
+      "author": "Tiago Sada",
       "category": "business",
       "rating": 0,
       "coverImage": "book-covers/2025/1 El camino de YC.webp",
       "coverEmoji": "🚀",
       "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      "summary": "",
-      "tags": ["Business", "Startups"],
+      "summary": "A Spanish-language guide to Y Combinator by Tiago Sada and fellow YC alumni. They share firsthand experiences navigating the world's top startup accelerator — from the application process to Demo Day — offering practical advice for founders considering the program.",
+      "tags": [
+        "Business",
+        "Startups"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Founders considering applying to Y Combinator or anyone interested in the startup accelerator ecosystem",
+      "keyTakeaways": [
+        "YC looks for founders with deep conviction and a clear understanding of their users, not just polished pitches.",
+        "The accelerator's real value lies in the network, mentorship, and intensity of focus during the batch — not just the funding.",
+        "The application process itself is a useful exercise in clarifying your startup's vision and value proposition.",
+        "Speed of execution and willingness to iterate quickly are the traits YC rewards most."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "A must-read for any Latin American founder considering YC. Tiago and the other alumni break down what the experience is actually like from the inside, cutting through the mystique. Practical, honest, and motivating."
     },
     {
       "id": 99,
@@ -2358,63 +2366,98 @@
       "coverEmoji": "💰",
       "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       "summary": "The founder of MetaLab shares his journey of building and selling companies, exploring the psychology of wealth and the endless pursuit of 'more' in entrepreneurship.",
-      "tags": ["Business", "Entrepreneurship", "Psychology"],
+      "tags": [
+        "Business",
+        "Entrepreneurship",
+        "Psychology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Entrepreneurs and business leaders",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "The pursuit of 'more' is a psychological trap — no amount of money will ever feel like enough if your sense of worth is tied to your net worth.",
+        "Building companies can become an addiction. Recognizing the compulsive patterns behind entrepreneurship is the first step to a healthier relationship with work.",
+        "Comparison is the enemy of satisfaction. The goalposts always move when you measure yourself against others.",
+        "True wealth is having the freedom to do what matters to you — not the accumulation of more for its own sake."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Wilkinson is refreshingly honest about the dark side of entrepreneurial success. Most business books glorify the hustle; this one asks whether the hustle is worth it. A necessary counterbalance for anyone chasing the next milestone."
     },
     {
       "id": 100,
       "title": "Nada nunca termina",
-      "author": "",
+      "author": "Alberto Villarreal",
       "category": "philosophy",
       "rating": 0,
       "coverImage": "book-covers/2025/3 Nada nunca termina.webp",
       "coverEmoji": "🔄",
       "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-      "summary": "",
-      "tags": ["Philosophy", "Spanish"],
+      "summary": "Alberto Villarreal's first non-fiction work, written alongside his psychoanalysis process. He explores heartbreak, the end of love, and the grieving process — sharing his own romantic disappointments alongside reflections and reading recommendations to help readers accept that love can exist even after a relationship ends.",
+      "tags": [
+        "Philosophy",
+        "Spanish"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Readers going through heartbreak or processing the end of a relationship",
+      "keyTakeaways": [
+        "Letting go of someone does not mean erasing them from your story — endings are part of the narrative, not its negation.",
+        "Grief after a breakup is legitimate and deserves the same respect and processing as any other form of loss.",
+        "Vulnerability is not weakness — writing and reflecting openly about pain is a form of strength and healing.",
+        "Moving on is not a single event but an ongoing process that unfolds at its own pace."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Villarreal writes with the kind of vulnerability that makes you feel less alone in your own pain. This book doesn't offer quick fixes — it sits with you in the mess of heartbreak and reminds you that endings are not failures. A healing read."
     },
     {
       "id": 101,
       "title": "Todo lo que no me deja olvidarte",
-      "author": "",
+      "author": "Alberto Villarreal",
       "category": "fiction",
       "rating": 0,
       "coverImage": "book-covers/2025/4 todo lo que no me deja olvidarte.webp",
       "coverEmoji": "💔",
       "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-      "summary": "",
-      "tags": ["Fiction", "Romance", "Spanish"],
+      "summary": "A novel that dives into love, grief, friendship, and personal growth. The story follows Edgar, whose emotional scars from the tragic death of his ex-boyfriend Jorge continue to haunt him even after he moves to Mexico City. It explores how we carry loss and learn to live alongside it.",
+      "tags": [
+        "Fiction",
+        "Romance",
+        "Spanish"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Readers of contemporary Mexican fiction and stories exploring grief and young adulthood",
+      "keyTakeaways": [
+        "Grief does not follow a timeline — the people we lose stay with us in unexpected ways.",
+        "Moving to a new place cannot outrun emotional baggage; healing requires confronting pain directly.",
+        "Friendship and human connection are essential anchors during the process of recovering from loss.",
+        "Identity and love are intertwined — losing someone can feel like losing part of yourself."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Villarreal captures the weight of carrying someone you've lost into every new chapter of your life. The Mexico City setting adds a layer of restless searching that mirrors Edgar's internal journey. Honest and deeply felt."
     },
     {
       "id": 102,
       "title": "Tu pareja ideal",
-      "author": "",
+      "author": "Logan Ury",
       "category": "psychology",
       "rating": 0,
       "coverImage": "book-covers/2025/5 tu pareja ideal.webp",
       "coverEmoji": "❤️",
       "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-      "summary": "",
-      "tags": ["Psychology", "Relationships", "Spanish"],
+      "summary": "Behavioral scientist and dating coach Logan Ury draws on psychological research to identify the mental barriers that sabotage our search for lasting love. The book offers practical, science-backed strategies for overcoming dating blind spots and building meaningful romantic relationships.",
+      "tags": [
+        "Psychology",
+        "Relationships",
+        "Spanish"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
-      "favoriteQuote": "",
-      "personalNotes": ""
+      "recommendedFor": "Anyone navigating the dating world who wants a practical, evidence-based approach to relationships",
+      "keyTakeaways": [
+        "Great relationships are built through intentional decisions, not found by chance — dating is a skill that can be improved.",
+        "Our brains have predictable biases (the Romanticizer, the Maximizer, the Hesitater) that sabotage our dating choices.",
+        "Stop looking for a 'spark' on the first date; instead, focus on whether the person would make a good long-term partner.",
+        "Taking action and making real behavioral changes matters more than simply understanding your patterns."
+      ],
+      "favoriteQuote": "Great relationships are built, not found.",
+      "personalNotes": "One of the most practical dating books I've come across. Ury's framework of the three dating tendencies — Romanticizer, Maximizer, Hesitater — is eye-opening. It's not about finding 'the one,' it's about becoming someone who can build something lasting."
     },
     {
       "id": 103,
@@ -2426,29 +2469,45 @@
       "coverEmoji": "🎢",
       "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       "summary": "The CEO of Disney shares lessons from his remarkable career, leading one of the world's most beloved companies through times of profound change and transformation.",
-      "tags": ["Business", "Leadership", "Biography"],
+      "tags": [
+        "Business",
+        "Leadership",
+        "Biography"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Business leaders and entertainment industry enthusiasts",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "The relentless pursuit of perfection is not the goal — the pursuit of genuine innovation through calculated risk-taking is what creates breakthroughs.",
+        "Leading through times of change requires three things: optimism, courage, and an openness to what's next.",
+        "Iger's acquisition strategy (Pixar, Marvel, Lucasfilm, Fox) shows that bold bets backed by deep understanding of brand value can transform a company.",
+        "Treat every person you work with with fairness and respect. Your reputation as a leader is built on how you handle the small interactions, not just the big deals."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Iger's story is a masterclass in leadership through transformation. His ability to identify what Disney needed — creative revitalization through strategic acquisitions — and then execute with patience and conviction is remarkable. The Pixar acquisition alone is worth the read."
     },
     {
       "id": 104,
       "title": "Letting You Go",
-      "author": "",
+      "author": "Billie Brooks",
       "category": "fiction",
       "rating": 0,
       "coverImage": "book-covers/2025/7 Letting you go.webp",
       "coverEmoji": "🕊️",
       "coverGradient": "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
-      "summary": "",
-      "tags": ["Fiction", "Drama"],
+      "summary": "A short, reflective poetry and prose collection about loss, grief, heartbreak, and the courage it takes to turn the page. Brooks writes with vulnerability and resilience, offering words of comfort for readers going through painful transitions.",
+      "tags": [
+        "Fiction",
+        "Drama"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
-      "favoriteQuote": "",
-      "personalNotes": ""
+      "recommendedFor": "Readers going through loss or heartbreak who are looking for a short, contemplative read",
+      "keyTakeaways": [
+        "Turning the page — even when it terrifies you — is often the best decision you will ever make.",
+        "Grief, heartbreak, and loss are not obstacles to avoid but experiences that shape and deepen who you are.",
+        "Resilience is not about moving on quickly; it is about sitting with the pain and still choosing to move forward."
+      ],
+      "favoriteQuote": "There will come a day when you realize turning the page was the best decision you have ever made. There is so much more to the book than the page you were stuck on.",
+      "personalNotes": "Short but powerful. Brooks doesn't try to fix your pain — she acknowledges it and reminds you that there's more ahead. The kind of book you keep on your nightstand during hard seasons."
     },
     {
       "id": 105,
@@ -2460,46 +2519,73 @@
       "coverEmoji": "🔐",
       "coverGradient": "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
       "summary": "The science of human hacking - understanding how social engineers exploit human psychology to breach security systems and how to defend against these attacks.",
-      "tags": ["Technology", "Security", "Psychology"],
+      "tags": [
+        "Technology",
+        "Security",
+        "Psychology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Security professionals and anyone interested in cybersecurity",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "Social engineering attacks exploit human psychology — trust, authority, fear, and helpfulness — rather than technical vulnerabilities.",
+        "The most dangerous hackers don't break into systems; they convince people to open the door for them.",
+        "Understanding body language, micro-expressions, and communication patterns is as important to security as firewalls and encryption.",
+        "Everyone is vulnerable to social engineering. Awareness and training are the only reliable defenses."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "This book changes how you see every interaction. Once you understand how social engineers think, you start recognizing manipulation patterns everywhere — in sales, marketing, politics, and daily life. Surprisingly relevant beyond just cybersecurity."
     },
     {
       "id": 106,
       "title": "El laberinto de la felicidad",
-      "author": "",
+      "author": "Alex Rovira & Francesc Miralles",
       "category": "philosophy",
       "rating": 0,
       "coverImage": "book-covers/2025/9 El laberinto de la felicidad.webp",
       "coverEmoji": "🌟",
       "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-      "summary": "",
-      "tags": ["Philosophy", "Happiness", "Spanish"],
+      "summary": "A short, inspiring fable about Ariadna, a woman who has lost her job and the meaning in her life, and enters a fantastical 'labyrinth of happiness.' Through encounters with various characters, she discovers that knowing and accepting yourself is the prerequisite to finding true happiness.",
+      "tags": [
+        "Philosophy",
+        "Happiness",
+        "Spanish"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
-      "favoriteQuote": "",
-      "personalNotes": ""
+      "recommendedFor": "Readers looking for a quick, accessible read on happiness and self-discovery",
+      "keyTakeaways": [
+        "Happiness is not a destination but the way you walk through life.",
+        "We see happiness in what is far away, but it is actually much closer than we imagine.",
+        "Self-knowledge and self-acceptance are the necessary steps before you can truly be happy.",
+        "There are three opinions that shape our reality: the opinion we have of others, the opinion we believe others have of us, and the opinion we have of ourselves."
+      ],
+      "favoriteQuote": "La felicidad no es un destino, sino la forma en la que caminas por la vida.",
+      "personalNotes": "A quick, fable-style read that packs a surprising amount of wisdom. The labyrinth metaphor works beautifully — happiness isn't about finding the exit, it's about how you navigate the journey. The insight about the three opinions that shape reality stayed with me."
     },
     {
       "id": 107,
       "title": "Historia de México",
-      "author": "",
+      "author": "Captivating History",
       "category": "history",
       "rating": 0,
       "coverImage": "book-covers/2025/10 Historia de mexico.webp",
       "coverEmoji": "🇲🇽",
       "coverGradient": "linear-gradient(135deg, #f857a6 0%, #ff5858 100%)",
-      "summary": "",
-      "tags": ["History", "Mexico", "Spanish"],
+      "summary": "A comprehensive yet accessible overview of Mexican history from pre-Hispanic civilizations and the Spanish conquest through independence, the Revolution, and into the modern era. It covers the key events, figures, and movements that shaped Mexico as a nation.",
+      "tags": [
+        "History",
+        "Mexico",
+        "Spanish"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Readers looking for a broad, introductory overview of Mexican history",
+      "keyTakeaways": [
+        "Mexico's identity was forged through the collision and fusion of indigenous civilizations and Spanish colonization — a duality that persists today.",
+        "The Mexican Revolution was not a single event but a complex series of movements driven by vastly different leaders and ideologies.",
+        "Understanding the pre-Hispanic past — Olmec, Maya, Aztec — is essential to understanding modern Mexican culture and identity.",
+        "Mexico's modern challenges are deeply rooted in historical patterns of centralized power, foreign intervention, and social inequality."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "As a Mexican, understanding our own history is fundamental. This book gives a broad overview that connects the dots from the ancient civilizations to where we are today. It helps you see how deeply the past shapes the present."
     },
     {
       "id": 108,
@@ -2511,12 +2597,21 @@
       "coverEmoji": "✨",
       "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       "summary": "A fantasy novel about a woman cursed to be forgotten by everyone she meets, spanning centuries of solitude until she meets someone who remembers her.",
-      "tags": ["Fiction", "Fantasy", "Romance"],
+      "tags": [
+        "Fiction",
+        "Fantasy",
+        "Romance"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Fantasy and romance readers",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "The curse of being forgotten by everyone you meet is a powerful metaphor for invisibility — the feeling of going through life without being truly seen.",
+        "Addie's story explores the tension between freedom and connection: she has infinite time but cannot form lasting bonds.",
+        "Memory and identity are inseparable — without someone to remember you, who are you really?",
+        "The novel asks what makes a life meaningful: is it the marks we leave on others, or the experiences we have ourselves?"
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Schwab created something beautiful here. The idea of living forever but being forgotten by everyone is haunting. It makes you think about what you'd sacrifice for time and what you'd sacrifice for love. The centuries-spanning narrative keeps you hooked."
     },
     {
       "id": 109,
@@ -2528,29 +2623,47 @@
       "coverEmoji": "📱",
       "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
       "summary": "How the great rewiring of childhood is causing an epidemic of mental illness, exploring the impact of smartphones and social media on Gen Z's mental health.",
-      "tags": ["Psychology", "Social Media", "Parenting"],
+      "tags": [
+        "Psychology",
+        "Social Media",
+        "Parenting"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Parents, educators, and anyone interested in digital culture's impact",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "The shift from a play-based childhood to a phone-based childhood is the primary driver of the youth mental health crisis that began around 2012.",
+        "Social media exploits the developing adolescent brain — the need for social validation becomes an addictive loop.",
+        "The four foundational harms: social deprivation, sleep deprivation, attention fragmentation, and addiction.",
+        "Solutions require collective action: delaying smartphone access, phone-free schools, more unsupervised play, and age-appropriate internet access."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "One of the most important books of our time. Haidt presents overwhelming evidence that we've conducted a massive uncontrolled experiment on an entire generation. The solutions he proposes are practical and urgent. Everyone — not just parents — should read this."
     },
     {
       "id": 110,
       "title": "Anxious Attachment Recovery",
-      "author": "",
+      "author": "Linda Hill",
       "category": "psychology",
       "rating": 0,
       "coverImage": "book-covers/2025/13 Anxious Attachement Recovery.webp",
       "coverEmoji": "🧠",
       "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-      "summary": "",
-      "tags": ["Psychology", "Relationships", "Self-Help"],
+      "summary": "A self-help guide that explores the root causes and effects of anxious attachment style, rooted in inconsistent childhood caregiving. Hill provides practical strategies to move from insecure relationship patterns to confident, secure attachment through self-awareness, boundary-setting, and intentional behavioral change.",
+      "tags": [
+        "Psychology",
+        "Relationships",
+        "Self-Help"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Anyone who recognizes anxious patterns in their relationships and wants practical tools to develop more secure attachment",
+      "keyTakeaways": [
+        "Anxious attachment originates from inconsistent caregiving and manifests as a deep fear of abandonment and constant need for reassurance.",
+        "Acknowledging your attachment style is the crucial first step — you cannot change what you do not recognize.",
+        "Practical tools like visualization exercises, affirmations, and healthy boundary-setting can rewire anxious patterns over time.",
+        "A secure attachment style — marked by trust, comfort, and a balance of closeness and autonomy — is achievable with consistent practice."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Understanding attachment theory is one of those things that changes how you see every relationship in your life. Hill makes the concepts accessible and actionable. The exercises are practical and the progress feels real when you commit to the work."
     },
     {
       "id": 111,
@@ -2562,12 +2675,21 @@
       "coverEmoji": "📚",
       "coverGradient": "linear-gradient(135deg, #2b5876 0%, #4e4376 100%)",
       "summary": "A mystery novel set in post-war Barcelona about a young boy who discovers a mysterious book that will change his life, leading him into a labyrinth of secrets.",
-      "tags": ["Fiction", "Mystery", "Spanish Literature"],
+      "tags": [
+        "Fiction",
+        "Mystery",
+        "Spanish Literature"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Mystery lovers and Spanish literature enthusiasts",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "Books have a life of their own — they find the right reader at the right time, and the relationship between reader and book is as real as any human connection.",
+        "Barcelona itself becomes a character in the novel — its streets, shadows, and secrets mirror the mysteries of the plot.",
+        "The Cemetery of Forgotten Books is one of the most beautiful metaphors in literature: a place where abandoned stories wait for someone to give them life again.",
+        "Zafón masterfully weaves love, betrayal, and obsession into a story that reminds you why you fell in love with reading in the first place."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "One of the most captivating novels I've ever read. Zafón's Barcelona pulls you in like a labyrinth you don't want to escape. The writing is gorgeous, the mystery is gripping, and the love letter to books and reading is something every reader will feel in their soul."
     },
     {
       "id": 112,
@@ -2579,12 +2701,21 @@
       "coverEmoji": "🧩",
       "coverGradient": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
       "summary": "A philosophical exploration arguing that free will is an illusion, examining the implications for morality, law, and personal responsibility.",
-      "tags": ["Philosophy", "Neuroscience", "Psychology"],
+      "tags": [
+        "Philosophy",
+        "Neuroscience",
+        "Psychology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Philosophy enthusiasts and those interested in consciousness",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "Free will is an illusion — our thoughts and actions arise from prior causes (genetics, upbringing, brain chemistry) that we did not choose.",
+        "Even the feeling of choosing is itself a neurological event that happens before we become conscious of it.",
+        "Accepting the illusion of free will doesn't undermine morality — it actually fosters greater compassion and less judgment toward others.",
+        "If people don't truly author their own actions, our approach to criminal justice and blame needs fundamental rethinking."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Harris makes a provocative argument in a very short book. Whether you agree or not, it forces you to examine assumptions you've never questioned. The implications for how we judge others — and ourselves — are profound. A quick read that stays with you."
     },
     {
       "id": 113,
@@ -2595,13 +2726,22 @@
       "coverImage": "book-covers/2025/16 The next everything.webp",
       "coverEmoji": "🔮",
       "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      "summary": "",
-      "tags": ["Technology", "Future", "Innovation"],
+      "summary": "A forward-looking exploration of the technologies and ideas poised to reshape every aspect of how we live, work, and connect. The book examines the converging forces of innovation that are redefining industries, relationships, and human potential.",
+      "tags": [
+        "Technology",
+        "Future",
+        "Innovation"
+      ],
       "yearRead": 2025,
-      "recommendedFor": "",
-      "keyTakeaways": [],
+      "recommendedFor": "Technology enthusiasts and anyone curious about the future of innovation",
+      "keyTakeaways": [
+        "The pace of technological change is accelerating — what took decades now takes years, and what took years now takes months.",
+        "The convergence of multiple technologies (AI, biotech, energy, connectivity) creates possibilities that no single innovation could achieve alone.",
+        "Adapting to the next wave of change requires not just technical skills but new ways of thinking about work, identity, and purpose.",
+        "The future belongs to those who can embrace uncertainty and learn faster than the rate of change."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "A thought-provoking look at what's coming next. The book connects dots across industries and technologies in a way that makes you see the bigger picture. Good for expanding your perspective on where the world is heading."
     },
     {
       "id": 114,
@@ -2613,12 +2753,21 @@
       "coverEmoji": "₿",
       "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
       "summary": "A firsthand account of the cryptocurrency gold rush, exploring the world of Bitcoin mining and the characters drawn to this digital frontier.",
-      "tags": ["Technology", "Cryptocurrency", "Memoir"],
+      "tags": [
+        "Technology",
+        "Cryptocurrency",
+        "Memoir"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Cryptocurrency enthusiasts and tech readers",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "The Bitcoin mining world attracts a colorful cast of characters — dreamers, criminals, idealists, and opportunists — all drawn to the promise of digital gold.",
+        "Mining is not just a technical process; it's a window into human greed, ambition, and the eternal search for a shortcut to wealth.",
+        "The environmental cost of Bitcoin mining is real and growing, creating a tension between innovation and sustainability.",
+        "Lou's personal journey through the crypto world shows how easy it is to get swept up in a movement and how hard it is to maintain perspective."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Lou writes about crypto not as a technical manual but as a human story. The characters he encounters are fascinating, and his own journey from curiosity to deep involvement mirrors what so many experienced during the crypto boom. Entertaining and insightful."
     },
     {
       "id": 115,
@@ -2630,12 +2779,21 @@
       "coverEmoji": "🚀",
       "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       "summary": "A collection of Jeff Bezos's writings and annual letters to shareholders, revealing the principles and long-term thinking that built Amazon.",
-      "tags": ["Business", "Entrepreneurship", "Leadership"],
+      "tags": [
+        "Business",
+        "Entrepreneurship",
+        "Leadership"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Entrepreneurs and business strategists",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "Long-term thinking is the ultimate competitive advantage. Bezos consistently chose to sacrifice short-term profits for long-term market position.",
+        "Customer obsession — not competitor obsession — is the foundation of Amazon's strategy. Start with the customer and work backward.",
+        "Day 1 mentality: treat every day like it's the first day of the company. Day 2 is stasis, followed by irrelevance, followed by death.",
+        "High-velocity decision making matters more than perfect decision making. Most decisions are reversible — make them fast with about 70% of the information you wish you had."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "Reading Bezos's shareholder letters in sequence is like watching a masterclass in long-term strategic thinking unfold in real time. The consistency of his principles over decades is remarkable. The Day 1 philosophy and the emphasis on high-velocity decisions are frameworks I keep coming back to."
     },
     {
       "id": 116,
@@ -2647,12 +2805,21 @@
       "coverEmoji": "🏆",
       "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       "summary": "The leadership playbook of Bill Campbell, Silicon Valley's most legendary coach who mentored Steve Jobs, Eric Schmidt, and other tech titans.",
-      "tags": ["Business", "Leadership", "Silicon Valley"],
+      "tags": [
+        "Business",
+        "Leadership",
+        "Silicon Valley"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Leaders, managers, and tech industry professionals",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "Bill Campbell's secret was simple: he led with love. He genuinely cared about the people he coached, and that trust became the foundation for extraordinary performance.",
+        "Great coaching is about making other people better. Campbell always asked 'How can I help?' before anything else.",
+        "Build community first, then tackle problems. Campbell believed that when teams trust each other, they can solve anything.",
+        "Courage is the most important quality in a leader. Campbell pushed people to make the hard decisions they were avoiding."
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "A beautiful tribute to a man who shaped Silicon Valley from behind the scenes. Campbell's approach — leading with genuine care for people while demanding excellence — is the kind of leadership the world needs more of. The anecdotes from Jobs, Schmidt, and others are priceless."
     },
     {
       "id": 117,
@@ -2664,12 +2831,21 @@
       "coverEmoji": "🐱",
       "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
       "summary": "A philosophical tale about a man who learns he has only days to live and makes a deal with the devil to extend his life by removing things from the world.",
-      "tags": ["Fiction", "Philosophy", "Japanese Literature"],
+      "tags": [
+        "Fiction",
+        "Philosophy",
+        "Japanese Literature"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Readers who enjoy philosophical fiction",
-      "keyTakeaways": [],
+      "keyTakeaways": [
+        "We don't appreciate the things in our lives until we imagine losing them. The thought experiment of removing one thing at a time reveals what truly matters.",
+        "The devil's bargain — trading something from the world for one more day of life — forces impossible choices about value and meaning.",
+        "Connection, memory, and the small daily experiences are more valuable than we realize in the rush of everyday life.",
+        "Kawamura asks the ultimate question: what would you be willing to lose to keep living, and at what point does life without those things stop being worth it?"
+      ],
       "favoriteQuote": "",
-      "personalNotes": ""
+      "personalNotes": "A deceptively simple story that hits you harder than you expect. The premise — what if you could trade things from the world for more time alive — sounds like a thought experiment, but Kawamura turns it into something deeply emotional. It made me think about what I take for granted every day."
     },
     {
       "id": 118,
@@ -2681,7 +2857,11 @@
       "coverEmoji": "🐟",
       "coverGradient": "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
       "summary": "In this classic novel we see the journey of the 'old man' fishing the biggest fish the town has ever seen. In general we see the struggle of being alone against challenges and the obstacles despite the experience. We see resilience, and passion through tough times.",
-      "tags": ["Fiction", "Classic", "Adventure"],
+      "tags": [
+        "Fiction",
+        "Classic",
+        "Adventure"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Those who appreciate classic literature and tales of perseverance",
       "keyTakeaways": [
@@ -2703,7 +2883,11 @@
       "coverEmoji": "❤️",
       "coverGradient": "linear-gradient(135deg, #e96443 0%, #904e95 100%)",
       "summary": "In this book, the author takes a deep dive into the concept of love. We explore the different kinds of understanding love as an art, and to the sociological context of the world, as well as the spiritual implications of loving. It is highly theoretical, yet very down to earth.",
-      "tags": ["Philosophy", "Psychology", "Relationships"],
+      "tags": [
+        "Philosophy",
+        "Psychology",
+        "Relationships"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Anyone seeking to understand and improve the quality of their relationships",
       "keyTakeaways": [
@@ -2726,7 +2910,11 @@
       "coverEmoji": "⚛️",
       "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       "summary": "In this book the author explores the history, the present and the potential future of quantum computing. It is crazy to think the amount of doors and possibilities this technology enables. Cybersecurity, biology and health, energetic autonomy these are only examples of industries it can potentially radically transform. We are about to live one of the biggest transformations we have yet seen as a species.",
-      "tags": ["Technology", "Science", "Quantum Computing"],
+      "tags": [
+        "Technology",
+        "Science",
+        "Quantum Computing"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Technology enthusiasts and those curious about the future of computing",
       "keyTakeaways": [
@@ -2749,7 +2937,11 @@
       "coverEmoji": "✊",
       "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
       "summary": "In this book the author explores the history of non-violence. The active pursuit of peace through the resistance to the use of violence as a mean. It deals with topics such as politics, religion, power and rebellion. It focuses on the things we might learn from the resolution of previous conflicts.",
-      "tags": ["Philosophy", "History", "Politics"],
+      "tags": [
+        "Philosophy",
+        "History",
+        "Politics"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Those interested in political philosophy and conflict resolution",
       "keyTakeaways": [
@@ -2772,7 +2964,11 @@
       "coverEmoji": "💫",
       "coverGradient": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
       "summary": "In this book the author uses the story of Marie Curie as a way to talk about her own life. It deals with topics such as women in a men dominated world, the lost of a loved one, family, professional success and pain.",
-      "tags": ["Fiction", "Biography", "Feminism"],
+      "tags": [
+        "Fiction",
+        "Biography",
+        "Feminism"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Readers interested in biographical fiction and women's stories",
       "keyTakeaways": [
@@ -2795,7 +2991,11 @@
       "coverEmoji": "👻",
       "coverGradient": "linear-gradient(135deg, #8b7355 0%, #4a4238 100%)",
       "summary": "In this classic novel we see the story of a town narrated through memories and ghosts. The story begins when Juan Preciado goes to the town to find his parent Pedro Páramo. The story deals with topics such as abuse of power, love, death, legacy and memory.",
-      "tags": ["Fiction", "Mexican Literature", "Classic"],
+      "tags": [
+        "Fiction",
+        "Mexican Literature",
+        "Classic"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Fans of magical realism and Mexican literature",
       "keyTakeaways": [
@@ -2817,7 +3017,11 @@
       "coverEmoji": "💕",
       "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
       "summary": "In this book the author talks about one of the most important topics in life, love. How we perceive and communicate love, what implications it has for relationships, and what are the main 5 languages we use. Giving practical real life examples.",
-      "tags": ["Psychology", "Relationships", "Self-Help"],
+      "tags": [
+        "Psychology",
+        "Relationships",
+        "Self-Help"
+      ],
       "yearRead": 2023,
       "recommendedFor": "Anyone trying to improve their relationships",
       "keyTakeaways": [
@@ -2840,7 +3044,11 @@
       "coverEmoji": "🧭",
       "coverGradient": "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
       "summary": "A Stanford-born methodology for designing a well-lived, joyful life using design thinking principles. The authors present five core frameworks — curiosity, bias to action, reframing, awareness, and radical collaboration — to help readers prototype their way to a fulfilling life rather than searching for a single 'passion.'",
-      "tags": ["Self-Help", "Design Thinking", "Philosophy"],
+      "tags": [
+        "Self-Help",
+        "Design Thinking",
+        "Philosophy"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone feeling stuck or wanting to approach life decisions with more creativity and intention",
       "keyTakeaways": [
@@ -2863,7 +3071,11 @@
       "coverEmoji": "💻",
       "coverGradient": "linear-gradient(135deg, #0f2027 0%, #2c5364 100%)",
       "summary": "The definitive history of the hacker movement, from the early days at MIT's Tech Model Railroad Club through the rise of personal computing. Levy profiles the digital explorers and back room geniuses who shaped the technological revolution, driven by the hacker ethic of decentralization, freedom of information, and the belief that computers can change life for the better.",
-      "tags": ["Technology", "History", "Computer Science"],
+      "tags": [
+        "Technology",
+        "History",
+        "Computer Science"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone passionate about technology, programming, or the history of computing",
       "keyTakeaways": [
@@ -2885,7 +3097,11 @@
       "coverEmoji": "🏃",
       "coverGradient": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
       "summary": "A memoir where Murakami reflects on the deep connection between running and writing — two disciplines that require endurance, solitude, and the willingness to push through pain. More than a book about running, it's a meditation on discipline, aging, and what it means to commit to something over a lifetime.",
-      "tags": ["Philosophy", "Memoir", "Sports"],
+      "tags": [
+        "Philosophy",
+        "Memoir",
+        "Sports"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Runners, writers, and anyone interested in the philosophy of discipline and endurance",
       "keyTakeaways": [
@@ -2907,7 +3123,11 @@
       "coverEmoji": "🔬",
       "coverGradient": "linear-gradient(135deg, #0c0c0c 0%, #434343 100%)",
       "summary": "Bryan Johnson's philosophical manifesto for being human in the age of exponential technology. The book introduces Zeroism — the intelligence of not knowing — and argues that our greatest attribute is future literacy: the ability to adapt courageously toward what we cannot yet see. It presents a framework where algorithms (Blueprint) run the human body better than we can ourselves.",
-      "tags": ["Philosophy", "Technology", "Futurism"],
+      "tags": [
+        "Philosophy",
+        "Technology",
+        "Futurism"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Those interested in transhumanism, longevity, and the philosophy of human-technology integration",
       "keyTakeaways": [
@@ -2923,24 +3143,28 @@
     {
       "id": 129,
       "title": "Alex Karp",
-      "author": "",
+      "author": "Alexander C. Karp & Nicholas W. Zamiska",
       "category": "business",
       "rating": 0,
       "coverImage": "book-covers/2025/25 Alex Karp.webp",
       "coverEmoji": "🏢",
       "coverGradient": "linear-gradient(135deg, #2b5876 0%, #4e4376 100%)",
-      "summary": "A look into the mind and career of Alex Karp, the unconventional CEO of Palantir Technologies. From his philosophical roots studying under Jürgen Habermas to building one of the most controversial and powerful data companies in the world, Karp represents a unique blend of academic philosophy and Silicon Valley ambition.",
-      "tags": ["Business", "Biography", "Technology"],
+      "summary": "Palantir CEO Alex Karp argues that Silicon Valley has lost its way, prioritizing consumer apps over national security and civic duty. The book calls for a renewal of public-private collaboration in technology, particularly around AI and defense, to protect Western democratic institutions.",
+      "tags": [
+        "Business",
+        "Biography",
+        "Technology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Readers interested in tech leadership, data ethics, and unconventional business leaders",
       "keyTakeaways": [
-        "Karp's philosophical background deeply influenced his approach to building Palantir — technology must serve democratic institutions, not replace them.",
-        "Conviction in your mission matters more than fitting into Silicon Valley norms. Karp's unconventional style challenged every stereotype of a tech CEO.",
-        "The tension between privacy, security, and technological capability is one of the defining questions of our era.",
-        "Building a company around government and defense contracts requires a different kind of leadership — one rooted in patience and long-term conviction."
+        "Silicon Valley was originally built on Pentagon-funded research serving national interests; it has since drifted toward consumerism.",
+        "The software industry must renew its commitment to addressing the AI arms race and urgent national security challenges.",
+        "A willingness to risk the disapproval of the crowd has everything to do with technological and economic outperformance.",
+        "Karp's philosophical background deeply influenced his approach — technology must serve democratic institutions, not replace them."
       ],
-      "favoriteQuote": "",
-      "personalNotes": "An interesting profile of one of tech's most atypical leaders. Karp's blend of philosophy and technology is rare and refreshing. The book raises important questions about the role of data in society and what it means to build technology for governments."
+      "favoriteQuote": "The peace and comfort that these inventions created turned Silicon Valley into a consumerist hotbed, where founders neglect their duty to help protect the American national project.",
+      "personalNotes": "Whether you agree with Karp's politics or not, the argument is provocative and well-constructed. The idea that the tech industry has a civic responsibility beyond building consumer products is something worth debating. His philosophical roots show — this reads more like a manifesto than a memoir."
     },
     {
       "id": 130,
@@ -2952,7 +3176,11 @@
       "coverEmoji": "💸",
       "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
       "summary": "From the author of The Psychology of Money, this book explores the complex relationship between spending, happiness, and identity. Housel examines how we make financial decisions, what our spending reveals about our values, and why the way we use money matters as much as how we earn or save it.",
-      "tags": ["Business", "Finance", "Psychology"],
+      "tags": [
+        "Business",
+        "Finance",
+        "Psychology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone who has read The Psychology of Money or wants to develop a healthier relationship with spending",
       "keyTakeaways": [
@@ -2974,7 +3202,11 @@
       "coverEmoji": "🇲🇽",
       "coverGradient": "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
       "summary": "The biography of Carlos Slim, one of the richest people in the world and Mexico's most influential business figure. The book traces his journey from a modest upbringing in Mexico City to building an empire across telecommunications, construction, and finance, revealing the strategies and philosophy behind his extraordinary success.",
-      "tags": ["Business", "Biography", "Mexico"],
+      "tags": [
+        "Business",
+        "Biography",
+        "Mexico"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Business-minded readers interested in Latin American entrepreneurship and wealth building",
       "keyTakeaways": [
@@ -2996,7 +3228,12 @@
       "coverEmoji": "⚡",
       "coverGradient": "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
       "summary": "Bryan Johnson's radical manifesto on longevity and the future of human health. The book makes the case that death might not be inevitable and presents his Blueprint protocol — a data-driven, algorithm-based approach to reversing aging. It challenges our acceptance of decline and argues that we can and should take radical ownership of our biology.",
-      "tags": ["Philosophy", "Health", "Technology", "Longevity"],
+      "tags": [
+        "Philosophy",
+        "Health",
+        "Technology",
+        "Longevity"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone interested in longevity, biohacking, or the intersection of technology and human biology",
       "keyTakeaways": [
@@ -3018,7 +3255,11 @@
       "coverEmoji": "🍾",
       "coverGradient": "linear-gradient(135deg, #c31432 0%, #240b36 100%)",
       "summary": "A classic short story about a magical bottle containing a devil that grants its owner any wish — but the owner must sell the bottle for less than they paid for it before they die, or their soul is damned. The tale explores the tension between desire, greed, and the price we pay for getting what we want.",
-      "tags": ["Fiction", "Classic", "Fantasy"],
+      "tags": [
+        "Fiction",
+        "Classic",
+        "Fantasy"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Fans of classic literature, moral tales, and short fiction",
       "keyTakeaways": [
@@ -3040,7 +3281,11 @@
       "coverEmoji": "✨",
       "coverGradient": "linear-gradient(135deg, #b8860b 0%, #ffd700 100%)",
       "summary": "The international bestseller that introduced millions to the law of attraction — the idea that our thoughts have the power to shape our reality. The book compiles teachings from various thinkers and philosophers to argue that positive thinking, visualization, and gratitude can transform every area of your life.",
-      "tags": ["Self-Help", "Philosophy", "Spirituality"],
+      "tags": [
+        "Self-Help",
+        "Philosophy",
+        "Spirituality"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Readers open to exploring the power of mindset and positive thinking",
       "keyTakeaways": [
@@ -3062,7 +3307,11 @@
       "coverEmoji": "💰",
       "coverGradient": "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
       "summary": "Serial entrepreneur Brad Jacobs distills the principles behind building multiple billion-dollar companies. Drawing from his experience creating seven companies from scratch — including XPO Logistics — Jacobs shares a practical, no-nonsense framework for identifying opportunities, building teams, and scaling businesses to extraordinary size.",
-      "tags": ["Business", "Entrepreneurship", "Leadership"],
+      "tags": [
+        "Business",
+        "Entrepreneurship",
+        "Leadership"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Ambitious entrepreneurs and anyone interested in scaling businesses",
       "keyTakeaways": [
@@ -3084,7 +3333,11 @@
       "coverEmoji": "🎭",
       "coverGradient": "linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%)",
       "summary": "A brutally honest memoir by the former child star of iCarly. McCurdy recounts her experience growing up under an emotionally abusive and controlling mother who pushed her into acting, and the long journey toward healing after her mother's death. It's raw, funny, and heartbreaking in equal measure.",
-      "tags": ["Memoir", "Psychology", "Biography"],
+      "tags": [
+        "Memoir",
+        "Psychology",
+        "Biography"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone interested in memoirs, mental health, or understanding the hidden costs of child stardom",
       "keyTakeaways": [
@@ -3106,7 +3359,11 @@
       "coverEmoji": "🧠",
       "coverGradient": "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
       "summary": "An exploration of psychopathy — what defines a psychopath, how they think, and how they operate in society. The book examines the clinical characteristics, the neuroscience behind the condition, and the disturbing reality that psychopaths are not just in prisons but in boardrooms, politics, and everyday life.",
-      "tags": ["Psychology", "Criminology", "Neuroscience"],
+      "tags": [
+        "Psychology",
+        "Criminology",
+        "Neuroscience"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Readers interested in criminal psychology, behavioral science, and understanding dark personality traits",
       "keyTakeaways": [
@@ -3128,7 +3385,11 @@
       "coverEmoji": "🎯",
       "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       "summary": "A Forbes collection profiling the rise of instant tech billionaires — from Snapchat's Evan Spiegel to Spotify's Daniel Ek. The book captures the stories of entrepreneurs who bet big on a single idea and won, showing that in the world of technology, you only need to be spectacularly right once to change everything.",
-      "tags": ["Business", "Technology", "Entrepreneurship"],
+      "tags": [
+        "Business",
+        "Technology",
+        "Entrepreneurship"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Aspiring entrepreneurs and anyone fascinated by how tech empires are built",
       "keyTakeaways": [
@@ -3150,7 +3411,11 @@
       "coverEmoji": "🔥",
       "coverGradient": "linear-gradient(135deg, #f12711 0%, #f5af19 100%)",
       "summary": "Tony Robbins' guide to unlocking your full potential by mastering your emotional state, beliefs, and physical energy. The book distills the principles from his legendary seminars — covering how to take control of your emotions, transform your body, enhance your relationships, and achieve your financial goals through radical personal responsibility.",
-      "tags": ["Self-Help", "Motivation", "Psychology"],
+      "tags": [
+        "Self-Help",
+        "Motivation",
+        "Psychology"
+      ],
       "yearRead": 2025,
       "recommendedFor": "Anyone looking for a high-energy guide to personal transformation and peak performance",
       "keyTakeaways": [
