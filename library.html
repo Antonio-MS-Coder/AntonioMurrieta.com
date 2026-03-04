@@ -1316,8 +1316,7 @@
             const totalBooks = allBooks.length;
             const categories = [...new Set(allBooks.map(book => book.category))];
             const averageRating = allBooks.reduce((sum, book) => sum + book.rating, 0) / totalBooks;
-            // Show books from 2025 (current year) - this will be 0 until we have 2025 books
-            const booksThisYear = allBooks.filter(book => book.yearRead === 2025).length;
+            const booksThisYear = allBooks.filter(book => book.yearRead === new Date().getFullYear()).length;
             
             return {
                 total: totalBooks,
