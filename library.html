@@ -782,6 +782,18 @@
 
         /* Responsive — tablet */
         @media (max-width: 768px) {
+            /* Uniform grain on mobile — no directional mask */
+            body::before {
+                -webkit-mask-image: none;
+                mask-image: none;
+                opacity: 0.14;
+            }
+
+            /* Kill horizontal overflow */
+            html, body {
+                overflow-x: hidden;
+            }
+
             nav {
                 padding: 15px 20px;
             }
@@ -789,6 +801,7 @@
             .library-container {
                 padding: 0 16px;
                 margin-top: 80px;
+                overflow: hidden;
             }
 
             .nav-links {
@@ -842,7 +855,7 @@
                 font-size: 12px;
             }
 
-            /* Filters — two rows: categories then years, horizontal scroll */
+            /* Filters — wrap into rows */
             .filter-section {
                 padding: 12px;
                 flex-direction: column;
@@ -854,16 +867,9 @@
 
             .filter-buttons {
                 display: flex;
-                flex-wrap: nowrap;
-                overflow-x: auto;
+                flex-wrap: wrap;
                 gap: 6px;
-                padding-bottom: 2px;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-
-            .filter-buttons::-webkit-scrollbar {
-                display: none;
+                justify-content: center;
             }
 
             .filter-divider {
@@ -871,7 +877,6 @@
             }
 
             .filter-btn {
-                flex-shrink: 0;
                 font-size: 11px;
                 padding: 6px 12px;
                 border-radius: 16px;
