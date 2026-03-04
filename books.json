@@ -3427,6 +3427,140 @@
       ],
       "favoriteQuote": "",
       "personalNotes": "High-energy and practical. Robbins has a way of making you feel like you can take on the world. The emphasis on state management — the idea that controlling your emotional and physical state is the master skill — is something I keep coming back to. Whether or not you love his style, the frameworks are genuinely useful."
+    },
+    {
+      "id": 140,
+      "title": "Angel",
+      "author": "Jason Calacanis",
+      "category": "business",
+      "rating": 0,
+      "coverImage": "book-covers/2026/1 Angel.webp",
+      "coverEmoji": "👼",
+      "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "summary": "A practical playbook for early-stage technology investing. Calacanis argues that outsized returns come from backing exceptional founders early, building strong deal flow, and running a diversified portfolio that embraces failure. The book is less about financial engineering and more about judgment, access, and pattern recognition.",
+      "tags": ["Business", "Investing", "Startups"],
+      "yearRead": 2026,
+      "recommendedFor": "Aspiring angel investors, founders seeking to understand investor mindset, and anyone interested in startup ecosystems",
+      "keyTakeaways": [
+        "Angel investing is a people business: invest in founders first; ideas and products change.",
+        "Access beats analysis — the best returns come from getting into top deals early, not from complex models.",
+        "Portfolio logic: most investments go to zero; a few winners return the fund. Write many small checks and expect most to fail.",
+        "Founder-market fit is everything: founders with lived experience in the problem outperform.",
+        "Reputation is your most valuable asset as an angel. Long-term access depends on being founder-friendly."
+      ],
+      "favoriteQuote": "Invest in lines, not dots.",
+      "personalNotes": "Life is random, but luck isn't. Calacanis breaks down angel investing into something surprisingly accessible. The core message — back founders you'd work for, keep terms simple, and optimize for upside not downside — is applicable far beyond investing. The power law reality is humbling: your job is not to be right, it's to not miss the winners."
+    },
+    {
+      "id": 141,
+      "title": "Think Twice",
+      "author": "Michael J. Mauboussin",
+      "category": "business",
+      "rating": 0,
+      "coverImage": "book-covers/2026/2 Think Twice.webp",
+      "coverEmoji": "🧠",
+      "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "summary": "An exploration of the most common decision-making mistakes we all make and how to avoid them. Mauboussin draws on psychology, complexity theory, and behavioral economics to show why our intuitions fail us and how thinking twice — questioning our default assumptions — leads to dramatically better outcomes.",
+      "tags": ["Business", "Psychology", "Decision Making"],
+      "yearRead": 2026,
+      "recommendedFor": "Business leaders, investors, and anyone who wants to make better decisions under uncertainty",
+      "keyTakeaways": [
+        "Information without context is falsely empowering. Cognitive dissonance (internal) and confirmation bias (external) constantly distort our judgment.",
+        "The wisdom of crowds beats experts — but only when three criteria are met: diversity, aggregation, and proper incentives.",
+        "Intuition doesn't work all the time. Having the wrong metric — one that's not actually correlated to outcomes — is a bigger issue than having no metric at all.",
+        "Consequences are more important than probabilities. Focus on what could happen, not just how likely it is.",
+        "What appears optimal for individual agents in a complex system may be sub-optimal for the system as a whole — market rational does not follow individual rational."
+      ],
+      "favoriteQuote": "Consequences are more important than probabilities.",
+      "personalNotes": "Mauboussin's insight about conflicts of interest is staggering — 30% more auditors who thought they were hired by the company declared it compliant versus those who thought they were hired externally. The book connects complexity theory, behavioral biases, and priming in a way that fundamentally changes how you evaluate decisions. The idea of keeping a decision journal — tracking how you decided and the outcome — is something I've adopted. Even good feedback is not useful if you don't use it."
+    },
+    {
+      "id": 142,
+      "title": "Hype",
+      "author": "Gabrielle Bluestone",
+      "category": "business",
+      "rating": 0,
+      "coverImage": "book-covers/2026/3 Hype.webp",
+      "coverEmoji": "📣",
+      "coverGradient": "linear-gradient(135deg, #f857a6 0%, #ff5858 100%)",
+      "summary": "An investigation into the post-truth economy — how hype, fraud, and manufactured desire drive modern culture. From the Fyre Festival disaster to Elon Musk's unfulfilled promises to Supreme's manufactured scarcity, Bluestone examines a world where which side you're on matters more than what the facts say.",
+      "tags": ["Business", "Culture", "Psychology"],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone interested in marketing psychology, con artistry, and how social media shapes perception",
+      "keyTakeaways": [
+        "Post-truth is bigger than any one person — it exists in us as well as our leaders. We live in a world where which side you're on matters more than what the facts say.",
+        "The science of anticipation and scarcity: it's more important what you appear to be than what you actually are. Con artists and influencers operate on the same principles.",
+        "Social media has blurred the line between identity and performance. The Instagram you, the LinkedIn you, the Tinder you — to what extent do we control the perception, and to what extent are we that perception?",
+        "The Fyre Festival revealed the limits of hype: at what point does overpromising and trying to fulfill cross the line into fraud?"
+      ],
+      "favoriteQuote": "You merely adopted the darkness. I was born into it.",
+      "personalNotes": "This book makes you question everything you consume. The Fyre Festival chapter is wild, but the Elon Musk analysis is where it gets really interesting — great entrepreneur, but to what extent does the marketing outpace the delivery? The Supreme case study on manufactured scarcity and 'social value' is brilliant. It made me think about my own Johari window across platforms — how many versions of ourselves are we performing?"
+    },
+    {
+      "id": 143,
+      "title": "Radical Suburbs",
+      "author": "Amanda Kolson Hurley",
+      "category": "philosophy",
+      "rating": 0,
+      "coverImage": "book-covers/2026/4 Radical Suburbs.webp",
+      "coverEmoji": "🏘️",
+      "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+      "summary": "An exploration of experimental living communities on the fringes of the American city. Hurley profiles 'practical utopias' — from Danish co-housing to planned diverse communities — that challenge the architectural monotony and social isolation of traditional suburbs, asking whether we can redesign how we live together.",
+      "tags": ["Philosophy", "Architecture", "Urban Planning"],
+      "yearRead": 2026,
+      "recommendedFor": "Readers interested in urban planning, alternative living, and the future of housing",
+      "keyTakeaways": [
+        "The lack of diversity in suburbs isn't just racial — it's architectural monotony that shapes identical lives. We need to rethink our suburbs now.",
+        "Co-housing began in Denmark in 1960 and now 1 in 100 Danes live in such communities — they are efficient, sustainable, and built on companionship and mutual aid.",
+        "If a town is well planned, it should spark similar towns nearby. Good urban planning is contagious.",
+        "Is housing a public responsibility? The question of affordability by design versus market-driven housing has no easy answer but demands creative experimentation."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "A fascinating look at the alternatives to the cookie-cutter suburb. The Danish co-housing model is inspiring — communities that actually work together, run errands for each other, and keep faith at the center. The book raises important questions about decentralization, classless societies, and whether utopia is by definition unattainable or just untested. Made me rethink what 'home' could look like."
+    },
+    {
+      "id": 144,
+      "title": "Most Likely to Succeed",
+      "author": "Tony Wagner & Ted Dintersmith",
+      "category": "philosophy",
+      "rating": 0,
+      "coverImage": "book-covers/2026/5 Most Likely to Succeed.webp",
+      "coverEmoji": "🎓",
+      "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
+      "summary": "A provocative argument that our education system is fundamentally broken — designed for the stability of a previous economic era and failing to prepare students for a world of constant change. Wagner and Dintersmith make the case for reimagining education around skills, play, passion, and purpose rather than standardized testing.",
+      "tags": ["Philosophy", "Education", "Innovation"],
+      "yearRead": 2026,
+      "recommendedFor": "Parents, educators, and anyone who questions whether the current education system serves the future",
+      "keyTakeaways": [
+        "The purpose of education should be building a soul — play, passion, and purpose — not just passing tests.",
+        "Testing limits how we think. We can focus classrooms either on what's easy to measure or on what's important to learn, but we can't do both.",
+        "The previous knowledge system was designed for the stability of the previous economic system. In a fast-paced, constantly changing world, that system no longer works.",
+        "Before the Industrial Revolution we had mentors and apprenticeships — you learned from the best until you could do what they could. We lost that and replaced it with standardization."
+      ],
+      "favoriteQuote": "We can focus classrooms either on what's easy to measure or on what's important to learn, but we can't do both.",
+      "personalNotes": "This book articulates something I've felt for a long time — that our education system is optimized for a world that no longer exists. The shift from 'what do you know?' to 'what can you do with what you know?' is the fundamental transformation we need. The argument for skills over memorization, innovation over compliance, and genuine interest over grades is compelling and urgent. We need to reimagine priorities."
+    },
+    {
+      "id": 145,
+      "title": "No me pudiste matar",
+      "author": "Ciro Gómez Leyva",
+      "category": "biography",
+      "rating": 0,
+      "coverImage": "book-covers/2026/6 No me pudiste matar.webp",
+      "coverEmoji": "🎙️",
+      "coverGradient": "linear-gradient(135deg, #c31432 0%, #240b36 100%)",
+      "summary": "The firsthand account of Mexican journalist Ciro Gómez Leyva's survival after an assassination attempt. The book reconstructs the attack, investigates who was behind it and why, and reflects on the dangerous reality of practicing journalism in Mexico — one of the deadliest countries in the world for reporters.",
+      "tags": ["Biography", "Journalism", "Mexico"],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone interested in press freedom, Mexican politics, and the human cost of speaking truth to power",
+      "keyTakeaways": [
+        "The attack raises chilling questions: why did they fail? What message were they trying to send? Did they not know the car was armored?",
+        "Behind every assassination attempt is a 'célula de ejecución' — an organized cell that plans and carries out the attack. Understanding this machinery is part of understanding Mexico's crisis.",
+        "There are facts, but there is no single truth. The investigation reveals how murky the line between organized crime and political power can be.",
+        "The 'obedient submission of the herd' — society's passive acceptance of violence against journalists — is as dangerous as the violence itself."
+      ],
+      "favoriteQuote": "Nadie se inventa un insulto de la nada.",
+      "personalNotes": "A gut-punch of a book. Reading Ciro's account of surviving an assassination attempt for doing his job is both infuriating and deeply sad. The questions it raises about press freedom in Mexico — son hechos, no hay verdad — cut to the heart of the crisis. It's not just about one journalist; it's about what kind of country we want to live in. Essential reading for any Mexican."
     }
   ]
 }
