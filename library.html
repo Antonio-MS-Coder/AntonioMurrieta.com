@@ -538,9 +538,9 @@
             z-index: 1;
         }
 
-        /* Left page — cover image */
+        /* Left page — cover image with margin */
         .modal-cover-page {
-            width: 40%;
+            width: 42%;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -548,20 +548,19 @@
             background: #2a2520;
             position: relative;
             overflow: hidden;
+            padding: 40px;
         }
 
         .modal-cover-page img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
         }
 
         .modal-cover-page .modal-cover-emoji {
             font-size: 80px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
 
         /* Spine divider between pages */
