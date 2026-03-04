@@ -490,13 +490,13 @@
 
         .modal-content {
             background: #3a3430;
-            max-width: 800px;
+            max-width: 1050px;
             width: 100%;
-            padding: 60px;
+            padding: 0;
             position: relative;
             max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 12px;
+            overflow: hidden;
+            border-radius: 4px;
             box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
             animation: modalSlideUp 0.3s ease-out;
             color: var(--lib-text);
@@ -511,17 +511,11 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
-            opacity: 0.12;
-            border-radius: 12px;
+            z-index: 2;
+            opacity: 0.10;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 200px 200px;
-        }
-
-        .modal-content > * {
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes modalSlideUp {
@@ -535,21 +529,76 @@
             }
         }
 
+        /* Magazine spread layout */
+        .modal-spread {
+            display: flex;
+            min-height: 75vh;
+            max-height: 90vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Left page — cover image */
+        .modal-cover-page {
+            width: 40%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2a2520;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-cover-page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-cover-page .modal-cover-emoji {
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Spine divider between pages */
+        .modal-cover-page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 5%, rgba(201, 168, 76, 0.15) 20%, rgba(201, 168, 76, 0.15) 80%, transparent 95%);
+        }
+
+        /* Right page — notes */
+        .modal-notes-page {
+            flex: 1;
+            padding: 48px 48px 48px 40px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
         .modal-close {
             position: absolute;
-            top: 24px;
-            right: 24px;
-            font-size: 28px;
+            top: 16px;
+            right: 16px;
+            font-size: 24px;
             cursor: pointer;
             color: var(--lib-text-muted);
             transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
+            z-index: 3;
         }
 
         .modal-close:hover {
@@ -559,21 +608,21 @@
         }
 
         .modal-header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-            padding-bottom: 24px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            padding-bottom: 20px;
         }
 
         .modal-title {
             font-family: var(--serif);
-            font-size: 36px;
-            margin-bottom: 12px;
+            font-size: 30px;
+            margin-bottom: 8px;
             color: var(--lib-text);
             line-height: 1.2;
         }
 
         .modal-author {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--lib-text-muted);
             font-style: italic;
             font-weight: 400;
@@ -582,7 +631,7 @@
         .modal-body {
             line-height: 1.8;
             font-family: var(--serif);
-            font-size: 16px;
+            font-size: 15px;
             color: var(--lib-text);
         }
 
@@ -810,11 +859,34 @@
             }
 
             .modal-content {
-                padding: 32px 20px;
                 margin: 0;
                 max-height: 100vh;
                 border-radius: 0;
                 height: 100vh;
+                max-width: 100%;
+            }
+
+            .modal-spread {
+                flex-direction: column;
+                max-height: none;
+                height: 100vh;
+            }
+
+            .modal-cover-page {
+                width: 100%;
+                height: 280px;
+                flex-shrink: 0;
+            }
+
+            .modal-cover-page::after {
+                display: none;
+            }
+
+            .modal-notes-page {
+                padding: 28px 20px;
+                max-height: none;
+                flex: 1;
+                overflow-y: auto;
             }
 
             .book-modal {
@@ -822,7 +894,7 @@
             }
 
             .modal-title {
-                font-size: 26px;
+                font-size: 24px;
             }
 
             .year-divider-text {
@@ -928,15 +1000,20 @@
         </div>
     </div>
 
-    <!-- Book Modal -->
+    <!-- Book Modal — magazine spread -->
     <div class="book-modal" id="bookModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
-            <div class="modal-header">
-                <h2 class="modal-title">Book Title</h2>
-                <p class="modal-author">Author Name</p>
+            <div class="modal-spread">
+                <div class="modal-cover-page" id="modalCoverPage"></div>
+                <div class="modal-notes-page">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Book Title</h2>
+                        <p class="modal-author">Author Name</p>
+                    </div>
+                    <div class="modal-body"></div>
+                </div>
             </div>
-            <div class="modal-body"></div>
         </div>
     </div>
 
@@ -1193,6 +1270,30 @@
 
         function showBookModal(book) {
             var modal = document.getElementById('bookModal');
+
+            // Build cover page (left side)
+            var coverPage = modal.querySelector('#modalCoverPage');
+            coverPage.textContent = '';
+            coverPage.style.background = book.coverGradient || '#2a2520';
+
+            var coverImg = document.createElement('img');
+            coverImg.src = book.coverImage || '';
+            coverImg.alt = book.title;
+            coverImg.onerror = function() {
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+            };
+            coverImg.onload = function() {
+                this.nextElementSibling.style.display = 'none';
+            };
+
+            var coverEmoji = document.createElement('div');
+            coverEmoji.className = 'modal-cover-emoji';
+            coverEmoji.textContent = book.coverEmoji || '';
+            coverEmoji.style.display = 'block';
+
+            coverPage.appendChild(coverImg);
+            coverPage.appendChild(coverEmoji);
 
             modal.querySelector('.modal-title').textContent = book.title;
             modal.querySelector('.modal-author').textContent = book.author;
