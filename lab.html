@@ -5,147 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab - Antonio Murrieta</title>
     <meta name="description" content="Enter Antonio's research laboratory - where innovation meets experimentation in the pursuit of digital creativity.">
-    
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Stanford-inspired palette with warmth */
-            --cardinal: #8C1515;
-            --cardinal-light: #B83A3A;
-            --dark: #2E2D29;
-            --warm-gray: #544948;
-            --light-gray: #F4F4F4;
-            --white: #FFFFFF;
-            --accent-blue: #006CB8;
-            --accent-green: #009B76;
-            --accent-orange: #E98300;
-            --text-primary: #2E2D29;
-            --text-secondary: #544948;
-            --border-light: #E5E5E5;
-            --max-width: 1200px;
-            --serif: 'Crimson Text', Georgia, serif;
-            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        /* Import fonts for intellectual aesthetic */
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
-
-        ::selection {
-            background: var(--cardinal);
-            color: white;
-        }
-
-        body {
-            font-family: var(--sans);
-            background: var(--white);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 24px 40px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            padding: 16px 40px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--dark);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            position: relative;
-            white-space: nowrap;
-        }
-
-        .logo::after {
-            content: '.';
-            color: var(--cardinal);
-            font-weight: 700;
-            position: absolute;
-        }
-
-        .logo:hover {
-            color: var(--cardinal);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--cardinal);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover {
-            color: var(--dark);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a.active {
-            color: var(--dark);
-            font-weight: 600;
-        }
-
         /* Lab Container */
         .lab-container {
             padding: 120px 40px 80px;
@@ -159,7 +20,7 @@
         .lab-header {
             text-align: center;
             margin-bottom: 80px;
-            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s var(--ease-snap);
         }
 
         @keyframes fadeInUp {
@@ -180,7 +41,7 @@
             letter-spacing: -2px;
             margin-bottom: 32px;
             line-height: 1.1;
-            color: var(--dark);
+            color: var(--ink);
             position: relative;
         }
 
@@ -192,13 +53,13 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, var(--cardinal), var(--cardinal-light));
+            background: linear-gradient(90deg, var(--roble), var(--roble-light));
             border-radius: 2px;
         }
 
         .lab-subtitle {
             font-size: clamp(18px, 2.5vw, 22px);
-            color: var(--warm-gray);
+            color: var(--stone);
             margin-top: 40px;
             font-weight: 400;
             letter-spacing: 1px;
@@ -214,7 +75,7 @@
             top: 50%;
             width: 40px;
             height: 1px;
-            background: var(--border-light);
+            background: var(--bone);
         }
 
         .lab-subtitle::before {
@@ -234,17 +95,17 @@
         }
 
         .experiment {
-            background: var(--white);
+            background: var(--linen);
             border-radius: 16px;
             padding: 40px 32px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s var(--ease-snap);
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--bone);
             box-shadow: 0 4px 16px rgba(46, 45, 41, 0.08);
             opacity: 0;
-            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeIn 0.6s var(--ease-snap) forwards;
         }
 
         .experiment:nth-child(1) { animation-delay: 0.1s; }
@@ -263,8 +124,8 @@
 
         .experiment:hover {
             transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(140, 21, 21, 0.15), 0 0 0 1px var(--cardinal);
-            border-color: var(--cardinal);
+            box-shadow: 0 16px 40px rgba(139, 115, 85, 0.15), 0 0 0 1px var(--roble);
+            border-color: var(--roble);
         }
 
         .experiment::before {
@@ -274,10 +135,10 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--cardinal), var(--accent-blue), var(--accent-green));
+            background: linear-gradient(90deg, var(--roble), var(--roble), var(--roble));
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s var(--ease-snap);
         }
 
         .experiment:hover::before {
@@ -288,7 +149,7 @@
             font-size: 48px;
             margin-bottom: 24px;
             display: block;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s var(--ease-snap);
             filter: grayscale(20%);
         }
 
@@ -302,13 +163,13 @@
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 16px;
-            color: var(--dark);
+            color: var(--ink);
             line-height: 1.2;
         }
 
         .experiment-description {
             font-size: 16px;
-            color: var(--text-secondary);
+            color: var(--stone);
             line-height: 1.6;
             margin: 0;
         }
@@ -318,7 +179,7 @@
             margin: 120px 0;
             text-align: center;
             padding: 60px 40px;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+            background: linear-gradient(180deg, var(--linen) 0%, var(--paper) 100%);
             border-radius: 24px;
             position: relative;
             overflow: hidden;
@@ -331,7 +192,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            background: linear-gradient(90deg, transparent, var(--bone), transparent);
         }
 
         .canvas-title {
@@ -340,7 +201,7 @@
             font-weight: 400;
             margin-bottom: 32px;
             letter-spacing: -1px;
-            color: var(--dark);
+            color: var(--ink);
             position: relative;
         }
 
@@ -352,23 +213,23 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--cardinal);
+            background: var(--roble);
         }
 
         #interactive-canvas {
-            border: 2px solid var(--border-light);
-            background: var(--white);
+            border: 2px solid var(--bone);
+            background: var(--linen);
             cursor: crosshair;
             display: block;
             margin: 0 auto;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(46, 45, 41, 0.12);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s var(--ease-snap);
         }
 
         #interactive-canvas:hover {
-            border-color: var(--cardinal);
-            box-shadow: 0 12px 40px rgba(140, 21, 21, 0.2);
+            border-color: var(--roble);
+            box-shadow: 0 12px 40px rgba(139, 115, 85, 0.2);
         }
 
         .canvas-controls {
@@ -391,7 +252,7 @@
         .control-group label {
             font-size: 12px;
             font-weight: 600;
-            color: var(--text-secondary);
+            color: var(--stone);
             text-align: center;
         }
         
@@ -399,7 +260,7 @@
         .control-group input[type="range"] {
             width: 100px;
             padding: 4px 8px;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--bone);
             border-radius: 4px;
             font-size: 12px;
         }
@@ -410,8 +271,8 @@
         
         #interactive-canvas.grid-overlay {
             background-image: 
-                linear-gradient(rgba(140, 21, 21, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(140, 21, 21, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(139, 115, 85, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 115, 85, 0.1) 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
@@ -421,11 +282,11 @@
             font-weight: 600;
             text-decoration: none;
             letter-spacing: 0.5px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s var(--ease-snap);
             cursor: pointer;
-            border: 2px solid var(--cardinal);
+            border: 2px solid var(--roble);
             background: transparent;
-            color: var(--cardinal);
+            color: var(--roble);
             border-radius: 6px;
             position: relative;
             overflow: hidden;
@@ -439,8 +300,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--cardinal);
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--roble);
+            transition: left 0.4s var(--ease-snap);
             z-index: -1;
         }
 
@@ -451,7 +312,7 @@
         .control-btn:hover {
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.25);
+            box-shadow: 0 8px 24px rgba(139, 115, 85, 0.25);
         }
 
         /* Color Palette */
@@ -464,17 +325,17 @@
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 16px;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--bone);
             display: inline-flex;
         }
 
         .color-btn {
             width: 44px;
             height: 44px;
-            border: 3px solid var(--border-light);
+            border: 3px solid var(--bone);
             cursor: pointer;
             border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s var(--ease-snap);
             position: relative;
         }
 
@@ -484,38 +345,38 @@
             inset: -6px;
             border: 2px solid transparent;
             border-radius: 50%;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s var(--ease-snap);
         }
 
         .color-btn:hover {
             transform: scale(1.15);
-            border-color: var(--cardinal);
+            border-color: var(--roble);
         }
 
         .color-btn.active {
             transform: scale(1.2);
-            border-color: var(--cardinal);
-            box-shadow: 0 0 20px rgba(140, 21, 21, 0.3);
+            border-color: var(--roble);
+            box-shadow: 0 0 20px rgba(139, 115, 85, 0.3);
         }
 
         .color-btn.active::after {
-            border-color: var(--cardinal);
+            border-color: var(--roble);
         }
 
         /* Pattern Generator */
         .pattern-generator {
             margin: 120px 0;
             padding: 60px 40px;
-            background: var(--white);
+            background: var(--linen);
             border-radius: 24px;
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--bone);
             box-shadow: 0 8px 32px rgba(46, 45, 41, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s var(--ease-snap);
         }
 
         .pattern-generator:hover {
-            border-color: var(--cardinal);
-            box-shadow: 0 12px 40px rgba(140, 21, 21, 0.15);
+            border-color: var(--roble);
+            box-shadow: 0 12px 40px rgba(139, 115, 85, 0.15);
         }
 
         .pattern-generator h2 {
@@ -523,7 +384,7 @@
             font-size: 36px;
             font-weight: 400;
             margin-bottom: 32px;
-            color: var(--dark);
+            color: var(--ink);
             text-align: center;
             position: relative;
         }
@@ -536,7 +397,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--cardinal);
+            background: var(--roble);
         }
 
         .pattern-display {
@@ -545,12 +406,12 @@
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--bone);
             box-shadow: inset 0 4px 16px rgba(46, 45, 41, 0.06);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: var(--white);
+            background: var(--linen);
         }
         
         #patternCanvas {
@@ -558,41 +419,11 @@
             height: auto;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s var(--ease-snap);
         }
         
         #patternCanvas:hover {
             transform: scale(1.02);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--dark);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
         }
 
         /* Dynamic Background Elements */
@@ -608,13 +439,13 @@
         }
 
         .gradient-1 {
-            background: radial-gradient(circle, var(--cardinal) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--roble) 0%, transparent 70%);
             top: -300px;
             right: -300px;
         }
 
         .gradient-2 {
-            background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--roble) 0%, transparent 70%);
             bottom: -300px;
             left: -300px;
             animation-delay: -10s;
@@ -638,7 +469,7 @@
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s var(--ease-snap);
             overflow-y: auto;
         }
 
@@ -683,7 +514,7 @@
             height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--ease-snap);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -691,7 +522,7 @@
 
         .modal-close:hover {
             background: white;
-            color: var(--dark);
+            color: var(--ink);
             transform: scale(1.1);
         }
 
@@ -707,7 +538,7 @@
         .experiment-canvas {
             width: 100%;
             height: 400px;
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--bone);
             border-radius: 12px;
             cursor: crosshair;
             background: white;
@@ -721,7 +552,7 @@
             justify-content: center;
             margin-top: 30px;
             padding: 20px;
-            background: var(--light-gray);
+            background: var(--paper);
             border-radius: 12px;
         }
 
@@ -738,18 +569,18 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--text-secondary);
+            color: var(--stone);
         }
 
         .param-control input[type="range"] {
             width: 100px;
-            accent-color: var(--cardinal);
+            accent-color: var(--roble);
         }
 
         .param-control input[type="number"] {
             width: 80px;
             padding: 8px;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--bone);
             border-radius: 6px;
             text-align: center;
             font-size: 14px;
@@ -757,22 +588,22 @@
 
         .experiment-btn {
             padding: 12px 24px;
-            background: var(--cardinal);
+            background: var(--roble);
             color: white;
             border: none;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--ease-snap);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 12px;
         }
 
         .experiment-btn:hover {
-            background: var(--cardinal-light);
+            background: var(--roble-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(140, 21, 21, 0.3);
+            box-shadow: 0 8px 24px rgba(139, 115, 85, 0.3);
         }
 
         .experiment-btn:active {
@@ -795,41 +626,13 @@
 
         /* 3D Canvas styles */
         .threejs-canvas {
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--bone);
             border-radius: 12px;
             background: #000;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 30px;
-                transition: right 0.3s ease;
-                z-index: 1000;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-                z-index: 1001;
-            }
-
             .lab-container {
                 padding: 120px 20px 60px;
             }
@@ -996,13 +799,13 @@
             <canvas id="interactive-canvas" width="800" height="400"></canvas>
             
             <div class="color-palette">
-                <button class="color-btn active" style="background: var(--cardinal);" data-color="#8C1515"></button>
-                <button class="color-btn" style="background: var(--cardinal-light);" data-color="#B83A3A"></button>
-                <button class="color-btn" style="background: var(--accent-blue);" data-color="#006CB8"></button>
-                <button class="color-btn" style="background: var(--accent-green);" data-color="#009B76"></button>
-                <button class="color-btn" style="background: var(--accent-orange);" data-color="#E98300"></button>
-                <button class="color-btn" style="background: var(--dark);" data-color="#2E2D29"></button>
-                <button class="color-btn" style="background: var(--warm-gray);" data-color="#544948"></button>
+                <button class="color-btn active" style="background: var(--roble);" data-color="#8B7355"></button>
+                <button class="color-btn" style="background: var(--roble-light);" data-color="#A8916F"></button>
+                <button class="color-btn" style="background: var(--roble);" data-color="#8B7355"></button>
+                <button class="color-btn" style="background: var(--roble);" data-color="#8B7355"></button>
+                <button class="color-btn" style="background: var(--roble);" data-color="#8B7355"></button>
+                <button class="color-btn" style="background: var(--ink);" data-color="#2E2D29"></button>
+                <button class="color-btn" style="background: var(--stone);" data-color="#544948"></button>
             </div>
 
             <!-- Enhanced Canvas Controls -->
@@ -1113,18 +916,19 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer style="padding: 60px 40px 40px; background: var(--dark); color: white; text-align: center;">
-        <div style="max-width: var(--max-width); margin: 0 auto;">
-            <div style="display: flex; gap: 30px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
-                <a href="https://github.com/Antonio-MS-Coder" target="_blank" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: opacity 0.3s ease;">GitHub</a>
-                <a href="https://linkedin.com/in/antoniomurrieta" target="_blank" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: opacity 0.3s ease;">LinkedIn</a>
-                <a href="https://instagram.com/antoniomurrieta" target="_blank" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: opacity 0.3s ease;">Instagram</a>
-                <a href="mailto:carlosantonio.murrieta@gmail.com" style="color: white; text-decoration: none; font-size: 14px; opacity: 0.8; transition: opacity 0.3s ease;">Email</a>
+    <footer>
+        <div class="footer-content">
+            <p class="footer-brand">Antonio Murrieta</p>
+            <div class="footer-studio">
+                <a href="https://murrietalabs.com" target="_blank">MurrietaLabs</a>
             </div>
-            <p style="font-size: 13px; opacity: 0.6; margin: 0;">
-                © 2024 Antonio Murrieta. Crafted with passion and code.
-            </p>
+            <div class="footer-links">
+                <a href="https://github.com/Antonio-MS-Coder" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank">LinkedIn</a>
+                <a href="https://instagram.com/tono_cams" target="_blank">Instagram</a>
+                <a href="mailto:carlosantonio.murrieta@gmail.com,create@antoniomurrieta.com">Email</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Antonio Murrieta</p>
         </div>
     </footer>
 
@@ -1328,7 +1132,7 @@
                 <button class="modal-close" onclick="closeModal('3dModal')">&times;</button>
             </div>
             <div class="experiment-container">
-                <div id="threejsContainer" style="width: 100%; height: 400px; border: 2px solid var(--border-light); border-radius: 12px; background: #000;"></div>
+                <div id="threejsContainer" style="width: 100%; height: 400px; border: 2px solid var(--bone); border-radius: 12px; background: #000;"></div>
                 <div class="experiment-controls">
                     <div class="param-control">
                         <label>Shape</label>
@@ -1383,7 +1187,7 @@
         const canvas = document.getElementById('interactive-canvas');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
-        let currentColor = '#8C1515';
+        let currentColor = '#8B7355';
         let currentBrushSize = 3;
         let currentOpacity = 1.0;
         let currentBrushType = 'pen';
@@ -1894,7 +1698,7 @@
 
         document.getElementById('randomPattern').addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const colors = ['#8C1515', '#B83A3A', '#006CB8', '#009B76', '#E98300', '#2E2D29'];
+            const colors = ['#8B7355', '#A8916F', '#8B7355', '#8B7355', '#8B7355', '#2E2D29'];
             
             for (let i = 0; i < 50; i++) {
                 ctx.beginPath();
@@ -1929,7 +1733,7 @@
             
             // Color schemes
             const colorSchemes = {
-                stanford: ['#8C1515', '#B83A3A', '#006CB8', '#009B76', '#E98300', '#2E2D29'],
+                stanford: ['#8B7355', '#A8916F', '#8B7355', '#8B7355', '#8B7355', '#2E2D29'],
                 monochrome: ['#000000', '#333333', '#666666', '#999999', '#CCCCCC', '#FFFFFF'],
                 rainbow: ['#FF0000', '#FF8000', '#FFFF00', '#80FF00', '#00FF00', '#00FF80', '#00FFFF', '#0080FF', '#0000FF', '#8000FF', '#FF00FF', '#FF0080'],
                 sunset: ['#FF6B35', '#F7931E', '#FFD23F', '#06FFA5', '#118AB2', '#073B4C'],
@@ -2416,12 +2220,12 @@
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = '#8C1515';
+                    ctx.fillStyle = '#8B7355';
                     ctx.fill();
                     
                     // Glow effect
                     ctx.shadowBlur = 10;
-                    ctx.shadowColor = '#8C1515';
+                    ctx.shadowColor = '#8B7355';
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
@@ -2437,7 +2241,7 @@
 
             function drawConnections() {
                 const connectionDistance = parseInt(document.getElementById('connectionDistance').value);
-                ctx.strokeStyle = 'rgba(140, 21, 21, 0.2)';
+                ctx.strokeStyle = 'rgba(139, 115, 85, 0.2)';
                 ctx.lineWidth = 1;
                 
                 for (let i = 0; i < particles.length; i++) {
@@ -2448,7 +2252,7 @@
                         
                         if (distance < connectionDistance) {
                             const opacity = 1 - (distance / connectionDistance);
-                            ctx.strokeStyle = `rgba(140, 21, 21, ${opacity * 0.5})`;
+                            ctx.strokeStyle = `rgba(139, 115, 85, ${opacity * 0.5})`;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
@@ -2569,14 +2373,14 @@
                     
                     // Create gradient background
                     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                    gradient.addColorStop(0, 'rgba(140, 21, 21, 0.05)');
-                    gradient.addColorStop(0.5, 'rgba(0, 107, 184, 0.05)');
-                    gradient.addColorStop(1, 'rgba(0, 155, 118, 0.05)');
+                    gradient.addColorStop(0, 'rgba(139, 115, 85, 0.05)');
+                    gradient.addColorStop(0.5, 'rgba(139, 115, 85, 0.05)');
+                    gradient.addColorStop(1, 'rgba(139, 115, 85, 0.05)');
                     ctx.fillStyle = gradient;
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
                     
                     const waveCount = parseInt(document.getElementById('waveCount').value);
-                    const colors = ['#8C1515', '#006CB8', '#009B76', '#E98300', '#B83A3A'];
+                    const colors = ['#8B7355', '#8B7355', '#8B7355', '#8B7355', '#A8916F'];
                     
                     for (let i = 0; i < waveCount; i++) {
                         const offset = (i * Math.PI * 2) / waveCount;
@@ -2646,10 +2450,10 @@
             function createBaseImage() {
                 // Create a colorful base pattern
                 const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height)/2);
-                gradient.addColorStop(0, '#8C1515');
-                gradient.addColorStop(0.3, '#006CB8');
-                gradient.addColorStop(0.6, '#009B76');
-                gradient.addColorStop(1, '#E98300');
+                gradient.addColorStop(0, '#8B7355');
+                gradient.addColorStop(0.3, '#8B7355');
+                gradient.addColorStop(0.6, '#8B7355');
+                gradient.addColorStop(1, '#8B7355');
                 
                 ctx.fillStyle = gradient;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -3286,7 +3090,7 @@
             const centerY = canvas.height / 2;
             const radius = Math.min(canvas.width, canvas.height) / 4;
             
-            ctx.strokeStyle = '#8C1515';
+            ctx.strokeStyle = '#8B7355';
             ctx.lineWidth = 2;
             
             for (let i = 0; i < dataArray.length; i++) {
@@ -3307,7 +3111,7 @@
 
         function drawWaveform(ctx, canvas, dataArray, sensitivity) {
             ctx.lineWidth = 2;
-            ctx.strokeStyle = '#006CB8';
+            ctx.strokeStyle = '#8B7355';
             ctx.beginPath();
             
             const sliceWidth = canvas.width / dataArray.length;
@@ -3340,7 +3144,7 @@
                 if (amplitude > 0.1) {
                     ctx.beginPath();
                     ctx.arc(x, y, radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(140, 21, 21, ${amplitude})`;
+                    ctx.fillStyle = `rgba(139, 115, 85, ${amplitude})`;
                     ctx.fill();
                 }
             }
