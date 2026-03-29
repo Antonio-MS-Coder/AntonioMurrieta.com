@@ -28,44 +28,16 @@
         .hero-content {
             max-width: 800px;
             text-align: center;
-            animation: fadeInUp 0.8s var(--ease-snap);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero-title {
             font-family: var(--serif);
-            font-size: clamp(56px, 9vw, 88px);
-            font-weight: 400;
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 300;
             letter-spacing: -2px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             line-height: 1.1;
             color: var(--ink);
-            position: relative;
-        }
-
-        .hero-title span {
-            display: inline-block;
-            position: relative;
-            background: linear-gradient(135deg, var(--roble) 0%, var(--roble-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
         }
 
         .hero-subtitle {
@@ -95,52 +67,6 @@
 
         .hero-subtitle::after {
             right: -60px;
-        }
-
-        .hero-description {
-            font-family: var(--serif);
-            font-size: 20px;
-            color: var(--stone);
-            max-width: 640px;
-            margin: 0 auto 20px;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        .hero-currently {
-            font-size: 15px;
-            color: var(--stone);
-            margin-bottom: 32px;
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-
-        .hero-currently strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        /* Credentials Bar */
-        .credentials-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .credentials-bar span {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--stone);
-            letter-spacing: 0.3px;
-        }
-
-        .credentials-bar .separator {
-            color: var(--bone);
-            font-weight: 300;
-            user-select: none;
         }
 
         /* Hero CTAs */
@@ -488,37 +414,6 @@
             background: var(--roble);
         }
 
-        /* Dynamic Background Elements */
-        .floating-gradient {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            pointer-events: none;
-            animation: float-gradient 20s ease-in-out infinite;
-        }
-
-        .gradient-1 {
-            background: radial-gradient(circle, var(--roble) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
-        }
-
-        .gradient-2 {
-            background: radial-gradient(circle, var(--roble-light) 0%, transparent 70%);
-            bottom: -300px;
-            left: -300px;
-            animation-delay: -10s;
-        }
-
-        @keyframes float-gradient {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -556,14 +451,11 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-
-            .credentials-bar span {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -584,23 +476,14 @@
         </div>
     </nav>
 
-    <!-- Dynamic Background -->
-    <div class="floating-gradient gradient-1"></div>
-    <div class="floating-gradient gradient-2"></div>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">
-                Building at the intersection of
-                <span>art & technology</span>
+            <h1 class="hero-title" id="heroTitle">
+                <span class="hero-text" data-text="Building at the intersection of ">Building at the intersection of </span>
+                <span class="hero-text hero-text-accent" data-text="art &amp; technology.">art &amp; technology.</span>
             </h1>
             <p class="hero-subtitle">Builder. Entrepreneur. Curious by default.</p>
-            <p class="hero-description">
-                I build apps, write books, and go down rabbit holes that won't let me go.
-                Right now, that's AI and iOS apps from Mexico City.
-                This is where I share what comes out of it.
-            </p>
             <div class="hero-cta">
                 <a href="work.html" class="btn btn-primary">View My Work</a>
                 <a href="story.html" class="btn btn-secondary">Read My Story</a>
@@ -726,6 +609,150 @@
     </footer>
 
     <script>
+        // Interactive Hero Letters
+        (function() {
+            var heroTitle = document.getElementById('heroTitle');
+            if (!heroTitle) return;
+
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // Wrap each character in a span
+            var textSpans = heroTitle.querySelectorAll('.hero-text');
+            textSpans.forEach(function(span) {
+                var text = span.getAttribute('data-text');
+                var isAccent = span.classList.contains('hero-text-accent');
+                var frag = document.createDocumentFragment();
+
+                for (var i = 0; i < text.length; i++) {
+                    var ch = text[i];
+                    var el = document.createElement('span');
+
+                    if (ch === ' ') {
+                        el.textContent = '\u00A0';
+                        el.className = 'hero-letter';
+                    } else {
+                        el.textContent = ch;
+                        el.className = 'hero-letter' + (isAccent ? ' hero-letter-roble' : '');
+                    }
+
+                    if (!prefersReducedMotion) {
+                        var rot = (Math.random() * 1 - 0.5).toFixed(2);
+                        var y = (Math.random() * 2 - 1).toFixed(2);
+                        var dur = (2 + Math.random() * 2).toFixed(2);
+                        el.style.setProperty('--idle-rot', rot + 'deg');
+                        el.style.setProperty('--idle-y', y + 'px');
+                        el.style.setProperty('--idle-duration', dur + 's');
+                        el.classList.add('idle');
+                    }
+
+                    frag.appendChild(el);
+                }
+
+                span.textContent = '';
+                span.appendChild(frag);
+            });
+
+            if (prefersReducedMotion) return;
+
+            var isTouchDevice = 'ontouchstart' in window;
+            var letters = heroTitle.querySelectorAll('.hero-letter');
+
+            // Desktop: cursor interaction
+            if (!isTouchDevice) {
+                var rafId = null;
+                heroTitle.addEventListener('mousemove', function(e) {
+                    if (rafId) return;
+                    rafId = requestAnimationFrame(function() {
+                        var mx = e.clientX;
+                        var my = e.clientY;
+                        letters.forEach(function(letter) {
+                            if (letter.textContent === '\u00A0') return;
+                            var rect = letter.getBoundingClientRect();
+                            var cx = rect.left + rect.width / 2;
+                            var cy = rect.top + rect.height / 2;
+                            var dist = Math.sqrt(Math.pow(mx - cx, 2) + Math.pow(my - cy, 2));
+                            if (dist < 100) {
+                                letter.classList.add('active');
+                                letter.classList.remove('idle');
+                            } else if (letter.classList.contains('active')) {
+                                letter.classList.remove('active');
+                                setTimeout(function() { letter.classList.add('idle'); }, 400);
+                            }
+                        });
+                        rafId = null;
+                    });
+                });
+
+                heroTitle.addEventListener('mouseleave', function() {
+                    letters.forEach(function(letter) {
+                        letter.classList.remove('active');
+                        setTimeout(function() { letter.classList.add('idle'); }, 400);
+                    });
+                });
+            }
+
+            // Mobile: tap wave
+            if (isTouchDevice) {
+                heroTitle.addEventListener('touchstart', function(e) {
+                    var touch = e.touches[0];
+                    var tx = touch.clientX;
+                    var ty = touch.clientY;
+                    letters.forEach(function(letter) {
+                        if (letter.textContent === '\u00A0') return;
+                        var rect = letter.getBoundingClientRect();
+                        var cx = rect.left + rect.width / 2;
+                        var cy = rect.top + rect.height / 2;
+                        var dist = Math.sqrt(Math.pow(tx - cx, 2) + Math.pow(ty - cy, 2));
+                        var delay = dist * 1.5;
+                        setTimeout(function() {
+                            letter.classList.add('active');
+                            letter.classList.remove('idle');
+                            setTimeout(function() {
+                                letter.classList.remove('active');
+                                letter.classList.add('idle');
+                            }, 300);
+                        }, delay);
+                    });
+                });
+            }
+        })();
+
+        // Scroll progress bar
+        var scrollProgress = document.getElementById('scrollProgress');
+        var heroSection = document.querySelector('.hero');
+        if (scrollProgress && heroSection) {
+            var heroObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) {
+                        scrollProgress.classList.add('visible');
+                    } else {
+                        scrollProgress.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0 });
+            heroObserver.observe(heroSection);
+
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (docHeight > 0) {
+                    scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+                }
+            });
+        }
+
+        // Scroll reveal
+        var reveals = document.querySelectorAll('.reveal');
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(function(el) { revealObserver.observe(el); });
+
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -749,26 +776,6 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Dynamic cursor effect on hero title
-        const heroTitle = document.querySelector('.hero-title');
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-            const mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
-            if (heroTitle) {
-                heroTitle.style.transform = `perspective(1000px) rotateY(${mouseX * 0.05}deg) rotateX(${-mouseY * 0.05}deg)`;
-            }
-        });
-
-        // Parallax effect on scroll for hero content
-        const heroContent = document.querySelector('.hero-content');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            if (heroContent && scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
             }
         });
 
