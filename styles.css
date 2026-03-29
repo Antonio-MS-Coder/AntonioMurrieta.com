@@ -1,0 +1,315 @@
+/* ============================================
+   AntonioMurrieta.com — Shared Brand Styles
+   ============================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap');
+
+/* === Palette === */
+:root {
+    --ink: #111111;
+    --carbon: #2A2A2A;
+    --stone: #6B6560;
+    --bone: #E8E4DD;
+    --paper: #F5F3EE;
+    --linen: #FAF8F5;
+    --roble: #8B7355;
+    --roble-light: #A8916F;
+    --roble-dim: rgba(139, 115, 85, 0.08);
+    --roble-border: rgba(139, 115, 85, 0.2);
+
+    /* Typography */
+    --serif: 'Newsreader', Georgia, serif;
+    --sans: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+    /* Easing */
+    --ease-snap: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-reveal: cubic-bezier(0.61, 1, 0.88, 1);
+    --ease-overlay: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-gentle: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+    /* Layout */
+    --max-width: 1200px;
+    --content-width: 680px;
+}
+
+/* === Reset === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--linen);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--roble-dim);
+    color: var(--ink);
+}
+
+:focus-visible {
+    outline: 2px solid var(--roble);
+    outline-offset: 4px;
+}
+
+/* === Navigation === */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(250, 248, 245, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 24px 40px;
+    transition: all 0.3s var(--ease-snap);
+}
+
+nav.scrolled {
+    padding: 16px 40px;
+    border-bottom: 1px solid var(--bone);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-snap);
+    position: relative;
+    white-space: nowrap;
+}
+
+.logo::after {
+    content: '.';
+    color: var(--roble);
+    font-weight: 700;
+    position: absolute;
+}
+
+.logo:hover {
+    color: var(--roble);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-family: var(--sans);
+    color: var(--stone);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s var(--ease-snap);
+    position: relative;
+    text-transform: uppercase;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--roble);
+    transition: width 0.3s var(--ease-snap);
+}
+
+.nav-links a:hover {
+    color: var(--roble);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 2px solid var(--roble);
+    padding-bottom: 2px;
+}
+
+/* === Mobile Menu === */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.3s var(--ease-snap);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === Footer === */
+footer {
+    padding: 60px 40px 40px;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.footer-brand {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 12px;
+}
+
+.footer-studio {
+    margin-bottom: 20px;
+}
+
+.footer-studio a {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s var(--ease-snap);
+}
+
+.footer-studio a:hover {
+    color: var(--roble-light);
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    font-family: var(--sans);
+    color: var(--stone);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s var(--ease-snap);
+}
+
+.footer-links a:hover {
+    color: var(--roble-light);
+}
+
+.footer-copyright {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: rgba(245, 243, 238, 0.25);
+}
+
+/* === Scroll Reveal === */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s var(--ease-reveal), transform 0.5s var(--ease-reveal);
+}
+
+.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* === Mobile Responsive (shared) === */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--linen);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.3s var(--ease-overlay);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+}
