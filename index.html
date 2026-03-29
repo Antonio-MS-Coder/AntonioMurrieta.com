@@ -177,34 +177,6 @@
             margin: 0 auto;
         }
 
-        .features-intro {
-            max-width: 680px;
-            margin: 0 auto 80px;
-            text-align: center;
-        }
-
-        .features-intro h2 {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 42px);
-            font-weight: 400;
-            color: var(--ink);
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            line-height: 1.3;
-        }
-
-        .features-intro p {
-            font-size: 18px;
-            color: var(--stone);
-            line-height: 1.7;
-            font-weight: 400;
-        }
-
-        .features-intro p strong {
-            color: var(--ink);
-            font-weight: 500;
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -213,7 +185,7 @@
         }
 
         .feature-card {
-            background: var(--linen);
+            background: var(--paper);
             padding: 32px;
             border-radius: 12px;
             border: 1px solid transparent;
@@ -246,8 +218,9 @@
         }
 
         .feature-card h3 {
+            font-family: var(--serif);
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--ink);
             margin-bottom: 12px;
             letter-spacing: -0.3px;
@@ -260,30 +233,6 @@
             margin-bottom: 16px;
         }
 
-        .feature-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--stone);
-            padding-top: 16px;
-            border-top: 1px solid var(--paper);
-            flex-wrap: wrap;
-        }
-
-        .feature-meta-tag {
-            background: var(--paper);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: all 0.2s var(--ease-snap);
-        }
-
-        .feature-card:hover .feature-meta-tag {
-            background: var(--roble-dim);
-            color: var(--roble);
-        }
-
         /* Featured Projects Section */
         .featured {
             padding: 100px 40px;
@@ -294,80 +243,6 @@
         .featured-container {
             max-width: var(--max-width);
             margin: 0 auto;
-        }
-
-        .featured-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .featured-header h2 {
-            font-family: var(--serif);
-            font-size: clamp(32px, 4vw, 42px);
-            font-weight: 400;
-            color: var(--ink);
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .featured-header p {
-            font-size: 16px;
-            color: var(--stone);
-        }
-
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 32px;
-            margin-bottom: 48px;
-        }
-
-        .featured-project {
-            background: var(--linen);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.4s var(--ease-reveal);
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .featured-project:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        .featured-project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .featured-project-info {
-            padding: 24px;
-        }
-
-        .featured-project-category {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--roble);
-            margin-bottom: 8px;
-        }
-
-        .featured-project-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 8px;
-        }
-
-        .featured-project-desc {
-            font-size: 15px;
-            color: var(--stone);
-            line-height: 1.6;
         }
 
         .featured-cta {
@@ -387,31 +262,6 @@
 
         .featured-cta a:hover {
             border-bottom-color: var(--roble);
-        }
-
-        /* Section Title */
-        .section-title {
-            font-family: var(--serif);
-            font-size: 42px;
-            font-weight: 400;
-            text-align: center;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-            color: var(--ink);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--roble);
         }
 
         /* Responsive */
@@ -445,11 +295,6 @@
 
             .featured {
                 padding: 60px 20px;
-            }
-
-            .featured-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
             }
         }
     </style>
@@ -501,57 +346,33 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-container">
-            <div class="features-intro">
-                <h2>Here's what I'm building</h2>
-                <p>
-                    I love creating things that matter. Whether it's an app that makes someone's day easier,
-                    a story that sparks imagination, or an experiment that pushes boundaries —
-                    <strong>every project starts with curiosity</strong>.
-                </p>
-            </div>
+            <p class="section-label reveal">01 — What I Build</p>
 
-            <div class="features-grid">
-                <article class="feature-card">
+            <div class="features-grid reveal-stagger">
+                <article class="feature-card reveal">
                     <h3>Apps & Products</h3>
                     <p>
                         Building iOS apps and web platforms that real people actually use.
                         From idea to MVP to launch — 11+ apps shipped, payments integrated,
                         and products pitched to banks, companies, and government.
                     </p>
-                    <div class="feature-meta">
-                        <span class="feature-meta-tag">Swift</span>
-                        <span class="feature-meta-tag">Python</span>
-                        <span class="feature-meta-tag">React</span>
-                        <span class="feature-meta-tag">AI/ML</span>
-                    </div>
                 </article>
 
-                <article class="feature-card">
+                <article class="feature-card reveal">
                     <h3>Exploring & Experimenting</h3>
                     <p>
                         Always going deeper. Machine learning, applied AI, generative visuals,
                         interactive experiences — whatever rabbit hole looks interesting this week.
                         Finding beauty in algorithms and learning by building.
                     </p>
-                    <div class="feature-meta">
-                        <span class="feature-meta-tag">Python</span>
-                        <span class="feature-meta-tag">ML</span>
-                        <span class="feature-meta-tag">p5.js</span>
-                        <span class="feature-meta-tag">AI Art</span>
-                    </div>
                 </article>
 
-                <article class="feature-card">
+                <article class="feature-card reveal">
                     <h3>Writing & Stories</h3>
                     <p>
                         Published author exploring both children's wonder and grown-up questions.
                         Currently reading 52 books a year and sharing what resonates.
                     </p>
-                    <div class="feature-meta">
-                        <span class="feature-meta-tag">Fiction</span>
-                        <span class="feature-meta-tag">Essays</span>
-                        <span class="feature-meta-tag">Reviews</span>
-                    </div>
                 </article>
             </div>
         </div>
@@ -560,32 +381,54 @@
     <!-- Featured Projects -->
     <section class="featured">
         <div class="featured-container">
-            <div class="featured-header">
-                <h2>Featured Work</h2>
-                <p>A few things I've shipped recently.</p>
-            </div>
+            <p class="section-label reveal">02 — Recent Work</p>
 
-            <div class="featured-grid">
-                <a href="work.html" class="featured-project">
-                    <img src="assets/Work_Covers/Abundia.webp" alt="AbundIA" class="featured-project-image">
-                    <div class="featured-project-info">
-                        <p class="featured-project-category">Finance & AI</p>
-                        <h3 class="featured-project-title">AbundIA</h3>
-                        <p class="featured-project-desc">Personal finance app powered by AI with total privacy. All processed locally on your device via Apple Intelligence.</p>
+            <div class="work-grid reveal-stagger">
+                <a href="work.html" class="work-grid-item work-grid-large reveal" style="background-image: url('assets/Work_Covers/Abundia.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-category">Finance & AI</span>
+                        <span class="work-grid-title">AbundIA</span>
                     </div>
                 </a>
-
-                <a href="work.html" class="featured-project">
-                    <img src="assets/Work_Covers/Tribu.webp" alt="Tribu" class="featured-project-image">
-                    <div class="featured-project-info">
-                        <p class="featured-project-category">Social & Wellness</p>
-                        <h3 class="featured-project-title">Tribu</h3>
-                        <p class="featured-project-desc">A warm, minimalist app designed to spark real, meaningful conversations with the people who matter.</p>
+                <a href="work.html" class="work-grid-item work-grid-tall reveal" style="background-image: url('assets/Work_Covers/Tribu.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">Tribu</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Komercia.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">Komercia</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Contrario.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">Contrario</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item work-grid-wide reveal" style="background-image: url('assets/Work_Covers/LCK-1.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-category">Experience Design</span>
+                        <span class="work-grid-title">LCK Experience</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">Capi Coraz&oacute;n</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">El Peso del Aire</span>
+                    </div>
+                </a>
+                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp')">
+                    <div class="work-grid-overlay">
+                        <span class="work-grid-title">Bounce Blitz</span>
                     </div>
                 </a>
             </div>
 
-            <div class="featured-cta">
+            <div class="featured-cta reveal" style="margin-top: 32px;">
                 <a href="work.html">See all projects &#8594;</a>
             </div>
         </div>
