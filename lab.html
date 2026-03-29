@@ -95,7 +95,7 @@
         }
 
         .experiment {
-            background: var(--linen);
+            background: rgba(250, 248, 245, 0.85);
             border-radius: 16px;
             padding: 40px 32px;
             cursor: pointer;
@@ -106,6 +106,8 @@
             box-shadow: 0 4px 16px rgba(46, 45, 41, 0.08);
             opacity: 0;
             animation: fadeIn 0.6s var(--ease-snap) forwards;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .experiment:nth-child(1) { animation-delay: 0.1s; }
@@ -748,45 +750,48 @@
             <p class="lab-subtitle">Where Innovation Meets Experimentation</p>
         </div>
 
+        <!-- Dot Grid Background -->
+        <div class="dot-grid-container" id="dotGrid" aria-hidden="true"></div>
+
         <!-- Experiments Grid -->
         <div class="experiments-grid">
-            <div class="experiment" data-experiment="particles">
+            <div class="experiment reveal" data-experiment="particles">
                 <div class="experiment-icon">✨</div>
                 <h3 class="experiment-title">Particle Physics</h3>
                 <p class="experiment-description">Interactive particle system responding to mouse movement</p>
             </div>
 
-            <div class="experiment" data-experiment="waves">
+            <div class="experiment reveal" data-experiment="waves">
                 <div class="experiment-icon">🌊</div>
                 <h3 class="experiment-title">Wave Generator</h3>
                 <p class="experiment-description">Create mesmerizing wave patterns with adjustable parameters</p>
             </div>
 
-            <div class="experiment" data-experiment="glitch">
+            <div class="experiment reveal" data-experiment="glitch">
                 <div class="experiment-icon">📺</div>
                 <h3 class="experiment-title">Glitch Art</h3>
                 <p class="experiment-description">Generate random glitch effects and digital distortions</p>
             </div>
 
-            <div class="experiment" data-experiment="fractals">
+            <div class="experiment reveal" data-experiment="fractals">
                 <div class="experiment-icon">🌀</div>
                 <h3 class="experiment-title">Fractal Explorer</h3>
                 <p class="experiment-description">Dive into infinite mathematical patterns</p>
             </div>
 
-            <div class="experiment" data-experiment="audio">
+            <div class="experiment reveal" data-experiment="audio">
                 <div class="experiment-icon">🎵</div>
                 <h3 class="experiment-title">Sound Visualizer</h3>
                 <p class="experiment-description">Transform sound into visual art</p>
             </div>
 
-            <div class="experiment" data-experiment="3d">
+            <div class="experiment reveal" data-experiment="3d">
                 <div class="experiment-icon">🎲</div>
                 <h3 class="experiment-title">3D Playground</h3>
                 <p class="experiment-description">Manipulate 3D objects in space</p>
             </div>
 
-            <a href="Music_1.html" class="experiment" style="text-decoration: none; color: inherit;">
+            <a href="Music_1.html" class="experiment reveal" style="text-decoration: none; color: inherit;">
                 <div class="experiment-icon">🎹</div>
                 <h3 class="experiment-title">Invisible Instrument</h3>
                 <p class="experiment-description">Create music with your hands and face using AI-powered gesture tracking</p>
@@ -3414,6 +3419,62 @@
             experiment.style.animationPlayState = 'paused';
             observer.observe(experiment);
         });
+
+        // Dot grid background
+        (function() {
+            var container = document.getElementById('dotGrid');
+            if (!container) return;
+
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var hasCores = navigator.hardwareConcurrency && navigator.hardwareConcurrency > 4;
+
+            var spacing = 16;
+            var parent = container.parentElement;
+            var cols = Math.ceil(parent.offsetWidth / spacing);
+            var rows = Math.ceil(parent.offsetHeight / spacing);
+
+            var svgNS = 'http://www.w3.org/2000/svg';
+            var svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('width', cols * spacing);
+            svg.setAttribute('height', rows * spacing);
+            svg.style.position = 'absolute';
+            svg.style.top = '0';
+            svg.style.left = '0';
+
+            var durations = ['2800ms', '3200ms', '3600ms'];
+
+            for (var r = 0; r < rows; r++) {
+                for (var c = 0; c < cols; c++) {
+                    var circle = document.createElementNS(svgNS, 'circle');
+                    circle.setAttribute('cx', c * spacing + spacing / 2);
+                    circle.setAttribute('cy', r * spacing + spacing / 2);
+                    circle.setAttribute('r', '1.5');
+                    circle.setAttribute('fill', '#E8E4DD');
+
+                    if (!prefersReducedMotion && hasCores) {
+                        var durIdx = (r * cols + c) % 3;
+                        circle.style.setProperty('--dot-duration', durations[durIdx]);
+                        circle.style.animationDelay = (Math.random() * 2).toFixed(2) + 's';
+                    }
+
+                    svg.appendChild(circle);
+                }
+            }
+
+            container.appendChild(svg);
+        })();
+
+        // Scroll reveal
+        var reveals = document.querySelectorAll('.reveal');
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(function(el) { revealObserver.observe(el); });
     </script>
 </body>
 </html>
