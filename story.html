@@ -237,6 +237,7 @@
     </style>
 </head>
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -259,7 +260,7 @@
 
     <div class="story-container">
         <!-- Hero -->
-        <div class="story-hero">
+        <div class="story-hero reveal">
             <h1>The short version</h1>
             <p class="lead">
                 I'm Antonio. I build things, write, and try to stay curious about everything.
@@ -284,7 +285,7 @@
             </p>
 
             <!-- PHOTOS: Tec graduation -->
-            <div class="story-photo wide">
+            <div class="story-photo wide reveal">
                 <div class="slideshow" data-interval="4000">
                     <div class="slide active"><img src="assets/Story_Photos/tec_1.webp" alt="Tec de Monterrey graduation ceremony"></div>
                     <div class="slide"><img src="assets/Story_Photos/tec_2.webp" alt="Tec de Monterrey diplomas"></div>
@@ -312,7 +313,7 @@
             </p>
 
             <!-- PHOTOS: Stanford -->
-            <div class="story-photo wide">
+            <div class="story-photo wide reveal">
                 <div class="slideshow" data-interval="4500">
                     <div class="slide active"><img src="assets/Story_Photos/stanford_1.webp" alt="Stanford ID with campus"></div>
                     <div class="slide"><img src="assets/Story_Photos/stanford_2.webp" alt="Stanford HAI"></div>
@@ -376,7 +377,7 @@
             </p>
 
             <!-- PHOTOS: INCmty -->
-            <div class="story-photo wide">
+            <div class="story-photo wide reveal">
                 <div class="slideshow" data-interval="5000">
                     <div class="slide active"><img src="assets/Story_Photos/inc_1.webp" alt="INC Monterrey team"></div>
                     <div class="slide"><img src="assets/Story_Photos/inc_2.webp" alt="Speaking at INC Monterrey"></div>
@@ -391,7 +392,7 @@
             </p>
 
             <!-- PHOTO: LCK Experience stage -->
-            <div class="story-photo wide">
+            <div class="story-photo wide reveal">
                 <img src="assets/Story_Photos/lck_1.webp" alt="On stage at the LCK Experience">
                 <p class="caption">On stage at the LCK Experience.</p>
             </div>
@@ -420,7 +421,7 @@
         <div class="background">
             <h2>Background</h2>
 
-            <div class="background-section">
+            <div class="background-section reveal">
                 <h3>Work</h3>
                 <div class="background-item">
                     <div class="role">Product & Platform Lead</div>
@@ -449,7 +450,7 @@
                 </div>
             </div>
 
-            <div class="background-section">
+            <div class="background-section reveal">
                 <h3>Education</h3>
                 <div class="background-item">
                     <div class="role">BS Business Intelligence, Minor in AI</div>
@@ -478,7 +479,7 @@
                 </div>
             </div>
 
-            <div class="background-section">
+            <div class="background-section reveal">
                 <h3>Tools & Skills</h3>
                 <p style="font-size: 15px; color: var(--stone); line-height: 1.8;">
                     Swift, Python, JavaScript, SQL, Firebase, PyTorch, React.
@@ -536,6 +537,31 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // Scroll progress bar
+        var scrollProgress = document.getElementById('scrollProgress');
+        if (scrollProgress) {
+            scrollProgress.classList.add('visible');
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (docHeight > 0) {
+                    scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+                }
+            });
+        }
+
+        // Scroll reveal
+        var reveals = document.querySelectorAll('.reveal');
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(function(el) { revealObserver.observe(el); });
 
         // Auto-crossfade slideshows
         document.querySelectorAll('.slideshow').forEach(show => {

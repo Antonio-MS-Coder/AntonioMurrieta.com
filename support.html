@@ -311,14 +311,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
+    <div class="hero reveal">
         <h1>App Support</h1>
         <p>Welcome to the support center for Antonio Murrieta Apps. Find technical assistance, privacy information, terms of use, and get in touch with our support team.</p>
     </div>
 
     <!-- Main Content -->
     <main>
-        <section>
+        <section class="reveal">
             <h2>Important Information for Apps Users</h2>
             
             <div class="notice-box">
@@ -327,12 +327,12 @@
             </div>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Feature Requests</h2>
             <p>Thank you for your feedback! We are committed to enhancing our apps. If you have any suggestions or for new features, please reach out to us at <strong>create@antoniomurrieta.com</strong>. Your feedback is essential in helping us improve your experience.</p>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Privacy Policy</h2>
             <p>Your privacy matters to us. At Antonio Murrieta Apps, we manage your data responsibly, including how we collect, use, and store it.</p>
             
@@ -361,7 +361,7 @@
             <p>We implement industry-standard security measures to protect your data, including encryption in transit and at rest, regular security audits, and strict access controls.</p>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Terms of Use</h2>
             <p>By using our apps, you agree to the following terms:</p>
             
@@ -377,7 +377,7 @@
             <p>These terms aim to ensure fair and secure usage for all users.</p>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Software Bill of Materials (SBOM)</h2>
             <p>We emphasize transparency in the development of our apps. Below is a summary of the key components and libraries:</p>
             
@@ -394,7 +394,7 @@
             <p>This ensures our applications are built with robust, secure, and reliable tools. We regularly update our dependencies to maintain security and performance standards.</p>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Frequently Asked Questions</h2>
             
             <h3>How do I report a bug?</h3>
@@ -410,7 +410,7 @@
             <p>Most features work offline, but some functionality requires an internet connection for synchronization and updates.</p>
         </section>
 
-        <section>
+        <section class="reveal">
             <h2>Contact Information</h2>
             <p>For any questions, suggestions, or issues related to our apps, feel free to reach out.</p>
             
@@ -493,6 +493,18 @@
     </footer>
 
     <script>
+        // Scroll reveal
+        var reveals = document.querySelectorAll('.reveal');
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(function(el) { revealObserver.observe(el); });
+
         // Add scroll effect to navigation
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
