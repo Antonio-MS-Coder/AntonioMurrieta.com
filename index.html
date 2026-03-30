@@ -12,6 +12,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap">
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Hero Section */
@@ -459,37 +462,50 @@
 
             var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // Wrap each character in a span
+            // Wrap each character in a span, grouped by word to prevent mid-word breaks
             var textSpans = heroTitle.querySelectorAll('.hero-text');
             textSpans.forEach(function(span) {
                 var text = span.getAttribute('data-text');
                 var isAccent = span.classList.contains('hero-text-accent');
                 var frag = document.createDocumentFragment();
+                var words = text.split(' ');
 
-                for (var i = 0; i < text.length; i++) {
-                    var ch = text[i];
-                    var el = document.createElement('span');
+                words.forEach(function(word, wordIdx) {
+                    if (word.length > 0) {
+                        // Create a word wrapper that prevents mid-word line breaks
+                        var wordWrap = document.createElement('span');
+                        wordWrap.style.whiteSpace = 'nowrap';
+                        wordWrap.style.display = 'inline-block';
 
-                    if (ch === ' ') {
-                        el.textContent = '\u00A0';
-                        el.className = 'hero-letter';
-                    } else {
-                        el.textContent = ch;
-                        el.className = 'hero-letter' + (isAccent ? ' hero-letter-roble' : '');
+                        for (var i = 0; i < word.length; i++) {
+                            var el = document.createElement('span');
+                            el.textContent = word[i];
+                            el.className = 'hero-letter' + (isAccent ? ' hero-letter-roble' : '');
+
+                            if (!prefersReducedMotion) {
+                                var rot = (Math.random() * 1 - 0.5).toFixed(2);
+                                var y = (Math.random() * 2 - 1).toFixed(2);
+                                var dur = (2 + Math.random() * 2).toFixed(2);
+                                el.style.setProperty('--idle-rot', rot + 'deg');
+                                el.style.setProperty('--idle-y', y + 'px');
+                                el.style.setProperty('--idle-duration', dur + 's');
+                                el.classList.add('idle');
+                            }
+
+                            wordWrap.appendChild(el);
+                        }
+
+                        frag.appendChild(wordWrap);
                     }
 
-                    if (!prefersReducedMotion) {
-                        var rot = (Math.random() * 1 - 0.5).toFixed(2);
-                        var y = (Math.random() * 2 - 1).toFixed(2);
-                        var dur = (2 + Math.random() * 2).toFixed(2);
-                        el.style.setProperty('--idle-rot', rot + 'deg');
-                        el.style.setProperty('--idle-y', y + 'px');
-                        el.style.setProperty('--idle-duration', dur + 's');
-                        el.classList.add('idle');
+                    // Add space between words (not after the last word)
+                    if (wordIdx < words.length - 1) {
+                        var space = document.createElement('span');
+                        space.textContent = ' ';
+                        space.className = 'hero-letter';
+                        frag.appendChild(space);
                     }
-
-                    frag.appendChild(el);
-                }
+                });
 
                 span.textContent = '';
                 span.appendChild(frag);
