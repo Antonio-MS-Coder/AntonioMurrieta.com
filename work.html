@@ -5,1205 +5,553 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work - Antonio Murrieta</title>
     <meta name="description" content="Explore the creative projects of Antonio Murrieta - from digital art to interactive experiences, books to apps.">
-    
+
     <!-- SEO & Open Graph -->
     <meta property="og:title" content="Work - Antonio Murrieta">
     <meta property="og:description" content="A curated portfolio of digital products, creative projects, and published works crafted at the intersection of art and technology.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com/work">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Main Content */
+        /* Work Page — Tiered Gallery */
         .work-container {
-            padding: 120px 40px 80px;
-            max-width: var(--max-width);
+            max-width: 1000px;
             margin: 0 auto;
-            position: relative;
+            padding: 140px 40px 80px;
         }
 
-        /* Header */
+        /* Page Header */
         .work-header {
             text-align: center;
             margin-bottom: 100px;
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.8s var(--ease-reveal) 0.2s forwards;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .work-title {
+        .work-header h1 {
             font-family: var(--serif);
-            font-size: clamp(48px, 8vw, 72px);
-            font-weight: 400;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-            line-height: 1.1;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 300;
             color: var(--ink);
-            position: relative;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
 
-        .work-title span {
-            background: linear-gradient(135deg, var(--roble) 0%, var(--roble-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
-        }
-
-        .work-subtitle {
-            font-size: 18px;
+        .work-header p {
+            font-family: var(--sans);
+            font-size: 15px;
             color: var(--stone);
-            margin-bottom: 32px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-
-        .work-subtitle::before,
-        .work-subtitle::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 40px;
-            height: 1px;
-            background: var(--bone);
-        }
-
-        .work-subtitle::before {
-            left: -60px;
-        }
-
-        .work-subtitle::after {
-            right: -60px;
-        }
-
-        .work-description {
-            font-family: var(--serif);
-            font-size: 20px;
-            color: var(--stone);
-            max-width: 640px;
+            max-width: 480px;
             margin: 0 auto;
             line-height: 1.7;
-            font-weight: 400;
         }
 
-        /* Filter Buttons */
-        .filter-container {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+        /* === Tier 1: Flagship === */
+        .flagship-section {
+            margin-bottom: 100px;
+        }
+
+        .flagship-item {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             margin-bottom: 80px;
-            opacity: 0;
-            animation: fadeInUp 0.8s var(--ease-reveal) 0.4s forwards;
+            transition: opacity 0.3s var(--ease-snap);
         }
 
-        .filter-btn {
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border: 2px solid var(--bone);
-            background: var(--linen);
-            color: var(--stone);
-            cursor: pointer;
-            transition: all 0.3s var(--ease-snap);
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
+        .flagship-item:last-child {
+            margin-bottom: 0;
         }
 
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .flagship-item:hover {
+            opacity: 0.9;
+        }
+
+        .flagship-image {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 115, 85, 0.1), transparent);
-            transition: left 0.6s;
+            height: 400px;
+            border-radius: 12px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 24px;
         }
 
-        .filter-btn:hover::before {
-            left: 100%;
+        .flagship-meta {
+            max-width: 600px;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--roble);
-            color: white;
-            border-color: var(--roble);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.25);
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            position: relative;
-        }
-
-        /* Project Card */
-        .project-card {
-            position: relative;
-            background: var(--linen);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.4s var(--ease-snap);
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08);
-        }
-
-        .project-visual {
-            height: 260px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            background: linear-gradient(135deg, var(--paper) 0%, var(--linen) 100%);
-            transition: all 0.4s var(--ease-snap);
-        }
-
-        .project-card:hover .project-visual {
-            transform: scale(1.05);
-        }
-
-        /* Project specific refined colors */
-        .project-card[data-project="epistola"] .project-visual { 
-            background: linear-gradient(135deg, #f8f0f5 0%, #f1e8ed 100%);
-            color: var(--roble);
-        }
-        .project-card[data-project="datecraft"] .project-visual { 
-            background: linear-gradient(135deg, #fef9e7 0%, #fdf4d3 100%);
-            color: #d97706;
-        }
-        .project-card[data-project="andresnoir"] .project-visual { 
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            color: var(--ink);
-        }
-        .project-card[data-project="fitmental"] .project-visual { 
-            background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
-            color: var(--roble);
-        }
-        .project-card[data-project="marketwizard"] .project-visual { 
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            color: var(--roble);
-        }
-        .project-card[data-project="toyfactory"] .project-visual { 
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #f59e0b;
-        }
-        .project-card[data-project="prompts100"] .project-visual { 
-            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            color: #6366f1;
-        }
-        .project-card[data-project="capi"] .project-visual { 
-            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
-            color: #ec4899;
-        }
-        .project-card[data-project="stackrush"] .project-visual { 
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            color: var(--roble);
-        }
-        .project-card[data-project="vipervelocity"] .project-visual { 
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            color: #10b981;
-        }
-        .project-card[data-project="neuropairs"] .project-visual { 
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #f59e0b;
-        }
-        .project-card[data-project="patternlab"] .project-visual { 
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            color: #0284c7;
-        }
-        .project-card[data-project="art"] .project-visual {
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-            color: #7c3aed;
-        }
-        .project-card[data-project="elpesodelaire"] .project-visual {
-            background: linear-gradient(135deg, #f5f3f0 0%, #e8e5e0 100%);
-            color: #6b5b73;
-        }
-
-        .project-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0);
-            background-size: 20px 20px;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-pattern {
-            opacity: 0.1;
-        }
-
-        .project-info {
-            padding: 32px;
-            background: var(--linen);
-            position: relative;
-        }
-
-        .project-category {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--paper);
-            color: var(--stone);
+        .flagship-category {
+            font-family: var(--sans);
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            color: var(--roble);
+            margin-bottom: 8px;
         }
 
-        .project-card:hover .project-category {
-            background: var(--roble);
-            color: white;
-        }
-
-        .project-title {
+        .flagship-title {
             font-family: var(--serif);
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 400;
             color: var(--ink);
-            line-height: 1.3;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
-        .project-description {
+        .flagship-desc {
+            font-family: var(--sans);
             font-size: 15px;
+            color: var(--stone);
             line-height: 1.7;
-            color: var(--stone);
-            margin-bottom: 24px;
         }
 
-        .project-tags {
+        /* === Tier 2: Selected Work === */
+        .selected-section {
+            margin-bottom: 80px;
+        }
+
+        .selected-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .selected-item {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s var(--ease-snap);
+        }
+
+        .selected-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .selected-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 16px;
+        }
+
+        .selected-category {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--roble);
+            margin-bottom: 4px;
+        }
+
+        .selected-title {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--ink);
+            letter-spacing: -0.3px;
+            margin-bottom: 4px;
+        }
+
+        .selected-desc {
+            font-family: var(--sans);
+            font-size: 13px;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        /* === Tier 3: Complete Works === */
+        .complete-section {
+            border-top: 1px solid var(--bone);
+            padding-top: 48px;
+        }
+
+        .complete-list {
+            list-style: none;
+        }
+
+        .complete-item {
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bone);
+            text-decoration: none;
+            color: inherit;
+            transition: padding-left 0.3s var(--ease-snap), color 0.2s var(--ease-snap);
         }
 
-        .project-tag {
-            padding: 6px 14px;
-            border: 1px solid var(--bone);
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--stone);
-            background: var(--linen);
-            border-radius: 16px;
-            transition: all 0.3s ease;
+        .complete-item:hover {
+            padding-left: 12px;
         }
 
-        .project-card:hover .project-tag {
-            border-color: var(--roble);
+        .complete-item-left {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .complete-item-title {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--ink);
+            transition: color 0.2s var(--ease-snap);
+        }
+
+        .complete-item:hover .complete-item-title {
             color: var(--roble);
         }
 
-        /* Try Me Button */
-        .project-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 24px;
-            background: var(--roble);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
+        .complete-item-tag {
+            font-family: var(--sans);
+            font-size: 11px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-link:hover {
-            background: var(--roble-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.25);
-        }
-
-        .project-link::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .project-link:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Multiple Project Links Container */
-        .project-links-container {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .project-links-container .project-link {
-            margin-top: 0;
-        }
-
-        /* Dynamic Background Elements */
-        .floating-gradient {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.2;
-            pointer-events: none;
-            animation: float-gradient 20s ease-in-out infinite;
-        }
-
-        .gradient-1 {
-            background: radial-gradient(circle, var(--roble) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
-        }
-
-        .gradient-2 {
-            background: radial-gradient(circle, var(--roble) 0%, transparent 70%);
-            bottom: -300px;
-            left: -300px;
-            animation-delay: -10s;
-        }
-
-        @keyframes float-gradient {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Reading Indicator */
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--bone);
-            z-index: 1001;
-        }
-
-        .reading-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--roble) 0%, var(--roble-light) 100%);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        .reading-time {
-            position: fixed;
-            top: 50%;
-            right: 40px;
-            transform: translateY(-50%) rotate(90deg);
-            transform-origin: center;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
             color: var(--stone);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .reading-time.visible {
-            opacity: 0.5;
+        .complete-item-arrow {
+            font-family: var(--sans);
+            font-size: 14px;
+            color: var(--stone);
+            transition: transform 0.2s var(--ease-snap);
         }
 
-        /* Responsive */
+        .complete-item:hover .complete-item-arrow {
+            transform: translateX(4px);
+            color: var(--roble);
+        }
+
+        /* === Separator between tiers === */
+        .tier-separator {
+            width: 60px;
+            height: 1px;
+            background: var(--bone);
+            margin: 0 auto 80px;
+        }
+
+        /* === Responsive === */
         @media (max-width: 768px) {
             .work-container {
-                padding: 120px 20px 80px;
+                padding: 120px 20px 60px;
             }
 
-            .projects-grid {
+            .flagship-image {
+                height: 240px;
+            }
+
+            .flagship-item {
+                margin-bottom: 60px;
+            }
+
+            .selected-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 32px;
             }
 
-            .project-card {
-                min-width: unset;
+            .selected-image {
+                height: 200px;
             }
 
-            .work-subtitle::before,
-            .work-subtitle::after {
-                display: none;
-            }
-
-            .reading-time {
+            .complete-item-tag {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">ANTONIO MURRIETA</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="work.html" class="active">WORK</a></li>
-                <li><a href="library.html">LIBRARY</a></li>
-                <li><a href="lab.html">LAB</a></li>
-                <li><a href="story.html">STORY</a></li>
-                <li><a href="connect.html">CONNECT</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Reading Progress -->
-    <div class="reading-progress">
-        <div class="reading-progress-fill" id="readingProgressFill"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">ANTONIO MURRIETA</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="work.html" class="active">WORK</a></li>
+            <li><a href="library.html">LIBRARY</a></li>
+            <li><a href="lab.html">LAB</a></li>
+            <li><a href="story.html">STORY</a></li>
+            <li><a href="connect.html">CONNECT</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="work-container">
+    <!-- Page Header -->
+    <div class="work-header reveal">
+        <h1>Work</h1>
+        <p>Apps, books, experiments, and everything in between. Built at the intersection of art and technology.</p>
     </div>
 
-    <!-- Dynamic Background -->
-    <div class="floating-gradient gradient-1"></div>
-    <div class="floating-gradient gradient-2"></div>
-    
-    <!-- Reading Indicator -->
-    <div class="reading-time" id="readingTime">3 MIN READ</div>
+    <!-- Tier 1: Flagship -->
+    <section class="flagship-section">
+        <p class="section-label reveal">Flagship</p>
 
-    <!-- Main Content -->
-    <div class="work-container">
-        <!-- Header -->
-        <div class="work-header reveal">
-            <h1 class="work-title">
-                Selected <span>Work</span>
-            </h1>
-            <p class="work-subtitle">Portfolio • Projects • Creative Endeavors</p>
-            <p class="work-description">
-                A curated collection of digital products, creative projects, and published works 
-                that explore the intersection of technology, design, and human creativity.
-            </p>
+        <a href="Abundia.html" class="flagship-item reveal">
+            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div>
+            <div class="flagship-meta">
+                <p class="flagship-category">Finance &amp; AI</p>
+                <h2 class="flagship-title">AbundIA</h2>
+                <p class="flagship-desc">Personal finance powered by on-device AI. Track, plan, and invest — all processed locally via Apple Intelligence. Zero data leaves your phone.</p>
+            </div>
+        </a>
+
+        <a class="flagship-item reveal">
+            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Andres_Noireau.avif')"></div>
+            <div class="flagship-meta">
+                <p class="flagship-category">AI Art</p>
+                <h2 class="flagship-title">Andr&eacute;s Noireau</h2>
+                <p class="flagship-desc">An AI-generated artistic identity exploring how machine learning can create compelling human narratives. Where does the artist end and the algorithm begin?</p>
+            </div>
+        </a>
+
+        <a class="flagship-item reveal">
+            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Komercia.webp')"></div>
+            <div class="flagship-meta">
+                <p class="flagship-category">Supply Chain &times; MIT</p>
+                <h2 class="flagship-title">Komercia</h2>
+                <p class="flagship-desc">Supply chain optimization platform developed with MIT LIFT Lab. Data-driven research into how technology reshapes global logistics networks.</p>
+            </div>
+        </a>
+    </section>
+
+    <div class="tier-separator reveal"></div>
+
+    <!-- Tier 2: Selected Work -->
+    <section class="selected-section">
+        <p class="section-label reveal">Selected Work</p>
+
+        <div class="selected-grid">
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Tribu.webp')"></div>
+                <p class="selected-category">Social &amp; Wellness</p>
+                <h3 class="selected-title">Tribu</h3>
+                <p class="selected-desc">Conversations that matter. Guided questions for friends, couples, and teams.</p>
+            </a>
+
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Fit_Mental.webp')"></div>
+                <p class="selected-category">Health &amp; Wellness</p>
+                <h3 class="selected-title">FitMental</h3>
+                <p class="selected-desc">Mental wellness meets modern tech. Evidence-based tools for personal growth.</p>
+            </a>
+
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Contrario.webp')"></div>
+                <p class="selected-category">Productivity</p>
+                <h3 class="selected-title">Contrario</h3>
+                <p class="selected-desc">A contrarian news reader for founders. Daily ideas that challenge default thinking.</p>
+            </a>
+
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')"></div>
+                <p class="selected-category">Fine Art Photobook</p>
+                <h3 class="selected-title">El Peso del Aire</h3>
+                <p class="selected-desc">Love, absence, and healing through poetic imagery and lyrical prose.</p>
+            </a>
+
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')"></div>
+                <p class="selected-category">Children's Book</p>
+                <h3 class="selected-title">Capi y el Coraz&oacute;n que Escucha</h3>
+                <p class="selected-desc">A capybara teaches kids to listen with their hearts. Empathy through story.</p>
+            </a>
+
+            <a class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/100_Prompts.webp')"></div>
+                <p class="selected-category">Self-Development</p>
+                <h3 class="selected-title">100 Prompts que Cambiaron mi Vida</h3>
+                <p class="selected-desc">Thought-provoking prompts for self-reflection and personal growth.</p>
+            </a>
+
+            <a class="selected-item reveal" style="grid-column: span 2;">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/LCK-1.webp'); height: 260px;"></div>
+                <p class="selected-category">Digital Experience</p>
+                <h3 class="selected-title">LCK Experience</h3>
+                <p class="selected-desc">An immersive digital platform blending creativity and technology for engaging interactive content.</p>
+            </a>
         </div>
+    </section>
 
-        <!-- Filter Buttons -->
-        <div class="filter-container reveal">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="digital">Digital Products</button>
-            <button class="filter-btn" data-filter="creative">Creative Works</button>
-            <button class="filter-btn" data-filter="books">Publications</button>
-            <button class="filter-btn" data-filter="apps">Apps</button>
+    <div class="tier-separator reveal"></div>
+
+    <!-- Tier 3: Complete Works -->
+    <section class="complete-section">
+        <p class="section-label reveal">Complete Works</p>
+
+        <nav class="complete-list">
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Market Wizard</span>
+                    <span class="complete-item-tag">Fintech</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">SniffPots</span>
+                    <span class="complete-item-tag">Platform</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">PatternLab</span>
+                    <span class="complete-item-tag">Simulation</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Ignite</span>
+                    <span class="complete-item-tag">Productivity</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Bounce Bounce Blitz</span>
+                    <span class="complete-item-tag">iOS Game</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">StackRush</span>
+                    <span class="complete-item-tag">iOS Game</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Viper Velocity</span>
+                    <span class="complete-item-tag">iOS Game</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">NeuroPairs</span>
+                    <span class="complete-item-tag">iOS Game</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Starlings</span>
+                    <span class="complete-item-tag">Space Game</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Santa Rosa Ecoturism</span>
+                    <span class="complete-item-tag">Web Design</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Plaza Real Silao</span>
+                    <span class="complete-item-tag">Web Design</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+            <a class="complete-item reveal">
+                <div class="complete-item-left">
+                    <span class="complete-item-title">Life Changing Knowledge</span>
+                    <span class="complete-item-tag">Web Design</span>
+                </div>
+                <span class="complete-item-arrow">&rarr;</span>
+            </a>
+        </nav>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <p class="footer-brand">Antonio Murrieta</p>
+        <div class="footer-studio">
+            <a href="https://murrietalabs.com" target="_blank">MurrietaLabs</a>
         </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <!-- Andres Noireau -->
-            <div class="project-card reveal" data-project="andresnoir" data-category="creative">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Andres_Noireau.avif'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">AI Art Project</span>
-                    <h3 class="project-title">Andrés Noireau</h3>
-                    <p class="project-description">
-                        An experimental exploration of human narratives through artificial intelligence, examining the intersection of technology and storytelling to create compelling artistic expressions that challenge our understanding of creativity.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Artificial Intelligence</span>
-                        <span class="project-tag">Narrative</span>
-                        <span class="project-tag">Digital Art</span>
-                    </div>
-                    <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" class="project-link">Listen on Spotify →</a>
-                </div>
-            </div>
-
-            <!-- AbundIA -->
-            <div class="project-card reveal" data-project="abundia" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Abundia.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Finance & AI</span>
-                    <h3 class="project-title">AbundIA</h3>
-                    <p class="project-description">
-                        A personal finance app powered by AI with total privacy. Track income and expenses, get tailored financial advice, plan goals, eliminate debt, and invest smarter—all processed locally on your device via Apple Intelligence.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">AI Finance</span>
-                        <span class="project-tag">Privacy-First</span>
-                    </div>
-                    <a href="https://apps.apple.com/es/app/abundia/id6754313930" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- FitMental -->
-            <div class="project-card reveal" data-project="fitmental" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Fit_Mental.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Health & Wellness</span>
-                    <h3 class="project-title">FitMental</h3>
-                    <p class="project-description">
-                        A comprehensive mental wellness application that combines evidence-based psychological methods with modern technology to support personal growth, emotional resilience, and spiritual development.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Mental Health</span>
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">AI Integration</span>
-                    </div>
-                    <a href="https://apps.apple.com/es/app/fit-mental/id6741566362" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Tribu -->
-            <div class="project-card reveal" data-project="tribu" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Tribu.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Social & Wellness</span>
-                    <h3 class="project-title">Tribu</h3>
-                    <p class="project-description">
-                        A warm, minimalist app designed to spark real, meaningful conversations. Guided by curated questions inspired by mindfulness and human connection, Tribu helps friends, couples, and teams go from surface-level to emotional depth—without pressure.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">Connection</span>
-                        <span class="project-tag">Mindfulness</span>
-                    </div>
-                    <a href="https://apps.apple.com/es/app/tribu/id6748625305" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Komercia -->
-            <div class="project-card reveal" data-project="komercia" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Komercia.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Supply Chain Research</span>
-                    <h3 class="project-title">Komercia</h3>
-                    <p class="project-description">
-                        Supply chain research platform developed in collaboration with MIT LIFT Lab. A data-driven solution exploring optimization and innovation in global supply chain networks.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Supply Chain</span>
-                        <span class="project-tag">MIT Research</span>
-                        <span class="project-tag">Data Analytics</span>
-                    </div>
-                    <a href="https://komercia.mx/" target="_blank" class="project-link">Visit Platform →</a>
-                </div>
-            </div>
-
-            <!-- LCK Experience -->
-            <div class="project-card reveal" data-project="lckexperience" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/LCK_Experience.avif'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Digital Experience</span>
-                    <h3 class="project-title">LCK Experience</h3>
-                    <p class="project-description">
-                        An immersive digital experience platform that blends creativity and technology to deliver engaging interactive content and memorable user journeys.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Web Experience</span>
-                        <span class="project-tag">Interactive Design</span>
-                        <span class="project-tag">UX/UI</span>
-                    </div>
-                    <a href="https://lck-experience.web.app" target="_blank" class="project-link">Explore →</a>
-                </div>
-            </div>
-
-            <!-- SniffPots -->
-            <div class="project-card reveal" data-project="sniffpots" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/SniffPots.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Aromatherapy Platform</span>
-                    <h3 class="project-title">SniffPots</h3>
-                    <p class="project-description">
-                        An elegant aromatherapy platform that explores the therapeutic power of natural scents, offering curated experiences and knowledge to enhance wellness through the art of fragrance.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Aromatherapy</span>
-                        <span class="project-tag">Wellness</span>
-                        <span class="project-tag">Web App</span>
-                    </div>
-                    <a href="https://sniffpots.crissteinman.com" target="_blank" class="project-link">Visit Site →</a>
-                </div>
-            </div>
-
-            <!-- Market Wizard -->
-            <div class="project-card reveal" data-project="marketwizard" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Market_Wizard.avif'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Financial Technology</span>
-                    <h3 class="project-title">Market Wizard</h3>
-                    <p class="project-description">
-                        An sophisticated analytics platform that harnesses artificial intelligence to decode financial market complexities, transforming raw data into clear, actionable insights for informed decision-making.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Machine Learning</span>
-                        <span class="project-tag">Data Analysis</span>
-                        <span class="project-tag">FinTech</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 100 Prompts Book -->
-            <div class="project-card reveal" data-project="prompts100" data-category="books">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/100_Prompts.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Self-Development Book</span>
-                    <h3 class="project-title">100 Prompts que Cambiaron mi Vida</h3>
-                    <p class="project-description">
-                        A transformative collection of thought-provoking prompts designed to inspire deep self-reflection, personal growth, and meaningful life changes. Each prompt serves as a catalyst for discovering your authentic self and unlocking your potential.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Self-Help</span>
-                        <span class="project-tag">Personal Growth</span>
-                        <span class="project-tag">Spanish</span>
-                    </div>
-                    <a href="https://www.amazon.com.mx/Prompts-cambiaron-vida-pueden-cambiar/dp/B0FD8CCNNX/" target="_blank" class="project-link">Get on Amazon →</a>
-                </div>
-            </div>
-
-            <!-- Capi y el Corazón Book -->
-            <div class="project-card reveal" data-project="capi" data-category="books">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Children's Book</span>
-                    <h3 class="project-title">Capi y el Corazón que Escucha</h3>
-                    <p class="project-description">
-                        A heartwarming children's story about Capi the capybara who teaches young readers the importance of listening with their hearts. Through colorful adventures and gentle wisdom, this book nurtures empathy and emotional intelligence in children.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Children's Literature</span>
-                        <span class="project-tag">Emotional Learning</span>
-                        <span class="project-tag">Spanish</span>
-                    </div>
-                    <a href="https://www.amazon.com.mx/Capi-Coraz%C3%B3n-que-Escucha-capibara/dp/B0FBFDM6ZV/" target="_blank" class="project-link">Get on Amazon →</a>
-                </div>
-            </div>
-
-            <!-- El Peso del Aire Book -->
-            <div class="project-card reveal" data-project="elpesodelaire" data-category="books">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Fine Art Photobook</span>
-                    <h3 class="project-title">El Peso del Aire</h3>
-                    <p class="project-description">
-                        A fine-art photobook exploring the intimate landscapes of love, absence, and healing. Through poetic imagery and lyrical prose, this visual narrative examines how everyday objects and spaces hold the weight of memory and the promise of renewal.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Photography</span>
-                        <span class="project-tag">Fine Art</span>
-                        <span class="project-tag">Poetry</span>
-                    </div>
-                    <div class="project-links-container">
-                        <a href="https://a.co/d/04LULkG" target="_blank" class="project-link">Spanish Edition →</a>
-                        <a href="https://a.co/d/1jpwmtB" target="_blank" class="project-link">English Edition →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bounce Bounce Blitz -->
-            <div class="project-card reveal" data-project="bounceblitz" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">iOS Game</span>
-                    <h3 class="project-title">Bounce Bounce Blitz</h3>
-                    <p class="project-description">
-                        A fast, satisfying arcade climber with one-touch controls. Bounce through 5 stunning biomes, collect 8 powerful boosts, build massive combos, and chase the highest score in this endlessly replayable pixel-art platformer.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS</span>
-                        <span class="project-tag">Arcade</span>
-                        <span class="project-tag">Pixel Art</span>
-                    </div>
-                    <a href="https://apps.apple.com/es/app/bounce-bounce-blitz/id6756200470" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- StackRush -->
-            <div class="project-card reveal" data-project="stackrush" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Stack_Rush 4.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Game Development</span>
-                    <h3 class="project-title">StackRush</h3>
-                    <p class="project-description">
-                        An engaging iOS arcade game built with SwiftUI, featuring dynamic gameplay mechanics, progressive challenges, achievement systems, and an integrated marketplace that creates an immersive gaming experience.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Swift</span>
-                        <span class="project-tag">SwiftUI</span>
-                        <span class="project-tag">Game Design</span>
-                    </div>
-                    <a href="https://apps.apple.com/mx/app/stacker-rush/id6748520029" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Viper Velocity -->
-            <div class="project-card reveal" data-project="vipervelocity" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Viper_Velocity.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">iOS Game</span>
-                    <h3 class="project-title">Viper Velocity</h3>
-                    <p class="project-description">
-                        A fast-paced, ad-free snake game that challenges your reflexes through glowing arenas and dynamic obstacles. Collect coins, unlock custom snake costumes, and test your skills with increasingly tricky patterns in this pure arcade experience.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS</span>
-                        <span class="project-tag">Arcade</span>
-                        <span class="project-tag">Ad-Free</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- NeuroPairs -->
-            <div class="project-card reveal" data-project="neuropairs" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Neuropairs.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">iOS Game</span>
-                    <h3 class="project-title">NeuroPairs</h3>
-                    <p class="project-description">
-                        A beautifully designed memory game that puts your concentration to the test. Match pairs of colorful cards across multiple difficulty levels with an intuitive interface, perfect for brain training anytime, anywhere—even offline.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS</span>
-                        <span class="project-tag">Memory</span>
-                        <span class="project-tag">Offline</span>
-                    </div>
-                    <a href="https://apps.apple.com/us/app/neuropairs/id6739889200" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- PatternLab -->
-            <div class="project-card reveal" data-project="patternlab" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/PatternLab.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">iOS Simulation</span>
-                    <h3 class="project-title">PatternLab</h3>
-                    <p class="project-description">
-                        A minimalist cellular-automata sandbox that transforms mathematical rules into mesmerizing, living patterns—inviting curiosity, creativity, and quiet discovery.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">Education</span>
-                        <span class="project-tag">Creative Coding</span>
-                    </div>
-                    <a href="https://apps.apple.com/mx/app/patternlab/id6745852951?l=en-GB" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Ignite -->
-            <div class="project-card reveal" data-project="ignite" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Ignite.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Productivity App</span>
-                    <h3 class="project-title">Ignite</h3>
-                    <p class="project-description">
-                        A beautifully designed habit tracking app that helps you build positive routines and break bad habits. With intuitive tracking, insightful analytics, and motivational features, Ignite empowers you to create lasting change and achieve your goals.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">Habit Tracking</span>
-                        <span class="project-tag">Personal Growth</span>
-                    </div>
-                    <a href="https://apps.apple.com/mx/app/ignite/id6751764042" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Contrario -->
-            <div class="project-card reveal" data-project="contrario" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Contrario.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">iOS Application</span>
-                    <h3 class="project-title">Contrario</h3>
-                    <p class="project-description">
-                        A contrarian news reader built for founders and rebels. Get a daily evidence-backed idea that challenges default thinking, plus a clean Hacker News reader with no fluff or doom-scroll—just ideas worth arguing about.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS App</span>
-                        <span class="project-tag">News Reader</span>
-                        <span class="project-tag">Critical Thinking</span>
-                    </div>
-                    <a href="https://apps.apple.com/es/app/contrario/id6751874165" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Starlings -->
-            <div class="project-card reveal" data-project="starlings" data-category="apps">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Starlings.jpg'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Space Game</span>
-                    <h3 class="project-title">Starlings</h3>
-                    <p class="project-description">
-                        An enchanting space-based adventure game where you navigate through the cosmos, exploring distant galaxies and overcoming challenges. With captivating visuals and engaging gameplay, Starlings offers an immersive journey through the stars.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">iOS Game</span>
-                        <span class="project-tag">Space Adventure</span>
-                        <span class="project-tag">Indie Game</span>
-                    </div>
-                    <a href="https://apps.apple.com/mx/app/starlings/id6751874853" target="_blank" class="project-link">Get on App Store →</a>
-                </div>
-            </div>
-
-            <!-- Santa Rosa Ecoturism -->
-            <div class="project-card reveal" data-project="santarosa" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/Santa_Rosa_Ecoturism.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Ecotourism Website</span>
-                    <h3 class="project-title">Santa Rosa Ecoturism</h3>
-                    <p class="project-description">
-                        A stunning landing page showcasing the natural beauty and sustainable tourism experiences of Santa Rosa. Designed to inspire visitors with immersive visuals and compelling content that highlights eco-friendly adventures and conservation efforts.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Web Design</span>
-                        <span class="project-tag">Ecotourism</span>
-                        <span class="project-tag">Landing Page</span>
-                    </div>
-                    <a href="https://antonio-ms-coder.github.io/Santa-Rosa-Ecoturismo/" target="_blank" class="project-link">Visit Site →</a>
-                </div>
-            </div>
-
-            <!-- Plaza Real Silao -->
-            <div class="project-card reveal" data-project="plazareal" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/logo-silao.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Web Design</span>
-                    <h3 class="project-title">Plaza Real Silao</h3>
-                    <p class="project-description">
-                        Designed and developed the complete web presence for Plaza Real Silao, a premier commercial real estate development. Created a modern, responsive website that showcases the property's features, attracts potential tenants, and enhances the plaza's digital presence.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Web Design</span>
-                        <span class="project-tag">Real Estate</span>
-                        <span class="project-tag">UX/UI</span>
-                    </div>
-                    <a href="https://plazarealsilao.com/" target="_blank" class="project-link">Visit Website →</a>
-                </div>
-            </div>
-
-            <!-- Life Changing Knowledge -->
-            <div class="project-card reveal" data-project="lck" data-category="digital">
-                <div class="project-visual" style="background-image: url('assets/Work_Covers/LCK-1.webp'); background-size: cover; background-position: center;">
-                    <div class="project-pattern"></div>
-                </div>
-                <div class="project-info">
-                    <span class="project-category">Web Design</span>
-                    <h3 class="project-title">Life Changing Knowledge</h3>
-                    <p class="project-description">
-                        Designed and developed the corporate website for Life Changing Knowledge (LCK), a leading business consulting firm. Created a professional digital platform that effectively communicates their services, showcases their expertise, and facilitates client engagement through modern web design.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Corporate Website</span>
-                        <span class="project-tag">Consulting</span>
-                        <span class="project-tag">Digital Strategy</span>
-                    </div>
-                    <a href="https://www.lck.com.mx/" target="_blank" class="project-link">Visit Website →</a>
-                </div>
-            </div>
+        <div class="footer-links">
+            <a href="https://github.com/Antonio-MS-Coder" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/tono_cams" target="_blank">Instagram</a>
+            <a href="mailto:create@antoniomurrieta.com">Email</a>
         </div>
+        <p class="footer-copyright">&copy; 2026 Antonio Murrieta</p>
     </div>
+</footer>
 
-    <footer>
-        <div class="footer-content">
-            <p class="footer-brand">Antonio Murrieta</p>
-            <div class="footer-studio">
-                <a href="https://murrietalabs.com" target="_blank">MurrietaLabs</a>
-            </div>
-            <div class="footer-links">
-                <a href="https://github.com/Antonio-MS-Coder" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank">LinkedIn</a>
-                <a href="https://instagram.com/tono_cams" target="_blank">Instagram</a>
-                <a href="mailto:carlosantonio.murrieta@gmail.com,create@antoniomurrieta.com">Email</a>
-            </div>
-            <p class="footer-copyright">&copy; 2026 Antonio Murrieta</p>
-        </div>
-    </footer>
+<script>
+    // Mobile menu toggle
+    var menuToggle = document.getElementById('menuToggle');
+    var navLinks = document.getElementById('navLinks');
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
+    navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
         });
+    });
 
-        // Close mobile menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        const readingTime = document.getElementById('readingTime');
-        const readingProgressFill = document.getElementById('readingProgressFill');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            
-            if (scrollTop > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            // Update reading progress
-            readingProgressFill.style.width = scrollPercent + '%';
-            
-            // Show reading time indicator after scrolling
-            if (scrollTop > 200) {
-                readingTime.classList.add('visible');
-            } else {
-                readingTime.classList.remove('visible');
-            }
-        });
-
-        // Intersection Observer for project cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Filter functionality with smooth animations
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-
-                projectCards.forEach((card, index) => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 50);
-                    } else {
-                        card.classList.remove('visible');
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Parallax effect for hero content
-        const workHeader = document.querySelector('.work-header');
-        
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.3;
-            
-            if (workHeader && scrolled < window.innerHeight) {
-                workHeader.style.transform = `translateY(${parallax}px)`;
-            }
-        });
-
-        // Add micro-interactions to project cards
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width;
-                const y = (e.clientY - rect.top) / rect.height;
-                
-                const rotateX = (y - 0.5) * 10;
-                const rotateY = (x - 0.5) * 10;
-                
-                this.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-            });
-
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-            });
-        });
-
-        // Add ripple effect to filter buttons
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const ripple = document.createElement('span');
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Add CSS for ripple effect
-        const style = document.createElement('style');
-        style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.5);
-                transform: scale(0);
-                animation: ripple-animation 0.6s ease-out;
-                pointer-events: none;
-                width: 20px;
-                height: 20px;
-                margin-left: -10px;
-                margin-top: -10px;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize animations
-        window.addEventListener('load', () => {
-            // Re-observe all cards after load to ensure proper animation
-            projectCards.forEach(card => {
-                observer.observe(card);
-            });
-        });
-
-        // Scroll progress bar
-        var scrollProgress = document.getElementById('scrollProgress');
-        if (scrollProgress) {
-            scrollProgress.classList.add('visible');
-            window.addEventListener('scroll', function() {
-                var scrollTop = window.scrollY;
-                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                if (docHeight > 0) {
-                    scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
-                }
-            });
+    // Navbar scroll effect
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
+    });
 
-        // Scroll reveal
-        var reveals = document.querySelectorAll('.reveal');
-        var revealObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        reveals.forEach(function(el) { revealObserver.observe(el); });
-    </script>
+    // Scroll progress bar
+    var scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        scrollProgress.classList.add('visible');
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (docHeight > 0) {
+                scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+            }
+        });
+    }
+
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    reveals.forEach(function(el) { revealObserver.observe(el); });
+</script>
+
 </body>
 </html>
