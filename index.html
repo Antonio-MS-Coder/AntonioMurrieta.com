@@ -476,6 +476,10 @@
                         var wordWrap = document.createElement('span');
                         wordWrap.style.whiteSpace = 'nowrap';
                         wordWrap.style.display = 'inline-block';
+                        // Add space between words via margin (not after last word)
+                        if (wordIdx < words.length - 1) {
+                            wordWrap.style.marginRight = '0.25em';
+                        }
 
                         for (var i = 0; i < word.length; i++) {
                             var el = document.createElement('span');
@@ -496,14 +500,6 @@
                         }
 
                         frag.appendChild(wordWrap);
-                    }
-
-                    // Add space between words (not after the last word)
-                    if (wordIdx < words.length - 1) {
-                        var space = document.createElement('span');
-                        space.textContent = ' ';
-                        space.className = 'hero-letter';
-                        frag.appendChild(space);
                     }
                 });
 
