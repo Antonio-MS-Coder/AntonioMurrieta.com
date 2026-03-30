@@ -3423,46 +3423,43 @@
             observer.observe(experiment);
         });
 
-        // Dot grid background
+        // Dot grid background — using SVG pattern (lightweight, 3 DOM elements instead of thousands)
         (function() {
             var container = document.getElementById('dotGrid');
             if (!container) return;
 
-            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            var hasCores = navigator.hardwareConcurrency && navigator.hardwareConcurrency > 4;
-
-            var spacing = 16;
-            var parent = container.parentElement;
-            var cols = Math.ceil(parent.offsetWidth / spacing);
-            var rows = Math.ceil(parent.offsetHeight / spacing);
-
             var svgNS = 'http://www.w3.org/2000/svg';
             var svg = document.createElementNS(svgNS, 'svg');
-            svg.setAttribute('width', cols * spacing);
-            svg.setAttribute('height', rows * spacing);
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '100%');
             svg.style.position = 'absolute';
             svg.style.top = '0';
             svg.style.left = '0';
 
-            var durations = ['2800ms', '3200ms', '3600ms'];
+            var defs = document.createElementNS(svgNS, 'defs');
+            var pattern = document.createElementNS(svgNS, 'pattern');
+            pattern.setAttribute('id', 'dotPattern');
+            pattern.setAttribute('x', '0');
+            pattern.setAttribute('y', '0');
+            pattern.setAttribute('width', '16');
+            pattern.setAttribute('height', '16');
+            pattern.setAttribute('patternUnits', 'userSpaceOnUse');
 
-            for (var r = 0; r < rows; r++) {
-                for (var c = 0; c < cols; c++) {
-                    var circle = document.createElementNS(svgNS, 'circle');
-                    circle.setAttribute('cx', c * spacing + spacing / 2);
-                    circle.setAttribute('cy', r * spacing + spacing / 2);
-                    circle.setAttribute('r', '1.5');
-                    circle.setAttribute('fill', '#E8E4DD');
+            var circle = document.createElementNS(svgNS, 'circle');
+            circle.setAttribute('cx', '8');
+            circle.setAttribute('cy', '8');
+            circle.setAttribute('r', '1.5');
+            circle.setAttribute('fill', '#E8E4DD');
 
-                    if (!prefersReducedMotion && hasCores) {
-                        var durIdx = (r * cols + c) % 3;
-                        circle.style.setProperty('--dot-duration', durations[durIdx]);
-                        circle.style.animationDelay = (Math.random() * 2).toFixed(2) + 's';
-                    }
+            pattern.appendChild(circle);
+            defs.appendChild(pattern);
+            svg.appendChild(defs);
 
-                    svg.appendChild(circle);
-                }
-            }
+            var rect = document.createElementNS(svgNS, 'rect');
+            rect.setAttribute('width', '100%');
+            rect.setAttribute('height', '100%');
+            rect.setAttribute('fill', 'url(#dotPattern)');
+            svg.appendChild(rect);
 
             container.appendChild(svg);
         })();

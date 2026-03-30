@@ -1245,6 +1245,8 @@
             var img = document.createElement('img');
             img.src = book.coverImage || '';
             img.alt = book.title;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
             img.onerror = function() {
                 this.style.display = 'none';
@@ -1394,6 +1396,8 @@
             var coverImg = document.createElement('img');
             coverImg.src = book.coverImage || '';
             coverImg.alt = book.title;
+            coverImg.loading = 'lazy';
+            coverImg.decoding = 'async';
             coverImg.onerror = function() {
                 this.style.display = 'none';
                 this.nextElementSibling.style.display = 'block';
