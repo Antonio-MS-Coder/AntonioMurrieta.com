@@ -172,65 +172,48 @@
             padding-top: 48px;
         }
 
-        .complete-list {
-            list-style: none;
-        }
+        /* Old complete-item list styles removed — now using complete-grid */
 
-        .complete-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--bone);
-            text-decoration: none;
-            color: inherit;
-            transition: padding-left 0.3s var(--ease-snap), color 0.2s var(--ease-snap);
-        }
+        /* === Tier 3: Complete Works Grid === */
+.complete-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
 
-        .complete-item:hover {
-            padding-left: 12px;
-        }
+.complete-grid-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s var(--ease-snap);
+}
 
-        .complete-item-left {
-            display: flex;
-            align-items: baseline;
-            gap: 16px;
-        }
+.complete-grid-item:hover {
+    transform: translateY(-4px);
+}
 
-        .complete-item-title {
-            font-family: var(--serif);
-            font-size: 16px;
-            font-weight: 400;
-            color: var(--ink);
-            transition: color 0.2s var(--ease-snap);
-        }
+.complete-grid-image {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+}
 
-        .complete-item:hover .complete-item-title {
-            color: var(--roble);
-        }
+.complete-grid-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+}
 
-        .complete-item-tag {
-            font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--stone);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.complete-grid-item:hover .complete-grid-title {
+    color: var(--roble);
+}
 
-        .complete-item-arrow {
-            font-family: var(--sans);
-            font-size: 14px;
-            color: var(--stone);
-            transition: transform 0.2s var(--ease-snap);
-        }
-
-        .complete-item:hover .complete-item-arrow {
-            transform: translateX(4px);
-            color: var(--roble);
-        }
-
-        /* === Separator between tiers === */
+/* === Separator between tiers === */
         .tier-separator {
             width: 60px;
             height: 1px;
@@ -261,8 +244,13 @@
                 height: 200px;
             }
 
-            .complete-item-tag {
-                display: none;
+            .complete-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .complete-grid-image {
+                height: 120px;
             }
         }
     </style>
@@ -394,83 +382,50 @@
     <section class="complete-section">
         <p class="section-label reveal">Complete Works</p>
 
-        <div class="complete-list">
-            <a href="https://sniffpots.crissteinman.com" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">SniffPots</span>
-                    <span class="complete-item-tag">Platform</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+        <div class="complete-grid reveal-stagger">
+            <a href="https://sniffpots.crissteinman.com" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/SniffPots.webp')"></div>
+                <p class="complete-grid-title">SniffPots</p>
             </a>
-            <a href="https://apps.apple.com/mx/app/patternlab/id6745852951?l=en-GB" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">PatternLab</span>
-                    <span class="complete-item-tag">Simulation</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/mx/app/patternlab/id6745852951?l=en-GB" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/PatternLab.jpg')"></div>
+                <p class="complete-grid-title">PatternLab</p>
             </a>
-            <a href="https://apps.apple.com/mx/app/ignite/id6751764042" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Ignite</span>
-                    <span class="complete-item-tag">Productivity</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/mx/app/ignite/id6751764042" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Ignite.jpg')"></div>
+                <p class="complete-grid-title">Ignite</p>
             </a>
-            <a href="https://apps.apple.com/es/app/bounce-bounce-blitz/id6756200470" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Bounce Bounce Blitz</span>
-                    <span class="complete-item-tag">iOS Game</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/es/app/bounce-bounce-blitz/id6756200470" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp')"></div>
+                <p class="complete-grid-title">Bounce Bounce Blitz</p>
             </a>
-            <a href="https://apps.apple.com/mx/app/stacker-rush/id6748520029" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">StackRush</span>
-                    <span class="complete-item-tag">iOS Game</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/mx/app/stacker-rush/id6748520029" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Stack_Rush 4.jpg')"></div>
+                <p class="complete-grid-title">StackRush</p>
             </a>
-            <a href="https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Viper Velocity</span>
-                    <span class="complete-item-tag">iOS Game</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Viper_Velocity.jpg')"></div>
+                <p class="complete-grid-title">Viper Velocity</p>
             </a>
-            <a href="https://apps.apple.com/us/app/neuropairs/id6739889200" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">NeuroPairs</span>
-                    <span class="complete-item-tag">iOS Game</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/us/app/neuropairs/id6739889200" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Neuropairs.jpg')"></div>
+                <p class="complete-grid-title">NeuroPairs</p>
             </a>
-            <a href="https://apps.apple.com/mx/app/starlings/id6751874853" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Starlings</span>
-                    <span class="complete-item-tag">Space Game</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://apps.apple.com/mx/app/starlings/id6751874853" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Starlings.jpg')"></div>
+                <p class="complete-grid-title">Starlings</p>
             </a>
-            <a href="https://antonio-ms-coder.github.io/Santa-Rosa-Ecoturismo/" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Santa Rosa Ecoturism</span>
-                    <span class="complete-item-tag">Web Design</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://antonio-ms-coder.github.io/Santa-Rosa-Ecoturismo/" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Santa_Rosa_Ecoturism.webp')"></div>
+                <p class="complete-grid-title">Santa Rosa Ecoturism</p>
             </a>
-            <a href="https://plazarealsilao.com/" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Plaza Real Silao</span>
-                    <span class="complete-item-tag">Web Design</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://plazarealsilao.com/" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/logo-silao.webp')"></div>
+                <p class="complete-grid-title">Plaza Real Silao</p>
             </a>
-            <a href="https://www.lck.com.mx/" target="_blank" rel="noopener" class="complete-item reveal">
-                <div class="complete-item-left">
-                    <span class="complete-item-title">Life Changing Knowledge</span>
-                    <span class="complete-item-tag">Web Design</span>
-                </div>
-                <span class="complete-item-arrow">&rarr;</span>
+            <a href="https://www.lck.com.mx/" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/LCK-1.webp')"></div>
+                <p class="complete-grid-title">Life Changing Knowledge</p>
             </a>
         </div>
     </section>
