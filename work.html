@@ -255,8 +255,16 @@
                 gap: 32px;
             }
 
+            .selected-item[style*="grid-column"] {
+                grid-column: span 1 !important;
+            }
+
             .selected-image {
                 height: 200px;
+            }
+
+            .selected-image[style*="height"] {
+                height: 200px !important;
             }
 
             .complete-grid {
