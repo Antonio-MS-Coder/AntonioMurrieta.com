@@ -176,9 +176,10 @@
 
         /* === Tier 3: Complete Works Grid === */
 .complete-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 24px;
+    justify-content: center;
 }
 
 .complete-grid-item {
@@ -186,6 +187,7 @@
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s var(--ease-snap);
+    width: calc((100% - 48px) / 3);
 }
 
 .complete-grid-item:hover {
@@ -207,6 +209,19 @@
     font-weight: 400;
     color: var(--ink);
     letter-spacing: -0.2px;
+    margin-bottom: 4px;
+}
+
+.complete-grid-desc {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.5;
+}
+
+/* Center incomplete last row */
+.complete-grid {
+    justify-content: center;
 }
 
 .complete-grid-item:hover .complete-grid-title {
@@ -245,8 +260,11 @@
             }
 
             .complete-grid {
-                grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
+            }
+
+            .complete-grid-item {
+                width: calc((100% - 16px) / 2);
             }
 
             .complete-grid-image {
@@ -386,46 +404,57 @@
             <a href="https://sniffpots.crissteinman.com" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/SniffPots.webp')"></div>
                 <p class="complete-grid-title">SniffPots</p>
+                <p class="complete-grid-desc">Aromatherapy platform exploring the therapeutic power of natural scents.</p>
             </a>
             <a href="https://apps.apple.com/mx/app/patternlab/id6745852951?l=en-GB" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/PatternLab.jpg')"></div>
                 <p class="complete-grid-title">PatternLab</p>
+                <p class="complete-grid-desc">Cellular automata sandbox. Mathematical rules become living patterns.</p>
             </a>
             <a href="https://apps.apple.com/mx/app/ignite/id6751764042" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Ignite.jpg')"></div>
                 <p class="complete-grid-title">Ignite</p>
+                <p class="complete-grid-desc">Habit tracker for building positive routines with analytics and streaks.</p>
             </a>
             <a href="https://apps.apple.com/es/app/bounce-bounce-blitz/id6756200470" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp')"></div>
                 <p class="complete-grid-title">Bounce Bounce Blitz</p>
+                <p class="complete-grid-desc">One-touch arcade climber. 5 biomes, 8 boosts, endless replayability.</p>
             </a>
             <a href="https://apps.apple.com/mx/app/stacker-rush/id6748520029" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Stack_Rush 4.jpg')"></div>
                 <p class="complete-grid-title">StackRush</p>
+                <p class="complete-grid-desc">Fast-paced stacking arcade with progressive challenges and achievements.</p>
             </a>
             <a href="https://apps.apple.com/us/app/viper-velocity/id6742086212?platform=iphone" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Viper_Velocity.jpg')"></div>
                 <p class="complete-grid-title">Viper Velocity</p>
+                <p class="complete-grid-desc">Ad-free snake game with glowing arenas and unlockable costumes.</p>
             </a>
             <a href="https://apps.apple.com/us/app/neuropairs/id6739889200" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Neuropairs.jpg')"></div>
                 <p class="complete-grid-title">NeuroPairs</p>
+                <p class="complete-grid-desc">Memory card game with multiple difficulty levels. Brain training anywhere.</p>
             </a>
             <a href="https://apps.apple.com/mx/app/starlings/id6751874853" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Starlings.jpg')"></div>
                 <p class="complete-grid-title">Starlings</p>
+                <p class="complete-grid-desc">Space adventure through distant galaxies with captivating visuals.</p>
             </a>
             <a href="https://antonio-ms-coder.github.io/Santa-Rosa-Ecoturismo/" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Santa_Rosa_Ecoturism.webp')"></div>
                 <p class="complete-grid-title">Santa Rosa Ecoturism</p>
+                <p class="complete-grid-desc">Landing page for sustainable tourism and eco-friendly adventures.</p>
             </a>
             <a href="https://plazarealsilao.com/" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/logo-silao.webp')"></div>
                 <p class="complete-grid-title">Plaza Real Silao</p>
+                <p class="complete-grid-desc">Corporate web presence for a commercial real estate development.</p>
             </a>
             <a href="https://www.lck.com.mx/" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/LCK-1.webp')"></div>
                 <p class="complete-grid-title">Life Changing Knowledge</p>
+                <p class="complete-grid-desc">Website for a business consulting firm. Professional digital platform.</p>
             </a>
         </div>
     </section>
