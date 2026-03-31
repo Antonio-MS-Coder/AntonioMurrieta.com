@@ -500,7 +500,7 @@
 
         .experiment-canvas {
             width: 100%;
-            height: 400px;
+            height: 500px;
             border: 2px solid var(--bone);
             border-radius: 12px;
             cursor: crosshair;
@@ -647,6 +647,12 @@
         /* Touch action for modal canvases */
         .experiment-canvas {
             touch-action: none;
+        }
+
+        /* Dark background for particle and wave canvases */
+        #particlesCanvas,
+        #wavesCanvas {
+            background: #111118;
         }
 
         /* Explore CTA on cards */
@@ -1101,6 +1107,15 @@
                 <canvas class="experiment-canvas" id="wavesCanvas"></canvas>
                 <div class="experiment-controls">
                     <div class="param-control">
+                        <label>WAVE TYPE</label>
+                        <select id="waveType" onchange="if(waveSystem) waveSystem.waveType = this.value" style="padding:6px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;cursor:pointer;">
+                            <option value="sine">Sine</option>
+                            <option value="square">Square</option>
+                            <option value="sawtooth">Sawtooth</option>
+                            <option value="triangle">Triangle</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
                         <label>Frequency</label>
                         <input type="range" id="waveFrequency" min="0.01" max="0.1" step="0.001" value="0.03" onchange="updateWaves()">
                         <span id="waveFrequencyValue">0.03</span>
@@ -1116,9 +1131,12 @@
                         <span id="waveSpeedValue">0.05</span>
                     </div>
                     <div class="param-control">
-                        <label>Wave Count</label>
-                        <input type="range" id="waveCount" min="1" max="5" value="3" onchange="updateWaves()">
-                        <span id="waveCountValue">3</span>
+                        <label>WAVES</label>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <button onclick="if(waveSystem) waveSystem.removeWave()" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--bone);background:var(--linen);cursor:pointer;font-size:18px;">&minus;</button>
+                            <span id="waveCountDisplay" style="font-size:16px;font-weight:600;min-width:20px;text-align:center;">3</span>
+                            <button onclick="if(waveSystem) waveSystem.addWave()" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--bone);background:var(--linen);cursor:pointer;font-size:18px;">+</button>
+                        </div>
                     </div>
                     <button class="experiment-btn" onclick="randomizeWaves()">Randomize</button>
                     <button class="experiment-btn" onclick="pauseWaves()" id="pauseWavesBtn">Pause</button>
@@ -2510,6 +2528,8 @@
             let mouseY = 0;
             let isPaused = false;
 
+            var particleColors = ['#00D4FF', '#FF0080', '#39FF14', '#FFD700', '#FF6B6B', '#A855F7'];
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * canvas.width;
@@ -2519,26 +2539,27 @@
                     this.radius = Math.random() * 3 + 1;
                     this.originalVx = this.vx;
                     this.originalVy = this.vy;
+                    this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
                 }
 
                 update() {
                     const speed = parseFloat(document.getElementById('particleSpeed').value);
                     const mouseAttraction = parseFloat(document.getElementById('mouseAttraction').value) / 1000;
-                    
+
                     // Mouse attraction
                     const dx = mouseX - this.x;
                     const dy = mouseY - this.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    
+
                     if (distance < 100) {
                         this.vx += dx * mouseAttraction;
                         this.vy += dy * mouseAttraction;
                     }
-                    
+
                     // Apply speed multiplier
                     this.x += this.vx * speed;
                     this.y += this.vy * speed;
-                    
+
                     // Bounce off walls
                     if (this.x < 0 || this.x > canvas.width) {
                         this.vx = -this.vx;
@@ -2548,23 +2569,18 @@
                         this.vy = -this.vy;
                         this.y = Math.max(0, Math.min(canvas.height, this.y));
                     }
-                    
+
                     // Apply friction
                     this.vx *= 0.99;
                     this.vy *= 0.99;
                 }
 
                 draw() {
-                    var colors = ['#00D4FF','#FF0080','#39FF14','#FFFFFF'];
-                    var c = colors[Math.floor(this.radius * 7) % colors.length];
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = this.color;
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = c;
-                    ctx.fill();
-
-                    // Glow effect
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = c;
+                    ctx.fillStyle = this.color;
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
@@ -2580,7 +2596,7 @@
 
             function drawConnections() {
                 const connectionDistance = parseInt(document.getElementById('connectionDistance').value);
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 0.5;
 
                 for (let i = 0; i < particles.length; i++) {
                     for (let j = i + 1; j < particles.length; j++) {
@@ -2589,9 +2605,9 @@
                         const distance = Math.sqrt(dx * dx + dy * dy);
 
                         if (distance < connectionDistance) {
-                            const opacity = 1 - (distance / connectionDistance);
-                            ctx.strokeStyle = 'rgba(255,255,255,' + (opacity * 0.15) + ')';
+                            const alpha = 1 - (distance / connectionDistance);
                             ctx.beginPath();
+                            ctx.strokeStyle = 'rgba(255, 255, 255, ' + (alpha * 0.15) + ')';
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
                             ctx.stroke();
@@ -2600,20 +2616,26 @@
                 }
             }
 
+            // Initial fill with dark background
+            ctx.fillStyle = '#111118';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             function animate() {
                 if (!isPaused) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
+                    // Semi-transparent overlay for trail effect
+                    ctx.fillStyle = 'rgba(17, 17, 24, 0.15)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // Draw connections first (behind particles)
+                    drawConnections();
+
                     // Update and draw particles
                     particles.forEach(particle => {
                         particle.update();
                         particle.draw();
                     });
-                    
-                    // Draw connections
-                    drawConnections();
                 }
-                
+
                 animationId = requestAnimationFrame(animate);
             }
 
@@ -2682,63 +2704,150 @@
             let animationId;
             let time = 0;
             let isPaused = false;
+            let waveCount = 3;
+            let waveType = 'sine';
+            let wMouseX = null;
+            let wMouseY = null;
 
-            function drawWave(offset, color, alpha = 1) {
+            var waveColors = ['#4169E1', '#FF6B6B', '#FFD700', '#A855F7', '#39FF14', '#00D4FF', '#FF0080', '#FF8C00'];
+
+            function getWaveValue(phase, type) {
+                switch (type) {
+                    case 'square':
+                        return Math.sign(Math.sin(phase));
+                    case 'sawtooth':
+                        return ((phase % (Math.PI * 2)) / (Math.PI * 2)) * 2 - 1;
+                    case 'triangle':
+                        return Math.asin(Math.sin(phase)) * 2 / Math.PI;
+                    case 'sine':
+                    default:
+                        return Math.sin(phase);
+                }
+            }
+
+            function drawWave(offset, color, alpha, waveIndex) {
                 const frequency = parseFloat(document.getElementById('waveFrequency').value);
                 const amplitude = parseFloat(document.getElementById('waveAmplitude').value);
                 const speed = parseFloat(document.getElementById('waveSpeed').value);
-                
+                const h = canvas.height;
+                const w = canvas.width;
+                const centerY = h / 2;
+
+                // Draw filled area
                 ctx.beginPath();
-                ctx.strokeStyle = color;
-                ctx.globalAlpha = alpha;
-                ctx.lineWidth = 2;
-                
-                for (let x = 0; x <= canvas.width; x += 2) {
-                    const y = canvas.height / 2 + Math.sin((x * frequency) + (time * speed) + offset) * amplitude;
+                ctx.moveTo(0, centerY);
+                for (let x = 0; x <= w; x += 2) {
+                    var phase = (x * frequency) + (time * speed) + offset;
+                    var y = centerY + getWaveValue(phase, waveType) * amplitude;
+
+                    // Mouse/cursor interaction
+                    if (wMouseX !== null) {
+                        var dxCursor = x - wMouseX;
+                        var cursorDist = Math.abs(dxCursor);
+                        if (cursorDist < 100) {
+                            var cursorInfluence = (1 - cursorDist / 100) * 30 * (wMouseY < h / 2 ? -1 : 1);
+                            y += cursorInfluence;
+                        }
+                    }
+
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(w, centerY);
+                ctx.closePath();
+
+                // Parse color for fill
+                ctx.fillStyle = color;
+                ctx.globalAlpha = 0.08;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+
+                // Draw the wave line
+                ctx.beginPath();
+                for (let x = 0; x <= w; x += 2) {
+                    var phase = (x * frequency) + (time * speed) + offset;
+                    var y = centerY + getWaveValue(phase, waveType) * amplitude;
+
+                    if (wMouseX !== null) {
+                        var dxCursor = x - wMouseX;
+                        var cursorDist = Math.abs(dxCursor);
+                        if (cursorDist < 100) {
+                            var cursorInfluence = (1 - cursorDist / 100) * 30 * (wMouseY < h / 2 ? -1 : 1);
+                            y += cursorInfluence;
+                        }
+                    }
+
                     if (x === 0) {
                         ctx.moveTo(x, y);
                     } else {
                         ctx.lineTo(x, y);
                     }
                 }
+                ctx.strokeStyle = color;
+                ctx.globalAlpha = alpha;
+                ctx.lineWidth = 2;
                 ctx.stroke();
                 ctx.globalAlpha = 1;
             }
 
             function animate() {
                 if (!isPaused) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Create gradient background
-                    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-                    gradient.addColorStop(0, 'rgba(65,105,225, 0.05)');
-                    gradient.addColorStop(0.5, 'rgba(255,107,107, 0.05)');
-                    gradient.addColorStop(1, 'rgba(255,215,0, 0.05)');
-                    ctx.fillStyle = gradient;
+                    // Dark background
+                    ctx.fillStyle = '#111118';
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                    const waveCount = parseInt(document.getElementById('waveCount').value);
-                    const colors = ['#4169E1', '#FF6B6B', '#FFD700', '#4169E1', '#FF6B6B'];
-                    
                     for (let i = 0; i < waveCount; i++) {
                         const offset = (i * Math.PI * 2) / waveCount;
-                        const alpha = 0.8 - (i * 0.1);
-                        drawWave(offset, colors[i % colors.length], alpha);
+                        const alpha = 0.8 - (i * 0.05);
+                        drawWave(offset, waveColors[i % waveColors.length], alpha, i);
                     }
-                    
+
                     time += 1;
                 }
-                
+
                 animationId = requestAnimationFrame(animate);
             }
+
+            // Mouse interaction
+            canvas.addEventListener('mousemove', function(e) {
+                var rect = canvas.getBoundingClientRect();
+                wMouseX = e.clientX - rect.left;
+                wMouseY = e.clientY - rect.top;
+            });
+            canvas.addEventListener('mouseleave', function() {
+                wMouseX = null;
+                wMouseY = null;
+            });
+            canvas.addEventListener('touchmove', function(e) {
+                var rect = canvas.getBoundingClientRect();
+                wMouseX = e.touches[0].clientX - rect.left;
+                wMouseY = e.touches[0].clientY - rect.top;
+            });
+            canvas.addEventListener('touchend', function() {
+                wMouseX = null;
+                wMouseY = null;
+            });
 
             animate();
 
             waveSystem = {
                 animationId,
-                isPaused: () => isPaused,
-                pause: () => { isPaused = !isPaused; },
-                stop: () => { cancelAnimationFrame(animationId); }
+                isPaused: function() { return isPaused; },
+                pause: function() { isPaused = !isPaused; },
+                stop: function() { cancelAnimationFrame(animationId); },
+                get waveType() { return waveType; },
+                set waveType(val) { waveType = val; },
+                addWave: function() {
+                    if (waveCount < 8) {
+                        waveCount++;
+                        document.getElementById('waveCountDisplay').textContent = waveCount;
+                    }
+                },
+                removeWave: function() {
+                    if (waveCount > 1) {
+                        waveCount--;
+                        document.getElementById('waveCountDisplay').textContent = waveCount;
+                    }
+                }
             };
         }
 
@@ -2747,14 +2856,29 @@
             document.getElementById('waveFrequencyValue').textContent = document.getElementById('waveFrequency').value;
             document.getElementById('waveAmplitudeValue').textContent = document.getElementById('waveAmplitude').value;
             document.getElementById('waveSpeedValue').textContent = document.getElementById('waveSpeed').value;
-            document.getElementById('waveCountValue').textContent = document.getElementById('waveCount').value;
         }
 
         function randomizeWaves() {
             document.getElementById('waveFrequency').value = (Math.random() * 0.09 + 0.01).toFixed(3);
             document.getElementById('waveAmplitude').value = Math.floor(Math.random() * 130 + 20);
             document.getElementById('waveSpeed').value = (Math.random() * 0.09 + 0.01).toFixed(3);
-            document.getElementById('waveCount').value = Math.floor(Math.random() * 4 + 1);
+            if (waveSystem) {
+                var newCount = Math.floor(Math.random() * 7 + 1);
+                // Use internal setter approach
+                waveSystem.removeWave && (function() {
+                    // Reset to desired count
+                    while (parseInt(document.getElementById('waveCountDisplay').textContent) > 1) {
+                        waveSystem.removeWave();
+                    }
+                    for (var i = 1; i < newCount; i++) {
+                        waveSystem.addWave();
+                    }
+                })();
+            }
+            var types = ['sine', 'square', 'sawtooth', 'triangle'];
+            var randomType = types[Math.floor(Math.random() * types.length)];
+            document.getElementById('waveType').value = randomType;
+            if (waveSystem) waveSystem.waveType = randomType;
             updateWaves();
         }
 
