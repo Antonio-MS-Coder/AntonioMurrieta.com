@@ -1131,6 +1131,11 @@
                         <span id="waveSpeedValue">0.05</span>
                     </div>
                     <div class="param-control">
+                        <label>Damping</label>
+                        <input type="range" id="waveDamping" min="0" max="0.95" step="0.05" value="0" onchange="document.getElementById('waveDampingValue').textContent=this.value">
+                        <span id="waveDampingValue">0</span>
+                    </div>
+                    <div class="param-control">
                         <label>WAVES</label>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <button onclick="if(waveSystem) waveSystem.removeWave()" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--bone);background:var(--linen);cursor:pointer;font-size:18px;">&minus;</button>
@@ -1158,6 +1163,7 @@
             </div>
             <div class="experiment-container">
                 <canvas class="experiment-canvas" id="glitchCanvas"></canvas>
+                <input type="file" id="glitchImageUpload" accept="image/*" style="display:none">
                 <div class="experiment-controls">
                     <div class="param-control">
                         <label>RGB Shift</label>
@@ -1179,6 +1185,16 @@
                         <input type="range" id="pixelSort" min="0" max="100" value="20" onchange="updateGlitch()">
                         <span id="pixelSortValue">20</span>
                     </div>
+                    <div class="param-control">
+                        <label>Chromatic Aberration</label>
+                        <input type="range" id="chromaticAberration" min="0" max="30" value="0" onchange="updateGlitch()">
+                        <span id="chromaticAberrationValue">0</span>
+                    </div>
+                    <div class="param-control">
+                        <label>VHS Effect</label>
+                        <input type="checkbox" id="vhsEffect" onchange="updateGlitch()">
+                    </div>
+                    <button class="experiment-btn" onclick="document.getElementById('glitchImageUpload').click()">Upload Image</button>
                     <button class="experiment-btn" onclick="generateNewGlitch()">Generate New</button>
                     <button class="experiment-btn" onclick="saveGlitch()">Save Glitch</button>
                 </div>
@@ -1225,7 +1241,12 @@
                         <select id="fractalType" onchange="updateFractals()">
                             <option value="mandelbrot">Mandelbrot</option>
                             <option value="julia">Julia Set</option>
+                            <option value="burningship">Burning Ship</option>
                         </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Cycle Colors</label>
+                        <input type="checkbox" id="fractalCycleColors" onchange="toggleFractalColorCycle()">
                     </div>
                     <button class="experiment-btn" onclick="resetFractal()">Reset View</button>
                     <button class="experiment-btn" onclick="saveFractal()">Save Image</button>
@@ -1286,7 +1307,7 @@
                 <button class="modal-close" onclick="closeModal('3dModal')">&times;</button>
             </div>
             <div class="experiment-container">
-                <div id="threejsContainer" style="width: 100%; height: 400px; border: 2px solid var(--bone); border-radius: 12px; background: #000;"></div>
+                <div id="threejsContainer" style="width: 100%; height: 500px; border: 2px solid var(--bone); border-radius: 12px; background: #000;"></div>
                 <div class="experiment-controls">
                     <div class="param-control">
                         <label>Shape</label>
@@ -1295,7 +1316,18 @@
                             <option value="sphere">Sphere</option>
                             <option value="torus">Torus</option>
                             <option value="icosahedron">Icosahedron</option>
+                            <option value="torusknot">Torus Knot</option>
+                            <option value="dodecahedron">Dodecahedron</option>
+                            <option value="octahedron">Octahedron</option>
                             <option value="multiple">Multiple Shapes</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Environment</label>
+                        <select id="sceneEnvironment" onchange="update3DEnvironment()">
+                            <option value="dark">Dark</option>
+                            <option value="gradient">Gradient</option>
+                            <option value="grid">Grid Floor</option>
                         </select>
                     </div>
                     <div class="param-control">
@@ -1306,6 +1338,10 @@
                     <div class="param-control">
                         <label>Wireframe</label>
                         <input type="checkbox" id="wireframeMode" onchange="update3DScene()">
+                    </div>
+                    <div class="param-control">
+                        <label>Particles</label>
+                        <input type="checkbox" id="particleToggle" onchange="toggle3DParticles()">
                     </div>
                     <div class="param-control">
                         <label>Color</label>
@@ -1350,6 +1386,15 @@
                             <option value="50" selected>Medium (50x50)</option>
                             <option value="80">Large (80x80)</option>
                         </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Brush Size</label>
+                        <input type="range" id="golBrushSize" min="1" max="5" value="1" onchange="document.getElementById('golBrushSizeValue').textContent=this.value">
+                        <span id="golBrushSizeValue">1</span>
+                    </div>
+                    <div class="param-control">
+                        <label>Eraser</label>
+                        <input type="checkbox" id="golEraser">
                     </div>
                     <button class="experiment-btn" onclick="golTogglePlay()" id="golPlayBtn">Play</button>
                     <button class="experiment-btn" onclick="golStep()">Step</button>
@@ -2449,6 +2494,10 @@
                 case 'wavesModal':
                     stopWaves();
                     break;
+                case 'fractalsModal':
+                    if (fractalSystem && fractalSystem.stopColorCycle) fractalSystem.stopColorCycle();
+                    fractalSystem = null;
+                    break;
                 case 'audioModal':
                     stopAudioCapture();
                     break;
@@ -2708,6 +2757,10 @@
             let waveType = 'sine';
             let wMouseX = null;
             let wMouseY = null;
+            var phaseOffsets = [0,0,0,0,0,0,0,0];
+            var draggingWave = -1;
+            var dragStartX = 0;
+            var dragStartPhase = 0;
 
             var waveColors = ['#4169E1', '#FF6B6B', '#FFD700', '#A855F7', '#39FF14', '#00D4FF', '#FF0080', '#FF8C00'];
 
@@ -2725,80 +2778,95 @@
                 }
             }
 
-            function drawWave(offset, color, alpha, waveIndex) {
-                const frequency = parseFloat(document.getElementById('waveFrequency').value);
-                const amplitude = parseFloat(document.getElementById('waveAmplitude').value);
-                const speed = parseFloat(document.getElementById('waveSpeed').value);
-                const h = canvas.height;
-                const w = canvas.width;
-                const centerY = h / 2;
+            function getWaveY(x, waveIndex) {
+                var frequency = parseFloat(document.getElementById('waveFrequency').value);
+                var amplitude = parseFloat(document.getElementById('waveAmplitude').value);
+                var speed = parseFloat(document.getElementById('waveSpeed').value);
+                var damping = parseFloat(document.getElementById('waveDamping').value);
+                var h = canvas.height;
+                var w = canvas.width;
 
-                // Draw filled area
-                ctx.beginPath();
-                ctx.moveTo(0, centerY);
-                for (let x = 0; x <= w; x += 2) {
-                    var phase = (x * frequency) + (time * speed) + offset;
-                    var y = centerY + getWaveValue(phase, waveType) * amplitude;
+                var freq = frequency * (1 + waveIndex * 0.5);
+                var amp = amplitude / (1 + waveIndex * 0.3);
+                var phase = (time * speed) + waveIndex * (Math.PI / waveCount) + (phaseOffsets[waveIndex] || 0);
 
-                    // Mouse/cursor interaction
-                    if (wMouseX !== null) {
-                        var dxCursor = x - wMouseX;
-                        var cursorDist = Math.abs(dxCursor);
-                        if (cursorDist < 100) {
-                            var cursorInfluence = (1 - cursorDist / 100) * 30 * (wMouseY < h / 2 ? -1 : 1);
-                            y += cursorInfluence;
-                        }
-                    }
-
-                    ctx.lineTo(x, y);
+                // Apply damping
+                if (damping > 0) {
+                    amp = amp * Math.exp(-damping * x / w * 3);
                 }
-                ctx.lineTo(w, centerY);
-                ctx.closePath();
 
-                // Parse color for fill
-                ctx.fillStyle = color;
-                ctx.globalAlpha = 0.08;
-                ctx.fill();
-                ctx.globalAlpha = 1;
+                var y = h / 2 + getWaveValue(x * freq + phase, waveType) * amp;
 
-                // Draw the wave line
-                ctx.beginPath();
-                for (let x = 0; x <= w; x += 2) {
-                    var phase = (x * frequency) + (time * speed) + offset;
-                    var y = centerY + getWaveValue(phase, waveType) * amplitude;
-
-                    if (wMouseX !== null) {
-                        var dxCursor = x - wMouseX;
-                        var cursorDist = Math.abs(dxCursor);
-                        if (cursorDist < 100) {
-                            var cursorInfluence = (1 - cursorDist / 100) * 30 * (wMouseY < h / 2 ? -1 : 1);
-                            y += cursorInfluence;
-                        }
-                    }
-
-                    if (x === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
-                        ctx.lineTo(x, y);
+                // Mouse/cursor interaction
+                if (wMouseX !== null && draggingWave < 0) {
+                    var dxCursor = x - wMouseX;
+                    var cursorDist = Math.abs(dxCursor);
+                    if (cursorDist < 100) {
+                        var cursorInfluence = (1 - cursorDist / 100) * 30 * (wMouseY < h / 2 ? -1 : 1);
+                        y += cursorInfluence;
                     }
                 }
-                ctx.strokeStyle = color;
-                ctx.globalAlpha = alpha;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                ctx.globalAlpha = 1;
+
+                return y;
             }
 
             function animate() {
                 if (!isPaused) {
+                    var w = canvas.width;
+                    var h = canvas.height;
+
                     // Dark background
                     ctx.fillStyle = '#111118';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillRect(0, 0, w, h);
 
-                    for (let i = 0; i < waveCount; i++) {
-                        const offset = (i * Math.PI * 2) / waveCount;
-                        const alpha = 0.8 - (i * 0.05);
-                        drawWave(offset, waveColors[i % waveColors.length], alpha, i);
+                    // Draw individual waves (semi-transparent)
+                    for (var i = 0; i < waveCount; i++) {
+                        var color = waveColors[i % waveColors.length];
+
+                        // Filled area
+                        ctx.beginPath();
+                        ctx.moveTo(0, h / 2);
+                        for (var x = 0; x <= w; x += 2) {
+                            ctx.lineTo(x, getWaveY(x, i));
+                        }
+                        ctx.lineTo(w, h / 2);
+                        ctx.closePath();
+                        ctx.fillStyle = color;
+                        ctx.globalAlpha = 0.06;
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+
+                        // Wave line (semi-transparent for individual waves)
+                        ctx.beginPath();
+                        for (var x = 0; x <= w; x += 2) {
+                            var y = getWaveY(x, i);
+                            if (x === 0) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                        }
+                        ctx.strokeStyle = color;
+                        ctx.globalAlpha = 0.5;
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
+                    }
+
+                    // Draw combined wave (sum of all individual waves) in bold white
+                    if (waveCount > 1) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#FFFFFF';
+                        ctx.lineWidth = 2.5;
+                        ctx.globalAlpha = 0.9;
+                        for (var x = 0; x <= w; x += 2) {
+                            var combinedY = 0;
+                            for (var wi = 0; wi < waveCount; wi++) {
+                                combinedY += (getWaveY(x, wi) - h / 2);
+                            }
+                            combinedY = h / 2 + combinedY;
+                            if (x === 0) ctx.moveTo(x, combinedY);
+                            else ctx.lineTo(x, combinedY);
+                        }
+                        ctx.stroke();
+                        ctx.globalAlpha = 1;
                     }
 
                     time += 1;
@@ -2807,15 +2875,48 @@
                 animationId = requestAnimationFrame(animate);
             }
 
-            // Mouse interaction
-            canvas.addEventListener('mousemove', function(e) {
+            // Drag interaction for phase offsets
+            canvas.addEventListener('mousedown', function(e) {
                 var rect = canvas.getBoundingClientRect();
-                wMouseX = e.clientX - rect.left;
-                wMouseY = e.clientY - rect.top;
+                var mx = e.clientX - rect.left;
+                var my = e.clientY - rect.top;
+                // Find nearest wave at this x position
+                var nearestWave = -1;
+                var nearestDist = Infinity;
+                for (var i = 0; i < waveCount; i++) {
+                    var waveY = getWaveY(mx, i);
+                    var dist = Math.abs(my - waveY);
+                    if (dist < nearestDist && dist < 40) {
+                        nearestDist = dist;
+                        nearestWave = i;
+                    }
+                }
+                draggingWave = nearestWave;
+                dragStartX = mx;
+                dragStartPhase = nearestWave >= 0 ? (phaseOffsets[nearestWave] || 0) : 0;
             });
+
+            canvas.addEventListener('mousemove', function(e) {
+                if (draggingWave >= 0) {
+                    var rect = canvas.getBoundingClientRect();
+                    var mx = e.clientX - rect.left;
+                    var dx = mx - dragStartX;
+                    phaseOffsets[draggingWave] = dragStartPhase + dx * 0.02;
+                } else {
+                    var rect = canvas.getBoundingClientRect();
+                    wMouseX = e.clientX - rect.left;
+                    wMouseY = e.clientY - rect.top;
+                }
+            });
+
+            canvas.addEventListener('mouseup', function() {
+                draggingWave = -1;
+            });
+
             canvas.addEventListener('mouseleave', function() {
                 wMouseX = null;
                 wMouseY = null;
+                draggingWave = -1;
             });
             canvas.addEventListener('touchmove', function(e) {
                 var rect = canvas.getBoundingClientRect();
@@ -2831,11 +2932,13 @@
 
             waveSystem = {
                 animationId,
+                phaseOffsets: phaseOffsets,
                 isPaused: function() { return isPaused; },
                 pause: function() { isPaused = !isPaused; },
                 stop: function() { cancelAnimationFrame(animationId); },
                 get waveType() { return waveType; },
                 set waveType(val) { waveType = val; },
+                get waveCount() { return waveCount; },
                 addWave: function() {
                     if (waveCount < 8) {
                         waveCount++;
@@ -2905,11 +3008,28 @@
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
 
+            var sourceImage = null;
+            var baseImageData = null;
+
             // Create base image
             createBaseImage();
             generateNewGlitch();
 
             function createBaseImage() {
+                if (sourceImage) {
+                    // Use uploaded image
+                    var scale = Math.min(canvas.width / sourceImage.width, canvas.height / sourceImage.height);
+                    var w = sourceImage.width * scale;
+                    var h = sourceImage.height * scale;
+                    var x = (canvas.width - w) / 2;
+                    var y = (canvas.height - h) / 2;
+                    ctx.fillStyle = '#111118';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(sourceImage, x, y, w, h);
+                    baseImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    return;
+                }
+
                 // Create a vibrant neon base pattern
                 var neonColors = ['#FF0040','#00FF80','#0080FF','#FF00FF','#FFFF00','#00FFFF'];
                 var gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height)/2);
@@ -2940,44 +3060,140 @@
                     ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
                 }
                 ctx.stroke();
+                baseImageData = null;
             }
 
-            glitchSystem = { canvas, ctx, createBaseImage };
+            // Image upload handler
+            document.getElementById('glitchImageUpload').addEventListener('change', function(e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = new Image();
+                    img.onload = function() {
+                        sourceImage = img;
+                        createBaseImage();
+                        generateNewGlitch();
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+
+            glitchSystem = { canvas, ctx, createBaseImage, getSourceImage: function() { return sourceImage; }, getBaseImageData: function() { return baseImageData; } };
         }
 
         function generateNewGlitch() {
             if (!glitchSystem) return;
-            
-            const { canvas, ctx, createBaseImage } = glitchSystem;
-            
+
+            const { canvas, ctx, createBaseImage, getBaseImageData } = glitchSystem;
+
             // Recreate base image
             createBaseImage();
-            
+
+            // If using uploaded image with saved baseImageData, restore it
+            var savedBase = getBaseImageData();
+            if (savedBase) {
+                ctx.putImageData(savedBase, 0, 0);
+            }
+
             // Get original image data
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const data = imageData.data;
-            
+
             const rgbShift = parseInt(document.getElementById('rgbShift').value);
             const scanLines = parseInt(document.getElementById('scanLines').value);
             const noiseLevel = parseFloat(document.getElementById('noiseLevel').value);
             const pixelSort = parseInt(document.getElementById('pixelSort').value);
-            
+            const chromaticAberration = parseInt(document.getElementById('chromaticAberration').value);
+            const vhsEffect = document.getElementById('vhsEffect').checked;
+
             // Apply RGB shift
             applyRGBShift(data, canvas.width, canvas.height, rgbShift);
-            
+
+            // Apply chromatic aberration (radial RGB split)
+            if (chromaticAberration > 0) {
+                applyChromaticAberration(data, canvas.width, canvas.height, chromaticAberration);
+            }
+
             // Apply scan lines
             applyScanLines(data, canvas.width, canvas.height, scanLines);
-            
+
             // Apply noise
             applyNoise(data, noiseLevel);
-            
+
             // Apply pixel sorting effect
             if (pixelSort > 0) {
                 applyPixelSort(data, canvas.width, canvas.height, pixelSort);
             }
-            
+
+            // Apply VHS effect
+            if (vhsEffect) {
+                applyVHSEffect(data, canvas.width, canvas.height);
+            }
+
             // Apply the modified data back to canvas
             ctx.putImageData(imageData, 0, 0);
+        }
+
+        function applyChromaticAberration(data, width, height, strength) {
+            var copy = new Uint8ClampedArray(data);
+            var cx = width / 2;
+            var cy = height / 2;
+            for (var y = 0; y < height; y++) {
+                for (var x = 0; x < width; x++) {
+                    var idx = (y * width + x) * 4;
+                    var dx = x - cx;
+                    var dy = y - cy;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    var factor = (dist / Math.max(width, height)) * strength;
+                    // Shift red channel outward
+                    var rx = Math.min(width - 1, Math.max(0, Math.round(x + dx * factor * 0.01)));
+                    var ry = Math.min(height - 1, Math.max(0, Math.round(y + dy * factor * 0.01)));
+                    data[idx] = copy[(ry * width + rx) * 4];
+                    // Shift blue channel inward
+                    var bx = Math.min(width - 1, Math.max(0, Math.round(x - dx * factor * 0.01)));
+                    var by = Math.min(height - 1, Math.max(0, Math.round(y - dy * factor * 0.01)));
+                    data[idx + 2] = copy[(by * width + bx) * 4 + 2];
+                }
+            }
+        }
+
+        function applyVHSEffect(data, width, height) {
+            // Horizontal jitter lines
+            for (var y = 0; y < height; y++) {
+                if (Math.random() < 0.03) {
+                    // Jitter this entire line horizontally
+                    var shift = Math.floor((Math.random() - 0.5) * 20);
+                    var row = new Uint8ClampedArray(width * 4);
+                    for (var x = 0; x < width; x++) {
+                        var sx = Math.max(0, Math.min(width - 1, x + shift));
+                        var dIdx = x * 4;
+                        var sIdx = (y * width + sx) * 4;
+                        row[dIdx] = data[sIdx];
+                        row[dIdx + 1] = data[sIdx + 1];
+                        row[dIdx + 2] = data[sIdx + 2];
+                        row[dIdx + 3] = data[sIdx + 3];
+                    }
+                    for (var x = 0; x < width; x++) {
+                        var idx = (y * width + x) * 4;
+                        data[idx] = row[x * 4];
+                        data[idx + 1] = row[x * 4 + 1];
+                        data[idx + 2] = row[x * 4 + 2];
+                        data[idx + 3] = row[x * 4 + 3];
+                    }
+                }
+                // Add subtle brightness variation per line (VHS tracking)
+                if (Math.random() < 0.15) {
+                    var brightness = (Math.random() - 0.5) * 30;
+                    for (var x = 0; x < width; x++) {
+                        var idx = (y * width + x) * 4;
+                        data[idx] = Math.max(0, Math.min(255, data[idx] + brightness));
+                        data[idx + 1] = Math.max(0, Math.min(255, data[idx + 1] + brightness));
+                        data[idx + 2] = Math.max(0, Math.min(255, data[idx + 2] + brightness));
+                    }
+                }
+            }
         }
 
         function applyRGBShift(data, width, height, shift) {
@@ -3056,7 +3272,8 @@
             document.getElementById('scanLinesValue').textContent = document.getElementById('scanLines').value;
             document.getElementById('noiseLevelValue').textContent = document.getElementById('noiseLevel').value;
             document.getElementById('pixelSortValue').textContent = document.getElementById('pixelSort').value;
-            
+            document.getElementById('chromaticAberrationValue').textContent = document.getElementById('chromaticAberration').value;
+
             generateNewGlitch();
         }
 
@@ -3088,6 +3305,8 @@
             let dragStartY = 0;
             let lastCenterX = centerX;
             let lastCenterY = centerY;
+            let hueOffset = 0;
+            let colorCycleId = null;
 
             // Enhanced Mandelbrot calculation with smooth coloring
             function mandelbrot(x, y) {
@@ -3119,31 +3338,54 @@
                 let real = x;
                 let imag = y;
                 let iterations = 0;
-                
+
                 while (iterations < maxIterations && (real * real + imag * imag) <= 4) {
                     const realNew = real * real - imag * imag + cReal;
                     const imagNew = 2 * real * imag + cImag;
-                    
+
                     real = realNew;
                     imag = imagNew;
                     iterations++;
                 }
-                
+
                 // Smooth coloring
                 if (iterations < maxIterations) {
                     const logZn = Math.log(real * real + imag * imag) / 2;
                     const nu = Math.log(logZn / Math.log(2)) / Math.log(2);
                     return iterations + 1 - nu;
                 }
-                
+
+                return iterations;
+            }
+
+            // Burning Ship fractal: z = (|Re(z)| + i|Im(z)|)^2 + c
+            function burningShip(x, y) {
+                let real = x;
+                let imag = y;
+                let iterations = 0;
+
+                while (iterations < maxIterations && (real * real + imag * imag) <= 4) {
+                    var realNew = real * real - imag * imag + x;
+                    var imagNew = 2 * Math.abs(real) * Math.abs(imag) + y;
+                    real = realNew;
+                    imag = imagNew;
+                    iterations++;
+                }
+
+                if (iterations < maxIterations) {
+                    const logZn = Math.log(real * real + imag * imag) / 2;
+                    const nu = Math.log(logZn / Math.log(2)) / Math.log(2);
+                    return iterations + 1 - nu;
+                }
+
                 return iterations;
             }
 
             // Enhanced color mapping with smooth gradients
             function getColor(iterations, palette) {
                 if (iterations >= maxIterations) return [0, 0, 0]; // Return RGB array for performance
-                
-                const t = Math.min(1, iterations / maxIterations);
+
+                const t = Math.min(1, (iterations + hueOffset) / maxIterations % 1);
                 const smoothT = Math.sin(t * Math.PI * 0.5); // Smooth transition
                 
                 switch (palette) {
@@ -3241,6 +3483,8 @@
                         let iterations;
                         if (fractalType === 'mandelbrot') {
                             iterations = mandelbrot(x, y);
+                        } else if (fractalType === 'burningship') {
+                            iterations = burningShip(x, y);
                         } else {
                             iterations = julia(x, y);
                         }
@@ -3400,6 +3644,7 @@
                     centerX = -0.5;
                     centerY = 0;
                     zoom = 1;
+                    hueOffset = 0;
                     juliaC = { real: -0.7, imag: 0.27015 };
                     render();
                 },
@@ -3423,19 +3668,47 @@
                     centerY = cy;
                     zoom = z;
                     render();
+                },
+                startColorCycle: () => {
+                    if (colorCycleId) return;
+                    function cycleStep() {
+                        hueOffset += 2;
+                        render();
+                        colorCycleId = requestAnimationFrame(cycleStep);
+                    }
+                    colorCycleId = requestAnimationFrame(cycleStep);
+                },
+                stopColorCycle: () => {
+                    if (colorCycleId) {
+                        cancelAnimationFrame(colorCycleId);
+                        colorCycleId = null;
+                    }
                 }
             };
+        }
+
+        function toggleFractalColorCycle() {
+            if (!fractalSystem) return;
+            if (document.getElementById('fractalCycleColors').checked) {
+                fractalSystem.startColorCycle();
+            } else {
+                fractalSystem.stopColorCycle();
+            }
         }
 
         function updateFractals() {
             document.getElementById('maxIterationsValue').textContent = document.getElementById('maxIterations').value;
             if (fractalSystem) {
+                if (fractalSystem.stopColorCycle) fractalSystem.stopColorCycle();
+                document.getElementById('fractalCycleColors').checked = false;
                 fractalSystem.render();
             }
         }
 
         function resetFractal() {
             if (fractalSystem) {
+                if (fractalSystem.stopColorCycle) fractalSystem.stopColorCycle();
+                document.getElementById('fractalCycleColors').checked = false;
                 fractalSystem.reset();
             }
         }
@@ -3719,57 +3992,79 @@
 
         function init3DScene() {
             const container = document.getElementById('threejsContainer');
-            
+
             // Initialize Three.js scene
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
             const renderer = new THREE.WebGLRenderer({ antialias: true });
-            
+
             renderer.setSize(container.offsetWidth, container.offsetHeight);
             renderer.setClearColor(0x000000);
             container.appendChild(renderer.domElement);
-            
+
             // Add lights
             const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
             scene.add(ambientLight);
-            
+
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
             directionalLight.position.set(1, 1, 1);
             scene.add(directionalLight);
-            
+
+            var pointLight = new THREE.PointLight(0xff00ff, 0.4, 50);
+            pointLight.position.set(-3, 2, 2);
+            scene.add(pointLight);
+
             // Create initial shape
             let currentMesh;
+            var particleSystem = null;
+            var gridHelper = null;
+            var gradientBg = null;
             createShape();
-            
+
             camera.position.z = 5;
-            
-            // Mouse controls
-            let mouseX = 0, mouseY = 0;
-            let targetRotationX = 0, targetRotationY = 0;
-            
-            container.addEventListener('mousemove', (event) => {
-                const rect = container.getBoundingClientRect();
-                mouseX = (event.clientX - rect.left) / container.offsetWidth * 2 - 1;
-                mouseY = -(event.clientY - rect.top) / container.offsetHeight * 2 + 1;
-                
-                targetRotationX = mouseY * 0.5;
-                targetRotationY = mouseX * 0.5;
+
+            // Mouse orbit camera controls
+            var isDragging3D = false;
+            var lastMouse = { x: 0, y: 0 };
+            var rotationY = 0;
+            var rotationX = 0;
+
+            container.addEventListener('mousedown', function(e) {
+                isDragging3D = true;
+                lastMouse = { x: e.clientX, y: e.clientY };
             });
-            
+            container.addEventListener('mousemove', function(e) {
+                if (isDragging3D) {
+                    var dx = e.clientX - lastMouse.x;
+                    var dy = e.clientY - lastMouse.y;
+                    rotationY += dx * 0.01;
+                    rotationX += dy * 0.01;
+                    rotationX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, rotationX));
+                    lastMouse = { x: e.clientX, y: e.clientY };
+                }
+            });
+            container.addEventListener('mouseup', function() { isDragging3D = false; });
+            container.addEventListener('mouseleave', function() { isDragging3D = false; });
+
             function createShape() {
-                // Remove all user-added meshes (keep lights)
-                const meshesToRemove = scene.children.filter(child => child instanceof THREE.Mesh);
-                meshesToRemove.forEach(mesh => {
+                // Remove all user-added meshes (keep lights, helpers, particles)
+                var toRemove = [];
+                scene.children.forEach(function(child) {
+                    if (child instanceof THREE.Mesh && child !== gradientBg) {
+                        toRemove.push(child);
+                    }
+                });
+                toRemove.forEach(function(mesh) {
                     scene.remove(mesh);
                     if (mesh.geometry) mesh.geometry.dispose();
                     if (mesh.material) mesh.material.dispose();
                 });
                 currentMesh = null;
-                
+
                 const shapeType = document.getElementById('shapeType').value;
                 const wireframe = document.getElementById('wireframeMode').checked;
                 const colorType = document.getElementById('shapeColor').value;
-                
+
                 let geometry;
                 switch (shapeType) {
                     case 'cube':
@@ -3784,11 +4079,20 @@
                     case 'icosahedron':
                         geometry = new THREE.IcosahedronGeometry(1.5, 0);
                         break;
+                    case 'torusknot':
+                        geometry = new THREE.TorusKnotGeometry(1, 0.35, 100, 16);
+                        break;
+                    case 'dodecahedron':
+                        geometry = new THREE.DodecahedronGeometry(1.5, 0);
+                        break;
+                    case 'octahedron':
+                        geometry = new THREE.OctahedronGeometry(1.5, 0);
+                        break;
                     case 'multiple':
                         createMultipleShapes();
                         return;
                 }
-                
+
                 let color;
                 switch (colorType) {
                     case 'cardinal':
@@ -3806,39 +4110,117 @@
                     default:
                         color = 0x8C1515;
                 }
-                
+
                 const material = new THREE.MeshPhongMaterial({
                     color: color,
                     wireframe: wireframe
                 });
-                
+
                 currentMesh = new THREE.Mesh(geometry, material);
                 scene.add(currentMesh);
             }
-            
+
             function createMultipleShapes() {
                 const shapes = [
                     new THREE.BoxGeometry(1, 1, 1),
                     new THREE.SphereGeometry(0.7, 16, 16),
-                    new THREE.TorusGeometry(0.7, 0.3, 8, 50)
+                    new THREE.TorusGeometry(0.7, 0.3, 8, 50),
+                    new THREE.OctahedronGeometry(0.7, 0)
                 ];
-                
-                const colors = [0x8C1515, 0x006CB8, 0x009B76];
-                
+
+                const colors = [0x8C1515, 0x006CB8, 0x009B76, 0xFFD700];
+
                 for (let i = 0; i < shapes.length; i++) {
                     const material = new THREE.MeshPhongMaterial({
                         color: colors[i],
                         wireframe: document.getElementById('wireframeMode').checked
                     });
-                    
+
                     const mesh = new THREE.Mesh(shapes[i], material);
-                    mesh.position.x = (i - 1) * 2;
+                    mesh.position.x = (i - 1.5) * 2;
                     scene.add(mesh);
                 }
-                
-                currentMesh = null; // Multiple objects, can't track single mesh
+
+                currentMesh = null;
             }
-            
+
+            // Environment management
+            function updateEnvironment() {
+                var env = document.getElementById('sceneEnvironment').value;
+
+                // Remove existing grid helper
+                if (gridHelper) {
+                    scene.remove(gridHelper);
+                    gridHelper = null;
+                }
+
+                switch (env) {
+                    case 'dark':
+                        renderer.setClearColor(0x000000);
+                        break;
+                    case 'gradient':
+                        // Dark blue to dark purple gradient via clear color
+                        renderer.setClearColor(0x0a0020);
+                        break;
+                    case 'grid':
+                        renderer.setClearColor(0x111118);
+                        gridHelper = new THREE.GridHelper(20, 20, 0x444466, 0x222244);
+                        gridHelper.position.y = -2;
+                        scene.add(gridHelper);
+                        break;
+                }
+            }
+
+            // Particle system
+            function createParticles() {
+                if (particleSystem) {
+                    scene.remove(particleSystem);
+                    if (particleSystem.geometry) particleSystem.geometry.dispose();
+                    if (particleSystem.material) particleSystem.material.dispose();
+                    particleSystem = null;
+                }
+
+                var particleGeometry = new THREE.BufferGeometry();
+                var positions = new Float32Array(200 * 3);
+                var colors3 = new Float32Array(200 * 3);
+                var pColors = [
+                    [0, 0.83, 1], [1, 0, 0.5], [0.22, 1, 0.08],
+                    [1, 0.84, 0], [0.66, 0.33, 0.97], [1, 0.42, 0.42]
+                ];
+
+                for (var i = 0; i < 200; i++) {
+                    positions[i * 3] = (Math.random() - 0.5) * 10;
+                    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+                    positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+                    var c = pColors[i % pColors.length];
+                    colors3[i * 3] = c[0];
+                    colors3[i * 3 + 1] = c[1];
+                    colors3[i * 3 + 2] = c[2];
+                }
+
+                particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors3, 3));
+
+                var particleMaterial = new THREE.PointsMaterial({
+                    size: 0.08,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.8
+                });
+
+                particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+                scene.add(particleSystem);
+            }
+
+            function removeParticles() {
+                if (particleSystem) {
+                    scene.remove(particleSystem);
+                    if (particleSystem.geometry) particleSystem.geometry.dispose();
+                    if (particleSystem.material) particleSystem.material.dispose();
+                    particleSystem = null;
+                }
+            }
+
             let threeAnimationId = null;
 
             function animate() {
@@ -3846,11 +4228,14 @@
 
                 const rotationSpeed = parseFloat(document.getElementById('rotationSpeed').value);
 
-                if (currentMesh) {
-                    // Smooth rotation towards mouse position
-                    currentMesh.rotation.x += (targetRotationX - currentMesh.rotation.x) * 0.05;
-                    currentMesh.rotation.y += (targetRotationY - currentMesh.rotation.y) * 0.05;
+                // Update camera position from orbit controls
+                var camDist = 5;
+                camera.position.x = camDist * Math.sin(rotationY) * Math.cos(rotationX);
+                camera.position.y = camDist * Math.sin(rotationX);
+                camera.position.z = camDist * Math.cos(rotationY) * Math.cos(rotationX);
+                camera.lookAt(0, 0, 0);
 
+                if (currentMesh) {
                     // Auto rotation
                     currentMesh.rotation.x += rotationSpeed;
                     currentMesh.rotation.y += rotationSpeed;
@@ -3864,6 +4249,17 @@
                     });
                 }
 
+                // Animate particles
+                if (particleSystem) {
+                    var positions = particleSystem.geometry.attributes.position.array;
+                    for (var i = 0; i < 200; i++) {
+                        positions[i * 3 + 1] += Math.sin(Date.now() * 0.001 + i) * 0.003;
+                        positions[i * 3] += Math.cos(Date.now() * 0.0008 + i * 0.5) * 0.002;
+                    }
+                    particleSystem.geometry.attributes.position.needsUpdate = true;
+                    particleSystem.rotation.y += 0.001;
+                }
+
                 renderer.render(scene, camera);
             }
 
@@ -3875,7 +4271,12 @@
                 renderer,
                 container,
                 createShape,
+                updateEnvironment,
+                createParticles,
+                removeParticles,
                 reset: () => {
+                    rotationX = 0;
+                    rotationY = 0;
                     camera.position.set(0, 0, 5);
                     camera.lookAt(0, 0, 0);
                 },
@@ -3884,9 +4285,14 @@
                         cancelAnimationFrame(threeAnimationId);
                         threeAnimationId = null;
                     }
+                    removeParticles();
+                    if (gridHelper) {
+                        scene.remove(gridHelper);
+                        gridHelper = null;
+                    }
                     // Dispose all meshes
-                    const meshesToRemove = scene.children.filter(child => child instanceof THREE.Mesh);
-                    meshesToRemove.forEach(mesh => {
+                    var meshesToRemove = scene.children.filter(function(child) { return child instanceof THREE.Mesh; });
+                    meshesToRemove.forEach(function(mesh) {
                         scene.remove(mesh);
                         if (mesh.geometry) mesh.geometry.dispose();
                         if (mesh.material) mesh.material.dispose();
@@ -3906,6 +4312,21 @@
             document.getElementById('rotationSpeedValue').textContent = document.getElementById('rotationSpeed').value;
         }
 
+        function update3DEnvironment() {
+            if (scene3D) {
+                scene3D.updateEnvironment();
+            }
+        }
+
+        function toggle3DParticles() {
+            if (!scene3D) return;
+            if (document.getElementById('particleToggle').checked) {
+                scene3D.createParticles();
+            } else {
+                scene3D.removeParticles();
+            }
+        }
+
         function reset3DScene() {
             if (scene3D) {
                 scene3D.reset();
@@ -3913,14 +4334,14 @@
         }
 
         function randomize3DScene() {
-            const shapes = ['cube', 'sphere', 'torus', 'icosahedron', 'multiple'];
+            const shapes = ['cube', 'sphere', 'torus', 'icosahedron', 'torusknot', 'dodecahedron', 'octahedron', 'multiple'];
             const colors = ['cardinal', 'blue', 'green', 'rainbow'];
-            
+
             document.getElementById('shapeType').value = shapes[Math.floor(Math.random() * shapes.length)];
             document.getElementById('shapeColor').value = colors[Math.floor(Math.random() * colors.length)];
             document.getElementById('rotationSpeed').value = (Math.random() * 0.05 + 0.005).toFixed(3);
             document.getElementById('wireframeMode').checked = Math.random() > 0.5;
-            
+
             update3DScene();
         }
 
@@ -4680,23 +5101,31 @@
             var playing = false;
             var animId = null;
             var lastStep = 0;
+            var isPainting = false;
 
             // Random initial state
             for (var i = 0; i < grid.length; i++) {
                 grid[i] = Math.random() < 0.3 ? 1 : 0;
             }
 
+            function getCellColor(val) {
+                // Vivid age-based colors
+                if (val <= 1) return '#39FF14';      // newborn = bright green
+                if (val <= 4) return '#00D4FF';      // young = cyan
+                if (val <= 10) return '#4169E1';     // mature = blue
+                if (val <= 20) return '#A855F7';     // old = purple
+                return '#FF0080';                     // ancient = magenta
+            }
+
             function draw() {
-                ctx.fillStyle = '#111';
+                ctx.fillStyle = '#111118';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 for (var y = 0; y < gridSize; y++) {
                     for (var x = 0; x < gridSize; x++) {
                         var val = grid[y * gridSize + x];
                         if (val) {
-                            // Age-based color: green (new) -> blue -> purple (old)
-                            var hue = (120 - Math.min(val, 30) * 8 + 360) % 360;
-                            ctx.fillStyle = 'hsl(' + hue + ',85%,55%)';
+                            ctx.fillStyle = getCellColor(val);
                             ctx.fillRect(x * cellW + 0.5, y * cellH + 0.5, cellW - 1, cellH - 1);
                         }
                     }
@@ -4741,18 +5170,55 @@
                 animId = requestAnimationFrame(animate);
             }
 
-            // Click to toggle cells
-            canvas.addEventListener('click', function(e) {
+            // Paint mode: brush painting instead of single-cell toggle
+            function paintCell(e) {
                 var rect = canvas.getBoundingClientRect();
                 var mx = e.clientX - rect.left;
                 var my = e.clientY - rect.top;
-                var cx = Math.floor(mx / cellW);
-                var cy = Math.floor(my / cellH);
-                if (cx >= 0 && cx < gridSize && cy >= 0 && cy < gridSize) {
-                    var idx = cy * gridSize + cx;
-                    grid[idx] = grid[idx] ? 0 : 1;
-                    draw();
+                var col = Math.floor(mx / cellW);
+                var row = Math.floor(my / cellH);
+                var brushRadius = parseInt(document.getElementById('golBrushSize').value) - 1;
+                var isEraser = document.getElementById('golEraser').checked;
+
+                for (var dr = -brushRadius; dr <= brushRadius; dr++) {
+                    for (var dc = -brushRadius; dc <= brushRadius; dc++) {
+                        var r = row + dr;
+                        var c = col + dc;
+                        if (r >= 0 && r < gridSize && c >= 0 && c < gridSize) {
+                            if (isEraser) {
+                                grid[r * gridSize + c] = 0;
+                            } else {
+                                grid[r * gridSize + c] = 1;
+                            }
+                        }
+                    }
                 }
+                draw();
+            }
+
+            canvas.addEventListener('mousedown', function(e) {
+                isPainting = true;
+                paintCell(e);
+            });
+            canvas.addEventListener('mousemove', function(e) {
+                if (isPainting) paintCell(e);
+            });
+            canvas.addEventListener('mouseup', function() { isPainting = false; });
+            canvas.addEventListener('mouseleave', function() { isPainting = false; });
+
+            // Touch support for painting
+            canvas.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                isPainting = true;
+                paintCell(e.touches[0]);
+            });
+            canvas.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                if (isPainting) paintCell(e.touches[0]);
+            });
+            canvas.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                isPainting = false;
             });
 
             draw();
@@ -4985,15 +5451,16 @@
             var showTrails = true;
             var bodyColors = ['#00D4FF','#FF0080','#39FF14','#FFD700','#FF6B6B','#A855F7','#00FF80','#FF4500','#1E90FF','#FF1493'];
 
-            function addBody(x, y, mass) {
-                if (bodies.length >= 20) return; // cap at 20
-                var vx = (Math.random() - 0.5) * 2;
-                var vy = (Math.random() - 0.5) * 2;
+            // Slingshot state
+            var slingStart = null;
+            var slingCurrent = null;
+
+            function addBody(x, y, mass, vx, vy) {
+                if (bodies.length >= 20) return;
+                if (vx === undefined) vx = (Math.random() - 0.5) * 2;
+                if (vy === undefined) vy = (Math.random() - 0.5) * 2;
                 bodies.push({
-                    x: x,
-                    y: y,
-                    vx: vx,
-                    vy: vy,
+                    x: x, y: y, vx: vx, vy: vy,
                     mass: mass,
                     radius: Math.sqrt(mass) * 2,
                     color: bodyColors[bodies.length % bodyColors.length],
@@ -5013,8 +5480,7 @@
                     var by = cy + Math.sin(angle) * dist;
                     if (bodies.length >= 20) break;
                     bodies.push({
-                        x: bx,
-                        y: by,
+                        x: bx, y: by,
                         vx: Math.sin(angle) * 1.5,
                         vy: -Math.cos(angle) * 1.5,
                         mass: mass,
@@ -5025,6 +5491,15 @@
                 }
             }
 
+            function hexToRgb(hex) {
+                var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : { r: 255, g: 255, b: 255 };
+            }
+
             function update() {
                 var G = parseFloat(document.getElementById('gravStrength').value) * 0.5;
                 for (var i = 0; i < bodies.length; i++) {
@@ -5033,6 +5508,21 @@
                         var dx = b.x - a.x;
                         var dy = b.y - a.y;
                         var dist = Math.sqrt(dx * dx + dy * dy) + 3;
+
+                        // Mass merging on collision
+                        if (dist < a.radius + b.radius) {
+                            var big = a.mass >= b.mass ? a : b;
+                            var small = a.mass >= b.mass ? b : a;
+                            var totalMass = big.mass + small.mass;
+                            big.vx = (big.vx * big.mass + small.vx * small.mass) / totalMass;
+                            big.vy = (big.vy * big.mass + small.vy * small.mass) / totalMass;
+                            big.mass = totalMass;
+                            big.radius = Math.sqrt(totalMass) * 2;
+                            bodies.splice(bodies.indexOf(small), 1);
+                            if (j > i) j--;
+                            continue;
+                        }
+
                         var force = G * a.mass * b.mass / (dist * dist);
                         var fx = force * dx / dist;
                         var fy = force * dy / dist;
@@ -5063,18 +5553,18 @@
                 for (var i = 0; i < bodies.length; i++) {
                     var b = bodies[i];
 
-                    // Draw trail
+                    // Draw trail with gradient fade
                     if (showTrails && b.trail.length > 1) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = b.color;
-                        ctx.lineWidth = 1;
-                        ctx.globalAlpha = 0.4;
-                        ctx.moveTo(b.trail[0].x, b.trail[0].y);
+                        var rgb = hexToRgb(b.color);
                         for (var t = 1; t < b.trail.length; t++) {
+                            var alpha = (t / b.trail.length) * 0.6;
+                            ctx.beginPath();
+                            ctx.strokeStyle = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + alpha + ')';
+                            ctx.lineWidth = 1 + (t / b.trail.length);
+                            ctx.moveTo(b.trail[t - 1].x, b.trail[t - 1].y);
                             ctx.lineTo(b.trail[t].x, b.trail[t].y);
+                            ctx.stroke();
                         }
-                        ctx.stroke();
-                        ctx.globalAlpha = 1;
                     }
 
                     // Draw body with glow
@@ -5086,24 +5576,85 @@
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
+
+                // Draw slingshot indicator
+                if (slingStart && slingCurrent) {
+                    ctx.setLineDash([5, 5]);
+                    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(slingStart.x, slingStart.y);
+                    ctx.lineTo(slingCurrent.x, slingCurrent.y);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+
+                    // Arrow head
+                    var adx = slingCurrent.x - slingStart.x;
+                    var ady = slingCurrent.y - slingStart.y;
+                    var alen = Math.sqrt(adx * adx + ady * ady);
+                    if (alen > 10) {
+                        var aAngle = Math.atan2(ady, adx);
+                        ctx.beginPath();
+                        ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+                        ctx.moveTo(slingCurrent.x, slingCurrent.y);
+                        ctx.lineTo(slingCurrent.x - 10 * Math.cos(aAngle - 0.3), slingCurrent.y - 10 * Math.sin(aAngle - 0.3));
+                        ctx.moveTo(slingCurrent.x, slingCurrent.y);
+                        ctx.lineTo(slingCurrent.x - 10 * Math.cos(aAngle + 0.3), slingCurrent.y - 10 * Math.sin(aAngle + 0.3));
+                        ctx.stroke();
+                    }
+
+                    // Preview body
+                    ctx.globalAlpha = 0.5;
+                    ctx.beginPath();
+                    var sizeVal = document.getElementById('gravMassSize').value;
+                    var pvMass = sizeVal === 'small' ? 15 : sizeVal === 'large' ? 80 : 40;
+                    ctx.arc(slingStart.x, slingStart.y, Math.sqrt(pvMass) * 2, 0, Math.PI * 2);
+                    ctx.fillStyle = bodyColors[bodies.length % bodyColors.length];
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
             }
 
             function animate() {
                 if (!paused) {
                     update();
-                    draw();
                 }
+                draw();
                 animId = requestAnimationFrame(animate);
             }
 
-            // Click to place mass
-            canvas.addEventListener('click', function(e) {
+            // Mouse slingshot: click and drag to set velocity
+            canvas.addEventListener('mousedown', function(e) {
                 var rect = canvas.getBoundingClientRect();
-                var mx = e.clientX - rect.left;
-                var my = e.clientY - rect.top;
-                var sizeSelect = document.getElementById('gravMassSize').value;
-                var mass = sizeSelect === 'small' ? 15 : sizeSelect === 'large' ? 80 : 40;
-                addBody(mx, my, mass);
+                slingStart = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+                slingCurrent = { x: slingStart.x, y: slingStart.y };
+            });
+
+            canvas.addEventListener('mousemove', function(e) {
+                if (slingStart) {
+                    var rect = canvas.getBoundingClientRect();
+                    slingCurrent = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+                }
+            });
+
+            canvas.addEventListener('mouseup', function(e) {
+                if (slingStart) {
+                    var rect = canvas.getBoundingClientRect();
+                    var endX = e.clientX - rect.left;
+                    var endY = e.clientY - rect.top;
+                    var dvx = (endX - slingStart.x) * 0.05;
+                    var dvy = (endY - slingStart.y) * 0.05;
+                    var sizeSelect = document.getElementById('gravMassSize').value;
+                    var mass = sizeSelect === 'small' ? 15 : sizeSelect === 'large' ? 80 : 40;
+                    addBody(slingStart.x, slingStart.y, mass, dvx, dvy);
+                    slingStart = null;
+                    slingCurrent = null;
+                }
+            });
+
+            canvas.addEventListener('mouseleave', function() {
+                slingStart = null;
+                slingCurrent = null;
             });
 
             // Start with a random system
