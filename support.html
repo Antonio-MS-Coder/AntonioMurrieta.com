@@ -248,6 +248,108 @@
             margin-top: 0;
         }
 
+        /* App-Specific Disclosure Cards */
+        .app-disclosures {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .app-disclosure {
+            background: var(--linen);
+            border: 2px solid var(--bone);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s var(--ease-snap);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .app-disclosure[open] {
+            border-color: var(--roble);
+            box-shadow: 0 4px 16px rgba(139, 115, 85, 0.12);
+        }
+
+        .app-disclosure summary {
+            cursor: pointer;
+            padding: 20px 28px;
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            transition: background 0.3s var(--ease-snap);
+        }
+
+        .app-disclosure summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .app-disclosure summary:hover {
+            background: rgba(139, 115, 85, 0.04);
+        }
+
+        .app-disclosure summary::after {
+            content: '+';
+            font-family: var(--sans);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--roble);
+            transition: transform 0.3s var(--ease-snap);
+            line-height: 1;
+        }
+
+        .app-disclosure[open] summary::after {
+            content: '−';
+        }
+
+        .app-disclosure-meta {
+            font-family: var(--mono, 'JetBrains Mono', monospace);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--stone);
+            font-weight: 400;
+        }
+
+        .app-disclosure-body {
+            padding: 8px 28px 28px;
+            border-top: 1px solid var(--bone);
+        }
+
+        .app-disclosure-body h4 {
+            font-family: var(--serif);
+            font-size: 18px;
+            color: var(--ink);
+            margin: 24px 0 12px;
+            font-weight: 600;
+        }
+
+        .app-disclosure-body h4:first-child {
+            margin-top: 16px;
+        }
+
+        .app-disclosure-body p,
+        .app-disclosure-body li {
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .app-disclosure-body ul {
+            margin-left: 24px;
+        }
+
+        .app-disclosure-intro {
+            color: var(--stone);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
         /* Contact Options */
         .contact-options {
             text-align: center;
@@ -362,6 +464,66 @@
 
             <h3>Data Security:</h3>
             <p>We implement industry-standard security measures to protect your data, including encryption in transit and at rest, regular security audits, and strict access controls.</p>
+        </section>
+
+        <section class="reveal" id="app-privacy">
+            <h2>App-Specific Privacy Disclosures</h2>
+            <p class="app-disclosure-intro">The general Privacy Policy above describes the broad practices across Antonio Murrieta Apps. The disclosures below are app-specific and take precedence over the general policy for the apps they cover. They reflect exactly what each individual app collects, sends, and stores.</p>
+
+            <div class="app-disclosures">
+                <details class="app-disclosure" id="kairos" open>
+                    <summary>
+                        <span>Kairos <span class="app-disclosure-meta">iOS · Last updated May 22, 2026</span></span>
+                    </summary>
+                    <div class="app-disclosure-body">
+                        <h4>About Kairos</h4>
+                        <p>Kairos is an iOS app that simulates a council of historical advisors to help users think through personal dilemmas. All AI reasoning happens on-device using Apple's Foundation Models framework. Your dilemmas, conversations, and history never leave your device.</p>
+
+                        <h4>What Kairos collects</h4>
+                        <ul>
+                            <li><strong>Product interaction events (anonymous):</strong> which screens you open, which counselors you select, when you complete a debate, when you start or finish a subscription. Sent to Meta (Facebook) for analytics and ad attribution.</li>
+                            <li><strong>Purchase history:</strong> Apple StoreKit transaction identifiers for subscription events (start trial, subscribe, renew). Used for analytics and to ensure your subscription works across devices signed into the same Apple ID.</li>
+                            <li><strong>IDFA (Identifier for Advertisers):</strong> only collected if you grant permission through Apple's App Tracking Transparency (ATT) prompt. If you decline, no IDFA is collected; analytics events still flow but without device-level attribution.</li>
+                            <li><strong>Anonymous installation ID:</strong> a random UUID generated on first launch, stored locally, and sent with analytics events so Meta can match conversions across sessions. Not tied to your name, email, or Apple ID.</li>
+                        </ul>
+
+                        <h4>What Kairos does NOT collect</h4>
+                        <ul>
+                            <li>Your name, email address, phone number, or any contact information.</li>
+                            <li>The content of your dilemmas, debates, or conversations with counselors.</li>
+                            <li>Your chat history (stored only locally in the app's Core Data database).</li>
+                            <li>Your location, contacts, photos, microphone, or camera.</li>
+                            <li>Any data sent to OpenAI, Anthropic, or any third-party AI provider — Kairos uses Apple's on-device Foundation Models exclusively.</li>
+                        </ul>
+
+                        <h4>Third parties that receive data</h4>
+                        <ul>
+                            <li><strong>Meta (Facebook):</strong> receives the anonymous analytics events listed above via the Meta App Events / Conversions API endpoint (<code>graph.facebook.com</code>) for ad attribution and campaign optimization. Governed by <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">Meta's Privacy Policy</a>.</li>
+                            <li><strong>Apple:</strong> receives subscription transactions via StoreKit. Governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</li>
+                        </ul>
+
+                        <h4>Data retention</h4>
+                        <p>Anonymous analytics events are retained by Meta according to their policies. Local data on your device (dilemma history, preferences) is retained until you delete the app or clear it from within the app's settings (Settings → History → Retention).</p>
+
+                        <h4>Your rights</h4>
+                        <ul>
+                            <li><strong>Opt out of tracking:</strong> decline the ATT prompt on first launch, or revoke it any time via iOS Settings → Privacy &amp; Security → Tracking → Kairos.</li>
+                            <li><strong>Delete your local data:</strong> uninstall the app, or reset from within the app (Settings → Reset onboarding).</li>
+                            <li><strong>Request data deletion from Meta:</strong> contact Meta directly through their privacy controls, since Kairos does not store any data server-side that we could delete on your behalf.</li>
+                            <li><strong>Contact us:</strong> email <a href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a> for any privacy question related to Kairos.</li>
+                        </ul>
+
+                        <h4>Children</h4>
+                        <p>Kairos is not directed to children under 13. We do not knowingly collect data from children. If you believe a child has used the app, contact <a href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>.</p>
+
+                        <h4>Subscription terms</h4>
+                        <p>Kairos offers auto-renewing subscriptions managed by Apple. Payment is charged to your Apple ID. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. Manage or cancel in iOS Settings → [Your Name] → Subscriptions. Use of the app is governed by Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Standard End User License Agreement (EULA)</a>.</p>
+
+                        <h4>Changes to this policy</h4>
+                        <p>Material changes will be reflected by updating the "Last updated" date above and, where appropriate, surfacing a notice within the app.</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <section class="reveal">
