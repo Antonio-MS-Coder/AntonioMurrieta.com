@@ -3438,7 +3438,11 @@
       "coverEmoji": "👼",
       "coverGradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       "summary": "A practical playbook for early-stage technology investing. Calacanis argues that outsized returns come from backing exceptional founders early, building strong deal flow, and running a diversified portfolio that embraces failure. The book is less about financial engineering and more about judgment, access, and pattern recognition.",
-      "tags": ["Business", "Investing", "Startups"],
+      "tags": [
+        "Business",
+        "Investing",
+        "Startups"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Aspiring angel investors, founders seeking to understand investor mindset, and anyone interested in startup ecosystems",
       "keyTakeaways": [
@@ -3461,7 +3465,11 @@
       "coverEmoji": "🧠",
       "coverGradient": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       "summary": "An exploration of the most common decision-making mistakes we all make and how to avoid them. Mauboussin draws on psychology, complexity theory, and behavioral economics to show why our intuitions fail us and how thinking twice — questioning our default assumptions — leads to dramatically better outcomes.",
-      "tags": ["Business", "Psychology", "Decision Making"],
+      "tags": [
+        "Business",
+        "Psychology",
+        "Decision Making"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Business leaders, investors, and anyone who wants to make better decisions under uncertainty",
       "keyTakeaways": [
@@ -3484,7 +3492,11 @@
       "coverEmoji": "📣",
       "coverGradient": "linear-gradient(135deg, #f857a6 0%, #ff5858 100%)",
       "summary": "An investigation into the post-truth economy — how hype, fraud, and manufactured desire drive modern culture. From the Fyre Festival disaster to Elon Musk's unfulfilled promises to Supreme's manufactured scarcity, Bluestone examines a world where which side you're on matters more than what the facts say.",
-      "tags": ["Business", "Culture", "Psychology"],
+      "tags": [
+        "Business",
+        "Culture",
+        "Psychology"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Anyone interested in marketing psychology, con artistry, and how social media shapes perception",
       "keyTakeaways": [
@@ -3506,7 +3518,11 @@
       "coverEmoji": "🏘️",
       "coverGradient": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
       "summary": "An exploration of experimental living communities on the fringes of the American city. Hurley profiles 'practical utopias' — from Danish co-housing to planned diverse communities — that challenge the architectural monotony and social isolation of traditional suburbs, asking whether we can redesign how we live together.",
-      "tags": ["Philosophy", "Architecture", "Urban Planning"],
+      "tags": [
+        "Philosophy",
+        "Architecture",
+        "Urban Planning"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Readers interested in urban planning, alternative living, and the future of housing",
       "keyTakeaways": [
@@ -3528,7 +3544,11 @@
       "coverEmoji": "🎓",
       "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
       "summary": "A provocative argument that our education system is fundamentally broken — designed for the stability of a previous economic era and failing to prepare students for a world of constant change. Wagner and Dintersmith make the case for reimagining education around skills, play, passion, and purpose rather than standardized testing.",
-      "tags": ["Philosophy", "Education", "Innovation"],
+      "tags": [
+        "Philosophy",
+        "Education",
+        "Innovation"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Parents, educators, and anyone who questions whether the current education system serves the future",
       "keyTakeaways": [
@@ -3550,7 +3570,11 @@
       "coverEmoji": "🎙️",
       "coverGradient": "linear-gradient(135deg, #c31432 0%, #240b36 100%)",
       "summary": "The firsthand account of Mexican journalist Ciro Gómez Leyva's survival after an assassination attempt. The book reconstructs the attack, investigates who was behind it and why, and reflects on the dangerous reality of practicing journalism in Mexico — one of the deadliest countries in the world for reporters.",
-      "tags": ["Biography", "Journalism", "Mexico"],
+      "tags": [
+        "Biography",
+        "Journalism",
+        "Mexico"
+      ],
       "yearRead": 2026,
       "recommendedFor": "Anyone interested in press freedom, Mexican politics, and the human cost of speaking truth to power",
       "keyTakeaways": [
@@ -3561,6 +3585,318 @@
       ],
       "favoriteQuote": "Nadie se inventa un insulto de la nada.",
       "personalNotes": "A gut-punch of a book. Reading Ciro's account of surviving an assassination attempt for doing his job is both infuriating and deeply sad. The questions it raises about press freedom in Mexico — son hechos, no hay verdad — cut to the heart of the crisis. It's not just about one journalist; it's about what kind of country we want to live in. Essential reading for any Mexican."
+    },
+    {
+      "id": 146,
+      "title": "México Rifado 2.0",
+      "author": "Gabriela de la Riva & Alfredo Troncoso",
+      "category": "business",
+      "rating": 4,
+      "coverImage": "book-covers/2026/7 Mexico Rifado.jpg",
+      "coverEmoji": "🇲🇽",
+      "coverGradient": "linear-gradient(135deg, #f857a6 0%, #c1e34a 100%)",
+      "summary": "A collection of voices from entrepreneurs, creators, and thinkers arguing that Mexico is full of talent, ingenuity, and reasons for optimism. A deliberate counter-narrative to national pessimism, spotlighting what Mexicans do brilliantly.",
+      "tags": [
+        "Mexico",
+        "Culture",
+        "Business"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone who needs a dose of Mexican optimism and a reminder of the country's strengths",
+      "keyTakeaways": [
+        "Mexico's greatest asset is its people — their creativity, resilience, and warmth.",
+        "Changing the national story starts with noticing and celebrating what already works.",
+        "Optimism isn't naïve; it's a strategy for building a better country."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "A genuinely uplifting read. As a Mexican builder it hit home — we spend so much energy on what's broken that we forget how much talent and heart this country has. A good reminder of why I build from here.",
+      "currentlyReading": false
+    },
+    {
+      "id": 147,
+      "title": "The Hard Thing About Hard Things",
+      "author": "Ben Horowitz",
+      "category": "business",
+      "rating": 5,
+      "coverImage": "book-covers/2026/8 The Hard Thing About Hard Things.jpg",
+      "coverEmoji": "🎯",
+      "coverGradient": "linear-gradient(135deg, #232526 0%, #414345 100%)",
+      "summary": "Ben Horowitz shares brutally honest lessons from building and running tech companies, focused on the problems no one teaches you: layoffs, demotions, near-bankruptcy, and leading when there are no good options.",
+      "tags": [
+        "Business",
+        "Startups",
+        "Leadership"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Founders, CEOs, and anyone leading a team through hard times",
+      "keyTakeaways": [
+        "There are no recipes for the hardest decisions; leadership is acting well under maximum uncertainty.",
+        "Take care of people, products, and profits — in that order.",
+        "The struggle is where greatness comes from; embrace it instead of waiting for it to end."
+      ],
+      "favoriteQuote": "Take care of the people, the products, and the profits — in that order.",
+      "personalNotes": "The most honest book on running a company I've read. Horowitz doesn't sell the dream, he tells you about the nights you can't sleep. I keep coming back to taking care of the people, the products, and the profits — in that order.",
+      "currentlyReading": false
+    },
+    {
+      "id": 148,
+      "title": "Así No Es",
+      "author": "Viri Ríos & Ray Campos",
+      "category": "business",
+      "rating": 4,
+      "coverImage": "book-covers/2026/9 Asi No Es.jpg",
+      "coverEmoji": "📊",
+      "coverGradient": "linear-gradient(135deg, #c1e34a 0%, #11998e 100%)",
+      "summary": "Using original survey data, Viri Ríos and Ray Campos dismantle the myths Mexicans believe about meritocracy, class, and income — showing how structural inequality, not effort alone, explains who gets ahead.",
+      "tags": [
+        "Economics",
+        "Mexico",
+        "Inequality"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Readers who want data-driven clarity on class and inequality in Mexico",
+      "keyTakeaways": [
+        "Meritocracy is largely a myth; where you start heavily shapes where you end up.",
+        "The 'middle class' most Mexicans imagine they belong to is statistically tiny.",
+        "Classism and discrimination carry measurable economic costs."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "A necessary gut-check on the meritocracy story I grew up believing. The data is uncomfortable but clarifying — effort matters, but so does where you start.",
+      "currentlyReading": false
+    },
+    {
+      "id": 149,
+      "title": "No Es Normal",
+      "author": "Viri Ríos",
+      "category": "business",
+      "rating": 5,
+      "coverImage": "book-covers/2026/10 No Es Normal.jpg",
+      "coverEmoji": "📉",
+      "coverGradient": "linear-gradient(135deg, #f7971e 0%, #d31027 100%)",
+      "summary": "Viri Ríos exposes the structural roots of inequality in Mexico — wages, corruption, monopolies — arguing that the country's poverty is not destiny but the product of fixable policy choices.",
+      "tags": [
+        "Economics",
+        "Mexico",
+        "Inequality"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone trying to understand why Mexico stays unequal — and what could change it",
+      "keyTakeaways": [
+        "Mexico is poor by design, not by destiny.",
+        "Low wages are a political choice, not an iron law of the market.",
+        "Naming what 'isn't normal' is the first step to demanding better."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "Viri Ríos makes the invisible architecture of inequality impossible to unsee. Pairs perfectly with Así No Es and changed how I think about wages and policy in Mexico.",
+      "currentlyReading": false
+    },
+    {
+      "id": 150,
+      "title": "La Tienda de los Deseos",
+      "author": "Hiyoko Kurisu",
+      "category": "fiction",
+      "rating": 4,
+      "coverImage": "book-covers/2026/11 La Tienda de los Deseos.jpg",
+      "coverEmoji": "🏮",
+      "coverGradient": "linear-gradient(135deg, #654ea3 0%, #eaafc8 100%)",
+      "summary": "A cozy Japanese novel about a mysterious shop that seems to sell exactly what each customer's heart needs. Through gentle, interlinked stories it explores desire, regret, and the small comforts that heal us.",
+      "tags": [
+        "Fiction",
+        "Japanese",
+        "Feel-good"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Readers who love gentle, restorative Japanese fiction",
+      "keyTakeaways": [
+        "What we want and what we need are rarely the same thing.",
+        "Small kindnesses ripple further than we realize.",
+        "Healing often arrives quietly, through ordinary objects and encounters."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "A warm, quiet little book — read it in a couple of sittings when I needed something gentle. The idea that we rarely want what we actually need stuck with me.",
+      "currentlyReading": false
+    },
+    {
+      "id": 151,
+      "title": "Comerás Flores",
+      "author": "Lucía Solla Sobral",
+      "category": "fiction",
+      "rating": 4,
+      "coverImage": "book-covers/2026/12 Comeras Flores.jpg",
+      "coverEmoji": "🌼",
+      "coverGradient": "linear-gradient(135deg, #f2994a 0%, #f2c94c 100%)",
+      "summary": "A lyrical, intimate literary novel from Libros del Asteroide about adolescence and the disquiet of growing up. Solla Sobral writes about the body, hunger, and becoming oneself with raw, poetic prose.",
+      "tags": [
+        "Fiction",
+        "Literary",
+        "Coming-of-age"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Readers of intimate, poetic, literary coming-of-age fiction",
+      "keyTakeaways": [
+        "Coming of age is as much about the body as the mind.",
+        "Desire and discomfort often live side by side.",
+        "Poetic prose can make the ordinary feel strange and new."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "Strange and beautiful. The prose lingers more than the plot — the kind of book you feel rather than summarize.",
+      "currentlyReading": false
+    },
+    {
+      "id": 152,
+      "title": "Corruptible: Who Gets Power and How It Changes Us",
+      "author": "Brian Klaas",
+      "category": "psychology",
+      "rating": 4,
+      "coverImage": "book-covers/2026/13 Corruptible.jpg",
+      "coverEmoji": "👑",
+      "coverGradient": "linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)",
+      "summary": "Brian Klaas asks whether power corrupts or simply attracts the corruptible, drawing on science, history, and interviews with both dictators and dissidents. A sweeping look at why bad people often get power — and how to build better systems.",
+      "tags": [
+        "Psychology",
+        "Power",
+        "Politics"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Readers interested in power, leadership, and political psychology",
+      "keyTakeaways": [
+        "Power both attracts corruptible people and changes those who hold it.",
+        "Systems and incentives matter more than individual virtue.",
+        "Better recruitment, oversight, and rotation can keep power honest."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "Reframed how I think about power and who ends up holding it. The point that systems matter more than 'good people' is one I keep applying to teams.",
+      "currentlyReading": false
+    },
+    {
+      "id": 153,
+      "title": "Las Niñas Bien",
+      "author": "Guadalupe Loaeza",
+      "category": "fiction",
+      "rating": 4,
+      "coverImage": "book-covers/2026/14 Las Ninas Bien.jpg",
+      "coverEmoji": "💅",
+      "coverGradient": "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+      "summary": "Guadalupe Loaeza's sharp, satirical portrait of Mexico City's upper-class women and their obsessions with status, appearances, and money. A witty social X-ray of class and privilege.",
+      "tags": [
+        "Fiction",
+        "Mexico",
+        "Satire"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Readers who enjoy biting social satire of Mexican high society",
+      "keyTakeaways": [
+        "Status anxiety can quietly drive an entire social class.",
+        "Satire reveals uncomfortable truths that politeness hides.",
+        "Privilege has its own absurd rituals and insecurities."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "Sharp and funny, and a little merciless. Loaeza's eye for the absurdity of status is razor-precise — very Mexican, very real.",
+      "currentlyReading": false
+    },
+    {
+      "id": 154,
+      "title": "Noches Blancas",
+      "author": "Fyodor Dostoevsky",
+      "category": "fiction",
+      "rating": 5,
+      "coverImage": "book-covers/2026/15 Noches Blancas.jpg",
+      "coverEmoji": "🌃",
+      "coverGradient": "linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)",
+      "summary": "Dostoevsky's tender short novel about a lonely dreamer who, over four luminous white nights in St. Petersburg, falls for a young woman waiting for someone else. A melancholy meditation on loneliness, longing, and fleeting connection.",
+      "tags": [
+        "Fiction",
+        "Classic",
+        "Russian"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone who has felt lonely and hopeful at once; lovers of the Russian classics",
+      "keyTakeaways": [
+        "A few moments of real connection can illuminate a whole life of solitude.",
+        "The dreamer lives more vividly in imagination than in reality — at a cost.",
+        "Love freely given, even unreturned, can still be a gift."
+      ],
+      "favoriteQuote": "My God, a whole moment of bliss! Is that too little for the whole of a man's life?",
+      "personalNotes": "Heartbreaking and tender. So much longing packed into so few pages. Dostoevsky understood loneliness better than almost anyone.",
+      "currentlyReading": false
+    },
+    {
+      "id": 155,
+      "title": "The Alignment Problem",
+      "author": "Brian Christian",
+      "category": "technology",
+      "rating": 5,
+      "coverImage": "book-covers/2026/16 The Alignment Problem.jpg",
+      "coverEmoji": "🤖",
+      "coverGradient": "linear-gradient(135deg, #43cea2 0%, #185a9d 100%)",
+      "summary": "Brian Christian explores how machine-learning systems drift from human intentions — and the researchers working to align AI with our values. A deeply reported tour of fairness, transparency, and safety in modern AI.",
+      "tags": [
+        "Technology",
+        "AI",
+        "Ethics"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone building with or curious about AI and its ethics",
+      "keyTakeaways": [
+        "Models optimize what we measure, not what we mean.",
+        "Bias in the data becomes bias at scale.",
+        "Aligning AI with human values is a defining technical and ethical challenge of our time."
+      ],
+      "favoriteQuote": "",
+      "personalNotes": "The clearest book I've read on why aligning AI with human values is so hard. Essential context for anyone building with AI right now — which is to say, me.",
+      "currentlyReading": false
+    },
+    {
+      "id": 156,
+      "title": "Weapons of Math Destruction",
+      "author": "Cathy O'Neil",
+      "category": "technology",
+      "rating": 5,
+      "coverImage": "book-covers/2026/17 Weapons of Math Destruction.jpg",
+      "coverEmoji": "⚖️",
+      "coverGradient": "linear-gradient(135deg, #f7b733 0%, #fc4a1a 100%)",
+      "summary": "Cathy O'Neil shows how opaque algorithms — in credit, policing, hiring, and education — can scale injustice while hiding behind a veneer of objectivity. A warning about the unaccountable math shaping modern life.",
+      "tags": [
+        "Technology",
+        "Data",
+        "Society"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Anyone affected by algorithms (everyone) — especially the people building them",
+      "keyTakeaways": [
+        "Algorithms encode the values and biases of their makers.",
+        "Scale + opacity + harm is what turns a model into a 'weapon of math destruction.'",
+        "Fairness requires auditing and accountability, not blind trust in the math."
+      ],
+      "favoriteQuote": "Big Data processes codify the past. They do not invent the future.",
+      "personalNotes": "A wake-up call. As someone who builds with models, the reminder that algorithms 'codify the past' is one I want to keep in front of me. Scale without accountability is dangerous.",
+      "currentlyReading": false
+    },
+    {
+      "id": 157,
+      "title": "The Defining Decade",
+      "author": "Meg Jay",
+      "category": "psychology",
+      "rating": 4,
+      "coverImage": "book-covers/2026/18 The Defining Decade.jpg",
+      "coverEmoji": "⏳",
+      "coverGradient": "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)",
+      "summary": "Psychologist Meg Jay argues that your twenties are the most defining decade of adult life — for career, relationships, and identity — and that 'thirty is not the new twenty.' Practical guidance for making these pivotal years count.",
+      "tags": [
+        "Psychology",
+        "Self-Development",
+        "Twenties"
+      ],
+      "yearRead": 2026,
+      "recommendedFor": "Twenty-somethings (and those who love them) who want to use the decade well",
+      "keyTakeaways": [
+        "The twenties aren't throwaway years; small choices compound for decades.",
+        "'Weak ties' and identity capital open more doors than your close circle.",
+        "Be intentional about work and relationships now, not 'later.'"
+      ],
+      "favoriteQuote": "Thirty is not the new twenty.",
+      "personalNotes": "Read it at exactly the right time. The argument that your twenties actually count lit a fire under me to be more intentional.",
+      "currentlyReading": false
     }
   ]
 }

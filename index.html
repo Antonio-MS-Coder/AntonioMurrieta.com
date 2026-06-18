@@ -267,6 +267,90 @@
             border-bottom-color: var(--roble);
         }
 
+        /* === Punch: italic serif accent in hero === */
+        .hero-text-accent .hero-letter {
+            font-style: italic;
+        }
+
+        /* === Punch: hero proof bar === */
+        .hero-proof {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-top: 48px;
+        }
+
+        .hero-proof-item {
+            padding: 0 26px;
+            border-right: 1px solid var(--bone);
+            text-align: center;
+        }
+
+        .hero-proof-item:last-child { border-right: none; }
+
+        .hero-proof-num {
+            font-family: var(--mono);
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .hero-proof-num .accent { color: var(--roble); }
+
+        .hero-proof-label {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--stone);
+            margin-top: 8px;
+        }
+
+        /* === Punch: numbered feature cards === */
+        .feature-card {
+            padding-top: 28px;
+        }
+
+        .feature-index {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--roble);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .feature-card h3::after {
+            content: '\2197';
+            font-family: var(--sans);
+            font-size: 16px;
+            color: var(--roble);
+            opacity: 0;
+            transform: translate(-6px, 4px);
+            transition: opacity 0.4s var(--ease-reveal), transform 0.4s var(--ease-reveal);
+        }
+
+        .feature-card:hover h3::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        @media (max-width: 600px) {
+            .hero-proof-item { padding: 0 16px; }
+            .hero-proof-num { font-size: 19px; }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -336,6 +420,25 @@
                 <a href="work.html" class="btn btn-primary">View My Work</a>
                 <a href="story.html" class="btn btn-secondary">Read My Story</a>
             </div>
+
+            <div class="hero-proof">
+                <div class="hero-proof-item">
+                    <div class="hero-proof-num">16<span class="accent">+</span></div>
+                    <div class="hero-proof-label">Apps Shipped</div>
+                </div>
+                <div class="hero-proof-item">
+                    <div class="hero-proof-num">2</div>
+                    <div class="hero-proof-label">AI Products</div>
+                </div>
+                <div class="hero-proof-item">
+                    <div class="hero-proof-num">5</div>
+                    <div class="hero-proof-label">Books Published</div>
+                </div>
+                <div class="hero-proof-item">
+                    <div class="hero-proof-num">157</div>
+                    <div class="hero-proof-label">Books Read</div>
+                </div>
+            </div>
         </div>
 
         <!-- Scroll Indicator -->
@@ -353,16 +456,18 @@
 
             <div class="features-grid reveal-stagger">
                 <article class="feature-card reveal">
-                    <h3>Apps & Products</h3>
+                    <span class="feature-index">01</span>
+                    <h3>Apps &amp; Products</h3>
                     <p>
                         Building iOS apps and web platforms that real people actually use.
-                        From idea to MVP to launch — 11+ apps shipped, payments integrated,
+                        From idea to MVP to launch — 16+ apps shipped, payments integrated,
                         and products pitched to banks, companies, and government.
                     </p>
                 </article>
 
                 <article class="feature-card reveal">
-                    <h3>Exploring & Experimenting</h3>
+                    <span class="feature-index">02</span>
+                    <h3>Exploring &amp; Experimenting</h3>
                     <p>
                         Always going deeper. Machine learning, applied AI, generative visuals,
                         interactive experiences — whatever rabbit hole looks interesting this week.
@@ -371,10 +476,11 @@
                 </article>
 
                 <article class="feature-card reveal">
-                    <h3>Writing & Stories</h3>
+                    <span class="feature-index">03</span>
+                    <h3>Writing &amp; Stories</h3>
                     <p>
                         Published author exploring both children's wonder and grown-up questions.
-                        Currently reading 52 books a year and sharing what resonates.
+                        Reading 50+ books a year and sharing what resonates.
                     </p>
                 </article>
             </div>

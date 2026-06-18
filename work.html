@@ -109,6 +109,116 @@
             line-height: 1.7;
         }
 
+        /* === Punch: flagship image zoom + affordances === */
+        .flagship-image-wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 40px rgba(17, 17, 17, 0.10);
+        }
+
+        .flagship-image-wrap .flagship-image {
+            margin-bottom: 0;
+            transition: transform 0.7s var(--ease-reveal);
+        }
+
+        .flagship-item:hover .flagship-image {
+            transform: scale(1.045);
+        }
+
+        /* Index number on flagship */
+        .flagship-meta {
+            position: relative;
+        }
+
+        .flagship-category {
+            display: inline-block;
+            background: var(--roble-dim);
+            border: 1px solid var(--roble-border);
+            color: var(--roble);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        /* Animated 'Visit' arrow appended to the title */
+        .flagship-title::after {
+            content: ' \2197';
+            display: inline-block;
+            color: var(--roble);
+            opacity: 0;
+            transform: translate(-6px, 4px);
+            transition: opacity 0.3s var(--ease-snap), transform 0.3s var(--ease-snap);
+        }
+
+        .flagship-item:hover .flagship-title::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* === Punch: selected + complete hover polish === */
+        .selected-image,
+        .complete-grid-image {
+            transition: box-shadow 0.35s var(--ease-snap), filter 0.35s var(--ease-snap);
+        }
+
+        .selected-item:hover .selected-image,
+        .complete-grid-item:hover .complete-grid-image {
+            box-shadow: 0 12px 30px rgba(17, 17, 17, 0.14);
+        }
+
+        .selected-title::after {
+            content: ' \2197';
+            color: var(--roble);
+            opacity: 0;
+            transition: opacity 0.3s var(--ease-snap);
+        }
+
+        .selected-item:hover .selected-title::after {
+            opacity: 1;
+        }
+
+        /* === Punch: header stats strip === */
+        .work-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px 0;
+            margin-top: 36px;
+        }
+
+        .work-stat {
+            padding: 0 28px;
+            border-right: 1px solid var(--bone);
+            text-align: center;
+        }
+
+        .work-stat:last-child { border-right: none; }
+
+        .work-stat-num {
+            font-family: var(--mono);
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .work-stat-label {
+            font-family: var(--sans);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--stone);
+            margin-top: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .work-stat { padding: 0 18px; }
+            .work-stat-num { font-size: 20px; }
+        }
+
         /* === Tier 2: Selected Work === */
         .selected-section {
             margin-bottom: 80px;
@@ -308,16 +418,52 @@
 <div class="work-container">
     <!-- Page Header -->
     <div class="work-header reveal">
-        <h1>Work</h1>
-        <p>Apps, books, experiments, and everything in between. Built at the intersection of art and technology.</p>
+        <h1>Things I've shipped.</h1>
+        <p>Apps, AI products, books, and experiments — built at the intersection of art and technology.</p>
+        <div class="work-stats">
+            <div class="work-stat">
+                <div class="work-stat-num">16+</div>
+                <div class="work-stat-label">Apps Shipped</div>
+            </div>
+            <div class="work-stat">
+                <div class="work-stat-num">2</div>
+                <div class="work-stat-label">AI Products</div>
+            </div>
+            <div class="work-stat">
+                <div class="work-stat-num">5</div>
+                <div class="work-stat-label">Books Published</div>
+            </div>
+            <div class="work-stat">
+                <div class="work-stat-num">∞</div>
+                <div class="work-stat-label">Experiments</div>
+            </div>
+        </div>
     </div>
 
     <!-- Tier 1: Flagship -->
     <section class="flagship-section">
         <p class="section-label reveal">Flagship</p>
 
+        <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="flagship-item reveal">
+            <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div></div>
+            <div class="flagship-meta">
+                <p class="flagship-category">AI Market Intelligence</p>
+                <h2 class="flagship-title">Pulso</h2>
+                <p class="flagship-desc">Synthetic market research for LATAM. Simulate how thousands of Mexican consumers react to your concept, message, or price &mdash; in hours, not weeks. Built on methods validated by Stanford and Colgate-Palmolive.</p>
+            </div>
+        </a>
+
+        <a href="https://vocera.mx" target="_blank" rel="noopener" class="flagship-item reveal">
+            <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div></div>
+            <div class="flagship-meta">
+                <p class="flagship-category">AI Voice &times; SaaS</p>
+                <h2 class="flagship-title">Vocera</h2>
+                <p class="flagship-desc">An AI voice agent that answers every call and works your lists &mdash; qualifying, booking, and following up over WhatsApp in natural Mexican Spanish, 24/7. Every conversation transcribed to your dashboard.</p>
+            </div>
+        </a>
+
         <a href="Abundia.html" class="flagship-item reveal">
-            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div>
+            <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div></div>
             <div class="flagship-meta">
                 <p class="flagship-category">Finance &amp; AI</p>
                 <h2 class="flagship-title">AbundIA</h2>
@@ -325,23 +471,6 @@
             </div>
         </a>
 
-        <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" rel="noopener" class="flagship-item reveal">
-            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Andres_Noireau.avif')"></div>
-            <div class="flagship-meta">
-                <p class="flagship-category">AI Art</p>
-                <h2 class="flagship-title">Andr&eacute;s Noireau</h2>
-                <p class="flagship-desc">An AI-generated artistic identity exploring how machine learning can create compelling human narratives. Where does the artist end and the algorithm begin?</p>
-            </div>
-        </a>
-
-        <a href="https://komercia.mx/" target="_blank" rel="noopener" class="flagship-item reveal">
-            <div class="flagship-image" style="background-image: url('assets/Work_Covers/Komercia.webp')"></div>
-            <div class="flagship-meta">
-                <p class="flagship-category">Supply Chain &times; MIT</p>
-                <h2 class="flagship-title">Komercia</h2>
-                <p class="flagship-desc">Supply chain optimization platform developed with MIT LIFT Lab. Data-driven research into how technology reshapes global logistics networks.</p>
-            </div>
-        </a>
     </section>
 
     <div class="tier-separator reveal"></div>
@@ -351,6 +480,27 @@
         <p class="section-label reveal">Selected Work</p>
 
         <div class="selected-grid">
+            <a href="https://pulso-latam.com/politica" target="_blank" rel="noopener" class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg'); background-position: left center;"></div>
+                <p class="selected-category">Electoral Intelligence</p>
+                <h3 class="selected-title">Pulso &middot; Pol&iacute;tica</h3>
+                <p class="selected-desc">Simulated public opinion for campaigns. Test a speech, proposal, or law against 72 Mexican archetypes calibrated to the INEGI 2020 census &mdash; sentiment by state in minutes.</p>
+            </a>
+
+            <a href="https://komercia.mx/" target="_blank" rel="noopener" class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Komercia.webp')"></div>
+                <p class="selected-category">Supply Chain &times; MIT</p>
+                <h3 class="selected-title">Komercia</h3>
+                <p class="selected-desc">Supply chain optimization platform built with MIT LIFT Lab. Data-driven research into how technology reshapes global logistics.</p>
+            </a>
+
+            <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" rel="noopener" class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Andres_Noireau.avif')"></div>
+                <p class="selected-category">AI Art</p>
+                <h3 class="selected-title">Andr&eacute;s Noireau</h3>
+                <p class="selected-desc">An AI-generated artistic identity. Where does the artist end and the algorithm begin?</p>
+            </a>
+
             <a href="https://apps.apple.com/es/app/tribu/id6748625305" target="_blank" rel="noopener" class="selected-item reveal">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Tribu.webp')"></div>
                 <p class="selected-category">Social &amp; Wellness</p>
@@ -409,6 +559,31 @@
         <p class="section-label reveal">Complete Works</p>
 
         <div class="complete-grid reveal-stagger">
+            <a href="https://apps.apple.com/us/app/kairos-convene-your-council/id6756202087" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Kairos.webp')"></div>
+                <p class="complete-grid-title">Kairos</p>
+                <p class="complete-grid-desc">Convene a personal council of thinkers, athletes, and mentors. AI advisors for any decision.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/am%C3%A9n/id6747411056" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Amen.webp')"></div>
+                <p class="complete-grid-title">Am&eacute;n</p>
+                <p class="complete-grid-desc">A daily Catholic companion. Prayer, scripture, and reflection woven into every day.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/marea-baja/id6749040420" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Marea_Baja.webp')"></div>
+                <p class="complete-grid-title">Marea Baja</p>
+                <p class="complete-grid-desc">Emotional support for the postpartum tide. A gentle companion for new mothers.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/solsticio/id6775352531" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Solsticio.webp')"></div>
+                <p class="complete-grid-title">Solsticio</p>
+                <p class="complete-grid-desc">Track menopause symptoms with clarity. Log patterns and understand the transition.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/morph/id6760213384" target="_blank" rel="noopener" class="complete-grid-item reveal">
+                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Morph.webp')"></div>
+                <p class="complete-grid-title">Morph</p>
+                <p class="complete-grid-desc">A minimalist game of wit. Morph shapes and connections through escalating puzzles.</p>
+            </a>
             <a href="https://sniffpots.crissteinman.com" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/SniffPots.webp')"></div>
                 <p class="complete-grid-title">SniffPots</p>
