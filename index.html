@@ -3,14 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antonio Murrieta - Builder, Entrepreneur, Curious by Default</title>
-    <meta name="description" content="Builder, entrepreneur, and curious mind shipping iOS apps, AI-powered experiences, and creative projects from Mexico City.">
+    <title>Antonio Murrieta — Builder, Entrepreneur & Author from Mexico City</title>
+    <meta name="description" content="Antonio Murrieta is a builder and entrepreneur from Mexico City shipping iOS apps, AI products (Pulso, Vocera), and books. 16+ apps shipped, MIT-backed research, Stanford alum.">
+    <meta name="author" content="Antonio Murrieta">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://antoniomurrieta.com/">
+    <meta name="keywords" content="Antonio Murrieta, Carlos Antonio Murrieta, MurrietaLabs, iOS developer Mexico, AI products, Pulso, Vocera, builder, entrepreneur">
 
-    <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Antonio Murrieta - Builder, Entrepreneur, Curious by Default">
-    <meta property="og:description" content="Builder, entrepreneur, and curious mind shipping iOS apps, AI-powered experiences, and creative projects from Mexico City.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Antonio Murrieta — Builder, Entrepreneur & Author">
+    <meta property="og:description" content="Builder and entrepreneur from Mexico City shipping iOS apps, AI products, and books — at the intersection of art and technology.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://antoniomurrieta.com">
+    <meta property="og:url" content="https://antoniomurrieta.com/">
+    <meta property="og:site_name" content="Antonio Murrieta">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Antonio Murrieta — builder, entrepreneur, and author.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antonio Murrieta — Builder, Entrepreneur & Author">
+    <meta name="twitter:description" content="Builder from Mexico City shipping iOS apps, AI products, and books.">
+    <meta name="twitter:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Antonio Murrieta",
+        "alternateName": "Carlos Antonio Murrieta Steinman",
+        "url": "https://antoniomurrieta.com/",
+        "image": "https://antoniomurrieta.com/assets/og-image.jpg",
+        "jobTitle": "Builder & Entrepreneur",
+        "description": "Builder and entrepreneur from Mexico City shipping iOS apps, AI products, and books.",
+        "worksFor": { "@type": "Organization", "name": "MurrietaLabs", "url": "https://murrietalabs.com" },
+        "homeLocation": { "@type": "Place", "name": "Mexico City, Mexico" },
+        "alumniOf": [
+            { "@type": "EducationalOrganization", "name": "Tecnológico de Monterrey" },
+            { "@type": "EducationalOrganization", "name": "Stanford University" }
+        ],
+        "knowsLanguage": ["Spanish", "English"],
+        "sameAs": [
+            "https://github.com/Antonio-MS-Coder",
+            "https://www.linkedin.com/in/antonio-murrieta",
+            "https://instagram.com/tono_cams",
+            "https://apps.apple.com/us/developer/carlos-antonio-murrieta-steinman/id1787441282",
+            "https://murrietalabs.com"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Antonio Murrieta",
+        "url": "https://antoniomurrieta.com/"
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +87,11 @@
 
         .hero-title {
             font-family: var(--serif);
-            font-size: clamp(48px, 8vw, 80px);
+            font-size: clamp(52px, 9vw, 108px);
             font-weight: 300;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-            line-height: 1.1;
+            letter-spacing: -3px;
+            margin-bottom: 28px;
+            line-height: 1.02;
             color: var(--ink);
         }
 
@@ -272,6 +324,62 @@
             font-style: italic;
         }
 
+        /* === Bold Statement: project marquee === */
+        .marquee {
+            overflow: hidden;
+            border-top: 1px solid var(--bone);
+            border-bottom: 1px solid var(--bone);
+            background: var(--linen);
+            padding: 26px 0;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        /* fade edges so names dissolve in/out */
+        .marquee::before,
+        .marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .marquee::before { left: 0; background: linear-gradient(90deg, var(--linen), transparent); }
+        .marquee::after { right: 0; background: linear-gradient(270deg, var(--linen), transparent); }
+
+        .marquee-track {
+            display: inline-flex;
+            align-items: center;
+            animation: marquee-scroll 48s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+
+        .marquee-item {
+            font-family: var(--serif);
+            font-size: clamp(26px, 3.4vw, 42px);
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: var(--ink);
+            text-decoration: none;
+            padding: 0 30px;
+            transition: color 0.25s var(--ease-snap);
+        }
+        .marquee-item:hover { color: var(--roble); }
+        .marquee-sep { color: var(--roble); font-size: 22px; vertical-align: middle; }
+
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track { animation: none; }
+        }
+
         /* === Punch: hero proof bar === */
         .hero-proof {
             display: flex;
@@ -412,7 +520,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title" id="heroTitle">
-                <span class="hero-text" data-text="Building at the intersection of ">Building at the intersection of </span>
+                <span class="hero-text" data-text="I build at the intersection of ">I build at the intersection of </span>
                 <span class="hero-text hero-text-accent" data-text="art &amp; technology.">art &amp; technology.</span>
             </h1>
             <p class="hero-subtitle">Builder. Entrepreneur. Curious by default.</p>
@@ -448,6 +556,37 @@
             </svg>
         </div>
     </section>
+
+    <!-- Project Marquee -->
+    <div class="marquee" aria-label="Selected projects">
+        <div class="marquee-track">
+            <a class="marquee-item" href="work.html">Pulso</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Vocera</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">AbundIA</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Komercia</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Tribu</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">FitMental</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Contrario</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Kairos</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">El Peso del Aire</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Capi y el Coraz&oacute;n</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">LCK Experience</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Andr&eacute;s Noireau</a><span class="marquee-sep">&#10022;</span>
+            <!-- duplicate set for seamless loop -->
+            <a class="marquee-item" href="work.html">Pulso</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Vocera</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">AbundIA</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Komercia</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Tribu</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">FitMental</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Contrario</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Kairos</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">El Peso del Aire</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Capi y el Coraz&oacute;n</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">LCK Experience</a><span class="marquee-sep">&#10022;</span>
+            <a class="marquee-item" href="work.html">Andr&eacute;s Noireau</a><span class="marquee-sep">&#10022;</span>
+        </div>
+    </div>
 
     <!-- Features Section -->
     <section class="features" id="features">

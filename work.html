@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work - Antonio Murrieta</title>
-    <meta name="description" content="Explore the creative projects of Antonio Murrieta - from digital art to interactive experiences, books to apps.">
+    <title>Work — Antonio Murrieta | Apps, AI Products & Books</title>
+    <meta name="description" content="The portfolio of Antonio Murrieta: 16+ iOS apps, AI products (Pulso, Vocera), MIT-backed research, and published books — built at the intersection of art and technology.">
+    <meta name="author" content="Antonio Murrieta">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://antoniomurrieta.com/work.html">
 
-    <!-- SEO & Open Graph -->
-    <meta property="og:title" content="Work - Antonio Murrieta">
-    <meta property="og:description" content="A curated portfolio of digital products, creative projects, and published works crafted at the intersection of art and technology.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Work — Antonio Murrieta | Apps, AI Products & Books">
+    <meta property="og:description" content="16+ iOS apps, AI products, MIT-backed research, and published books — built at the intersection of art and technology.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://antoniomurrieta.com/work">
+    <meta property="og:url" content="https://antoniomurrieta.com/work.html">
+    <meta property="og:site_name" content="Antonio Murrieta">
+    <meta property="og:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Antonio Murrieta — builder, entrepreneur, and author.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Work — Antonio Murrieta">
+    <meta name="twitter:description" content="16+ iOS apps, AI products, and published books.">
+    <meta name="twitter:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,12 +55,57 @@
         }
 
         .work-header p {
-            font-family: var(--sans);
-            font-size: 15px;
+            font-family: var(--serif);
+            font-size: 19px;
             color: var(--stone);
-            max-width: 480px;
+            max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
+        }
+
+        /* Personal sign-off */
+        .work-signoff {
+            text-align: center;
+            max-width: 540px;
+            margin: 96px auto 0;
+            padding-top: 56px;
+            border-top: 1px solid var(--bone);
+        }
+
+        .work-signoff p {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-style: italic;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .work-signoff a {
+            color: var(--roble);
+            text-decoration: none;
+            border-bottom: 1px solid var(--roble-border);
+            transition: border-color 0.2s var(--ease-snap);
+        }
+
+        .work-signoff a:hover { border-bottom-color: var(--roble); }
+
+        .work-signoff-name {
+            font-style: normal;
+            font-size: 17px;
+            color: var(--ink);
+            margin-top: 18px;
+        }
+
+        /* Human note under each section label */
+        .section-note {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-style: italic;
+            color: var(--stone);
+            text-align: center;
+            max-width: 520px;
+            margin: -32px auto 48px;
+            line-height: 1.6;
         }
 
         /* === Tier 1: Flagship === */
@@ -419,7 +478,7 @@
     <!-- Page Header -->
     <div class="work-header reveal">
         <h1>Things I've shipped.</h1>
-        <p>Apps, AI products, books, and experiments — built at the intersection of art and technology.</p>
+        <p>Everything here started as a question I couldn't shake. Some became companies, some became apps, a few became books &mdash; and plenty were just me learning by building, late at night, with too many tabs open.</p>
         <div class="work-stats">
             <div class="work-stat">
                 <div class="work-stat-num">16+</div>
@@ -442,7 +501,8 @@
 
     <!-- Tier 1: Flagship -->
     <section class="flagship-section">
-        <p class="section-label reveal">Flagship</p>
+        <p class="section-label reveal">What I'm building now</p>
+        <p class="section-note reveal">My focus right now &mdash; AI products I'm building in the open.</p>
 
         <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="flagship-item reveal">
             <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div></div>
@@ -477,14 +537,15 @@
 
     <!-- Tier 2: Selected Work -->
     <section class="selected-section">
-        <p class="section-label reveal">Selected Work</p>
+        <p class="section-label reveal">Work I'm proud of</p>
+        <p class="section-note reveal">Apps, books, and projects that meant something to make.</p>
 
         <div class="selected-grid">
-            <a href="https://pulso-latam.com/politica" target="_blank" rel="noopener" class="selected-item reveal">
-                <div class="selected-image" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg'); background-position: left center;"></div>
-                <p class="selected-category">Electoral Intelligence</p>
-                <h3 class="selected-title">Pulso &middot; Pol&iacute;tica</h3>
-                <p class="selected-desc">Simulated public opinion for campaigns. Test a speech, proposal, or law against 72 Mexican archetypes calibrated to the INEGI 2020 census &mdash; sentiment by state in minutes.</p>
+            <a href="https://apps.apple.com/us/app/kairos-convene-your-council/id6756202087" target="_blank" rel="noopener" class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Kairos.webp')"></div>
+                <p class="selected-category">AI &middot; iOS App</p>
+                <h3 class="selected-title">Kairos</h3>
+                <p class="selected-desc">Convene a personal council of thinkers, athletes, and mentors &mdash; AI advisors you can turn to for any decision.</p>
             </a>
 
             <a href="https://komercia.mx/" target="_blank" rel="noopener" class="selected-item reveal">
@@ -522,6 +583,13 @@
                 <p class="selected-desc">A contrarian news reader for founders. Daily ideas that challenge default thinking.</p>
             </a>
 
+            <a href="https://pulso-latam.com/politica" target="_blank" rel="noopener" class="selected-item reveal">
+                <div class="selected-image" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg'); background-position: left center;"></div>
+                <p class="selected-category">Electoral Intelligence</p>
+                <h3 class="selected-title">Pulso &middot; Pol&iacute;tica</h3>
+                <p class="selected-desc">The political vertical of Pulso. Test a speech, proposal, or law against 72 Mexican archetypes calibrated to the INEGI 2020 census &mdash; sentiment by state in minutes.</p>
+            </a>
+
             <a href="https://a.co/d/04LULkG" target="_blank" rel="noopener" class="selected-item reveal">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')"></div>
                 <p class="selected-category">Fine Art Photobook</p>
@@ -556,14 +624,10 @@
 
     <!-- Tier 3: Complete Works -->
     <section class="complete-section">
-        <p class="section-label reveal">Complete Works</p>
+        <p class="section-label reveal">Everything else</p>
+        <p class="section-note reveal">The full catalog &mdash; experiments, games, side quests, and client work.</p>
 
         <div class="complete-grid reveal-stagger">
-            <a href="https://apps.apple.com/us/app/kairos-convene-your-council/id6756202087" target="_blank" rel="noopener" class="complete-grid-item reveal">
-                <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Kairos.webp')"></div>
-                <p class="complete-grid-title">Kairos</p>
-                <p class="complete-grid-desc">Convene a personal council of thinkers, athletes, and mentors. AI advisors for any decision.</p>
-            </a>
             <a href="https://apps.apple.com/us/app/am%C3%A9n/id6747411056" target="_blank" rel="noopener" class="complete-grid-item reveal">
                 <div class="complete-grid-image" style="background-image: url('assets/Work_Covers/Amen.webp')"></div>
                 <p class="complete-grid-title">Am&eacute;n</p>
@@ -641,6 +705,11 @@
             </a>
         </div>
     </section>
+
+    <div class="work-signoff reveal">
+        <p>More on the way &mdash; I tend to ship something new almost every week. If any of this resonates, <a href="connect.html">say hi</a>.</p>
+        <p class="work-signoff-name">&mdash; Antonio</p>
+    </div>
 </div>
 
 <!-- Footer -->
