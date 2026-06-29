@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Library - Antonio Murrieta</title>
     <meta name="description" content="Antonio's digital library - 52 books a year. Reviews, summaries, and recommendations from a voracious reader.">
 
@@ -557,6 +557,22 @@
             object-fit: contain;
             display: block;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Soft blurred cover fill behind the cover — used on mobile so the
+           cover never floats in an empty dark band. */
+        .modal-cover-backdrop {
+            display: none;
+            position: absolute;
+            inset: -8%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(30px) saturate(1.15) brightness(0.5);
+            transform: scale(1.12);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .modal-cover-page .modal-cover-emoji {
@@ -992,23 +1008,38 @@
 
             .modal-content {
                 margin: 0;
-                max-height: 100vh;
                 border-radius: 0;
-                height: 100vh;
                 max-width: 100%;
+                height: 100vh;            /* fallback */
+                height: 100dvh;           /* fits the visible area, below the browser toolbar */
+                max-height: 100dvh;
             }
 
             .modal-spread {
                 flex-direction: column;
                 max-height: none;
-                height: 100vh;
+                height: 100vh;            /* fallback */
+                height: 100dvh;
             }
 
             .modal-cover-page {
                 width: 100%;
-                height: 240px;
-                flex-shrink: 0;
-                padding: 24px;
+                height: 34dvh;
+                min-height: 210px;
+                max-height: 320px;
+                flex: 0 0 auto;
+                padding: calc(18px + env(safe-area-inset-top, 0px)) 24px 18px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .modal-cover-backdrop {
+                display: block;
+            }
+
+            .modal-cover-page img {
+                border-radius: 3px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
             }
 
             .modal-cover-page::after {
@@ -1016,7 +1047,7 @@
             }
 
             .modal-notes-page {
-                padding: 24px 20px;
+                padding: 26px 20px calc(48px + env(safe-area-inset-bottom, 0px));
                 max-height: none;
                 flex: 1;
                 overflow-y: auto;
@@ -1055,10 +1086,10 @@
             }
 
             .modal-close {
-                top: 10px;
-                right: 10px;
-                width: 32px;
-                height: 32px;
+                top: calc(10px + env(safe-area-inset-top, 0px));
+                right: 12px;
+                width: 34px;
+                height: 34px;
                 font-size: 20px;
             }
         }
@@ -1479,6 +1510,14 @@
             // Build cover page (left side)
             var coverPage = modal.querySelector('#modalCoverPage');
             coverPage.textContent = '';
+
+            // Blurred fill behind the cover (visible on mobile only via CSS).
+            var coverBackdrop = document.createElement('div');
+            coverBackdrop.className = 'modal-cover-backdrop';
+            if (book.coverImage) {
+                coverBackdrop.style.backgroundImage = 'url("' + book.coverImage + '")';
+            }
+            coverPage.appendChild(coverBackdrop);
 
             var coverImg = document.createElement('img');
             coverImg.src = book.coverImage || '';
