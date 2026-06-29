@@ -610,6 +610,56 @@
             margin-bottom: 32px;
             border-bottom: 1px solid rgba(201, 168, 76, 0.15);
             padding-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .modal-heading-text {
+            min-width: 0;
+        }
+
+        /* Share button — warm editorial pill */
+        .modal-share {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 14px;
+            margin-top: 2px;
+            background: transparent;
+            border: 1px solid var(--lib-accent);
+            color: var(--lib-accent);
+            font-family: var(--sans);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .modal-share svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .modal-share:hover {
+            background: var(--lib-accent);
+            color: var(--lib-bg);
+        }
+
+        .modal-share.copied {
+            background: var(--lib-accent);
+            color: var(--lib-bg);
+            border-color: var(--lib-accent);
         }
 
         .modal-title {
@@ -1124,8 +1174,14 @@
                 <div class="modal-cover-page" id="modalCoverPage"></div>
                 <div class="modal-notes-page">
                     <div class="modal-header">
-                        <h2 class="modal-title">Book Title</h2>
-                        <p class="modal-author">Author Name</p>
+                        <div class="modal-heading-text">
+                            <h2 class="modal-title">Book Title</h2>
+                            <p class="modal-author">Author Name</p>
+                        </div>
+                        <button class="modal-share" id="modalShare" type="button" aria-label="Share this book">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+                            <span class="modal-share-label">Share</span>
+                        </button>
                     </div>
                     <div class="modal-body"></div>
                 </div>
@@ -1140,6 +1196,35 @@
         let currentFilter = 'all';
         let currentYearFilter = 'all';
         let currentSearchTerm = '';
+        let currentModalBook = null;
+
+        // Turn a title into a clean, shareable URL slug.
+        // "Haz Lo Que Importa" -> "haz-lo-que-importa", "Think Twice" -> "think-twice"
+        function slugify(str) {
+            return String(str)
+                .normalize('NFD').replace(/[̀-ͯ]/g, '') // strip accents
+                .toLowerCase().trim()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        // Find a book from a shared link's ?book= value.
+        // Accepts the slug (preferred), a numeric id, or a forgiving prefix match.
+        function findBookBySlug(value) {
+            if (!value) return null;
+            value = String(value).toLowerCase();
+            if (/^\d+$/.test(value)) {
+                var byId = allBooks.find(function(b) { return String(b.id) === value; });
+                if (byId) return byId;
+            }
+            return allBooks.find(function(b) { return slugify(b.title) === value; })
+                || allBooks.find(function(b) { return slugify(b.title).indexOf(value) === 0; })
+                || null;
+        }
+
+        function bookShareUrl(book) {
+            return window.location.origin + window.location.pathname + '?book=' + slugify(book.title);
+        }
 
         // Fetch books from JSON
         async function loadBooksData() {
@@ -1221,6 +1306,7 @@
                 updateStatistics();
                 renderBooks();
                 setupEventListeners();
+                openBookFromUrl();
             } catch (error) {
                 console.error('Error initializing library:', error);
             }
@@ -1381,13 +1467,14 @@
                 card.addEventListener('click', function() {
                     var bookId = parseInt(card.dataset.bookId);
                     var book = allBooks.find(function(b) { return b.id === bookId; });
-                    if (book) showBookModal(book);
+                    if (book) openBook(book);
                 });
             });
         }
 
-        function showBookModal(book) {
+        function renderBookModal(book) {
             var modal = document.getElementById('bookModal');
+            currentModalBook = book;
 
             // Build cover page (left side)
             var coverPage = modal.querySelector('#modalCoverPage');
@@ -1529,6 +1616,96 @@
             document.body.style.overflow = 'hidden';
         }
 
+        function closeModalUI() {
+            var modal = document.getElementById('bookModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            currentModalBook = null;
+            resetShareButton();
+        }
+
+        // Open a book AND reflect it in the URL so the address bar is always shareable.
+        function openBook(book, opts) {
+            opts = opts || {};
+            renderBookModal(book);
+            resetShareButton();
+            var url = window.location.pathname + '?book=' + slugify(book.title);
+            if (opts.fromUrl) {
+                history.replaceState({ book: slugify(book.title) }, '', url);
+            } else {
+                history.pushState({ book: slugify(book.title) }, '', url);
+            }
+        }
+
+        // Close the book and clear ?book= from the URL.
+        function closeBook() {
+            closeModalUI();
+            if (new URLSearchParams(window.location.search).get('book')) {
+                history.pushState({}, '', window.location.pathname);
+            }
+        }
+
+        // If the page was opened with ?book=slug, jump straight to that book.
+        function openBookFromUrl() {
+            var slug = new URLSearchParams(window.location.search).get('book');
+            if (!slug) return;
+            var book = findBookBySlug(slug);
+            if (book) openBook(book, { fromUrl: true });
+        }
+
+        function resetShareButton() {
+            var btn = document.getElementById('modalShare');
+            if (!btn) return;
+            btn.classList.remove('copied');
+            var label = btn.querySelector('.modal-share-label');
+            if (label) label.textContent = 'Share';
+        }
+
+        function flashShareCopied() {
+            var btn = document.getElementById('modalShare');
+            if (!btn) return;
+            btn.classList.add('copied');
+            var label = btn.querySelector('.modal-share-label');
+            if (label) label.textContent = 'Link copied';
+            window.clearTimeout(btn._copyTimer);
+            btn._copyTimer = window.setTimeout(resetShareButton, 2000);
+        }
+
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(flashShareCopied, function() { legacyCopy(text); });
+            } else {
+                legacyCopy(text);
+            }
+        }
+
+        function legacyCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;top:-1000px;opacity:0;';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            try { document.execCommand('copy'); flashShareCopied(); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        // Phone: native share sheet (tap -> copy -> paste into your IG link sticker).
+        // Desktop: copy the link with a "Link copied" confirmation.
+        function shareCurrentBook() {
+            if (!currentModalBook) return;
+            var url = bookShareUrl(currentModalBook);
+            if (navigator.share) {
+                navigator.share({
+                    title: currentModalBook.title,
+                    text: '“' + currentModalBook.title + '” by ' + currentModalBook.author + ' — from Antonio’s library',
+                    url: url
+                }).catch(function() {});
+            } else {
+                copyToClipboard(url);
+            }
+        }
+
         function setupEventListeners() {
             var menuToggle = document.getElementById('menuToggle');
             var navLinks = document.getElementById('navLinks');
@@ -1579,24 +1756,30 @@
 
             var modal = document.getElementById('bookModal');
             var modalClose = document.getElementById('modalClose');
+            var modalShare = document.getElementById('modalShare');
 
-            modalClose.addEventListener('click', function() {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
+            modalClose.addEventListener('click', closeBook);
 
             modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
+                if (e.target === modal) closeBook();
             });
 
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+                if (e.key === 'Escape' && modal.classList.contains('active')) closeBook();
+            });
+
+            if (modalShare) {
+                modalShare.addEventListener('click', shareCurrentBook);
+            }
+
+            // Back / forward buttons: sync the open book to whatever the URL says.
+            window.addEventListener('popstate', function() {
+                var slug = new URLSearchParams(window.location.search).get('book');
+                if (slug) {
+                    var book = findBookBySlug(slug);
+                    if (book) { renderBookModal(book); resetShareButton(); return; }
                 }
+                closeModalUI();
             });
         }
 
