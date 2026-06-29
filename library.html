@@ -848,11 +848,19 @@
 
         /* Responsive — tablet */
         @media (max-width: 768px) {
-            /* Uniform grain on mobile — no directional mask */
+            /* Mobile grain: the desktop 200px tile reads as too coarse on a
+               small high-DPI screen. Smaller tile = finer grain, lighter too. */
             body::before {
                 -webkit-mask-image: none;
                 mask-image: none;
-                opacity: 0.14;
+                opacity: 0.09;
+                background-size: 90px 90px;
+            }
+
+            /* Match the finer grain inside the book modal on mobile. */
+            .modal-content::before {
+                opacity: 0.06;
+                background-size: 90px 90px;
             }
 
             /* Kill horizontal overflow */
