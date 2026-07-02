@@ -814,16 +814,16 @@
 
         <!-- Gallery Walls -->
         <div class="walls">
-            <a href="Music_1.html" target="_blank" class="experiment wall-full reveal" style="text-decoration: none; color: inherit;">
+            <div class="experiment wall-full reveal" data-experiment="instrument" role="button" tabindex="0">
                 <div class="experiment-preview"><canvas id="previewInstrument" width="1120" height="300"></canvas></div>
                 <h3 class="experiment-title">Invisible Instrument</h3>
                 <div class="plaque">
                     <p class="plaque-id">No. 01 <span class="accent">&mdash;</span> 2025</p>
-                    <p class="plaque-medium">AI gesture tracking &middot; Web Audio</p>
-                    <p class="plaque-note">Play music with your hands and face. No instrument, no training, no excuses.</p>
+                    <p class="plaque-medium">Theremin &middot; Web Audio</p>
+                    <p class="plaque-note">Move to play. No instrument, no training, no excuses.</p>
                 </div>
-                <span class="experiment-cta">Open Experience &#8599;</span>
-            </a>
+                <span class="experiment-cta">Play &rarr;</span>
+            </div>
 
             <div class="wall-pair">
                 <div class="experiment reveal" data-experiment="typography" role="button" tabindex="0">
@@ -872,13 +872,61 @@
                     <span class="experiment-cta">Touch &rarr;</span>
                 </div>
             </div>
+
+            <div class="wall-pair">
+                <div class="experiment reveal" data-experiment="pendulum" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewPendulum" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">El P&eacute;ndulo</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 06 <span class="accent">&mdash;</span> 2026</p>
+                        <p class="plaque-medium">Harmonograph &middot; Ink &amp; math</p>
+                        <p class="plaque-note">Two pendulums, one pen. Pull it back and let go.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
+
+                <div class="experiment reveal" data-experiment="fireflies" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewFireflies" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">Luci&eacute;rnagas</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 07 <span class="accent">&mdash;</span> 2026</p>
+                        <p class="plaque-medium">Flocking &middot; Ember light</p>
+                        <p class="plaque-note">They follow you. Leave a light on and they gather.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
+            </div>
+
+            <div class="wall-pair">
+                <div class="experiment reveal" data-experiment="lamp" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewLamp" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">La L&aacute;mpara</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 08 <span class="accent">&mdash;</span> 2026</p>
+                        <p class="plaque-medium">Light &amp; shadow &middot; My words</p>
+                        <p class="plaque-note">You hold the lamp. The words hold still.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
+
+                <div class="experiment reveal" data-experiment="torno" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewTorno" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">El Torno</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 09 <span class="accent">&mdash;</span> 2026</p>
+                        <p class="plaque-medium">Potter's wheel &middot; Wet clay</p>
+                        <p class="plaque-note">Hold the clay while it spins. Nobody's vase comes out the same.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
+            </div>
         </div>
 
         <!-- Interactive Canvas -->
         <div class="canvas-section">
             <h2 class="canvas-title">THE GUESTBOOK WALL</h2>
             <div class="plaque guestwall-plaque">
-                <p class="plaque-id">No. 06 <span class="accent">&mdash;</span> 2026</p>
+                <p class="plaque-id">No. 10 <span class="accent">&mdash;</span> 2026</p>
                 <p class="plaque-medium">Your hand &middot; My canvas</p>
                 <p class="plaque-note">Draw something. Leave a mark on the museum.</p>
             </div>
@@ -1029,6 +1077,7 @@
                             <button onclick="if(waveSystem) waveSystem.addWave()" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--bone);background:var(--linen);cursor:pointer;font-size:18px;">+</button>
                         </div>
                     </div>
+                    <button class="experiment-btn" id="wavesSoundBtn" onclick="toggleWavesSound()">Sound: Off</button>
                     <button class="experiment-btn" onclick="randomizeWaves()">Randomize</button>
                     <button class="experiment-btn" onclick="pauseWaves()" id="pauseWavesBtn">Pause</button>
                 </div>
@@ -1169,8 +1218,10 @@
                         <label>Trails</label>
                         <input type="checkbox" id="gravTrails" checked onchange="gravToggleTrails()">
                     </div>
+                    <button class="experiment-btn" id="gravSoundBtn" onclick="toggleGravitySound()">Sound: Off</button>
                     <button class="experiment-btn" onclick="gravTogglePause()" id="gravPauseBtn">Pause</button>
                     <button class="experiment-btn" onclick="gravAddSystem()">Add System</button>
+                    <button class="experiment-btn" onclick="gravSolarSystem()">Solar system</button>
                     <button class="experiment-btn" onclick="gravClear()">Clear All</button>
                 </div>
             </div>
@@ -1178,6 +1229,174 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+
+    <!-- Invisible Instrument Modal -->
+    <div class="experiment-modal" id="instrumentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Invisible Instrument</h2>
+                <div class="modal-nav">
+                    <button class="modal-nav-btn modal-prev" aria-label="Previous experiment" onclick="navigateModal(-1)">&larr;</button>
+                    <button class="modal-nav-btn modal-next" aria-label="Next experiment" onclick="navigateModal(1)">&rarr;</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('instrumentModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="instrumentCanvas" style="cursor:crosshair;"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>VOICE</label>
+                        <select id="thereminWave" style="padding:6px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;cursor:pointer;">
+                            <option value="sine">Pure</option>
+                            <option value="triangle">Warm</option>
+                            <option value="sawtooth">Reedy</option>
+                        </select>
+                    </div>
+                    <div class="param-control">
+                        <label>Note <span id="thereminNote" style="font-family:var(--mono);color:var(--roble);">&mdash;</span></label>
+                        <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="thereminQuantize" checked> In tune</label>
+                    </div>
+                    <div class="param-control">
+                        <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="thereminEcho" checked> Echo</label>
+                    </div>
+                    <a class="experiment-btn" href="Music_1.html" target="_blank" style="text-decoration:none;display:inline-block;">Camera version &#8599;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- El Pendulo Modal -->
+    <div class="experiment-modal" id="pendulumModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">El P&eacute;ndulo</h2>
+                <div class="modal-nav">
+                    <button class="modal-nav-btn modal-prev" aria-label="Previous experiment" onclick="navigateModal(-1)">&larr;</button>
+                    <button class="modal-nav-btn modal-next" aria-label="Next experiment" onclick="navigateModal(1)">&rarr;</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('pendulumModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="pendulumCanvas" style="touch-action:none;cursor:crosshair;"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Frequency X</label>
+                        <input type="range" id="pendFx" min="1" max="8" step="0.01" value="3.01" onchange="restartPendulum()">
+                    </div>
+                    <div class="param-control">
+                        <label>Frequency Y</label>
+                        <input type="range" id="pendFy" min="1" max="8" step="0.01" value="2" onchange="restartPendulum()">
+                    </div>
+                    <div class="param-control">
+                        <label>Decay</label>
+                        <input type="range" id="pendDecay" min="0.0005" max="0.008" step="0.0005" value="0.002" onchange="restartPendulum()">
+                    </div>
+                    <div class="param-control">
+                        <label>INK</label>
+                        <select id="pendInk" onchange="restartPendulum()" style="padding:6px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;cursor:pointer;">
+                            <option value="#A8916F">Gold</option>
+                            <option value="#23716F">Teal</option>
+                            <option value="#E8E4DD">Bone</option>
+                        </select>
+                    </div>
+                    <button class="experiment-btn" onclick="randomPendulum()">Randomize</button>
+                    <button class="experiment-btn" onclick="savePendulum()">Save trace</button>
+                    <span style="font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--stone);align-self:center;">PULL THE PEN &middot; LET GO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luciernagas Modal -->
+    <div class="experiment-modal" id="firefliesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Luci&eacute;rnagas</h2>
+                <div class="modal-nav">
+                    <button class="modal-nav-btn modal-prev" aria-label="Previous experiment" onclick="navigateModal(-1)">&larr;</button>
+                    <button class="modal-nav-btn modal-next" aria-label="Next experiment" onclick="navigateModal(1)">&rarr;</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('firefliesModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="firefliesCanvas" style="cursor:none;"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Swarm</label>
+                        <input type="range" id="ffCount" min="20" max="220" value="110" onchange="if(ffSystem) ffSystem.setCount(parseInt(this.value))">
+                    </div>
+                    <div class="param-control">
+                        <label>Devotion</label>
+                        <input type="range" id="ffFollow" min="0" max="100" value="55">
+                    </div>
+                    <button class="experiment-btn" onclick="if(ffSystem) ffSystem.scatter()">Scatter</button>
+                    <button class="experiment-btn" onclick="if(ffSystem) ffSystem.clearLanterns()">Lights out</button>
+                    <span style="font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--stone);align-self:center;">CLICK &middot; LEAVE A LANTERN</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- La Lampara Modal -->
+    <div class="experiment-modal" id="lampModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">La L&aacute;mpara</h2>
+                <div class="modal-nav">
+                    <button class="modal-nav-btn modal-prev" aria-label="Previous experiment" onclick="navigateModal(-1)">&larr;</button>
+                    <button class="modal-nav-btn modal-next" aria-label="Next experiment" onclick="navigateModal(1)">&rarr;</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('lampModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="lampCanvas" style="cursor:none;"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control" style="flex:1;min-width:220px;">
+                        <label>The words (comma separated)</label>
+                        <input type="text" id="lampWords" value="HOLA, CREAR, LEER, CDMX" maxlength="60" onchange="if(lampSystem) lampSystem.setWords(this.value)" style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;">
+                    </div>
+                    <div class="param-control">
+                        <label>LIGHT</label>
+                        <select id="lampWarmth" style="padding:6px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;cursor:pointer;">
+                            <option value="gold">Candle</option>
+                            <option value="teal">Moon</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- El Torno Modal -->
+    <div class="experiment-modal" id="tornoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">El Torno</h2>
+                <div class="modal-nav">
+                    <button class="modal-nav-btn modal-prev" aria-label="Previous experiment" onclick="navigateModal(-1)">&larr;</button>
+                    <button class="modal-nav-btn modal-next" aria-label="Next experiment" onclick="navigateModal(1)">&rarr;</button>
+                </div>
+                <button class="modal-close" onclick="closeModal('tornoModal')">&times;</button>
+            </div>
+            <div class="experiment-container">
+                <canvas class="experiment-canvas" id="tornoCanvas" style="touch-action:none;cursor:crosshair;"></canvas>
+                <div class="experiment-controls">
+                    <div class="param-control">
+                        <label>Clay</label>
+                        <select id="tornoInk" style="padding:6px 10px;border-radius:8px;border:1px solid var(--bone);background:var(--linen);font-family:var(--sans);font-size:13px;cursor:pointer;">
+                            <option value="#D6B27C">Terracotta</option>
+                            <option value="#23716F">Teal glaze</option>
+                            <option value="#E8E4DD">Porcelain</option>
+                        </select>
+                    </div>
+                    <button class="experiment-btn" onclick="if(tornoSystem) tornoSystem.center()">Center the clay</button>
+                    <button class="experiment-btn" onclick="if(tornoSystem) tornoSystem.save()">Save piece</button>
+                    <span style="font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--stone);align-self:center;">IT&apos;S SPINNING &middot; DRAG TO SHAPE</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Navigation scroll effect
@@ -1753,6 +1972,21 @@
                 case 'wavesModal':
                     initWaves();
                     break;
+                case 'instrumentModal':
+                    initInstrument();
+                    break;
+                case 'pendulumModal':
+                    initPendulum();
+                    break;
+                case 'firefliesModal':
+                    initFireflies();
+                    break;
+                case 'lampModal':
+                    initLamp();
+                    break;
+                case 'tornoModal':
+                    initTorno();
+                    break;
                 case 'automataModal':
                     initAutomata();
                     break;
@@ -1773,6 +2007,21 @@
             switch(modalId) {
                 case 'wavesModal':
                     stopWaves();
+                    break;
+                case 'instrumentModal':
+                    stopInstrument();
+                    break;
+                case 'pendulumModal':
+                    stopPendulum();
+                    break;
+                case 'firefliesModal':
+                    stopFireflies();
+                    break;
+                case 'lampModal':
+                    stopLamp();
+                    break;
+                case 'tornoModal':
+                    stopTorno();
                     break;
                 case 'automataModal':
                     stopAutomata();
@@ -1817,7 +2066,7 @@
         });
 
         // Modal prev/next navigation
-        var experimentOrder = ['waves', 'automata', 'typography', 'gravity'];
+        var experimentOrder = ['instrument', 'waves', 'automata', 'typography', 'gravity', 'pendulum', 'fireflies', 'lamp', 'torno'];
 
         function navigateModal(direction) {
             var activeModal = document.querySelector('.experiment-modal.active');
@@ -2537,6 +2786,199 @@
 
             initPreviewGravity();
 
+            // -- EL PENDULO PREVIEW (auto-drawing harmonograph) --
+            var pdCanvas = document.getElementById('previewPendulum');
+            var pdCtx = pdCanvas ? pdCanvas.getContext('2d') : null;
+            var pdT = 0, pdPrev = null, pdP = { fx: 3.01, fy: 2, d: 0.0035 };
+
+            function resetPreviewPendulum() {
+                if (!pdCtx) return;
+                pdCtx.fillStyle = '#111111';
+                pdCtx.fillRect(0, 0, pdCanvas.width, pdCanvas.height);
+                pdT = 0;
+                pdPrev = null;
+                pdP = { fx: 1 + Math.random() * 6, fy: 1 + Math.random() * 6, d: 0.002 + Math.random() * 0.004 };
+            }
+
+            function renderPreviewPendulum() {
+                if (!pdCtx) return;
+                var W = pdCanvas.width, H = pdCanvas.height;
+                var A = Math.min(W, H) * 0.4;
+                for (var i = 0; i < 26; i++) {
+                    pdT += 0.014;
+                    var env = Math.exp(-pdP.d * pdT * 60);
+                    if (env < 0.02) { resetPreviewPendulum(); return; }
+                    var x = W / 2 + A * env * Math.sin(pdP.fx * pdT + Math.PI / 2);
+                    var y = H / 2 + A * env * Math.sin(pdP.fy * pdT);
+                    if (pdPrev) {
+                        pdCtx.beginPath();
+                        pdCtx.moveTo(pdPrev.x, pdPrev.y);
+                        pdCtx.lineTo(x, y);
+                        pdCtx.strokeStyle = 'rgba(168, 145, 111, 0.4)';
+                        pdCtx.lineWidth = 0.8;
+                        pdCtx.stroke();
+                    }
+                    pdPrev = { x: x, y: y };
+                }
+            }
+            resetPreviewPendulum();
+
+            // -- LUCIERNAGAS PREVIEW (small wandering swarm) --
+            var flCanvas = document.getElementById('previewFireflies');
+            var flCtx = flCanvas ? flCanvas.getContext('2d') : null;
+            var flFlies = [], flT = 0;
+
+            function initPreviewFireflies() {
+                if (!flCanvas) return;
+                flFlies = [];
+                for (var i = 0; i < 24; i++) {
+                    flFlies.push({
+                        x: Math.random() * flCanvas.width,
+                        y: Math.random() * flCanvas.height,
+                        vx: (Math.random() - 0.5), vy: (Math.random() - 0.5),
+                        ph: Math.random() * Math.PI * 2,
+                        tw: 0.8 + Math.random() * 1.6,
+                        teal: (i % 8 === 0)
+                    });
+                }
+            }
+
+            function renderPreviewFireflies() {
+                if (!flCtx) return;
+                var W = flCanvas.width, H = flCanvas.height;
+                flT += 0.016;
+                flCtx.fillStyle = 'rgba(17,17,17,0.2)';
+                flCtx.fillRect(0, 0, W, H);
+                for (var i = 0; i < flFlies.length; i++) {
+                    var f = flFlies[i];
+                    f.vx += (Math.random() - 0.5) * 0.14;
+                    f.vy += (Math.random() - 0.5) * 0.14;
+                    var sp = Math.hypot(f.vx, f.vy);
+                    if (sp > 1) { f.vx /= sp; f.vy /= sp; }
+                    f.x += f.vx; f.y += f.vy;
+                    if (f.x < -6) f.x = W + 6; if (f.x > W + 6) f.x = -6;
+                    if (f.y < -6) f.y = H + 6; if (f.y > H + 6) f.y = -6;
+                    var blink = 0.3 + 0.7 * Math.pow(0.5 + 0.5 * Math.sin(flT * f.tw + f.ph), 2);
+                    var col = f.teal ? '35, 113, 111' : '214, 178, 124';
+                    flCtx.shadowBlur = 8;
+                    flCtx.shadowColor = 'rgba(' + col + ', 0.9)';
+                    flCtx.beginPath();
+                    flCtx.arc(f.x, f.y, 1 + blink, 0, Math.PI * 2);
+                    flCtx.fillStyle = 'rgba(' + col + ', ' + (0.3 + blink * 0.6) + ')';
+                    flCtx.fill();
+                    flCtx.shadowBlur = 0;
+                }
+            }
+            initPreviewFireflies();
+
+            // -- LA LAMPARA PREVIEW (orbiting light over one word) --
+            var lpCanvas = document.getElementById('previewLamp');
+            var lpCtx = lpCanvas ? lpCanvas.getContext('2d') : null;
+            var lpT = 0;
+
+            function renderPreviewLamp() {
+                if (!lpCtx) return;
+                var W = lpCanvas.width, H = lpCanvas.height;
+                lpT += 0.012;
+                var lx = W / 2 + Math.cos(lpT) * W * 0.3;
+                var ly = H / 2 + Math.sin(lpT * 0.9) * H * 0.24;
+                lpCtx.fillStyle = '#111111';
+                lpCtx.fillRect(0, 0, W, H);
+                var grad = lpCtx.createRadialGradient(lx, ly, 0, lx, ly, W * 0.5);
+                grad.addColorStop(0, 'rgba(214, 178, 124, 0.16)');
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                lpCtx.fillStyle = grad;
+                lpCtx.fillRect(0, 0, W, H);
+                var wx = W / 2, wy = H / 2 + 6;
+                lpCtx.font = '300 44px Newsreader, Georgia, serif';
+                lpCtx.textAlign = 'center';
+                lpCtx.textBaseline = 'middle';
+                var dx = wx - lx, dy = wy - ly;
+                var dist = Math.hypot(dx, dy) || 1;
+                for (var st = 6; st >= 1; st--) {
+                    var off = (st / 6) * Math.min(50, dist * 0.4);
+                    lpCtx.fillStyle = 'rgba(0,0,0,' + (0.14 - st * 0.018) + ')';
+                    lpCtx.fillText('HOLA', wx + (dx / dist) * off, wy + (dy / dist) * off);
+                }
+                var lit = Math.max(0, 1 - dist / (W * 0.7));
+                lpCtx.fillStyle = 'rgba(245, 243, 238, ' + (0.25 + lit * 0.7) + ')';
+                lpCtx.fillText('HOLA', wx, wy);
+                lpCtx.shadowBlur = 12;
+                lpCtx.shadowColor = 'rgba(214, 178, 124, 1)';
+                lpCtx.beginPath();
+                lpCtx.arc(lx, ly, 3, 0, Math.PI * 2);
+                lpCtx.fillStyle = '#F5F3EE';
+                lpCtx.fill();
+                lpCtx.shadowBlur = 0;
+            }
+
+            // -- EL TORNO PREVIEW (a small piece, always turning) --
+            var trCanvas = document.getElementById('previewTorno');
+            var trCtx = trCanvas ? trCanvas.getContext('2d') : null;
+            var trAngle = 0;
+            var trProfile = (function() {
+                var pts = [[0, 0.30], [0.1, 0.24], [0.3, 0.78], [0.52, 0.92], [0.75, 0.62], [0.9, 0.38], [1, 0.46]];
+                var M = 40, arr = [];
+                for (var i = 0; i < M; i++) {
+                    var u = i / (M - 1);
+                    for (var k = 0; k < pts.length - 1; k++) {
+                        if (u >= pts[k][0] && u <= pts[k + 1][0]) {
+                            var tt = (u - pts[k][0]) / (pts[k + 1][0] - pts[k][0]);
+                            var s = tt * tt * (3 - 2 * tt);
+                            arr.push(pts[k][1] + (pts[k + 1][1] - pts[k][1]) * s);
+                            break;
+                        }
+                    }
+                }
+                return arr;
+            })();
+
+            function renderPreviewTorno() {
+                if (!trCtx) return;
+                var W = trCanvas.width, H = trCanvas.height;
+                trAngle += 0.05;
+                trCtx.fillStyle = '#111111';
+                trCtx.fillRect(0, 0, W, H);
+                var cx = W / 2, topY = H * 0.14, botY = H * 0.86;
+                var maxR = H * 0.42;
+                var M = trProfile.length;
+                for (var i = 0; i < M; i += 3) {
+                    var y = topY + (i / (M - 1)) * (botY - topY);
+                    var r = trProfile[i] * maxR;
+                    trCtx.beginPath();
+                    trCtx.ellipse(cx, y, r, r * 0.16, 0, 0, Math.PI * 2);
+                    trCtx.strokeStyle = 'rgba(214, 178, 124, 0.12)';
+                    trCtx.stroke();
+                }
+                for (var k = 0; k < 3; k++) {
+                    var th = trAngle + k * (Math.PI * 2 / 3);
+                    var depth = Math.cos(th);
+                    if (depth < 0.12) continue;
+                    trCtx.beginPath();
+                    for (var i = 0; i < M; i++) {
+                        var r = trProfile[i] * maxR;
+                        var y = topY + (i / (M - 1)) * (botY - topY) + r * 0.16 * depth;
+                        var x = cx + r * Math.sin(th);
+                        if (i === 0) trCtx.moveTo(x, y); else trCtx.lineTo(x, y);
+                    }
+                    trCtx.strokeStyle = 'rgba(214, 178, 124, ' + (0.1 + depth * 0.18).toFixed(3) + ')';
+                    trCtx.stroke();
+                }
+                trCtx.beginPath();
+                for (var i = 0; i < M; i++) {
+                    var y = topY + (i / (M - 1)) * (botY - topY);
+                    if (i === 0) trCtx.moveTo(cx - trProfile[i] * maxR, y); else trCtx.lineTo(cx - trProfile[i] * maxR, y);
+                }
+                trCtx.strokeStyle = 'rgba(214, 178, 124, 0.7)';
+                trCtx.stroke();
+                trCtx.beginPath();
+                for (var i = 0; i < M; i++) {
+                    var y = topY + (i / (M - 1)) * (botY - topY);
+                    if (i === 0) trCtx.moveTo(cx + trProfile[i] * maxR, y); else trCtx.lineTo(cx + trProfile[i] * maxR, y);
+                }
+                trCtx.stroke();
+            }
+
             // -- SHARED ANIMATION LOOP with IntersectionObserver gating --
             var previewCards = document.querySelectorAll('.experiment-preview');
             var previewObserver = new IntersectionObserver(function(entries) {
@@ -2563,6 +3005,10 @@
                     if (visiblePreviews['previewAutomata']) renderPreviewAutomata();
                     if (visiblePreviews['previewTypography']) renderPreviewTypography();
                     if (visiblePreviews['previewGravity']) renderPreviewGravity();
+                    if (visiblePreviews['previewPendulum']) renderPreviewPendulum();
+                    if (visiblePreviews['previewFireflies']) renderPreviewFireflies();
+                    if (visiblePreviews['previewLamp']) renderPreviewLamp();
+                    if (visiblePreviews['previewTorno']) renderPreviewTorno();
                 }
                 requestAnimationFrame(previewLoop);
             }
@@ -2573,6 +3019,10 @@
                 renderPreviewAutomata();
                 renderPreviewTypography();
                 renderPreviewGravity();
+                renderPreviewPendulum();
+                renderPreviewFireflies();
+                renderPreviewLamp();
+                renderPreviewTorno();
             } else {
                 requestAnimationFrame(previewLoop);
             }
@@ -2990,6 +3440,47 @@
                 }
             }
 
+            function addSolarSystem() {
+                if (bodies.length >= 20) return;
+                var scx = canvas.width / 2, scy = canvas.height / 2;
+                var G = parseFloat(document.getElementById('gravStrength').value) * 0.5;
+                var sunMass = 700;
+                var sun = {
+                    x: scx, y: scy, vx: 0, vy: 0,
+                    mass: sunMass,
+                    radius: Math.sqrt(sunMass) * 2,
+                    color: '#D6B27C',
+                    trail: []
+                };
+                bodies.push(sun);
+                var maxOrbit = Math.min(canvas.width, canvas.height) * 0.46;
+                var count = 5;
+                var mvx = 0, mvy = 0;
+                for (var i = 0; i < count; i++) {
+                    if (bodies.length >= 20) break;
+                    var dist = maxOrbit * (0.38 + 0.62 * (i / (count - 1)));
+                    var ang = Math.random() * Math.PI * 2;
+                    var mass = 4 + Math.random() * 10;
+                    var v = Math.sqrt(G * sunMass / dist);
+                    var b = {
+                        x: scx + Math.cos(ang) * dist,
+                        y: scy + Math.sin(ang) * dist,
+                        vx: -Math.sin(ang) * v,
+                        vy: Math.cos(ang) * v,
+                        mass: mass,
+                        radius: Math.sqrt(mass) * 2,
+                        color: bodyColors[bodies.length % bodyColors.length],
+                        trail: []
+                    };
+                    mvx += b.vx * b.mass;
+                    mvy += b.vy * b.mass;
+                    bodies.push(b);
+                }
+                // the sun absorbs the recoil so the system stays put
+                sun.vx = -mvx / sunMass;
+                sun.vy = -mvy / sunMass;
+            }
+
             function hexToRgb(hex) {
                 var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
                 return result ? {
@@ -3017,6 +3508,7 @@
                             big.vy = (big.vy * big.mass + small.vy * small.mass) / totalMass;
                             big.mass = totalMass;
                             big.radius = Math.sqrt(totalMass) * 2;
+                            if (window.labGravityPluck) window.labGravityPluck(totalMass);
                             bodies.splice(bodies.indexOf(small), 1);
                             if (j > i) j--;
                             continue;
@@ -3166,6 +3658,7 @@
                     document.getElementById('gravPauseBtn').textContent = paused ? 'Resume' : 'Pause';
                 },
                 addSystem: addRandomSystem,
+                solar: addSolarSystem,
                 clear: function() {
                     bodies = [];
                     ctx.fillStyle = '#111111';
@@ -3182,9 +3675,853 @@
 
         function gravTogglePause() { if (gravSystem) gravSystem.togglePause(); }
         function gravAddSystem() { if (gravSystem) gravSystem.addSystem(); }
+        function gravSolarSystem() { if (gravSystem) gravSystem.solar(); }
         function gravClear() { if (gravSystem) gravSystem.clear(); }
         function gravToggleTrails() { if (gravSystem) gravSystem.toggleTrails(); }
         function stopGravity() { if (gravSystem) { gravSystem.stop(); gravSystem = null; } }
+
+        // ===========================================================
+        // LAB AUDIO — one shared, lazy AudioContext (all off by default)
+        // ===========================================================
+        var labAudio = {
+            ctx: null,
+            get: function() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (this.ctx.state === 'suspended') this.ctx.resume();
+                return this.ctx;
+            }
+        };
+
+        // --- Waves: a low tide drone driven by the sliders ---
+        var wavesSound = null;
+        function toggleWavesSound() {
+            var btn = document.getElementById('wavesSoundBtn');
+            if (wavesSound) {
+                wavesSound.stop();
+                wavesSound = null;
+                btn.textContent = 'Sound: Off';
+                return;
+            }
+            var ac = labAudio.get();
+            var master = ac.createGain();
+            master.gain.value = 0.0;
+            master.connect(ac.destination);
+            var oscs = [];
+            [55, 82.4, 110.3].forEach(function(f, i) {
+                var o = ac.createOscillator();
+                o.type = 'sine';
+                o.frequency.value = f;
+                var g = ac.createGain();
+                g.gain.value = 0.25 - i * 0.06;
+                var lfo = ac.createOscillator();
+                lfo.frequency.value = 0.07 + i * 0.05;
+                var lfoGain = ac.createGain();
+                lfoGain.gain.value = 0.1;
+                lfo.connect(lfoGain);
+                lfoGain.connect(g.gain);
+                o.connect(g);
+                g.connect(master);
+                o.start();
+                lfo.start();
+                oscs.push(o, lfo);
+            });
+            master.gain.linearRampToValueAtTime(0.1, ac.currentTime + 1.2);
+            var tick = setInterval(function() {
+                var f = parseFloat(document.getElementById('waveFrequency').value);
+                var amp = parseFloat(document.getElementById('waveAmplitude').value);
+                master.gain.linearRampToValueAtTime(0.04 + (amp / 150) * 0.09, ac.currentTime + 0.4);
+                oscs[0].frequency.linearRampToValueAtTime(45 + f * 400, ac.currentTime + 0.6);
+            }, 500);
+            wavesSound = {
+                stop: function() {
+                    clearInterval(tick);
+                    master.gain.linearRampToValueAtTime(0.0001, ac.currentTime + 0.4);
+                    setTimeout(function() { oscs.forEach(function(o) { try { o.stop(); } catch(e) {} }); master.disconnect(); }, 500);
+                }
+            };
+            btn.textContent = 'Sound: On';
+        }
+
+        // --- Gravity: collisions ring like soft bells ---
+        var gravitySoundOn = false;
+        var lastPluck = 0;
+        function toggleGravitySound() {
+            gravitySoundOn = !gravitySoundOn;
+            if (gravitySoundOn) labAudio.get();
+            document.getElementById('gravSoundBtn').textContent = gravitySoundOn ? 'Sound: On' : 'Sound: Off';
+        }
+        window.labGravityPluck = function(mass) {
+            if (!gravitySoundOn || !labAudio.ctx) return;
+            var now = Date.now();
+            if (now - lastPluck < 120) return;
+            lastPluck = now;
+            var ac = labAudio.ctx;
+            var o = ac.createOscillator();
+            var g = ac.createGain();
+            o.type = 'triangle';
+            o.frequency.value = Math.max(80, 340 - mass * 6);
+            g.gain.setValueAtTime(0.12, ac.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + 0.9);
+            o.connect(g);
+            g.connect(ac.destination);
+            o.start();
+            o.stop(ac.currentTime + 1);
+        };
+
+        // ===========================================================
+        // INVISIBLE INSTRUMENT — a theremin you already know how to play
+        // ===========================================================
+        var thereminSystem = null;
+
+        function initInstrument() {
+            var canvas = document.getElementById('instrumentCanvas');
+            var ctx2 = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
+            var W = canvas.width, H = canvas.height;
+            var animationId;
+            var playing = false;
+            var px = W / 2, py = H / 2;
+            var trail = [];
+            var audioNodes = null;
+            var NOTES = ['A', 'C', 'D', 'E', 'G'];
+            var running = true;
+
+            // A-minor pentatonic, three octaves
+            function freqAt(x) {
+                var t = Math.max(0, Math.min(1, x / W));
+                if (document.getElementById('thereminQuantize').checked) {
+                    var steps = [0, 3, 5, 7, 10, 12, 15, 17, 19, 22, 24];
+                    var idx = Math.round(t * (steps.length - 1));
+                    return { f: 220 * Math.pow(2, steps[idx] / 12), name: NOTES[idx % 5] + (Math.floor(steps[idx] / 12) + 3) };
+                }
+                return { f: 220 * Math.pow(2, t * 2), name: '~' };
+            }
+
+            function startAudio() {
+                if (audioNodes) return;
+                var ac = labAudio.get();
+                var osc = ac.createOscillator();
+                var gain = ac.createGain();
+                var delay = ac.createDelay(0.6);
+                var fb = ac.createGain();
+                var wet = ac.createGain();
+                osc.type = document.getElementById('thereminWave').value;
+                gain.gain.value = 0;
+                delay.delayTime.value = 0.28;
+                fb.gain.value = 0.3;
+                wet.gain.value = 0.25;
+                osc.connect(gain);
+                gain.connect(ac.destination);
+                gain.connect(delay);
+                delay.connect(fb);
+                fb.connect(delay);
+                delay.connect(wet);
+                wet.connect(ac.destination);
+                osc.start();
+                audioNodes = { ac: ac, osc: osc, gain: gain, delay: delay, fb: fb, wet: wet };
+            }
+
+            function setVoice() {
+                if (audioNodes) audioNodes.osc.type = document.getElementById('thereminWave').value;
+            }
+            document.getElementById('thereminWave').onchange = setVoice;
+
+            function pointer(e, down) {
+                var rect = canvas.getBoundingClientRect();
+                var cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                var cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+                px = cx * (W / rect.width);
+                py = cy * (H / rect.height);
+                if (down !== undefined) playing = down;
+                if (playing && audioNodes) {
+                    var note = freqAt(px);
+                    var vol = 0.22 * (1 - Math.max(0, Math.min(1, py / H)));
+                    audioNodes.osc.frequency.linearRampToValueAtTime(note.f, audioNodes.ac.currentTime + 0.03);
+                    audioNodes.gain.gain.linearRampToValueAtTime(vol, audioNodes.ac.currentTime + 0.04);
+                    audioNodes.wet.gain.value = document.getElementById('thereminEcho').checked ? 0.25 : 0;
+                    document.getElementById('thereminNote').textContent = note.name;
+                } else if (audioNodes) {
+                    audioNodes.gain.gain.linearRampToValueAtTime(0.0001, audioNodes.ac.currentTime + 0.12);
+                }
+            }
+
+            canvas.addEventListener('pointerdown', function(e) { startAudio(); pointer(e, true); canvas.setPointerCapture(e.pointerId); });
+            canvas.addEventListener('pointermove', function(e) { pointer(e); });
+            canvas.addEventListener('pointerup', function(e) { pointer(e, false); });
+            canvas.addEventListener('pointerleave', function(e) { pointer(e, false); });
+
+            function draw() {
+                if (!running) return;
+                ctx2.fillStyle = 'rgba(17, 17, 17, 0.16)';
+                ctx2.fillRect(0, 0, W, H);
+
+                // pitch guides
+                ctx2.strokeStyle = 'rgba(232, 228, 221, 0.06)';
+                ctx2.lineWidth = 1;
+                for (var i = 0; i <= 10; i++) {
+                    var gx = (i / 10) * W;
+                    ctx2.beginPath();
+                    ctx2.moveTo(gx, 0);
+                    ctx2.lineTo(gx, H);
+                    ctx2.stroke();
+                }
+
+                trail.push({ x: px, y: py, on: playing });
+                if (trail.length > 90) trail.shift();
+
+                for (var i = 1; i < trail.length; i++) {
+                    var a = trail[i - 1], b = trail[i];
+                    var t = i / trail.length;
+                    ctx2.beginPath();
+                    ctx2.moveTo(a.x, a.y);
+                    ctx2.lineTo(b.x, b.y);
+                    ctx2.strokeStyle = b.on
+                        ? 'rgba(35, 113, 111, ' + (t * 0.9) + ')'
+                        : 'rgba(107, 101, 96, ' + (t * 0.35) + ')';
+                    ctx2.lineWidth = b.on ? 2.5 + t * 3 : 1.2;
+                    ctx2.stroke();
+                }
+
+                // the fingertip
+                ctx2.shadowBlur = playing ? 26 : 10;
+                ctx2.shadowColor = playing ? '#23716F' : 'rgba(232,228,221,0.5)';
+                ctx2.beginPath();
+                ctx2.arc(px, py, playing ? 7 : 4.5, 0, Math.PI * 2);
+                ctx2.fillStyle = playing ? '#F5F3EE' : 'rgba(232,228,221,0.7)';
+                ctx2.fill();
+                ctx2.shadowBlur = 0;
+
+                animationId = requestAnimationFrame(draw);
+            }
+            ctx2.fillStyle = '#111111';
+            ctx2.fillRect(0, 0, W, H);
+            draw();
+
+            thereminSystem = {
+                stop: function() {
+                    running = false;
+                    cancelAnimationFrame(animationId);
+                    if (audioNodes) {
+                        audioNodes.gain.gain.linearRampToValueAtTime(0.0001, audioNodes.ac.currentTime + 0.15);
+                        var an = audioNodes;
+                        setTimeout(function() { try { an.osc.stop(); } catch(e) {} }, 300);
+                        audioNodes = null;
+                    }
+                }
+            };
+        }
+        function stopInstrument() { if (thereminSystem) { thereminSystem.stop(); thereminSystem = null; } }
+
+        // ===========================================================
+        // EL PENDULO — harmonograph drawing machine
+        // ===========================================================
+        var pendSystem = null;
+
+        function initPendulum() {
+            var canvas = document.getElementById('pendulumCanvas');
+            var ctx2 = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            var W = canvas.width, H = canvas.height;
+            var animationId, t = 0, running = true;
+            var prev = null;
+            var ampX = null, ampY = null, sgnX = 1, sgnY = 1;
+            var dragging = false, dragPt = null;
+            var snap = document.createElement('canvas');
+            snap.width = W; snap.height = H;
+            var snapCtx = snap.getContext('2d');
+
+            function params() {
+                return {
+                    fx: parseFloat(document.getElementById('pendFx').value),
+                    fy: parseFloat(document.getElementById('pendFy').value),
+                    d: parseFloat(document.getElementById('pendDecay').value),
+                    ink: document.getElementById('pendInk').value
+                };
+            }
+
+            function clear() {
+                ctx2.fillStyle = '#111111';
+                ctx2.fillRect(0, 0, W, H);
+                t = 0;
+                prev = null;
+            }
+
+            function pos(e) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: (e.clientX - rect.left) * (W / rect.width),
+                    y: (e.clientY - rect.top) * (H / rect.height)
+                };
+            }
+
+            // Pull the pen: drag from anywhere, let go to launch
+            canvas.addEventListener('pointerdown', function(e) {
+                dragging = true;
+                dragPt = pos(e);
+                snapCtx.clearRect(0, 0, W, H);
+                snapCtx.drawImage(canvas, 0, 0);
+            });
+            canvas.addEventListener('pointermove', function(e) {
+                if (!dragging) return;
+                dragPt = pos(e);
+                ctx2.drawImage(snap, 0, 0);
+                ctx2.setLineDash([4, 5]);
+                ctx2.beginPath();
+                ctx2.moveTo(W / 2, H / 2);
+                ctx2.lineTo(dragPt.x, dragPt.y);
+                ctx2.strokeStyle = 'rgba(245, 243, 238, 0.5)';
+                ctx2.lineWidth = 1;
+                ctx2.stroke();
+                ctx2.setLineDash([]);
+                ctx2.beginPath();
+                ctx2.arc(dragPt.x, dragPt.y, 4, 0, Math.PI * 2);
+                ctx2.fillStyle = '#F5F3EE';
+                ctx2.fill();
+            });
+            function release() {
+                if (!dragging) return;
+                dragging = false;
+                var dx = dragPt.x - W / 2, dy = dragPt.y - H / 2;
+                if (Math.hypot(dx, dy) < 12) { ctx2.drawImage(snap, 0, 0); return; }
+                ampX = Math.max(24, Math.min(W * 0.48, Math.abs(dx)));
+                ampY = Math.max(24, Math.min(H * 0.48, Math.abs(dy)));
+                sgnX = dx >= 0 ? 1 : -1;
+                sgnY = dy >= 0 ? 1 : -1;
+                clear();
+            }
+            canvas.addEventListener('pointerup', release);
+            canvas.addEventListener('pointerleave', release);
+
+            function frame() {
+                if (!running) return;
+                if (dragging) { animationId = requestAnimationFrame(frame); return; }
+                var pp = params();
+                var A = Math.min(W, H) * 0.42;
+                var Ax = (ampX !== null ? ampX : A);
+                var Ay = (ampY !== null ? ampY : A * 0.9);
+                var cx = W / 2, cy = H / 2;
+                for (var i = 0; i < 60; i++) {
+                    t += 0.012;
+                    var env = Math.exp(-pp.d * t * 60);
+                    if (env < 0.012) { animationId = requestAnimationFrame(frame); return; }
+                    var x = cx + Ax * env * Math.sin(pp.fx * t + Math.PI / 2) * sgnX;
+                    var y = cy + Ay * env * Math.sin(pp.fy * t + Math.PI / 2) * sgnY;
+                    if (prev) {
+                        ctx2.beginPath();
+                        ctx2.moveTo(prev.x, prev.y);
+                        ctx2.lineTo(x, y);
+                        ctx2.strokeStyle = pp.ink;
+                        ctx2.globalAlpha = 0.32;
+                        ctx2.lineWidth = 1;
+                        ctx2.stroke();
+                        ctx2.globalAlpha = 1;
+                    }
+                    prev = { x: x, y: y };
+                }
+                animationId = requestAnimationFrame(frame);
+            }
+
+            clear();
+            frame();
+
+            pendSystem = {
+                restart: function() { cancelAnimationFrame(animationId); clear(); frame(); },
+                stop: function() { running = false; cancelAnimationFrame(animationId); },
+                save: function() {
+                    var link = document.createElement('a');
+                    link.download = 'el-pendulo.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                }
+            };
+        }
+        function restartPendulum() { if (pendSystem) pendSystem.restart(); }
+        function randomPendulum() {
+            document.getElementById('pendFx').value = (1 + Math.random() * 7).toFixed(2);
+            document.getElementById('pendFy').value = (1 + Math.random() * 7).toFixed(2);
+            document.getElementById('pendDecay').value = (0.001 + Math.random() * 0.005).toFixed(4);
+            restartPendulum();
+        }
+        function savePendulum() { if (pendSystem) pendSystem.save(); }
+        function stopPendulum() { if (pendSystem) { pendSystem.stop(); pendSystem = null; } }
+
+        // ===========================================================
+        // LUCIERNAGAS — a swarm that trusts you
+        // ===========================================================
+        var ffSystem = null;
+
+        function initFireflies() {
+            var canvas = document.getElementById('firefliesCanvas');
+            var ctx2 = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            var W = canvas.width, H = canvas.height;
+            var animationId, running = true;
+            var mx = W / 2, my = H / 2, hasMouse = false;
+            var flies = [];
+            var lanterns = [];
+
+            function make(n) {
+                flies = [];
+                for (var i = 0; i < n; i++) {
+                    flies.push({
+                        x: Math.random() * W, y: Math.random() * H,
+                        vx: (Math.random() - 0.5) * 1.4, vy: (Math.random() - 0.5) * 1.4,
+                        phase: Math.random() * Math.PI * 2,
+                        tw: 0.6 + Math.random() * 1.8,
+                        teal: (i % 9 === 0)
+                    });
+                }
+            }
+            make(parseInt(document.getElementById('ffCount').value, 10));
+
+            canvas.addEventListener('pointermove', function(e) {
+                var rect = canvas.getBoundingClientRect();
+                mx = (e.clientX - rect.left) * (W / rect.width);
+                my = (e.clientY - rect.top) * (H / rect.height);
+                hasMouse = true;
+            });
+            canvas.addEventListener('pointerleave', function() { hasMouse = false; });
+            canvas.addEventListener('pointerdown', function(e) {
+                var rect = canvas.getBoundingClientRect();
+                lanterns.push({
+                    x: (e.clientX - rect.left) * (W / rect.width),
+                    y: (e.clientY - rect.top) * (H / rect.height),
+                    phase: Math.random() * Math.PI * 2
+                });
+                if (lanterns.length > 5) lanterns.shift();
+            });
+
+            var t = 0;
+            function frame() {
+                if (!running) return;
+                t += 0.016;
+                ctx2.fillStyle = 'rgba(17, 17, 17, 0.22)';
+                ctx2.fillRect(0, 0, W, H);
+
+                var follow = parseInt(document.getElementById('ffFollow').value, 10) / 100;
+
+                // the lanterns, flickering
+                for (var L = 0; L < lanterns.length; L++) {
+                    var lt = lanterns[L];
+                    var flick = 0.82 + 0.18 * Math.sin(t * 6 + lt.phase) + (Math.random() - 0.5) * 0.05;
+                    var lg = ctx2.createRadialGradient(lt.x, lt.y, 0, lt.x, lt.y, 46 * flick);
+                    lg.addColorStop(0, 'rgba(214, 178, 124, 0.30)');
+                    lg.addColorStop(1, 'rgba(214, 178, 124, 0)');
+                    ctx2.fillStyle = lg;
+                    ctx2.beginPath();
+                    ctx2.arc(lt.x, lt.y, 46 * flick, 0, Math.PI * 2);
+                    ctx2.fill();
+                    ctx2.beginPath();
+                    ctx2.arc(lt.x, lt.y, 1.8, 0, Math.PI * 2);
+                    ctx2.fillStyle = 'rgba(240, 223, 192, ' + (0.7 + flick * 0.2).toFixed(3) + ')';
+                    ctx2.fill();
+                }
+
+                for (var i = 0; i < flies.length; i++) {
+                    var f = flies[i];
+                    // gentle flocking: neighbors' average pull + separation
+                    var ax = 0, ay = 0, sx = 0, sy = 0, n = 0;
+                    for (var j = 0; j < flies.length; j += 3) {
+                        if (j === i) continue;
+                        var o = flies[j];
+                        var dx = o.x - f.x, dy = o.y - f.y;
+                        var d2 = dx * dx + dy * dy;
+                        if (d2 < 3600) { ax += o.x; ay += o.y; n++; }
+                        if (d2 < 240) { sx -= dx; sy -= dy; }
+                    }
+                    if (n) {
+                        f.vx += ((ax / n) - f.x) * 0.0009;
+                        f.vy += ((ay / n) - f.y) * 0.0009;
+                    }
+                    f.vx += sx * 0.0025 + (Math.random() - 0.5) * 0.08;
+                    f.vy += sy * 0.0025 + (Math.random() - 0.5) * 0.08;
+                    if (hasMouse) {
+                        f.vx += (mx - f.x) * 0.0011 * follow;
+                        f.vy += (my - f.y) * 0.0011 * follow;
+                    }
+                    // lanterns win over curiosity: gather and circle
+                    if (lanterns.length) {
+                        var bl = null, bd = 1e9;
+                        for (var L2 = 0; L2 < lanterns.length; L2++) {
+                            var lt2 = lanterns[L2];
+                            var ldx = lt2.x - f.x, ldy = lt2.y - f.y;
+                            var ld2 = ldx * ldx + ldy * ldy;
+                            if (ld2 < bd) { bd = ld2; bl = lt2; }
+                        }
+                        if (bd < 240 * 240) {
+                            var ld = Math.sqrt(bd) || 1;
+                            var pull = 0.004 * (1 - ld / 240);
+                            f.vx += (bl.x - f.x) * pull;
+                            f.vy += (bl.y - f.y) * pull;
+                            if (ld < 42) {
+                                f.vx += (-(bl.y - f.y) / ld) * 0.14;
+                                f.vy += ((bl.x - f.x) / ld) * 0.14;
+                            }
+                        }
+                    }
+                    var sp = Math.hypot(f.vx, f.vy);
+                    var max = 2.1;
+                    if (sp > max) { f.vx = f.vx / sp * max; f.vy = f.vy / sp * max; }
+                    f.x += f.vx;
+                    f.y += f.vy;
+                    if (f.x < -10) f.x = W + 10; if (f.x > W + 10) f.x = -10;
+                    if (f.y < -10) f.y = H + 10; if (f.y > H + 10) f.y = -10;
+
+                    var blink = 0.35 + 0.65 * Math.pow(0.5 + 0.5 * Math.sin(t * f.tw + f.phase), 2);
+                    var col = f.teal ? '35, 113, 111' : '214, 178, 124';
+                    ctx2.shadowBlur = 11;
+                    ctx2.shadowColor = 'rgba(' + col + ', 0.9)';
+                    ctx2.beginPath();
+                    ctx2.arc(f.x, f.y, 1.4 + blink, 0, Math.PI * 2);
+                    ctx2.fillStyle = 'rgba(' + col + ', ' + (0.35 + blink * 0.6) + ')';
+                    ctx2.fill();
+                    ctx2.shadowBlur = 0;
+                }
+                animationId = requestAnimationFrame(frame);
+            }
+            ctx2.fillStyle = '#111111';
+            ctx2.fillRect(0, 0, W, H);
+            frame();
+
+            ffSystem = {
+                setCount: function(n) { make(n); },
+                clearLanterns: function() { lanterns = []; },
+                scatter: function() {
+                    flies.forEach(function(f) {
+                        var ang = Math.atan2(f.y - my, f.x - mx) + (Math.random() - 0.5);
+                        f.vx += Math.cos(ang) * 7;
+                        f.vy += Math.sin(ang) * 7;
+                    });
+                },
+                stop: function() { running = false; cancelAnimationFrame(animationId); }
+            };
+        }
+        function stopFireflies() { if (ffSystem) { ffSystem.stop(); ffSystem = null; } }
+
+        // ===========================================================
+        // LA LAMPARA — you hold the light, the words hold still
+        // ===========================================================
+        var lampSystem = null;
+
+        function initLamp() {
+            var canvas = document.getElementById('lampCanvas');
+            var ctx2 = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            var W = canvas.width, H = canvas.height;
+            var animationId, running = true;
+            var mx = W * 0.3, my = H * 0.35, hasMouse = false, t = 0;
+            var words = [];
+
+            function layout(str) {
+                var list = (str || 'HOLA, CREAR, LEER, CDMX').split(',').map(function(w) { return w.trim(); }).filter(Boolean).slice(0, 5);
+                words = list.map(function(w, i) {
+                    return {
+                        text: w,
+                        x: W * (0.22 + 0.56 * ((i % 3) / 2)),
+                        y: H * (0.3 + 0.4 * Math.floor(i / 3) + (i % 2) * 0.12),
+                        size: Math.min(W / 9, 86) - i * 4
+                    };
+                });
+            }
+            layout(document.getElementById('lampWords').value);
+
+            canvas.addEventListener('pointermove', function(e) {
+                var rect = canvas.getBoundingClientRect();
+                mx = (e.clientX - rect.left) * (W / rect.width);
+                my = (e.clientY - rect.top) * (H / rect.height);
+                hasMouse = true;
+            });
+            canvas.addEventListener('pointerleave', function() { hasMouse = false; });
+
+            function frame() {
+                if (!running) return;
+                t += 0.008;
+                if (!hasMouse) {
+                    mx = W / 2 + Math.cos(t) * W * 0.3;
+                    my = H / 2 + Math.sin(t * 0.8) * H * 0.22;
+                }
+                ctx2.fillStyle = '#111111';
+                ctx2.fillRect(0, 0, W, H);
+
+                var warm = document.getElementById('lampWarmth').value === 'gold';
+                var lightCol = warm ? '214, 178, 124' : '95, 168, 162';
+
+                // pool of light
+                var grad = ctx2.createRadialGradient(mx, my, 0, mx, my, Math.max(W, H) * 0.55);
+                grad.addColorStop(0, 'rgba(' + lightCol + ', 0.14)');
+                grad.addColorStop(0.4, 'rgba(' + lightCol + ', 0.05)');
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx2.fillStyle = grad;
+                ctx2.fillRect(0, 0, W, H);
+
+                for (var i = 0; i < words.length; i++) {
+                    var w = words[i];
+                    ctx2.font = '300 ' + w.size + 'px Newsreader, Georgia, serif';
+                    ctx2.textAlign = 'center';
+                    ctx2.textBaseline = 'middle';
+
+                    var dx = w.x - mx, dy = w.y - my;
+                    var dist = Math.hypot(dx, dy) || 1;
+                    var ux = dx / dist, uy = dy / dist;
+                    var shadowLen = Math.min(150, 26 + dist * 0.22);
+
+                    // the cast shadow: stacked fading copies stretching away from the lamp
+                    for (var sSt = 10; sSt >= 1; sSt--) {
+                        var off = (sSt / 10) * shadowLen;
+                        var alpha = 0.05 * (1 - sSt / 11);
+                        ctx2.fillStyle = 'rgba(0, 0, 0, ' + (0.16 - sSt * 0.012) + ')';
+                        ctx2.fillText(w.text, w.x + ux * off, w.y + uy * off + (sSt * 0.4));
+                    }
+
+                    // the word, lit by proximity
+                    var lit = Math.max(0, 1 - dist / (W * 0.6));
+                    ctx2.fillStyle = 'rgba(245, 243, 238, ' + (0.16 + lit * 0.8) + ')';
+                    ctx2.fillText(w.text, w.x, w.y);
+                }
+
+                // the lamp itself
+                ctx2.shadowBlur = 22;
+                ctx2.shadowColor = 'rgba(' + lightCol + ', 1)';
+                ctx2.beginPath();
+                ctx2.arc(mx, my, 5, 0, Math.PI * 2);
+                ctx2.fillStyle = '#F5F3EE';
+                ctx2.fill();
+                ctx2.shadowBlur = 0;
+
+                animationId = requestAnimationFrame(frame);
+            }
+            frame();
+
+            lampSystem = {
+                setWords: function(str) { layout(str); },
+                stop: function() { running = false; cancelAnimationFrame(animationId); }
+            };
+        }
+        function stopLamp() { if (lampSystem) { lampSystem.stop(); lampSystem = null; } }
+
+        // ===========================================================
+        // EL TORNO — hold the clay while it spins
+        // ===========================================================
+        var tornoSystem = null;
+
+        function initTorno() {
+            var canvas = document.getElementById('tornoCanvas');
+            var ctx2 = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            var W = canvas.width, H = canvas.height;
+            var animationId, running = true, angle = 0;
+            var N = 72;
+            var topY = H * 0.12, botY = H * 0.84;
+            var cx = W / 2;
+            var maxR = Math.min(W * 0.3, H * 0.42);
+            var profile = [];
+            var pressing = false, px = 0, py = 0;
+
+            function centerClay() {
+                var pts = [[0, 0.30], [0.1, 0.24], [0.3, 0.78], [0.52, 0.92], [0.75, 0.62], [0.9, 0.38], [1, 0.46]];
+                profile = [];
+                for (var i = 0; i < N; i++) {
+                    var u = i / (N - 1);
+                    for (var k = 0; k < pts.length - 1; k++) {
+                        if (u >= pts[k][0] && u <= pts[k + 1][0]) {
+                            var tt = (u - pts[k][0]) / (pts[k + 1][0] - pts[k][0]);
+                            var s = tt * tt * (3 - 2 * tt);
+                            profile.push((pts[k][1] + (pts[k + 1][1] - pts[k][1]) * s) * maxR);
+                            break;
+                        }
+                    }
+                }
+            }
+            centerClay();
+
+            function sculpt(x, y) {
+                var u = (y - topY) / (botY - topY);
+                if (u < -0.08 || u > 1.08) return;
+                var idx = Math.max(0, Math.min(N - 1, u * (N - 1)));
+                var target = Math.max(10, Math.min(maxR, Math.abs(x - cx)));
+                for (var i = 0; i < N; i++) {
+                    var d = (i - idx) / 5.5;
+                    var wgt = Math.exp(-d * d);
+                    profile[i] += (target - profile[i]) * 0.3 * wgt;
+                }
+            }
+
+            function pos(e) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: (e.clientX - rect.left) * (W / rect.width),
+                    y: (e.clientY - rect.top) * (H / rect.height)
+                };
+            }
+            canvas.addEventListener('pointerdown', function(e) {
+                pressing = true;
+                var p = pos(e); px = p.x; py = p.y;
+                sculpt(px, py);
+            });
+            canvas.addEventListener('pointermove', function(e) {
+                var p = pos(e); px = p.x; py = p.y;
+                if (pressing) sculpt(px, py);
+            });
+            window.addEventListener('pointerup', function() { pressing = false; });
+            canvas.addEventListener('pointerleave', function() { pressing = false; });
+
+            function frame() {
+                if (!running) return;
+                angle += 0.055;
+                // wet clay smooths under your hand
+                if (pressing) {
+                    for (var i = 1; i < N - 1; i++) {
+                        profile[i] += ((profile[i - 1] + profile[i + 1]) / 2 - profile[i]) * 0.08;
+                    }
+                }
+
+                ctx2.fillStyle = '#111111';
+                ctx2.fillRect(0, 0, W, H);
+
+                var ink = document.getElementById('tornoInk').value;
+                var rgb = ink === '#23716F' ? '35, 113, 111' : ink === '#E8E4DD' ? '232, 228, 221' : '214, 178, 124';
+
+                // the wheel head
+                ctx2.beginPath();
+                ctx2.ellipse(cx, botY + 16, maxR * 1.3, maxR * 1.3 * 0.16, 0, 0, Math.PI * 2);
+                ctx2.strokeStyle = 'rgba(232, 228, 221, 0.14)';
+                ctx2.lineWidth = 1;
+                ctx2.stroke();
+                // a mark on the rim so the spin is visible
+                var wDepth = Math.cos(angle);
+                if (wDepth > 0) {
+                    ctx2.beginPath();
+                    ctx2.arc(cx + maxR * 1.24 * Math.sin(angle), botY + 16 + maxR * 1.3 * 0.16 * wDepth, 2, 0, Math.PI * 2);
+                    ctx2.fillStyle = 'rgba(232, 228, 221, 0.35)';
+                    ctx2.fill();
+                }
+
+                // throwing rings
+                for (var i = 0; i < N; i += 3) {
+                    var y = topY + (i / (N - 1)) * (botY - topY);
+                    ctx2.beginPath();
+                    ctx2.ellipse(cx, y, profile[i], profile[i] * 0.16, 0, 0, Math.PI * 2);
+                    ctx2.strokeStyle = 'rgba(' + rgb + ', 0.1)';
+                    ctx2.stroke();
+                }
+
+                // grain lines: the surface, turning
+                for (var k = 0; k < 3; k++) {
+                    var th = angle + k * (Math.PI * 2 / 3);
+                    var depth = Math.cos(th);
+                    if (depth < 0.12) continue;
+                    ctx2.beginPath();
+                    for (var i = 0; i < N; i++) {
+                        var y = topY + (i / (N - 1)) * (botY - topY) + profile[i] * 0.16 * depth;
+                        var x = cx + profile[i] * Math.sin(th);
+                        if (i === 0) ctx2.moveTo(x, y); else ctx2.lineTo(x, y);
+                    }
+                    ctx2.strokeStyle = 'rgba(' + rgb + ', ' + (0.1 + depth * 0.2).toFixed(3) + ')';
+                    ctx2.stroke();
+                }
+
+                // silhouette
+                ctx2.lineWidth = 1.6;
+                ctx2.strokeStyle = 'rgba(' + rgb + ', 0.9)';
+                ctx2.beginPath();
+                for (var i = 0; i < N; i++) {
+                    var y = topY + (i / (N - 1)) * (botY - topY);
+                    if (i === 0) ctx2.moveTo(cx - profile[i], y); else ctx2.lineTo(cx - profile[i], y);
+                }
+                ctx2.stroke();
+                ctx2.beginPath();
+                for (var i = 0; i < N; i++) {
+                    var y = topY + (i / (N - 1)) * (botY - topY);
+                    if (i === 0) ctx2.moveTo(cx + profile[i], y); else ctx2.lineTo(cx + profile[i], y);
+                }
+                ctx2.stroke();
+                ctx2.lineWidth = 1;
+
+                // your hand on the clay
+                if (pressing) {
+                    var hu = Math.max(0, Math.min(1, (py - topY) / (botY - topY)));
+                    var ringR = profile[Math.round(hu * (N - 1))];
+                    ctx2.beginPath();
+                    ctx2.ellipse(cx, topY + hu * (botY - topY), ringR, ringR * 0.16, 0, 0, Math.PI * 2);
+                    ctx2.strokeStyle = 'rgba(245, 243, 238, 0.6)';
+                    ctx2.stroke();
+                }
+
+                animationId = requestAnimationFrame(frame);
+            }
+            frame();
+
+            tornoSystem = {
+                center: centerClay,
+                save: function() {
+                    var link = document.createElement('a');
+                    link.download = 'el-torno.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                },
+                stop: function() { running = false; cancelAnimationFrame(animationId); }
+            };
+        }
+        function stopTorno() { if (tornoSystem) { tornoSystem.stop(); tornoSystem = null; } }
+
+        // ===========================================================
+        // GUESTBOOK WALL — the museum remembers your mark
+        // ===========================================================
+        (function() {
+            var KEY = 'guestwall-v1';
+            var saveTimer = null;
+
+            function persist() {
+                clearTimeout(saveTimer);
+                saveTimer = setTimeout(function() {
+                    try { localStorage.setItem(KEY, canvas.toDataURL('image/png')); } catch (e) {}
+                }, 700);
+            }
+
+            function seed() {
+                ctx.save();
+                ctx.translate(56, 74);
+                ctx.rotate(-0.06);
+                ctx.font = 'italic 300 40px Newsreader, Georgia, serif';
+                ctx.fillStyle = 'rgba(2, 83, 85, 0.75)';
+                ctx.fillText('hola —', 0, 0);
+                ctx.restore();
+                ctx.save();
+                ctx.font = '20px Georgia, serif';
+                ctx.fillStyle = 'rgba(168, 145, 111, 0.8)';
+                ctx.fillText('✦', 180, 62);
+                ctx.restore();
+                persist();
+            }
+
+            setTimeout(function() {
+                var saved = null;
+                try { saved = localStorage.getItem(KEY); } catch (e) {}
+                if (saved) {
+                    var img = new Image();
+                    img.onload = function() { ctx.drawImage(img, 0, 0, canvas.width, canvas.height); };
+                    img.src = saved;
+                } else {
+                    seed();
+                }
+            }, 200);
+
+            ['mouseup', 'touchend', 'mouseleave'].forEach(function(ev) {
+                canvas.addEventListener(ev, persist);
+            });
+            ['clearCanvas', 'randomPattern', 'undoBtn', 'redoBtn'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) el.addEventListener('click', persist);
+            });
+        })();
     </script>
 </body>
 </html>
