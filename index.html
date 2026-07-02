@@ -308,6 +308,87 @@
             .show-card-image { height: 220px; }
         }
 
+        /* === Guestbook === */
+        .guestbook {
+            padding: 100px 40px 120px;
+            background: var(--linen);
+            border-top: 1px solid var(--bone);
+        }
+
+        .guestbook-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .guestbook-portrait {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            object-position: 26% 30%;
+            flex-shrink: 0;
+            border: 8px solid var(--paper);
+            outline: 1px solid var(--bone);
+            box-shadow: 0 16px 40px rgba(17, 17, 17, 0.12);
+            border-radius: 2px;
+        }
+
+        .guestbook-line {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+        }
+
+        .guestbook-sub {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 17px;
+            color: var(--stone);
+            margin: 10px 0 24px;
+        }
+
+        .guestbook-email {
+            font-family: var(--mono);
+            font-size: 15px;
+            color: var(--roble);
+            text-decoration: none;
+            border-bottom: 1px solid var(--roble-border);
+        }
+
+        .guestbook-email:hover {
+            border-bottom-color: var(--roble);
+        }
+
+        .guestbook-links {
+            margin-top: 18px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .guestbook-links a {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--stone);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .guestbook-links a:hover {
+            color: var(--roble);
+        }
+
+        @media (max-width: 768px) {
+            .guestbook { padding: 60px 20px 80px; }
+            .guestbook-inner { flex-direction: column; text-align: center; gap: 28px; }
+            .guestbook-line { font-size: 24px; }
+            .guestbook-links { justify-content: center; }
+        }
+
         /* === Punch: hero proof bar === */
         .hero-proof {
             display: grid;
@@ -523,6 +604,22 @@
 
             <div class="featured-cta reveal" style="margin-top: 32px;">
                 <a href="work.html">See all projects &#8594;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook -->
+    <section class="guestbook">
+        <div class="guestbook-inner reveal">
+            <img class="guestbook-portrait" src="assets/Story_Photos/inc_2.webp" alt="Antonio Murrieta speaking on stage">
+            <div class="guestbook-text">
+                <p class="guestbook-line">If something here made you curious, write to me.</p>
+                <p class="guestbook-sub">I answer everything that isn't spam.</p>
+                <a class="guestbook-email" href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>
+                <div class="guestbook-links">
+                    <a href="https://github.com/Antonio-MS-Coder" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
             </div>
         </div>
     </section>
