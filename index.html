@@ -69,18 +69,76 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Hero Section */
-        .hero {
+        /* ==========================================================
+           THE MUSEUM AT NIGHT
+           You arrive after hours. Someone left the lamps on for you.
+           ========================================================== */
+
+        :root {
+            --night: #16110B;
+            --night-2: #1C1610;
+            --lamp: #A8916F;
+            --lamp-dim: rgba(168, 145, 111, 0.5);
+            --teal-bright: #5FA8A2;
+            --paper-70: rgba(245, 243, 238, 0.72);
+            --paper-50: rgba(245, 243, 238, 0.5);
+        }
+
+        body {
+            background: var(--night);
+        }
+
+        /* Heavy editorial grain — the Library's air, breathed by the whole house */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.16;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 180px 180px;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                opacity: 0.09;
+                background-size: 90px 90px;
+            }
+        }
+
+        /* =============== 1 · THE ARRIVAL =============== */
+        .arrival {
             min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 40px 80px;
+            text-align: center;
             position: relative;
-            background: linear-gradient(180deg, var(--linen) 0%, var(--paper) 100%);
+            overflow: hidden;
+            padding: 140px 24px 90px;
         }
 
-        #heroDust {
+        /* the lamp left on */
+        .arrival::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1100px;
+            height: 1100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 178, 124, 0.13) 0%, rgba(214, 178, 124, 0.04) 40%, transparent 68%);
+            pointer-events: none;
+        }
+
+        #embers {
             position: absolute;
             top: 0;
             left: 0;
@@ -89,482 +147,496 @@
             pointer-events: none;
         }
 
-        .hero-content {
-            max-width: 860px;
-            width: 100%;
-            text-align: left;
+        .arrival-content {
             position: relative;
             z-index: 1;
+            max-width: 920px;
         }
 
-        .hero-eyebrow {
+        .arrival-eyebrow {
             font-family: var(--mono);
             font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--roble);
-            margin-bottom: 28px;
+            letter-spacing: 4px;
+            color: var(--lamp-dim);
+            margin-bottom: 30px;
         }
 
-        .hero-title {
+        .arrival-title {
             font-family: var(--serif);
-            font-size: clamp(52px, 8vw, 96px);
+            font-size: clamp(110px, 22vw, 260px);
             font-weight: 300;
-            letter-spacing: -3px;
-            margin-bottom: 28px;
-            line-height: 1.04;
-            color: var(--ink);
+            letter-spacing: -6px;
+            line-height: 0.9;
+            color: var(--paper);
+            margin-bottom: 36px;
+            text-shadow: 0 0 80px rgba(214, 178, 124, 0.12);
         }
 
-        .hero-subtitle {
+        .arrival-title .dot {
+            color: var(--teal-bright);
+        }
+
+        .arrival-sub {
             font-family: var(--serif);
-            font-size: clamp(18px, 2.4vw, 22px);
-            color: var(--stone);
-            margin-bottom: 40px;
-            font-weight: 400;
+            font-size: clamp(19px, 2.6vw, 25px);
             line-height: 1.6;
-            max-width: 620px;
+            color: var(--paper-70);
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        .hero-subtitle .accent {
-            color: var(--roble);
+        .arrival-sub .tl {
+            color: var(--teal-bright);
             font-style: italic;
         }
 
-        /* Hero CTAs */
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+        .arrival-line2 {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(16px, 2vw, 19px);
+            color: var(--paper-50);
+            margin-top: 18px;
         }
 
-        .btn {
-            padding: 14px 36px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: all 0.3s var(--ease-snap);
-            cursor: pointer;
-            border: none;
+        .arrival-cue {
             display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--roble);
-            color: var(--linen);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            background: var(--roble-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(2, 83, 85, 0.25);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--ink);
-            border: 2px solid var(--ink);
-        }
-
-        .btn-secondary:hover {
-            background: var(--ink);
-            color: var(--linen);
-            transform: translateY(-2px);
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: float 3s ease-in-out infinite;
-            cursor: pointer;
-            transition: opacity 0.3s var(--ease-snap);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        .scroll-indicator:hover {
-            opacity: 0.6;
-        }
-
-        .scroll-indicator svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--stone);
-        }
-
-        /* Featured Projects Section */
-        .featured {
-            padding: 100px 40px;
-            background: var(--paper);
-            position: relative;
-        }
-
-        .featured-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .featured-cta {
-            text-align: center;
-        }
-
-        .featured-cta a {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--roble);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lamp);
+            margin-top: 64px;
             text-decoration: none;
-            letter-spacing: 0.5px;
-            transition: all 0.2s var(--ease-snap);
-            padding-bottom: 2px;
-            border-bottom: 2px solid transparent;
+            animation: cue-float 3.2s ease-in-out infinite;
         }
 
-        .featured-cta a:hover {
-            border-bottom-color: var(--roble);
+        @keyframes cue-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(7px); }
         }
 
-        /* === Punch: italic serif accent in hero === */
-        .hero-text-accent .hero-letter {
-            font-style: italic;
+        /* Interactive letters */
+        .hero-letter {
+            display: inline-block;
+            transition: transform 0.4s var(--ease-gentle), text-shadow 0.4s var(--ease-gentle), color 0.4s var(--ease-gentle);
         }
 
-        /* === Now Showing === */
-        .now-showing {
-            padding: 100px 40px;
-            background: var(--paper);
+        .hero-letter.lit {
+            transition: transform 80ms ease-out, text-shadow 80ms ease-out, color 80ms ease-out;
+            transform: translateY(-6px);
+            color: #FFF6E8;
+            text-shadow: 0 0 34px rgba(214, 178, 124, 0.55);
         }
 
-        .now-showing-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .now-showing-note {
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: 18px;
-            color: var(--stone);
-            text-align: center;
-            margin: -32px 0 56px;
-        }
-
-        .now-showing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .show-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: transform 0.3s var(--ease-snap);
-        }
-
-        .show-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .show-card-frame {
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 24px;
-            box-shadow: 0 12px 32px rgba(17, 17, 17, 0.10);
-        }
-
-        .show-card-image {
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.7s var(--ease-reveal);
-        }
-
-        .show-card:hover .show-card-image {
-            transform: scale(1.045);
-        }
-
-        .show-card-title {
-            font-family: var(--serif);
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            margin-bottom: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .now-showing { padding: 60px 20px; }
-            .now-showing-grid { grid-template-columns: 1fr; gap: 48px; }
-            .show-card-image { height: 220px; }
-        }
-
-        /* === Reading Room teaser (the dark room's doorway) === */
-        .reading-teaser {
-            display: block;
-            text-decoration: none;
-            background: #17130E;
-            padding: 110px 40px;
-            text-align: center;
+        /* =============== 2 · NOW SHOWING (lit paintings) =============== */
+        .showing {
+            padding: 130px 40px 60px;
             position: relative;
-            overflow: hidden;
         }
 
-        .reading-teaser::after {
-            content: '';
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 620px;
-            height: 620px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(168, 145, 111, 0.16) 0%, transparent 65%);
-            transition: opacity 0.6s var(--ease-overlay);
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        .reading-teaser:hover::after {
-            opacity: 1;
-        }
-
-        .reading-teaser-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 760px;
+        .showing-inner {
+            max-width: 1120px;
             margin: 0 auto;
         }
 
-        .reading-teaser-eyebrow {
+        .night-eyebrow {
             font-family: var(--mono);
             font-size: 11px;
             font-weight: 500;
-            letter-spacing: 3px;
             text-transform: uppercase;
-            color: #A8916F;
-            margin-bottom: 20px;
+            letter-spacing: 4px;
+            color: var(--lamp);
+            text-align: center;
+            margin-bottom: 18px;
         }
 
-        .reading-teaser-title {
+        .showing-title {
             font-family: var(--serif);
-            font-size: clamp(34px, 5vw, 56px);
+            font-size: clamp(34px, 5vw, 54px);
             font-weight: 300;
             letter-spacing: -1px;
-            line-height: 1.1;
             color: var(--paper);
-            margin-bottom: 16px;
+            text-align: center;
+            margin-bottom: 10px;
         }
 
-        .reading-teaser-note {
+        .showing-note {
             font-family: var(--serif);
             font-style: italic;
             font-size: 18px;
-            color: rgba(232, 228, 221, 0.55);
-            margin-bottom: 28px;
+            color: var(--paper-50);
+            text-align: center;
+            margin-bottom: 72px;
         }
 
-        .reading-teaser-cta {
+        .paintings {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+        }
+
+        .painting {
+            display: block;
+            text-decoration: none;
+        }
+
+        .painting-frame {
+            padding: 13px;
+            background: rgba(255, 252, 245, 0.03);
+            border: 1px solid rgba(232, 228, 221, 0.13);
+            border-radius: 3px;
+            box-shadow: 0 34px 90px rgba(0, 0, 0, 0.55);
+            transition: transform 0.55s var(--ease-snap), box-shadow 0.55s var(--ease-snap), border-color 0.55s var(--ease-snap);
+        }
+
+        .painting:hover .painting-frame {
+            transform: translateY(-8px);
+            border-color: rgba(214, 178, 124, 0.35);
+            box-shadow: 0 46px 110px rgba(0, 0, 0, 0.65), 0 0 70px rgba(214, 178, 124, 0.10);
+        }
+
+        .painting-img {
+            aspect-ratio: 16 / 10;
+            background-size: cover;
+            background-position: center top;
+            border-radius: 2px;
+            filter: brightness(0.9) saturate(0.95);
+            transition: filter 0.55s var(--ease-snap);
+        }
+
+        .painting:hover .painting-img {
+            filter: brightness(1.04) saturate(1);
+        }
+
+        .painting-plaque {
+            margin-top: 22px;
+            border-left: 2px solid rgba(168, 145, 111, 0.45);
+            padding-left: 15px;
+        }
+
+        .pp-id {
             font-family: var(--mono);
-            font-size: 13px;
+            font-size: 11px;
             letter-spacing: 1px;
-            color: #A8916F;
-            border-bottom: 1px solid rgba(168, 145, 111, 0.35);
-            padding-bottom: 3px;
+            color: var(--paper);
+        }
+
+        .pp-id .accent { color: var(--lamp); }
+
+        .pp-medium {
+            font-family: var(--mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(232, 228, 221, 0.45);
+            margin-top: 5px;
+        }
+
+        .pp-note {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--paper-70);
+            margin-top: 11px;
+        }
+
+        .pp-cta {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            color: var(--teal-bright);
+            margin-top: 14px;
+            border-bottom: 1px solid rgba(95, 168, 162, 0.3);
+            padding-bottom: 2px;
             transition: border-color 0.3s var(--ease-snap);
         }
 
-        .reading-teaser:hover .reading-teaser-cta {
-            border-bottom-color: #A8916F;
+        .painting:hover .pp-cta {
+            border-bottom-color: var(--teal-bright);
         }
 
-        @media (max-width: 768px) {
-            .reading-teaser { padding: 70px 20px; }
+        /* =============== 3 · THE CORRIDOR (pick a room) =============== */
+        .corridor {
+            padding: 120px 40px 60px;
         }
 
-        /* === Guestbook === */
-        .guestbook {
-            padding: 100px 40px 120px;
-            background: var(--linen);
-            border-top: 1px solid var(--bone);
-        }
-
-        .guestbook-inner {
-            max-width: 720px;
+        .corridor-inner {
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 48px;
         }
 
-        .guestbook-portrait {
-            width: 180px;
-            height: 220px;
-            object-fit: cover;
-            object-position: 26% 30%;
-            flex-shrink: 0;
-            border: 8px solid var(--paper);
-            outline: 1px solid var(--bone);
-            box-shadow: 0 16px 40px rgba(17, 17, 17, 0.12);
+        .doors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 64px;
+        }
+
+        .door {
+            position: relative;
+            display: block;
+            height: 440px;
+            border-radius: 5px;
+            overflow: hidden;
+            text-decoration: none;
+            border: 1px solid rgba(232, 228, 221, 0.09);
+            transition: border-color 0.5s var(--ease-snap);
+        }
+
+        .door:hover {
+            border-color: rgba(214, 178, 124, 0.4);
+        }
+
+        .door-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.38) saturate(0.8);
+            transform: scale(1.02);
+            transition: filter 0.6s var(--ease-overlay), transform 0.9s var(--ease-overlay);
+        }
+
+        .door:hover .door-bg {
+            filter: brightness(0.62) saturate(0.95);
+            transform: scale(1.07);
+        }
+
+        .door-bg canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* books fanned inside the reading-room door */
+        .door-books {
+            position: absolute;
+            inset: 0;
+            background: #14100A;
+        }
+
+        .door-books img {
+            position: absolute;
+            width: 58%;
             border-radius: 2px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+            filter: brightness(0.62);
+            transition: filter 0.6s var(--ease-overlay);
         }
 
-        .guestbook-line {
+        .door:hover .door-books img {
+            filter: brightness(0.95);
+        }
+
+        .door-books img:nth-child(1) { top: 9%; left: 6%; transform: rotate(-7deg); }
+        .door-books img:nth-child(2) { top: 26%; left: 32%; transform: rotate(4deg); }
+        .door-books img:nth-child(3) { top: 47%; left: 12%; transform: rotate(-3deg); }
+
+        .door-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(22, 17, 11, 0.12) 0%, rgba(22, 17, 11, 0.55) 60%, rgba(22, 17, 11, 0.92) 100%);
+        }
+
+        .door-label {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 26px 24px;
+            z-index: 1;
+        }
+
+        .door-no {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--lamp);
+            margin-bottom: 10px;
+        }
+
+        .door-name {
             font-family: var(--serif);
-            font-size: 28px;
+            font-size: 27px;
             font-weight: 300;
             letter-spacing: -0.5px;
-            line-height: 1.25;
+            color: var(--paper);
+            margin-bottom: 8px;
+            transition: transform 0.5s var(--ease-snap);
         }
 
-        .guestbook-sub {
+        .door:hover .door-name {
+            transform: translateX(6px);
+        }
+
+        .door-lure {
             font-family: var(--serif);
             font-style: italic;
-            font-size: 17px;
-            color: var(--stone);
-            margin: 10px 0 24px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(232, 228, 221, 0.6);
         }
 
-        .guestbook-email {
+        .door-cta {
+            display: inline-block;
             font-family: var(--mono);
-            font-size: 15px;
-            color: var(--roble);
-            text-decoration: none;
-            border-bottom: 1px solid var(--roble-border);
-        }
-
-        .guestbook-email:hover {
-            border-bottom-color: var(--roble);
-        }
-
-        .guestbook-links {
-            margin-top: 18px;
-            display: flex;
-            gap: 24px;
-        }
-
-        .guestbook-links a {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: var(--stone);
-            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            color: var(--teal-bright);
+            margin-top: 12px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.4s var(--ease-snap), transform 0.4s var(--ease-snap);
         }
 
-        .guestbook-links a:hover {
-            color: var(--roble);
+        .door:hover .door-cta {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @media (max-width: 768px) {
-            .guestbook { padding: 60px 20px 80px; }
-            .guestbook-inner { flex-direction: column; text-align: center; gap: 28px; }
-            .guestbook-line { font-size: 24px; }
-            .guestbook-links { justify-content: center; }
-        }
-
-        /* === Punch: hero proof bar === */
-        .hero-proof {
-            display: grid;
-            grid-template-columns: repeat(4, auto);
-            justify-content: start;
-            margin-top: 48px;
-        }
-
-        .hero-proof-item {
-            padding: 0 26px;
-            border-right: 1px solid var(--bone);
+        /* =============== 4 · THE LEDGER =============== */
+        .ledger {
+            padding: 110px 40px;
             text-align: center;
         }
 
-        .hero-proof-item:first-child {
-            padding-left: 0;
-            text-align: left;
-        }
-
-        .hero-proof-item:last-child { border-right: none; }
-
-        .hero-proof-num {
+        .ledger-line {
             font-family: var(--mono);
-            font-size: 24px;
-            font-weight: 500;
-            color: var(--ink);
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-
-        .hero-proof-num .accent { color: var(--roble); }
-
-        .hero-proof-label {
-            font-family: var(--sans);
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-size: clamp(12px, 1.6vw, 15px);
             letter-spacing: 2px;
-            color: var(--stone);
-            margin-top: 8px;
+            text-transform: uppercase;
+            color: var(--paper-50);
         }
 
-        @media (max-width: 600px) {
-            .hero-proof {
+        .ledger-line .num {
+            color: var(--paper);
+            font-size: clamp(15px, 2vw, 19px);
+        }
+
+        .ledger-line .sep {
+            color: var(--lamp);
+            margin: 0 clamp(10px, 2.5vw, 26px);
+        }
+
+        /* =============== 5 · THE GUESTBOOK =============== */
+        .visit {
+            padding: 110px 40px 150px;
+        }
+
+        .visit-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 54px;
+        }
+
+        .visit-portrait {
+            width: 190px;
+            height: 235px;
+            object-fit: cover;
+            object-position: 26% 30%;
+            flex-shrink: 0;
+            border: 8px solid rgba(245, 243, 238, 0.07);
+            outline: 1px solid rgba(232, 228, 221, 0.16);
+            border-radius: 2px;
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
+            filter: brightness(0.92) sepia(0.08);
+        }
+
+        .visit-line {
+            font-family: var(--serif);
+            font-size: clamp(24px, 3.4vw, 30px);
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            color: var(--paper);
+        }
+
+        .visit-sub {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 17px;
+            color: var(--paper-50);
+            margin: 12px 0 26px;
+        }
+
+        .visit-email {
+            font-family: var(--mono);
+            font-size: 15px;
+            color: var(--lamp);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(168, 145, 111, 0.35);
+            padding-bottom: 3px;
+            transition: border-color 0.3s var(--ease-snap), color 0.3s var(--ease-snap);
+        }
+
+        .visit-email:hover {
+            color: #C8AE85;
+            border-bottom-color: #C8AE85;
+        }
+
+        .visit-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 26px;
+        }
+
+        .visit-links a {
+            font-family: var(--sans);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(232, 228, 221, 0.5);
+            text-decoration: none;
+            transition: color 0.3s var(--ease-snap);
+        }
+
+        .visit-links a:hover {
+            color: var(--teal-bright);
+        }
+
+        /* =============== Responsive =============== */
+        @media (max-width: 1000px) {
+            .doors {
                 grid-template-columns: repeat(2, 1fr);
-                row-gap: 24px;
-                max-width: 340px;
             }
-            .hero-proof-item { padding: 0 16px; }
-            .hero-proof-item:nth-child(2) { border-right: none; }
-            .hero-proof-num { font-size: 19px; }
+            .door { height: 360px; }
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 120px 20px 140px;
-            }
+            .arrival { padding: 120px 20px 70px; }
+            .arrival-title { letter-spacing: -3px; }
 
-            .hero-cta {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .showing { padding: 80px 20px 40px; }
+            .paintings { grid-template-columns: 1fr; gap: 60px; }
 
-            .btn {
-                width: 200px;
-                text-align: center;
-            }
+            .corridor { padding: 80px 20px 30px; }
+            .doors { gap: 14px; margin-top: 48px; }
+            .door { height: 300px; }
+            .door-books img { width: 50%; filter: brightness(0.5); }
+            .door-label { padding: 18px 16px; }
+            .door-name { font-size: 21px; }
+            .door-lure { font-size: 13px; }
+            .door-cta { display: none; }
 
-            .featured {
-                padding: 60px 20px;
-            }
+            .ledger { padding: 70px 20px; }
+            .ledger-line .sep { display: block; opacity: 0; height: 10px; margin: 0; }
+
+            .visit { padding: 70px 20px 100px; }
+            .visit-inner { flex-direction: column; text-align: center; gap: 30px; }
+            .visit-links { justify-content: center; }
         }
     </style>
 </head>
-<body class="room">
+<body>
     <div class="scroll-progress" id="scrollProgress"></div>
     <!-- Navigation -->
     <nav id="navbar">
@@ -586,170 +658,131 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <canvas id="heroDust" aria-hidden="true"></canvas>
-        <div class="hero-content">
-            <p class="hero-eyebrow">Builder &middot; Mexico City</p>
-            <h1 class="hero-title" id="heroTitle">
-                <span class="hero-text" data-text="Hola — I'm ">Hola — I'm </span>
-                <span class="hero-text hero-text-accent" data-text="Antonio.">Antonio.</span>
-            </h1>
-            <p class="hero-subtitle">Right now I'm building <span class="accent">Pulso</span> and <span class="accent">Vocera</span>. Before that &mdash; sixteen apps, three books, and a lot of questions I couldn't shake.</p>
-            <div class="hero-cta">
-                <a href="#now-showing" class="btn btn-primary">Now Showing &darr;</a>
-                <a href="story.html" class="btn btn-secondary">Read My Story</a>
-            </div>
-
-            <div class="hero-proof">
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">16<span class="accent">+</span></div>
-                    <div class="hero-proof-label">Apps Shipped</div>
-                </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">2</div>
-                    <div class="hero-proof-label">AI Products</div>
-                </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">3</div>
-                    <div class="hero-proof-label">Books Published</div>
-                </div>
-                <div class="hero-proof-item">
-                    <div class="hero-proof-num">157</div>
-                    <div class="hero-proof-label">Books Read</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24">
-                <path d="M7 10l5 5 5-5H7z"/>
-            </svg>
+    <!-- 1 · The Arrival -->
+    <section class="arrival">
+        <canvas id="embers" aria-hidden="true"></canvas>
+        <div class="arrival-content">
+            <p class="arrival-eyebrow">Antonio Murrieta &middot; Builder &middot; Mexico City</p>
+            <h1 class="arrival-title" id="arrivalTitle"><span class="hero-word">Hola</span><span class="dot">.</span></h1>
+            <p class="arrival-sub">I'm Antonio. I build companies, apps &amp; books &mdash; right now, <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Pulso</a> and <a href="https://vocera.mx" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Vocera</a>.</p>
+            <p class="arrival-line2">Welcome to the museum I live in. The lights are on for you.</p>
+            <a class="arrival-cue" href="#now-showing">El museo est&aacute; abierto &darr;</a>
         </div>
     </section>
 
-    <!-- Now Showing -->
-    <section class="now-showing" id="now-showing">
-        <div class="now-showing-container">
-            <p class="section-label reveal">Now Showing</p>
-            <p class="now-showing-note reveal">The two companies I'm building right now.</p>
-            <div class="now-showing-grid reveal-stagger">
-                <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="show-card reveal">
-                    <div class="show-card-frame"><div class="show-card-image" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div></div>
-                    <h3 class="show-card-title">Pulso</h3>
-                    <div class="plaque">
-                        <p class="plaque-id">No. 01 <span class="accent">&mdash;</span> Pulso, 2026</p>
-                        <p class="plaque-medium">Synthetic market research &middot; LATAM</p>
-                        <p class="plaque-note">Simulate how thousands of Mexican consumers react to your concept &mdash; in hours, not weeks. Methods validated with Stanford and Colgate-Palmolive.</p>
+    <!-- 2 · Now Showing -->
+    <section class="showing" id="now-showing">
+        <div class="showing-inner">
+            <p class="night-eyebrow reveal">Now Showing</p>
+            <h2 class="showing-title reveal">Two companies, still wet paint.</h2>
+            <p class="showing-note reveal">What I'm building right now, in the open.</p>
+
+            <div class="paintings reveal-stagger">
+                <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="painting reveal">
+                    <div class="painting-frame">
+                        <div class="painting-img" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div>
+                    </div>
+                    <div class="painting-plaque">
+                        <p class="pp-id">No. 01 <span class="accent">&mdash;</span> Pulso, 2026</p>
+                        <p class="pp-medium">Synthetic market research &middot; LATAM</p>
+                        <p class="pp-note">Simulate how thousands of Mexican consumers react to your concept &mdash; in hours, not weeks. Methods validated with Stanford and Colgate-Palmolive.</p>
+                        <span class="pp-cta">Visit pulso-latam.com &#8599;</span>
                     </div>
                 </a>
-                <a href="https://vocera.mx" target="_blank" rel="noopener" class="show-card reveal">
-                    <div class="show-card-frame"><div class="show-card-image" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div></div>
-                    <h3 class="show-card-title">Vocera</h3>
-                    <div class="plaque">
-                        <p class="plaque-id">No. 02 <span class="accent">&mdash;</span> Vocera, 2026</p>
-                        <p class="plaque-medium">AI voice agents &middot; SaaS</p>
-                        <p class="plaque-note">An AI voice agent that answers every call and works your lists in natural Mexican Spanish, 24/7 &mdash; every conversation transcribed.</p>
+
+                <a href="https://vocera.mx" target="_blank" rel="noopener" class="painting reveal">
+                    <div class="painting-frame">
+                        <div class="painting-img" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div>
+                    </div>
+                    <div class="painting-plaque">
+                        <p class="pp-id">No. 02 <span class="accent">&mdash;</span> Vocera, 2026</p>
+                        <p class="pp-medium">AI voice agents &middot; SaaS</p>
+                        <p class="pp-note">An AI voice agent that answers every call and works your lists in natural Mexican Spanish, 24/7 &mdash; every conversation transcribed.</p>
+                        <span class="pp-cta">Visit vocera.mx &#8599;</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Permanent Collection -->
-    <section class="featured">
-        <div class="featured-container">
-            <p class="section-label reveal">The Permanent Collection</p>
+    <!-- 3 · The Corridor -->
+    <section class="corridor">
+        <div class="corridor-inner">
+            <p class="night-eyebrow reveal">The Rooms</p>
+            <h2 class="showing-title reveal">Pick a door.</h2>
 
-            <div class="work-grid reveal-stagger">
-                <a href="work.html#abundia" class="work-grid-item work-grid-large reveal" style="background-image: url('assets/Work_Covers/Abundia.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-category">2025 &middot; Finance &amp; AI</span>
-                        <span class="work-grid-title">AbundIA</span>
+            <div class="doors reveal-stagger">
+                <a href="work.html" class="door reveal">
+                    <div class="door-bg" style="background-image: url('assets/Work_Covers/LCK-1.webp')"></div>
+                    <div class="door-scrim"></div>
+                    <div class="door-label">
+                        <p class="door-no">Room 01</p>
+                        <p class="door-name">The Galleries</p>
+                        <p class="door-lure">Everything I've shipped, hung and labeled.</p>
+                        <span class="door-cta">Enter &rarr;</span>
                     </div>
                 </a>
-                <a href="work.html#tribu" class="work-grid-item work-grid-tall reveal" style="background-image: url('assets/Work_Covers/Tribu.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">Tribu</span>
-                    </div>
-                </a>
-                <a href="work.html#komercia" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Komercia.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">Komercia</span>
-                    </div>
-                </a>
-                <a href="work.html#contrario" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Contrario.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">Contrario</span>
-                    </div>
-                </a>
-                <a href="work.html#lck" class="work-grid-item work-grid-wide reveal" style="background-image: url('assets/Work_Covers/LCK-1.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-category">2024 &middot; Experience Design</span>
-                        <span class="work-grid-title">LCK Experience</span>
-                    </div>
-                </a>
-                <a href="work.html#capi" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">Capi Coraz&oacute;n</span>
-                    </div>
-                </a>
-                <a href="work.html#el-peso-del-aire" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">El Peso del Aire</span>
-                    </div>
-                </a>
-                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp')">
-                    <div class="work-grid-overlay">
-                        <span class="work-grid-title">Bounce Blitz</span>
-                    </div>
-                </a>
-            </div>
 
-            <div class="featured-cta reveal" style="margin-top: 32px;">
-                <a href="work.html">See all projects &#8594;</a>
+                <a href="lab.html" class="door reveal">
+                    <div class="door-bg"><canvas id="doorWaves" width="400" height="620"></canvas></div>
+                    <div class="door-scrim"></div>
+                    <div class="door-label">
+                        <p class="door-no">Room 02</p>
+                        <p class="door-name">The Workshop</p>
+                        <p class="door-lure">The one room where you're allowed to touch.</p>
+                        <span class="door-cta">Enter &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="library.html" class="door reveal">
+                    <div class="door-books" aria-hidden="true">
+                        <img src="book-covers/2025/18 Invent and wander.webp" alt="" loading="lazy">
+                        <img src="book-covers/2025/14 La Sombra del viento.webp" alt="" loading="lazy">
+                        <img src="book-covers/2025/1 El camino de YC.webp" alt="" loading="lazy">
+                    </div>
+                    <div class="door-scrim"></div>
+                    <div class="door-label">
+                        <p class="door-no">Room 03</p>
+                        <p class="door-name">The Reading Room</p>
+                        <p class="door-lure">157 books, notes on every one. The lights are low.</p>
+                        <span class="door-cta">Enter &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="story.html" class="door reveal">
+                    <div class="door-bg" style="background-image: url('assets/Story_Photos/stanford_1.webp')"></div>
+                    <div class="door-scrim"></div>
+                    <div class="door-label">
+                        <p class="door-no">Room 04</p>
+                        <p class="door-name">The Study</p>
+                        <p class="door-lure">The long way here, told short.</p>
+                        <span class="door-cta">Enter &rarr;</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- The Reading Room teaser -->
-    <a href="library.html" class="reading-teaser">
-        <div class="reading-teaser-inner reveal">
-            <p class="reading-teaser-eyebrow">Room 03 &mdash; The Reading Room</p>
-            <h2 class="reading-teaser-title">157 books. Notes on every one.</h2>
-            <p class="reading-teaser-note">The lights are low in there. Come in anyway.</p>
-            <span class="reading-teaser-cta">Enter the library &rarr;</span>
-        </div>
-    </a>
+    <!-- 4 · The Ledger -->
+    <section class="ledger">
+        <p class="ledger-line reveal"><span class="num">16+</span> apps shipped<span class="sep">&#10022;</span><span class="num">2</span> AI products<span class="sep">&#10022;</span><span class="num">3</span> books published<span class="sep">&#10022;</span><span class="num">157</span> books read</p>
+    </section>
 
-    <!-- Guestbook -->
-    <section class="guestbook">
-        <div class="guestbook-inner reveal">
-            <img class="guestbook-portrait" src="assets/Story_Photos/inc_2.webp" alt="Antonio Murrieta speaking on stage">
-            <div class="guestbook-text">
-                <p class="guestbook-line">If something here made you curious, write to me.</p>
-                <p class="guestbook-sub">I answer everything that isn't spam.</p>
-                <a class="guestbook-email" href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>
-                <div class="guestbook-links">
+    <!-- 5 · The Guestbook -->
+    <section class="visit">
+        <div class="visit-inner reveal">
+            <img class="visit-portrait" src="assets/Story_Photos/inc_2.webp" alt="Antonio Murrieta speaking on stage">
+            <div>
+                <p class="visit-line">If something here made you curious, write to me.</p>
+                <p class="visit-sub">I answer everything that isn't spam.</p>
+                <a class="visit-email" href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>
+                <div class="visit-links">
                     <a href="https://github.com/Antonio-MS-Coder" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://www.linkedin.com/in/antonio-murrieta" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Continue the visit -->
-    <a href="work.html" class="doorway">
-        <div class="doorway-inner">
-            <div>
-                <p class="doorway-eyebrow">Continue the visit &mdash; Room 01</p>
-                <p class="doorway-title">The Galleries</p>
-                <p class="doorway-note">Everything I've shipped, hung and labeled.</p>
-            </div>
-            <span class="doorway-arrow">&rarr;</span>
-        </div>
-    </a>
 
     <!-- Footer -->
     <footer>
@@ -769,226 +802,104 @@
     </footer>
 
     <script>
-        // Interactive Hero Letters
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // --- Interactive "Hola." letters: lit by cursor proximity ---
         (function() {
-            var heroTitle = document.getElementById('heroTitle');
-            if (!heroTitle) return;
-
-            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            // Wrap each character in a span, grouped by word to prevent mid-word breaks
-            var textSpans = heroTitle.querySelectorAll('.hero-text');
-            textSpans.forEach(function(span) {
-                var text = span.getAttribute('data-text');
-                var isAccent = span.classList.contains('hero-text-accent');
-                var frag = document.createDocumentFragment();
-                var words = text.split(' ');
-
-                words.forEach(function(word, wordIdx) {
-                    if (word.length > 0) {
-                        // Create a word wrapper that prevents mid-word line breaks
-                        var wordWrap = document.createElement('span');
-                        wordWrap.style.whiteSpace = 'nowrap';
-                        wordWrap.style.display = 'inline-block';
-                        // Add space between words via margin (not after last word)
-                        if (wordIdx < words.length - 1) {
-                            wordWrap.style.marginRight = '0.25em';
-                        }
-
-                        for (var i = 0; i < word.length; i++) {
-                            var el = document.createElement('span');
-                            el.textContent = word[i];
-                            el.className = 'hero-letter' + (isAccent ? ' hero-letter-roble' : '');
-
-                            if (!prefersReducedMotion) {
-                                var rot = (Math.random() * 1 - 0.5).toFixed(2);
-                                var y = (Math.random() * 2 - 1).toFixed(2);
-                                var dur = (2 + Math.random() * 2).toFixed(2);
-                                el.style.setProperty('--idle-rot', rot + 'deg');
-                                el.style.setProperty('--idle-y', y + 'px');
-                                el.style.setProperty('--idle-duration', dur + 's');
-                                el.classList.add('idle');
-                            }
-
-                            wordWrap.appendChild(el);
-                        }
-
-                        frag.appendChild(wordWrap);
-                    }
-                });
-
-                span.textContent = '';
-                span.appendChild(frag);
-            });
-
-            if (prefersReducedMotion) return;
-
-            var isTouchDevice = 'ontouchstart' in window;
-            var letters = heroTitle.querySelectorAll('.hero-letter');
-
-            // Desktop: cursor interaction
-            if (!isTouchDevice) {
-                var rafId = null;
-                heroTitle.addEventListener('mousemove', function(e) {
-                    if (rafId) return;
-                    rafId = requestAnimationFrame(function() {
-                        var mx = e.clientX;
-                        var my = e.clientY;
-                        letters.forEach(function(letter) {
-                            if (letter.textContent === '\u00A0') return;
-                            var rect = letter.getBoundingClientRect();
-                            var cx = rect.left + rect.width / 2;
-                            var cy = rect.top + rect.height / 2;
-                            var dist = Math.sqrt(Math.pow(mx - cx, 2) + Math.pow(my - cy, 2));
-                            if (dist < 100) {
-                                letter.classList.add('active');
-                                letter.classList.remove('idle');
-                            } else if (letter.classList.contains('active')) {
-                                letter.classList.remove('active');
-                                setTimeout(function() { letter.classList.add('idle'); }, 400);
-                            }
-                        });
-                        rafId = null;
-                    });
-                });
-
-                heroTitle.addEventListener('mouseleave', function() {
-                    letters.forEach(function(letter) {
-                        letter.classList.remove('active');
-                        setTimeout(function() { letter.classList.add('idle'); }, 400);
-                    });
-                });
+            var word = document.querySelector('#arrivalTitle .hero-word');
+            if (!word) return;
+            var text = word.textContent;
+            word.textContent = '';
+            for (var i = 0; i < text.length; i++) {
+                var el = document.createElement('span');
+                el.textContent = text[i];
+                el.className = 'hero-letter';
+                word.appendChild(el);
+            }
+            if (prefersReducedMotion || 'ontouchstart' in window) {
+                // mobile: a slow wave of lamplight passes through the letters
+                if (!prefersReducedMotion) {
+                    var letters = word.querySelectorAll('.hero-letter');
+                    var idx = 0;
+                    setInterval(function() {
+                        letters.forEach(function(l) { l.classList.remove('lit'); });
+                        letters[idx % letters.length].classList.add('lit');
+                        idx++;
+                    }, 900);
+                }
+                return;
             }
 
-            // Mobile: tap wave
-            if (isTouchDevice) {
-                heroTitle.addEventListener('touchstart', function(e) {
-                    var touch = e.touches[0];
-                    var tx = touch.clientX;
-                    var ty = touch.clientY;
+            var title = document.getElementById('arrivalTitle');
+            var letters = word.querySelectorAll('.hero-letter');
+            var rafId = null;
+            document.querySelector('.arrival').addEventListener('mousemove', function(e) {
+                if (rafId) return;
+                rafId = requestAnimationFrame(function() {
                     letters.forEach(function(letter) {
-                        if (letter.textContent === '\u00A0') return;
                         var rect = letter.getBoundingClientRect();
                         var cx = rect.left + rect.width / 2;
                         var cy = rect.top + rect.height / 2;
-                        var dist = Math.sqrt(Math.pow(tx - cx, 2) + Math.pow(ty - cy, 2));
-                        var delay = dist * 1.5;
-                        setTimeout(function() {
-                            letter.classList.add('active');
-                            letter.classList.remove('idle');
-                            setTimeout(function() {
-                                letter.classList.remove('active');
-                                letter.classList.add('idle');
-                            }, 300);
-                        }, delay);
+                        var dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+                        letter.classList.toggle('lit', dist < 130);
                     });
+                    rafId = null;
                 });
-            }
+            });
+            document.querySelector('.arrival').addEventListener('mouseleave', function() {
+                letters.forEach(function(l) { l.classList.remove('lit'); });
+            });
         })();
 
-        // Scroll progress bar
-        var scrollProgress = document.getElementById('scrollProgress');
-        var heroSection = document.querySelector('.hero');
-        if (scrollProgress && heroSection) {
-            var heroObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (!entry.isIntersecting) {
-                        scrollProgress.classList.add('visible');
-                    } else {
-                        scrollProgress.classList.remove('visible');
-                    }
-                });
-            }, { threshold: 0 });
-            heroObserver.observe(heroSection);
-
-            window.addEventListener('scroll', function() {
-                var scrollTop = window.scrollY;
-                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                if (docHeight > 0) {
-                    scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
-                }
-            });
-        }
-
-        // Scroll reveal
-        var reveals = document.querySelectorAll('.reveal');
-        var revealObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        reveals.forEach(function(el) { revealObserver.observe(el); });
-
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Hero dust — motes drifting in lamplight
+        // --- Embers: warm dust drifting in the lamplight ---
         (function() {
-            var canvas = document.getElementById('heroDust');
+            var canvas = document.getElementById('embers');
             if (!canvas) return;
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { canvas.remove(); return; }
+            if (prefersReducedMotion) { canvas.remove(); return; }
 
             var ctx = canvas.getContext('2d');
-            var hero = canvas.parentElement;
+            var host = canvas.parentElement;
             var W = 0, H = 0, motes = [], visible = true;
             var mx = -9999, my = -9999;
 
             function size() {
-                W = canvas.width = hero.offsetWidth;
-                H = canvas.height = hero.offsetHeight;
+                W = canvas.width = host.offsetWidth;
+                H = canvas.height = host.offsetHeight;
             }
             size();
             window.addEventListener('resize', size);
 
-            var tints = ['rgba(2, 83, 85, ', 'rgba(107, 101, 96, ', 'rgba(168, 145, 111, '];
-            for (var i = 0; i < 44; i++) {
+            // ember gold, paper, teal
+            var tints = [
+                { c: '214, 178, 124', glow: true },
+                { c: '245, 243, 238', glow: false },
+                { c: '95, 168, 162', glow: true }
+            ];
+            for (var i = 0; i < 52; i++) {
+                var t = tints[i % 3];
                 motes.push({
                     x: Math.random(), y: Math.random(),
-                    r: 0.8 + Math.random() * 1.9,
-                    a: 0.06 + Math.random() * 0.16,
-                    vx: (Math.random() - 0.5) * 0.00012,
-                    vy: -0.00006 - Math.random() * 0.00012,
+                    r: 0.7 + Math.random() * 1.8,
+                    a: 0.10 + Math.random() * 0.30,
+                    vx: (Math.random() - 0.5) * 0.00013,
+                    vy: -0.00007 - Math.random() * 0.00016,
                     sway: Math.random() * Math.PI * 2,
-                    tint: tints[i % 3]
+                    tint: t.c,
+                    glow: t.glow,
+                    tw: 0.5 + Math.random() * 1.5
                 });
             }
 
-            hero.addEventListener('mousemove', function(e) {
-                var rect = hero.getBoundingClientRect();
+            host.addEventListener('mousemove', function(e) {
+                var rect = host.getBoundingClientRect();
                 mx = e.clientX - rect.left;
                 my = e.clientY - rect.top;
             });
-            hero.addEventListener('mouseleave', function() { mx = -9999; my = -9999; });
+            host.addEventListener('mouseleave', function() { mx = -9999; my = -9999; });
 
             new IntersectionObserver(function(entries) {
                 visible = entries[0].isIntersecting;
-            }, { threshold: 0 }).observe(hero);
+            }, { threshold: 0 }).observe(host);
 
             var t = 0;
             (function loop() {
@@ -1008,27 +919,132 @@
                         var d2 = dx * dx + dy * dy;
                         if (d2 < 14400) {
                             var d = Math.sqrt(d2) || 1;
-                            var push = (120 - d) / 120 * 0.9;
-                            px += (dx / d) * push * 14;
-                            py += (dy / d) * push * 14;
+                            var push = (120 - d) / 120;
+                            px += (dx / d) * push * 16;
+                            py += (dy / d) * push * 16;
                         }
 
+                        var alpha = m.a * (0.7 + 0.3 * Math.sin(t * m.tw + m.sway));
+                        if (m.glow) {
+                            ctx.shadowBlur = 9;
+                            ctx.shadowColor = 'rgba(' + m.tint + ', 0.8)';
+                        }
                         ctx.beginPath();
                         ctx.arc(px, py, m.r, 0, Math.PI * 2);
-                        ctx.fillStyle = m.tint + m.a + ')';
+                        ctx.fillStyle = 'rgba(' + m.tint + ', ' + alpha + ')';
                         ctx.fill();
+                        ctx.shadowBlur = 0;
                     }
                 }
                 requestAnimationFrame(loop);
             })();
         })();
 
-        // Smooth scroll for scroll indicator
-        document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            document.querySelector('.now-showing').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+        // --- Workshop door: live teal tides behind the glass ---
+        (function() {
+            var canvas = document.getElementById('doorWaves');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+            var W = canvas.width, H = canvas.height;
+            var visible = true, t = 0;
+
+            new IntersectionObserver(function(entries) {
+                visible = entries[0].isIntersecting;
+            }, { threshold: 0 }).observe(canvas);
+
+            var strokes = [
+                { c: 'rgba(95, 168, 162, 0.75)', w: 1.6, f: 0.016, amp: 34, sp: 1.0 },
+                { c: 'rgba(245, 243, 238, 0.5)', w: 1.1, f: 0.021, amp: 26, sp: 0.7 },
+                { c: 'rgba(168, 145, 111, 0.4)', w: 1.0, f: 0.012, amp: 44, sp: 0.5 },
+                { c: 'rgba(95, 168, 162, 0.3)', w: 0.8, f: 0.027, amp: 20, sp: 1.4 }
+            ];
+
+            function frame() {
+                if (visible && !prefersReducedMotion) {
+                    t += 0.014;
+                    ctx.fillStyle = '#100D08';
+                    ctx.fillRect(0, 0, W, H);
+                    for (var s = 0; s < strokes.length; s++) {
+                        var st = strokes[s];
+                        ctx.beginPath();
+                        ctx.strokeStyle = st.c;
+                        ctx.lineWidth = st.w;
+                        for (var y = 0; y <= H; y += 3) {
+                            var x = W / 2 + Math.sin(y * st.f + t * st.sp + s * 1.7) * st.amp
+                                          + Math.sin(y * st.f * 0.4 + t * st.sp * 0.6) * st.amp * 0.5;
+                            if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                        }
+                        ctx.stroke();
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+            if (prefersReducedMotion) {
+                t = 8;
+                ctx.fillStyle = '#100D08';
+                ctx.fillRect(0, 0, W, H);
+                for (var s = 0; s < strokes.length; s++) {
+                    var st = strokes[s];
+                    ctx.beginPath();
+                    ctx.strokeStyle = st.c;
+                    ctx.lineWidth = st.w;
+                    for (var y = 0; y <= H; y += 3) {
+                        var x = W / 2 + Math.sin(y * st.f + 8 * st.sp + s * 1.7) * st.amp;
+                        if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                    }
+                    ctx.stroke();
+                }
+            } else {
+                frame();
+            }
+        })();
+
+        // --- Scroll progress ---
+        var scrollProgress = document.getElementById('scrollProgress');
+        var arrivalSection = document.querySelector('.arrival');
+        if (scrollProgress && arrivalSection) {
+            new IntersectionObserver(function(entries) {
+                scrollProgress.classList.toggle('visible', !entries[0].isIntersecting);
+            }, { threshold: 0 }).observe(arrivalSection);
+
+            window.addEventListener('scroll', function() {
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (docHeight > 0) {
+                    scrollProgress.style.width = (window.scrollY / docHeight) * 100 + '%';
+                }
             });
+        }
+
+        // --- Scroll reveal ---
+        var reveals = document.querySelectorAll('.reveal');
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(function(el) { revealObserver.observe(el); });
+
+        // --- Mobile menu ---
+        var menuToggle = document.getElementById('menuToggle');
+        var navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- Navbar scroll ---
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            navbar.classList.toggle('scrolled', window.pageYOffset > 50);
         });
     </script>
 </body>
