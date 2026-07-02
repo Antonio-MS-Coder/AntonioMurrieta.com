@@ -80,7 +80,7 @@
 
         .experiment:hover {
             transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(65, 88, 74, 0.15), 0 0 0 1px var(--roble);
+            box-shadow: 0 16px 40px rgba(2, 83, 85, 0.15), 0 0 0 1px var(--roble);
             border-color: var(--roble);
         }
 
@@ -223,7 +223,7 @@
 
         #interactive-canvas:hover {
             border-color: var(--roble);
-            box-shadow: 0 12px 40px rgba(65, 88, 74, 0.2);
+            box-shadow: 0 12px 40px rgba(2, 83, 85, 0.2);
         }
 
         .canvas-controls {
@@ -265,8 +265,8 @@
         
         #interactive-canvas.grid-overlay {
             background-image: 
-                linear-gradient(rgba(65, 88, 74, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(65, 88, 74, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(2, 83, 85, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(2, 83, 85, 0.1) 1px, transparent 1px);
             background-size: 20px 20px;
         }
 
@@ -306,7 +306,7 @@
         .control-btn:hover {
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(65, 88, 74, 0.25);
+            box-shadow: 0 8px 24px rgba(2, 83, 85, 0.25);
         }
 
         /* Color Palette */
@@ -350,7 +350,7 @@
         .color-btn.active {
             transform: scale(1.2);
             border-color: var(--roble);
-            box-shadow: 0 0 20px rgba(65, 88, 74, 0.3);
+            box-shadow: 0 0 20px rgba(2, 83, 85, 0.3);
         }
 
         .color-btn.active::after {
@@ -370,7 +370,7 @@
 
         .pattern-generator:hover {
             border-color: var(--roble);
-            box-shadow: 0 12px 40px rgba(65, 88, 74, 0.15);
+            box-shadow: 0 12px 40px rgba(2, 83, 85, 0.15);
         }
 
         .pattern-generator h2 {
@@ -566,7 +566,7 @@
         .experiment-btn:hover {
             background: var(--roble-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(65, 88, 74, 0.3);
+            box-shadow: 0 8px 24px rgba(2, 83, 85, 0.3);
         }
 
         .experiment-btn:active {
@@ -917,8 +917,8 @@
             <canvas id="interactive-canvas" width="800" height="400"></canvas>
             
             <div class="color-palette">
-                <button class="color-btn active" style="background: var(--roble);" data-color="#41584A"></button>
-                <button class="color-btn" style="background: var(--roble-light);" data-color="#5C7361"></button>
+                <button class="color-btn active" style="background: var(--roble);" data-color="#025355"></button>
+                <button class="color-btn" style="background: var(--roble-light);" data-color="#23716F"></button>
                 <button class="color-btn" style="background: #8C1515;" data-color="#8C1515"></button>
                 <button class="color-btn" style="background: #006CB8;" data-color="#006CB8"></button>
                 <button class="color-btn" style="background: #009B76;" data-color="#009B76"></button>
@@ -1518,7 +1518,7 @@
         const canvas = document.getElementById('interactive-canvas');
         const ctx = canvas.getContext('2d');
         let isDrawing = false;
-        let currentColor = '#41584A';
+        let currentColor = '#025355';
         let currentBrushSize = 3;
         let currentOpacity = 1.0;
         let currentBrushType = 'pen';
@@ -2042,7 +2042,7 @@
 
         document.getElementById('randomPattern').addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const colors = ['#41584A', '#5C7361', '#41584A', '#41584A', '#41584A', '#2E2D29'];
+            const colors = ['#025355', '#23716F', '#025355', '#025355', '#025355', '#2E2D29'];
             
             for (let i = 0; i < 50; i++) {
                 ctx.beginPath();
@@ -2077,7 +2077,7 @@
             
             // Color schemes
             const colorSchemes = {
-                stanford: ['#41584A', '#5C7361', '#41584A', '#41584A', '#41584A', '#2E2D29'],
+                stanford: ['#025355', '#23716F', '#025355', '#025355', '#025355', '#2E2D29'],
                 monochrome: ['#000000', '#333333', '#666666', '#999999', '#CCCCCC', '#FFFFFF'],
                 rainbow: ['#FF0000', '#FF8000', '#FFFF00', '#80FF00', '#00FF00', '#00FF80', '#00FFFF', '#0080FF', '#0000FF', '#8000FF', '#FF00FF', '#FF0080'],
                 sunset: ['#FF6B35', '#F7931E', '#FFD23F', '#06FFA5', '#118AB2', '#073B4C'],

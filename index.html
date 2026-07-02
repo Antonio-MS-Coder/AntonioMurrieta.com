@@ -169,7 +169,7 @@
         .btn-primary:hover {
             background: var(--roble-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(65, 88, 74, 0.25);
+            box-shadow: 0 8px 24px rgba(2, 83, 85, 0.25);
         }
 
         .btn-secondary {
@@ -208,84 +208,6 @@
             width: 20px;
             height: 20px;
             fill: var(--stone);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 120px 40px;
-            background: var(--linen);
-            position: relative;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--bone), transparent);
-        }
-
-        .features-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .feature-card {
-            background: var(--paper);
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: all 0.4s var(--ease-reveal);
-            cursor: default;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--roble), var(--roble-light));
-            transform: translateX(-100%);
-            transition: transform 0.4s var(--ease-reveal);
-        }
-
-        .feature-card:hover::before {
-            transform: translateX(0);
-        }
-
-        .feature-card:hover {
-            border-color: var(--bone);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
-        }
-
-        .feature-card h3 {
-            font-family: var(--serif);
-            font-size: 20px;
-            font-weight: 400;
-            color: var(--ink);
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            color: var(--stone);
-            line-height: 1.6;
-            margin-bottom: 16px;
         }
 
         /* Featured Projects Section */
@@ -386,62 +308,6 @@
             .show-card-image { height: 220px; }
         }
 
-        /* === Bold Statement: project marquee === */
-        .marquee {
-            overflow: hidden;
-            border-top: 1px solid var(--bone);
-            border-bottom: 1px solid var(--bone);
-            background: var(--linen);
-            padding: 26px 0;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        /* fade edges so names dissolve in/out */
-        .marquee::before,
-        .marquee::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-        .marquee::before { left: 0; background: linear-gradient(90deg, var(--linen), transparent); }
-        .marquee::after { right: 0; background: linear-gradient(270deg, var(--linen), transparent); }
-
-        .marquee-track {
-            display: inline-flex;
-            align-items: center;
-            animation: marquee-scroll 48s linear infinite;
-            will-change: transform;
-        }
-
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-
-        .marquee-item {
-            font-family: var(--serif);
-            font-size: clamp(26px, 3.4vw, 42px);
-            font-weight: 300;
-            letter-spacing: -1px;
-            color: var(--ink);
-            text-decoration: none;
-            padding: 0 30px;
-            transition: color 0.25s var(--ease-snap);
-        }
-        .marquee-item:hover { color: var(--roble); }
-        .marquee-sep { color: var(--roble); font-size: 22px; vertical-align: middle; }
-
-        @keyframes marquee-scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .marquee-track { animation: none; }
-        }
-
         /* === Punch: hero proof bar === */
         .hero-proof {
             display: grid;
@@ -479,42 +345,6 @@
             margin-top: 8px;
         }
 
-        /* === Punch: numbered feature cards === */
-        .feature-card {
-            padding-top: 28px;
-        }
-
-        .feature-index {
-            font-family: var(--mono);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--roble);
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .feature-card h3::after {
-            content: '\2197';
-            font-family: var(--sans);
-            font-size: 16px;
-            color: var(--roble);
-            opacity: 0;
-            transform: translate(-6px, 4px);
-            transition: opacity 0.4s var(--ease-reveal), transform 0.4s var(--ease-reveal);
-        }
-
-        .feature-card:hover h3::after {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-
         @media (max-width: 600px) {
             .hero-proof {
                 grid-template-columns: repeat(2, 1fr);
@@ -542,19 +372,6 @@
             .btn {
                 width: 200px;
                 text-align: center;
-            }
-
-            .features {
-                padding: 60px 20px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .feature-card {
-                padding: 24px;
             }
 
             .featured {
@@ -654,114 +471,45 @@
         </div>
     </section>
 
-    <!-- Project Marquee -->
-    <div class="marquee" aria-label="Selected projects">
-        <div class="marquee-track">
-            <a class="marquee-item" href="work.html">Pulso</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Vocera</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">AbundIA</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Komercia</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Tribu</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">FitMental</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Contrario</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Kairos</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">El Peso del Aire</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Capi y el Coraz&oacute;n</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">LCK Experience</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Andr&eacute;s Noireau</a><span class="marquee-sep">&#10022;</span>
-            <!-- duplicate set for seamless loop -->
-            <a class="marquee-item" href="work.html">Pulso</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Vocera</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">AbundIA</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Komercia</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Tribu</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">FitMental</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Contrario</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Kairos</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">El Peso del Aire</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Capi y el Coraz&oacute;n</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">LCK Experience</a><span class="marquee-sep">&#10022;</span>
-            <a class="marquee-item" href="work.html">Andr&eacute;s Noireau</a><span class="marquee-sep">&#10022;</span>
-        </div>
-    </div>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-container">
-            <p class="section-label reveal">01 — What I Build</p>
-
-            <div class="features-grid reveal-stagger">
-                <article class="feature-card reveal">
-                    <span class="feature-index">01</span>
-                    <h3>Apps &amp; Products</h3>
-                    <p>
-                        Building iOS apps and web platforms that real people actually use.
-                        From idea to MVP to launch — 16+ apps shipped, payments integrated,
-                        and products pitched to banks, companies, and government.
-                    </p>
-                </article>
-
-                <article class="feature-card reveal">
-                    <span class="feature-index">02</span>
-                    <h3>Exploring &amp; Experimenting</h3>
-                    <p>
-                        Always going deeper. Machine learning, applied AI, generative visuals,
-                        interactive experiences — whatever rabbit hole looks interesting this week.
-                        Finding beauty in algorithms and learning by building.
-                    </p>
-                </article>
-
-                <article class="feature-card reveal">
-                    <span class="feature-index">03</span>
-                    <h3>Writing &amp; Stories</h3>
-                    <p>
-                        Published author exploring both children's wonder and grown-up questions.
-                        Reading 50+ books a year and sharing what resonates.
-                    </p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects -->
+    <!-- Permanent Collection -->
     <section class="featured">
         <div class="featured-container">
-            <p class="section-label reveal">02 — Recent Work</p>
+            <p class="section-label reveal">The Permanent Collection</p>
 
             <div class="work-grid reveal-stagger">
-                <a href="work.html" class="work-grid-item work-grid-large reveal" style="background-image: url('assets/Work_Covers/Abundia.webp')">
+                <a href="work.html#abundia" class="work-grid-item work-grid-large reveal" style="background-image: url('assets/Work_Covers/Abundia.webp')">
                     <div class="work-grid-overlay">
-                        <span class="work-grid-category">Finance & AI</span>
+                        <span class="work-grid-category">2025 &middot; Finance &amp; AI</span>
                         <span class="work-grid-title">AbundIA</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item work-grid-tall reveal" style="background-image: url('assets/Work_Covers/Tribu.webp')">
+                <a href="work.html#tribu" class="work-grid-item work-grid-tall reveal" style="background-image: url('assets/Work_Covers/Tribu.webp')">
                     <div class="work-grid-overlay">
                         <span class="work-grid-title">Tribu</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Komercia.webp')">
+                <a href="work.html#komercia" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Komercia.webp')">
                     <div class="work-grid-overlay">
                         <span class="work-grid-title">Komercia</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Contrario.webp')">
+                <a href="work.html#contrario" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Contrario.webp')">
                     <div class="work-grid-overlay">
                         <span class="work-grid-title">Contrario</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item work-grid-wide reveal" style="background-image: url('assets/Work_Covers/LCK-1.webp')">
+                <a href="work.html#lck" class="work-grid-item work-grid-wide reveal" style="background-image: url('assets/Work_Covers/LCK-1.webp')">
                     <div class="work-grid-overlay">
-                        <span class="work-grid-category">Experience Design</span>
+                        <span class="work-grid-category">2024 &middot; Experience Design</span>
                         <span class="work-grid-title">LCK Experience</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')">
+                <a href="work.html#capi" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')">
                     <div class="work-grid-overlay">
                         <span class="work-grid-title">Capi Coraz&oacute;n</span>
                     </div>
                 </a>
-                <a href="work.html" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')">
+                <a href="work.html#el-peso-del-aire" class="work-grid-item reveal" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')">
                     <div class="work-grid-overlay">
                         <span class="work-grid-title">El Peso del Aire</span>
                     </div>
@@ -978,7 +726,7 @@
 
         // Smooth scroll for scroll indicator
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            document.querySelector('.features').scrollIntoView({
+            document.querySelector('.now-showing').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });

@@ -13,11 +13,11 @@
     --bone: #E8E4DD;
     --paper: #F5F3EE;
     --linen: #FAF8F5;
-    /* Accent — museum green (var names kept from the roble era for compat) */
-    --roble: #41584A;
-    --roble-light: #5C7361;
-    --roble-dim: rgba(65, 88, 74, 0.08);
-    --roble-border: rgba(65, 88, 74, 0.2);
+    /* Accent — petrol teal (var names kept from the roble era for compat) */
+    --roble: #025355;
+    --roble-light: #23716F;
+    --roble-dim: rgba(2, 83, 85, 0.08);
+    --roble-border: rgba(2, 83, 85, 0.2);
 
     /* Typography */
     --serif: 'Newsreader', Georgia, serif;
@@ -382,12 +382,12 @@ footer {
 }
 
 .work-grid-category {
-    font-family: var(--sans);
+    font-family: var(--mono);
     font-size: 9px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--roble-light);
+    color: var(--bone);
     margin-bottom: 4px;
 }
 
@@ -428,7 +428,7 @@ footer {
 }
 
 .hero-letter-roble.active {
-    text-shadow: 0 0 20px rgba(65, 88, 74, 0.15);
+    text-shadow: 0 0 20px rgba(2, 83, 85, 0.15);
 }
 
 @keyframes letterIdle {
