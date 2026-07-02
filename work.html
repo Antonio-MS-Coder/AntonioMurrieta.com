@@ -446,6 +446,99 @@
                 height: 120px;
             }
         }
+
+        /* =============== NIGHT EDITORIAL THEME =============== */
+        body.room {
+            background: #16110B;
+        }
+
+        body.room::before {
+            opacity: 0.15;
+            background-size: 180px 180px;
+        }
+
+        /* Flip the palette inside the gallery only (nav/footer untouched) */
+        .work-container {
+            --ink: #F5F3EE;
+            --carbon: #E8E4DD;
+            --stone: rgba(232, 228, 221, 0.62);
+            --bone: rgba(232, 228, 221, 0.14);
+            --paper: rgba(255, 252, 245, 0.04);
+            --linen: #16110B;
+            --roble: #A8916F;
+            --roble-light: #C8AE85;
+            --roble-dim: rgba(168, 145, 111, 0.1);
+            --roble-border: rgba(168, 145, 111, 0.4);
+        }
+
+        .work-header-note {
+            font-family: var(--serif) !important;
+            font-style: italic;
+            font-size: 16px !important;
+            color: rgba(232, 228, 221, 0.5) !important;
+            margin-top: 18px !important;
+        }
+
+        /* Flagships hang like lit paintings */
+        .flagship-image-wrap {
+            border: 1px solid rgba(232, 228, 221, 0.13);
+            background: rgba(255, 252, 245, 0.03);
+            padding: 12px;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .flagship-image {
+            border-radius: 2px;
+            filter: brightness(0.92);
+            transition: transform 0.7s var(--ease-reveal), filter 0.5s var(--ease-snap);
+        }
+
+        .flagship-item:hover .flagship-image {
+            filter: brightness(1.03);
+        }
+
+        .flagship-evidence {
+            color: #5FA8A2;
+        }
+
+        .selected-image {
+            border: 1px solid rgba(232, 228, 221, 0.1);
+            filter: brightness(0.88);
+            transition: filter 0.45s var(--ease-snap), box-shadow 0.35s var(--ease-snap);
+        }
+
+        .selected-item:hover .selected-image {
+            filter: brightness(1);
+        }
+
+        .complete-grid-image {
+            border-radius: 16px;
+            border: 1px solid rgba(232, 228, 221, 0.08);
+            filter: grayscale(0.25) brightness(0.82);
+            transition: filter 0.45s var(--ease-snap), box-shadow 0.35s var(--ease-snap);
+        }
+
+        .complete-grid-item:hover .complete-grid-image {
+            filter: grayscale(0) brightness(1);
+        }
+
+        /* Doorway: step out of the dark into the lit workshop */
+        .doorway {
+            background: #120E09;
+            border-top: 1px solid rgba(232, 228, 221, 0.1);
+        }
+
+        .doorway-eyebrow { color: #A8916F; }
+        .doorway-title { color: #F5F3EE; }
+        .doorway-note { color: rgba(232, 228, 221, 0.55); }
+        .doorway-arrow { color: #A8916F; }
+
+        .doorway:hover { background: #F5F3EE; }
+        .doorway:hover .doorway-title { color: #111111; }
+        .doorway:hover .doorway-eyebrow { color: #025355; }
+        .doorway:hover .doorway-note { color: #6B6560; }
+        .doorway:hover .doorway-arrow { color: #025355; }
     </style>
 </head>
 <body class="room">
@@ -475,27 +568,9 @@
 <div class="work-container">
     <!-- Page Header -->
     <div class="work-header reveal">
-        <p class="room-eyebrow">Room 01 &mdash; The Galleries</p>
         <h1>Things I've shipped.</h1>
         <p>Everything here started as a question I couldn't shake. Some became companies, some became apps, a few became books &mdash; and plenty were just me learning by building, late at night, with too many tabs open.</p>
-        <div class="work-stats">
-            <div class="work-stat">
-                <div class="work-stat-num">16+</div>
-                <div class="work-stat-label">Apps Shipped</div>
-            </div>
-            <div class="work-stat">
-                <div class="work-stat-num">2</div>
-                <div class="work-stat-label">AI Products</div>
-            </div>
-            <div class="work-stat">
-                <div class="work-stat-num">3</div>
-                <div class="work-stat-label">Books Published</div>
-            </div>
-            <div class="work-stat">
-                <div class="work-stat-num">∞</div>
-                <div class="work-stat-label">Experiments</div>
-            </div>
-        </div>
+        <p class="work-header-note">The shelf grows almost every week. These are the ones that made the cut.</p>
     </div>
 
     <!-- Tier 1: Flagship -->

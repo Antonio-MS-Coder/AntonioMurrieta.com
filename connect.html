@@ -204,6 +204,102 @@
                 padding: 120px 20px 60px;
             }
         }
+
+        /* =============== NIGHT EDITORIAL THEME =============== */
+        body {
+            background: #16110B;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 180px 180px;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                opacity: 0.09;
+                background-size: 90px 90px;
+            }
+        }
+
+        /* Flip the palette inside the page content only */
+        .connect-container {
+            --ink: #F5F3EE;
+            --carbon: #E8E4DD;
+            --stone: rgba(232, 228, 221, 0.6);
+            --bone: rgba(232, 228, 221, 0.16);
+            --linen: #16110B;
+            --roble: #A8916F;
+            --roble-light: #C8AE85;
+            --roble-border: rgba(168, 145, 111, 0.4);
+        }
+
+        /* a small lamp over the invitation */
+        .connect-container {
+            position: relative;
+        }
+
+        .connect-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 178, 124, 0.10) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .connect-container > * {
+            position: relative;
+        }
+
+        .connect-email a {
+            font-family: var(--mono);
+            color: #A8916F;
+        }
+
+        .connect-email a:hover {
+            color: #C8AE85;
+        }
+
+        .connect-socials a:hover {
+            color: #5FA8A2;
+        }
+
+        .form-button {
+            background: #A8916F;
+            color: #16110B;
+            font-weight: 600;
+        }
+
+        .form-button:hover {
+            background: #C8AE85;
+        }
+
+        .form-message.success {
+            background: rgba(95, 168, 162, 0.12);
+            color: #5FA8A2;
+            border: 1px solid rgba(95, 168, 162, 0.35);
+        }
+
+        .form-message.error {
+            background: rgba(180, 70, 70, 0.12);
+            color: #E09A9A;
+            border: 1px solid rgba(180, 70, 70, 0.35);
+        }
     </style>
 </head>
 <body>
@@ -228,14 +324,14 @@
     </nav>
 
     <div class="connect-container">
-        <p class="section-label reveal">Say Hello</p>
+        <p class="section-label reveal">La visita termina aqu&iacute;</p>
 
         <div class="connect-hero reveal">
             <h1>Let's talk.</h1>
         </div>
 
         <p class="connect-intro reveal">
-            I'm always open to interesting conversations, collaborations, or just connecting with curious people.
+            Ideas, collaborations, an app you wish existed, or just to say you were here &mdash; I read everything myself.
         </p>
 
         <div class="connect-email reveal">
