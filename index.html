@@ -324,6 +324,68 @@
             font-style: italic;
         }
 
+        /* === Now Showing === */
+        .now-showing {
+            padding: 100px 40px;
+            background: var(--paper);
+        }
+
+        .now-showing-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .now-showing-note {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 18px;
+            color: var(--stone);
+            text-align: center;
+            margin: -32px 0 56px;
+        }
+
+        .now-showing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .show-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s var(--ease-snap);
+        }
+
+        .show-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .show-card-image {
+            height: 300px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 32px rgba(17, 17, 17, 0.10);
+        }
+
+        .show-card-title {
+            font-family: var(--serif);
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .now-showing { padding: 60px 20px; }
+            .now-showing-grid { grid-template-columns: 1fr; gap: 48px; }
+            .show-card-image { height: 220px; }
+        }
+
         /* === Bold Statement: project marquee === */
         .marquee {
             overflow: hidden;
@@ -561,6 +623,34 @@
             <svg viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5H7z"/>
             </svg>
+        </div>
+    </section>
+
+    <!-- Now Showing -->
+    <section class="now-showing" id="now-showing">
+        <div class="now-showing-container">
+            <p class="section-label reveal">Now Showing</p>
+            <p class="now-showing-note reveal">The two companies I'm building right now.</p>
+            <div class="now-showing-grid reveal-stagger">
+                <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="show-card reveal">
+                    <div class="show-card-image" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div>
+                    <h3 class="show-card-title">Pulso</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 01 <span class="accent">&mdash;</span> Pulso, 2026</p>
+                        <p class="plaque-medium">Synthetic market research &middot; LATAM</p>
+                        <p class="plaque-note">Simulate how thousands of Mexican consumers react to your concept &mdash; in hours, not weeks. Methods validated with Stanford and Colgate-Palmolive.</p>
+                    </div>
+                </a>
+                <a href="https://vocera.mx" target="_blank" rel="noopener" class="show-card reveal">
+                    <div class="show-card-image" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div>
+                    <h3 class="show-card-title">Vocera</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 02 <span class="accent">&mdash;</span> Vocera, 2026</p>
+                        <p class="plaque-medium">AI voice agents &middot; SaaS</p>
+                        <p class="plaque-note">An AI voice agent that answers every call and works your lists in natural Mexican Spanish, 24/7 &mdash; every conversation transcribed.</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
