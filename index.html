@@ -12,7 +12,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Antonio Murrieta — Builder, Entrepreneur & Author">
-    <meta property="og:description" content="Builder and entrepreneur from Mexico City shipping iOS apps, AI products, and books — at the intersection of art and technology.">
+    <meta property="og:description" content="Builder and entrepreneur from Mexico City. Now building Pulso and Vocera — plus 16+ shipped apps and 3 published books, all under one roof.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com/">
     <meta property="og:site_name" content="Antonio Murrieta">
@@ -382,10 +382,9 @@
 
         /* === Punch: hero proof bar === */
         .hero-proof {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, auto);
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 0;
             margin-top: 48px;
         }
 
@@ -455,7 +454,15 @@
         }
 
         @media (max-width: 600px) {
+            .hero-proof {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 24px;
+                max-width: 340px;
+                margin-left: auto;
+                margin-right: auto;
+            }
             .hero-proof-item { padding: 0 16px; }
+            .hero-proof-item:nth-child(2) { border-right: none; }
             .hero-proof-num { font-size: 19px; }
         }
 
@@ -520,12 +527,12 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title" id="heroTitle">
-                <span class="hero-text" data-text="I build at the intersection of ">I build at the intersection of </span>
-                <span class="hero-text hero-text-accent" data-text="art &amp; technology.">art &amp; technology.</span>
+                <span class="hero-text" data-text="I build companies, apps &amp; books — ">I build companies, apps &amp; books — </span>
+                <span class="hero-text hero-text-accent" data-text="all under one roof.">all under one roof.</span>
             </h1>
-            <p class="hero-subtitle">Builder. Entrepreneur. Curious by default.</p>
+            <p class="hero-subtitle">Antonio Murrieta &middot; Builder &middot; Mexico City</p>
             <div class="hero-cta">
-                <a href="work.html" class="btn btn-primary">View My Work</a>
+                <a href="#now-showing" class="btn btn-primary">Now Showing &darr;</a>
                 <a href="story.html" class="btn btn-secondary">Read My Story</a>
             </div>
 
