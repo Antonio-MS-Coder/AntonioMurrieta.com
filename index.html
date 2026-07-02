@@ -153,7 +153,7 @@
             max-width: 920px;
         }
 
-        .arrival-eyebrow {
+        .arrival-issue {
             font-family: var(--mono);
             font-size: 11px;
             font-weight: 500;
@@ -161,6 +161,45 @@
             letter-spacing: 4px;
             color: var(--lamp-dim);
             margin-bottom: 30px;
+        }
+
+        /* B&W photo block the title overlaps — editorial collage */
+        .arrival-photo {
+            position: absolute;
+            top: 50%;
+            right: clamp(20px, 12vw, 190px);
+            transform: translateY(-56%);
+            width: clamp(200px, 26vw, 340px);
+            z-index: 0;
+            margin: 0;
+        }
+
+        .arrival-photo img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: 30% 25%;
+            filter: grayscale(1) contrast(1.08) brightness(0.82);
+            border: 1px solid rgba(232, 228, 221, 0.14);
+            box-shadow: 0 34px 90px rgba(0, 0, 0, 0.55);
+        }
+
+        /* grid fragment, like a corner of graph paper left on the desk */
+        .arrival-grid {
+            position: absolute;
+            bottom: 12%;
+            left: clamp(12px, 9vw, 150px);
+            width: clamp(140px, 16vw, 230px);
+            height: clamp(110px, 13vw, 190px);
+            z-index: 0;
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(232, 228, 221, 0.35) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 228, 221, 0.35) 1px, transparent 1px);
+            background-size: 22px 22px;
+            mask-image: linear-gradient(135deg, #000 40%, transparent 95%);
+            -webkit-mask-image: linear-gradient(135deg, #000 40%, transparent 95%);
         }
 
         .arrival-title {
@@ -192,20 +231,11 @@
             font-style: italic;
         }
 
-        .arrival-line2 {
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: clamp(16px, 2vw, 19px);
-            color: var(--paper-50);
-            margin-top: 18px;
-        }
-
         .arrival-cue {
             display: inline-block;
             font-family: var(--mono);
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: 3px;
-            text-transform: uppercase;
             color: var(--lamp);
             margin-top: 64px;
             text-decoration: none;
@@ -356,6 +386,96 @@
         }
 
         .painting:hover .pp-cta {
+            border-bottom-color: var(--teal-bright);
+        }
+
+        /* =============== 2b · RECIÉN SALIDOS (contact sheet) =============== */
+        .releases {
+            padding: 90px 40px 40px;
+        }
+
+        .releases-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .releases-head {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(232, 228, 221, 0.45);
+            border-bottom: 1px solid rgba(232, 228, 221, 0.12);
+            padding-bottom: 14px;
+            margin-bottom: 26px;
+        }
+
+        .releases-head span {
+            color: var(--lamp);
+        }
+
+        .releases-strip {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 12px;
+        }
+
+        .release {
+            display: block;
+            text-decoration: none;
+        }
+
+        .release-img {
+            aspect-ratio: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            border-radius: 3px;
+            border: 1px solid rgba(232, 228, 221, 0.1);
+            filter: grayscale(0.35) brightness(0.75);
+            transition: filter 0.45s var(--ease-snap), transform 0.45s var(--ease-snap);
+        }
+
+        .release:hover .release-img {
+            filter: grayscale(0) brightness(1);
+            transform: translateY(-4px);
+        }
+
+        .release-name {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            color: rgba(232, 228, 221, 0.55);
+            margin-top: 9px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .release-name span {
+            color: rgba(232, 228, 221, 0.3);
+        }
+
+        .release:hover .release-name {
+            color: var(--paper);
+        }
+
+        .releases-more {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .releases-more a {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 16px;
+            color: var(--teal-bright);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(95, 168, 162, 0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s var(--ease-snap);
+        }
+
+        .releases-more a:hover {
             border-bottom-color: var(--teal-bright);
         }
 
@@ -611,9 +731,26 @@
             .door { height: 360px; }
         }
 
+        @media (max-width: 1000px) {
+            .releases-strip { grid-template-columns: repeat(4, 1fr); }
+        }
+
         @media (max-width: 768px) {
             .arrival { padding: 120px 20px 70px; }
             .arrival-title { letter-spacing: -3px; }
+            .arrival-photo {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 180px;
+                margin: 0 auto 30px;
+            }
+            .arrival-grid { display: none; }
+            .releases { padding: 60px 20px 20px; }
+            .releases-strip { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .release-name { font-size: 9px; }
+            .releases-more { text-align: center; }
 
             .showing { padding: 80px 20px 40px; }
             .paintings { grid-template-columns: 1fr; gap: 60px; }
@@ -658,24 +795,27 @@
         </div>
     </nav>
 
-    <!-- 1 · The Arrival -->
+    <!-- 1 · The Cover -->
     <section class="arrival">
         <canvas id="embers" aria-hidden="true"></canvas>
+        <div class="arrival-grid" aria-hidden="true"></div>
+        <figure class="arrival-photo" aria-hidden="true">
+            <img src="assets/Story_Photos/inc_2.webp" alt="">
+        </figure>
         <div class="arrival-content">
-            <p class="arrival-eyebrow">Antonio Murrieta &middot; Builder &middot; Mexico City</p>
+            <p class="arrival-issue">Portafolio &middot; Vol. 26 &middot; CDMX</p>
             <h1 class="arrival-title" id="arrivalTitle"><span class="hero-word">Hola</span><span class="dot">.</span></h1>
-            <p class="arrival-sub">I'm Antonio. I build companies, apps &amp; books &mdash; right now, <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Pulso</a> and <a href="https://vocera.mx" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Vocera</a>.</p>
-            <p class="arrival-line2">Welcome to the museum I live in. The lights are on for you.</p>
-            <a class="arrival-cue" href="#now-showing">El museo est&aacute; abierto &darr;</a>
+            <p class="arrival-sub">I'm Antonio. I ship something new almost every week &mdash; right now <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Pulso</a> and <a href="https://vocera.mx" target="_blank" rel="noopener" class="tl" style="text-decoration:none;">Vocera</a>, plus apps, books, and experiments.</p>
+            <a class="arrival-cue" href="#now-showing">explora &darr;</a>
         </div>
     </section>
 
     <!-- 2 · Now Showing -->
     <section class="showing" id="now-showing">
         <div class="showing-inner">
-            <p class="night-eyebrow reveal">Now Showing</p>
-            <h2 class="showing-title reveal">Two companies, still wet paint.</h2>
-            <p class="showing-note reveal">What I'm building right now, in the open.</p>
+            <p class="night-eyebrow reveal">En portada</p>
+            <h2 class="showing-title reveal">What I'm building now.</h2>
+            <p class="showing-note reveal">The two most commercial &mdash; the rest of the shelf is right below.</p>
 
             <div class="paintings reveal-stagger">
                 <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="painting reveal">
@@ -705,19 +845,61 @@
         </div>
     </section>
 
+    <!-- 2b · Recién salidos -->
+    <section class="releases">
+        <div class="releases-inner">
+            <p class="releases-head reveal"><span>Reci&eacute;n salidos</span> &mdash; something new almost every week</p>
+            <div class="releases-strip reveal-stagger">
+                <a href="work.html#morph" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Morph.webp')"></div>
+                    <p class="release-name">Morph <span>2025</span></p>
+                </a>
+                <a href="work.html#kairos" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Kairos.webp')"></div>
+                    <p class="release-name">Kairos <span>2025</span></p>
+                </a>
+                <a href="work.html" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Solsticio.webp')"></div>
+                    <p class="release-name">Solsticio <span>2025</span></p>
+                </a>
+                <a href="work.html#contrario" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Contrario.webp')"></div>
+                    <p class="release-name">Contrario <span>2025</span></p>
+                </a>
+                <a href="work.html" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg')"></div>
+                    <p class="release-name">Pulso &middot; Pol&iacute;tica <span>2025</span></p>
+                </a>
+                <a href="work.html" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Marea_Baja.webp')"></div>
+                    <p class="release-name">Marea Baja <span>2025</span></p>
+                </a>
+                <a href="work.html#abundia" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div>
+                    <p class="release-name">AbundIA <span>2025</span></p>
+                </a>
+                <a href="work.html" class="release reveal">
+                    <div class="release-img" style="background-image: url('assets/Work_Covers/Bounce_Blitz.webp')"></div>
+                    <p class="release-name">Bounce Blitz <span>2025</span></p>
+                </a>
+            </div>
+            <p class="releases-more reveal"><a href="work.html">See everything I've shipped &rarr;</a></p>
+        </div>
+    </section>
+
     <!-- 3 · The Corridor -->
     <section class="corridor">
         <div class="corridor-inner">
-            <p class="night-eyebrow reveal">The Rooms</p>
-            <h2 class="showing-title reveal">Pick a door.</h2>
+            <p class="night-eyebrow reveal">&Iacute;ndice</p>
+            <h2 class="showing-title reveal">Four sections. All open.</h2>
 
             <div class="doors reveal-stagger">
                 <a href="work.html" class="door reveal">
                     <div class="door-bg" style="background-image: url('assets/Work_Covers/LCK-1.webp')"></div>
                     <div class="door-scrim"></div>
                     <div class="door-label">
-                        <p class="door-no">Room 01</p>
-                        <p class="door-name">The Galleries</p>
+                        <p class="door-no">01</p>
+                        <p class="door-name">Work</p>
                         <p class="door-lure">Everything I've shipped, hung and labeled.</p>
                         <span class="door-cta">Enter &rarr;</span>
                     </div>
@@ -727,8 +909,8 @@
                     <div class="door-bg"><canvas id="doorWaves" width="400" height="620"></canvas></div>
                     <div class="door-scrim"></div>
                     <div class="door-label">
-                        <p class="door-no">Room 02</p>
-                        <p class="door-name">The Workshop</p>
+                        <p class="door-no">02</p>
+                        <p class="door-name">Lab</p>
                         <p class="door-lure">The one room where you're allowed to touch.</p>
                         <span class="door-cta">Enter &rarr;</span>
                     </div>
@@ -742,8 +924,8 @@
                     </div>
                     <div class="door-scrim"></div>
                     <div class="door-label">
-                        <p class="door-no">Room 03</p>
-                        <p class="door-name">The Reading Room</p>
+                        <p class="door-no">03</p>
+                        <p class="door-name">Library</p>
                         <p class="door-lure">157 books, notes on every one. The lights are low.</p>
                         <span class="door-cta">Enter &rarr;</span>
                     </div>
@@ -753,8 +935,8 @@
                     <div class="door-bg" style="background-image: url('assets/Story_Photos/stanford_1.webp')"></div>
                     <div class="door-scrim"></div>
                     <div class="door-label">
-                        <p class="door-no">Room 04</p>
-                        <p class="door-name">The Study</p>
+                        <p class="door-no">04</p>
+                        <p class="door-name">Story</p>
                         <p class="door-lure">The long way here, told short.</p>
                         <span class="door-cta">Enter &rarr;</span>
                     </div>
