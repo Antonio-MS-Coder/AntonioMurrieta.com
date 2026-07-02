@@ -941,9 +941,19 @@
 
             .filter-buttons {
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
                 gap: 6px;
-                justify-content: center;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 2px;
+                mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 28px), transparent 100%);
+                -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 28px), transparent 100%);
+            }
+
+            .filter-buttons::-webkit-scrollbar {
+                display: none;
             }
 
             .filter-divider {
@@ -951,6 +961,7 @@
             }
 
             .filter-btn {
+                flex-shrink: 0;
                 font-size: 11px;
                 padding: 6px 12px;
                 border-radius: 16px;
@@ -986,22 +997,14 @@
                 bottom: -4px;
             }
 
+            /* Covers stand alone on mobile — title & author live in the modal */
             .book-hover-info {
-                opacity: 1;
-                padding: 20px 6px 6px;
-            }
-
-            .book-hover-title {
-                font-size: 10px;
-            }
-
-            .book-hover-author {
-                font-size: 9px;
+                display: none;
             }
 
             /* Year dividers */
             .year-divider {
-                padding: 16px 0 4px;
+                padding: 22px 0 4px;
                 gap: 12px;
             }
 
