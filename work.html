@@ -108,6 +108,23 @@
             line-height: 1.6;
         }
 
+        /* === Museum touches === */
+        .flagship-item, .selected-item {
+            scroll-margin-top: 120px;
+        }
+
+        .flagship-item .plaque {
+            margin-bottom: 10px;
+        }
+
+        .flagship-evidence {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 15px;
+            color: var(--roble);
+            margin-top: 10px;
+        }
+
         /* === Tier 1: Flagship === */
         .flagship-section {
             margin-bottom: 100px;
@@ -140,16 +157,6 @@
 
         .flagship-meta {
             max-width: 600px;
-        }
-
-        .flagship-category {
-            font-family: var(--sans);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--roble);
-            margin-bottom: 8px;
         }
 
         .flagship-title {
@@ -189,15 +196,6 @@
         /* Index number on flagship */
         .flagship-meta {
             position: relative;
-        }
-
-        .flagship-category {
-            display: inline-block;
-            background: var(--roble-dim);
-            border: 1px solid var(--roble-border);
-            color: var(--roble);
-            padding: 4px 12px;
-            border-radius: 100px;
         }
 
         /* Animated 'Visit' arrow appended to the title */
@@ -310,9 +308,9 @@
         }
 
         .selected-category {
-            font-family: var(--sans);
+            font-family: var(--mono);
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--roble);
@@ -477,6 +475,7 @@
 <div class="work-container">
     <!-- Page Header -->
     <div class="work-header reveal">
+        <p class="room-eyebrow">Room 01 &mdash; The Galleries</p>
         <h1>Things I've shipped.</h1>
         <p>Everything here started as a question I couldn't shake. Some became companies, some became apps, a few became books &mdash; and plenty were just me learning by building, late at night, with too many tabs open.</p>
         <div class="work-stats">
@@ -504,30 +503,42 @@
         <p class="section-label reveal">What I'm building now</p>
         <p class="section-note reveal">My focus right now &mdash; AI products I'm building in the open.</p>
 
-        <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="flagship-item reveal">
+        <a href="https://pulso-latam.com" target="_blank" rel="noopener" class="flagship-item reveal" id="pulso">
             <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Pulso.jpg')"></div></div>
             <div class="flagship-meta">
-                <p class="flagship-category">AI Market Intelligence</p>
+                <div class="plaque">
+                    <p class="plaque-id">No. 01 <span class="accent">&mdash;</span> Pulso, 2026</p>
+                    <p class="plaque-medium">AI Market Intelligence &middot; Web SaaS</p>
+                </div>
                 <h2 class="flagship-title">Pulso</h2>
-                <p class="flagship-desc">Synthetic market research for LATAM. Simulate how thousands of Mexican consumers react to your concept, message, or price &mdash; in hours, not weeks. Built on methods validated by Stanford and Colgate-Palmolive.</p>
+                <p class="flagship-desc">Synthetic market research for LATAM. Simulate how thousands of Mexican consumers react to your concept, message, or price &mdash; in hours, not weeks.</p>
+                <p class="flagship-evidence">Methods validated with Stanford and Colgate-Palmolive.</p>
             </div>
         </a>
 
-        <a href="https://vocera.mx" target="_blank" rel="noopener" class="flagship-item reveal">
+        <a href="https://vocera.mx" target="_blank" rel="noopener" class="flagship-item reveal" id="vocera">
             <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div></div>
             <div class="flagship-meta">
-                <p class="flagship-category">AI Voice &times; SaaS</p>
+                <div class="plaque">
+                    <p class="plaque-id">No. 02 <span class="accent">&mdash;</span> Vocera, 2026</p>
+                    <p class="plaque-medium">AI Voice Agents &middot; SaaS</p>
+                </div>
                 <h2 class="flagship-title">Vocera</h2>
-                <p class="flagship-desc">An AI voice agent that answers every call and works your lists &mdash; qualifying, booking, and following up over WhatsApp in natural Mexican Spanish, 24/7. Every conversation transcribed to your dashboard.</p>
+                <p class="flagship-desc">An AI voice agent that answers every call and works your lists &mdash; qualifying, booking, and following up over WhatsApp in natural Mexican Spanish, 24/7.</p>
+                <p class="flagship-evidence">Live at vocera.mx &mdash; every conversation lands in the dashboard.</p>
             </div>
         </a>
 
-        <a href="Abundia.html" class="flagship-item reveal">
+        <a href="Abundia.html" class="flagship-item reveal" id="abundia">
             <div class="flagship-image-wrap"><div class="flagship-image" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div></div>
             <div class="flagship-meta">
-                <p class="flagship-category">Finance &amp; AI</p>
+                <div class="plaque">
+                    <p class="plaque-id">No. 03 <span class="accent">&mdash;</span> AbundIA, 2025</p>
+                    <p class="plaque-medium">Personal Finance &middot; iOS</p>
+                </div>
                 <h2 class="flagship-title">AbundIA</h2>
-                <p class="flagship-desc">Personal finance powered by on-device AI. Track, plan, and invest — all processed locally via Apple Intelligence. Zero data leaves your phone.</p>
+                <p class="flagship-desc">Personal finance powered by on-device AI. Track, plan, and invest — all processed locally via Apple Intelligence.</p>
+                <p class="flagship-evidence">Zero data leaves the phone.</p>
             </div>
         </a>
 
@@ -541,77 +552,77 @@
         <p class="section-note reveal">Apps, books, and projects that meant something to make.</p>
 
         <div class="selected-grid">
-            <a href="https://apps.apple.com/us/app/kairos-convene-your-council/id6756202087" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://apps.apple.com/us/app/kairos-convene-your-council/id6756202087" target="_blank" rel="noopener" class="selected-item reveal" id="kairos">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Kairos.webp')"></div>
                 <p class="selected-category">AI &middot; iOS App</p>
                 <h3 class="selected-title">Kairos</h3>
                 <p class="selected-desc">Convene a personal council of thinkers, athletes, and mentors &mdash; AI advisors you can turn to for any decision.</p>
             </a>
 
-            <a href="https://komercia.mx/" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://komercia.mx/" target="_blank" rel="noopener" class="selected-item reveal" id="komercia">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Komercia.webp')"></div>
                 <p class="selected-category">Supply Chain &times; MIT</p>
                 <h3 class="selected-title">Komercia</h3>
                 <p class="selected-desc">Supply chain optimization platform built with MIT LIFT Lab. Data-driven research into how technology reshapes global logistics.</p>
             </a>
 
-            <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://open.spotify.com/intl-es/artist/3d74bZ3oK0z9X2JfWpjryO?si=dsT2H5ZVQbeNgSF7ONGJNw" target="_blank" rel="noopener" class="selected-item reveal" id="andres-noireau">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Andres_Noireau.avif')"></div>
                 <p class="selected-category">AI Art</p>
                 <h3 class="selected-title">Andr&eacute;s Noireau</h3>
                 <p class="selected-desc">An AI-generated artistic identity. Where does the artist end and the algorithm begin?</p>
             </a>
 
-            <a href="https://apps.apple.com/es/app/tribu/id6748625305" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://apps.apple.com/es/app/tribu/id6748625305" target="_blank" rel="noopener" class="selected-item reveal" id="tribu">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Tribu.webp')"></div>
                 <p class="selected-category">Social &amp; Wellness</p>
                 <h3 class="selected-title">Tribu</h3>
                 <p class="selected-desc">Conversations that matter. Guided questions for friends, couples, and teams.</p>
             </a>
 
-            <a href="https://apps.apple.com/es/app/fit-mental/id6741566362" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://apps.apple.com/es/app/fit-mental/id6741566362" target="_blank" rel="noopener" class="selected-item reveal" id="fitmental">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Fit_Mental.webp')"></div>
                 <p class="selected-category">Health &amp; Wellness</p>
                 <h3 class="selected-title">FitMental</h3>
                 <p class="selected-desc">Mental wellness meets modern tech. Evidence-based tools for personal growth.</p>
             </a>
 
-            <a href="https://apps.apple.com/es/app/contrario/id6751874165" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://apps.apple.com/es/app/contrario/id6751874165" target="_blank" rel="noopener" class="selected-item reveal" id="contrario">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Contrario.webp')"></div>
                 <p class="selected-category">Productivity</p>
                 <h3 class="selected-title">Contrario</h3>
                 <p class="selected-desc">A contrarian news reader for founders. Daily ideas that challenge default thinking.</p>
             </a>
 
-            <a href="https://apps.apple.com/us/app/morph/id6760213384" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://apps.apple.com/us/app/morph/id6760213384" target="_blank" rel="noopener" class="selected-item reveal" id="morph">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Morph.webp')"></div>
                 <p class="selected-category">Puzzle &middot; iOS Game</p>
                 <h3 class="selected-title">Morph</h3>
                 <p class="selected-desc">A minimalist game of wit. Morph shapes and connections through escalating puzzles.</p>
             </a>
 
-            <a href="https://a.co/d/04LULkG" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://a.co/d/04LULkG" target="_blank" rel="noopener" class="selected-item reveal" id="el-peso-del-aire">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')"></div>
                 <p class="selected-category">Fine Art Photobook</p>
                 <h3 class="selected-title">El Peso del Aire</h3>
                 <p class="selected-desc">Love, absence, and healing through poetic imagery and lyrical prose.</p>
             </a>
 
-            <a href="https://www.amazon.com.mx/Capi-Coraz%C3%B3n-que-Escucha-capibara/dp/B0FBFDM6ZV/" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://www.amazon.com.mx/Capi-Coraz%C3%B3n-que-Escucha-capibara/dp/B0FBFDM6ZV/" target="_blank" rel="noopener" class="selected-item reveal" id="capi">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/Capi_Corazon.webp')"></div>
                 <p class="selected-category">Children's Book</p>
                 <h3 class="selected-title">Capi y el Coraz&oacute;n que Escucha</h3>
                 <p class="selected-desc">A capybara teaches kids to listen with their hearts. Empathy through story.</p>
             </a>
 
-            <a href="https://www.amazon.com.mx/Prompts-cambiaron-vida-pueden-cambiar/dp/B0FD8CCNNX/" target="_blank" rel="noopener" class="selected-item reveal">
+            <a href="https://www.amazon.com.mx/Prompts-cambiaron-vida-pueden-cambiar/dp/B0FD8CCNNX/" target="_blank" rel="noopener" class="selected-item reveal" id="100-prompts">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/100_Prompts.webp')"></div>
                 <p class="selected-category">Self-Development</p>
                 <h3 class="selected-title">100 Prompts que Cambiaron mi Vida</h3>
                 <p class="selected-desc">Thought-provoking prompts for self-reflection and personal growth.</p>
             </a>
 
-            <a href="https://lck-experience.web.app" target="_blank" rel="noopener" class="selected-item reveal" style="grid-column: span 2;">
+            <a href="https://lck-experience.web.app" target="_blank" rel="noopener" class="selected-item reveal" id="lck" style="grid-column: span 2;">
                 <div class="selected-image" style="background-image: url('assets/Work_Covers/LCK-1.webp'); height: 260px;"></div>
                 <p class="selected-category">Digital Experience</p>
                 <h3 class="selected-title">LCK Experience</h3>
