@@ -153,13 +153,13 @@
 
         .chip:hover {
             color: var(--paper);
-            border-color: rgba(168, 145, 111, 0.5);
+            border-color: rgba(95, 168, 162, 0.55);
         }
 
         .chip.active {
-            color: var(--night);
-            background: var(--lamp);
-            border-color: var(--lamp);
+            color: #F5F3EE;
+            background: #025355;
+            border-color: #0A6B6D;
         }
 
         /* The wall — salon-style masonry */
@@ -196,6 +196,19 @@
             display: none;
         }
 
+        /* Filtered views hang in even rows; only Everything gets the salon jumble */
+        .wall.grid-mode {
+            columns: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            align-items: start;
+        }
+
+        .wall.grid-mode .piece {
+            margin-bottom: 0;
+        }
+
         .piece-img {
             width: 100%;
             background-size: cover;
@@ -212,6 +225,7 @@
         .piece-img.wide { aspect-ratio: 16 / 10; border-radius: 4px; }
         .piece-img.icon { aspect-ratio: 1 / 1; border-radius: 22.37%; }
         .piece-img.book { aspect-ratio: 3 / 4; border-radius: 3px; }
+        .piece-img.banner { aspect-ratio: 2.9 / 1; border-radius: 4px; }
 
         .piece-cap {
             margin-top: 13px;
@@ -309,6 +323,7 @@
         @media (max-width: 768px) {
             .wall-page { padding: 120px 16px 60px; }
             .wall { columns: 2 150px; column-gap: 10px; }
+            .wall.grid-mode { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .piece { margin-bottom: 10px; padding: 8px 8px 10px; border-radius: 6px; }
             .piece-name { font-size: 15px; }
             .piece-medium { font-size: 8.5px; letter-spacing: 1.2px; }
@@ -376,14 +391,16 @@
             <div class="piece-cap">
                 <p class="piece-name">Kairos</p>
                 <p class="piece-medium">AI Council &middot; iOS</p>
+                <p class="piece-note">Convene a council of thinkers for any decision.</p>
             </div>
         </a>
 
         <a href="https://a.co/d/04LULkG" target="_blank" rel="noopener" class="piece" data-cat="books" id="el-peso-del-aire">
-            <div class="piece-img book" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')"></div>
+            <div class="piece-img wide" style="background-image: url('assets/Work_Covers/El_Peso_Del_Aire.webp')"></div>
             <div class="piece-cap">
                 <p class="piece-name">El Peso del Aire</p>
                 <p class="piece-medium">Fine Art Photobook</p>
+                <p class="piece-note">Love, absence, and repair &mdash; in photographs and prose.</p>
             </div>
         </a>
 
@@ -392,6 +409,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Morph</p>
                 <p class="piece-medium">Puzzle &middot; iOS</p>
+                <p class="piece-note">A minimalist game of wit. Shapes shift; so do you.</p>
             </div>
         </a>
 
@@ -409,6 +427,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Tribu</p>
                 <p class="piece-medium">Social &amp; Wellness &middot; iOS</p>
+                <p class="piece-note">Guided questions for friends, couples, and teams.</p>
             </div>
         </a>
 
@@ -426,15 +445,16 @@
             <div class="piece-cap">
                 <p class="piece-name">Bounce Bounce Blitz</p>
                 <p class="piece-medium">Arcade &middot; iOS</p>
+                <p class="piece-note">One-touch climber. Five biomes, zero mercy.</p>
             </div>
         </a>
 
-        <a href="Abundia.html" class="piece" data-cat="companies" id="abundia">
-            <div class="piece-img wide" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div>
+        <a href="Abundia.html" class="piece" data-cat="apps" id="abundia">
+            <div class="piece-img icon" style="background-image: url('assets/Work_Covers/Abundia.webp')"></div>
             <div class="piece-cap">
                 <p class="piece-name">AbundIA</p>
                 <p class="piece-medium">Personal Finance &middot; iOS</p>
-                <p class="piece-note">On-device Apple Intelligence &mdash; zero data leaves the phone.</p>
+                <p class="piece-note">Money, coached on-device &mdash; nothing leaves your phone.</p>
             </div>
         </a>
 
@@ -443,6 +463,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Capi y el Coraz&oacute;n que Escucha</p>
                 <p class="piece-medium">Children's Book</p>
+                <p class="piece-note">A capybara teaches kids to listen with the heart.</p>
             </div>
         </a>
 
@@ -451,6 +472,7 @@
             <div class="piece-cap">
                 <p class="piece-name">FitMental</p>
                 <p class="piece-medium">Wellness &middot; iOS</p>
+                <p class="piece-note">Evidence-based tools for the gym between your ears.</p>
             </div>
         </a>
 
@@ -468,6 +490,7 @@
             <div class="piece-cap">
                 <p class="piece-name">StackRush</p>
                 <p class="piece-medium">Arcade &middot; iOS</p>
+                <p class="piece-note">Stack fast, breathe later.</p>
             </div>
         </a>
 
@@ -476,6 +499,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Contrario</p>
                 <p class="piece-medium">Founder News &middot; iOS</p>
+                <p class="piece-note">Daily ideas that argue with your defaults.</p>
             </div>
         </a>
 
@@ -484,6 +508,7 @@
             <div class="piece-cap">
                 <p class="piece-name">LCK Experience</p>
                 <p class="piece-medium">Digital Experience</p>
+                <p class="piece-note">An immersive stage for a consulting firm's big night.</p>
             </div>
         </a>
 
@@ -492,6 +517,7 @@
             <div class="piece-cap">
                 <p class="piece-name">100 Prompts que Cambiaron mi Vida</p>
                 <p class="piece-medium">Self-Development</p>
+                <p class="piece-note">The questions that rewired me, ready to go again.</p>
             </div>
         </a>
 
@@ -500,14 +526,16 @@
             <div class="piece-cap">
                 <p class="piece-name">Am&eacute;n</p>
                 <p class="piece-medium">Faith &middot; iOS</p>
+                <p class="piece-note">Prayer, scripture, and quiet &mdash; every day.</p>
             </div>
         </a>
 
         <a href="https://pulso-latam.com/politica" target="_blank" rel="noopener" class="piece" data-cat="companies">
-            <div class="piece-img wide" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg'); background-position: left center;"></div>
+            <div class="piece-img banner" style="background-image: url('assets/Work_Covers/Pulso_Politica.jpg')"></div>
             <div class="piece-cap">
                 <p class="piece-name">Pulso &middot; Pol&iacute;tica</p>
                 <p class="piece-medium">Public Opinion &middot; SaaS</p>
+                <p class="piece-note">Public opinion, simulated &mdash; sentiment state by state.</p>
             </div>
         </a>
 
@@ -516,6 +544,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Viper Velocity</p>
                 <p class="piece-medium">Arcade &middot; iOS</p>
+                <p class="piece-note">Snake, grown up. Glowing arenas, no ads.</p>
             </div>
         </a>
 
@@ -524,6 +553,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Marea Baja</p>
                 <p class="piece-medium">Postpartum Care &middot; iOS</p>
+                <p class="piece-note">A gentle companion for the postpartum tide.</p>
             </div>
         </a>
 
@@ -532,6 +562,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Santa Rosa Ecoturism</p>
                 <p class="piece-medium">Landing &middot; Client</p>
+                <p class="piece-note">A mountain village, online at last.</p>
             </div>
         </a>
 
@@ -540,6 +571,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Solsticio</p>
                 <p class="piece-medium">Health &middot; iOS</p>
+                <p class="piece-note">Menopause, tracked with clarity and respect.</p>
             </div>
         </a>
 
@@ -548,6 +580,7 @@
             <div class="piece-cap">
                 <p class="piece-name">NeuroPairs</p>
                 <p class="piece-medium">Brain Training &middot; iOS</p>
+                <p class="piece-note">Memory pairs for brains that like a challenge.</p>
             </div>
         </a>
 
@@ -556,6 +589,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Ignite</p>
                 <p class="piece-medium">Habits &middot; iOS</p>
+                <p class="piece-note">Habits with streaks, stats, and no guilt trips.</p>
             </div>
         </a>
 
@@ -564,6 +598,7 @@
             <div class="piece-cap">
                 <p class="piece-name">SniffPots</p>
                 <p class="piece-medium">Aromatherapy &middot; Client</p>
+                <p class="piece-note">Aromatherapy with a nose for design.</p>
             </div>
         </a>
 
@@ -572,6 +607,7 @@
             <div class="piece-cap">
                 <p class="piece-name">PatternLab</p>
                 <p class="piece-medium">Creative Tool &middot; iOS</p>
+                <p class="piece-note">A cellular-automata sandbox &mdash; born in my Lab.</p>
             </div>
         </a>
 
@@ -580,6 +616,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Starlings</p>
                 <p class="piece-medium">Space &middot; iOS</p>
+                <p class="piece-note">A small voyage through big galaxies.</p>
             </div>
         </a>
 
@@ -588,6 +625,7 @@
             <div class="piece-cap">
                 <p class="piece-name">Plaza Real Silao</p>
                 <p class="piece-medium">Corporate &middot; Client</p>
+                <p class="piece-note">A commercial development's public face.</p>
             </div>
         </a>
 
@@ -639,6 +677,7 @@
             chips.forEach(function(c) { c.classList.remove('active'); });
             chip.classList.add('active');
             var f = chip.dataset.filter;
+            document.getElementById('wall').classList.toggle('grid-mode', f !== 'all');
             var delay = 0;
             pieces.forEach(function(piece) {
                 var show = (f === 'all') || (piece.dataset.cat === f);

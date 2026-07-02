@@ -263,6 +263,137 @@
                 border-radius: 0;
             }
         }
+
+        /* =============== NIGHT EDITORIAL THEME =============== */
+        body {
+            background: #16110B;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.15;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='discrete' tableValues='0 1'/%3E%3CfeFuncG type='discrete' tableValues='0 1'/%3E%3CfeFuncB type='discrete' tableValues='0 1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 180px 180px;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                opacity: 0.09;
+                background-size: 90px 90px;
+            }
+        }
+
+        /* Palette flip scoped to the study (nav/footer constant) */
+        .story-container {
+            --ink: #F5F3EE;
+            --carbon: rgba(240, 235, 227, 0.86);
+            --stone: rgba(232, 228, 221, 0.6);
+            --bone: rgba(232, 228, 221, 0.15);
+            --paper: rgba(232, 228, 221, 0.1);
+            --linen: #16110B;
+            --roble: #A8916F;
+            --roble-light: #C8AE85;
+            --roble-border: rgba(168, 145, 111, 0.4);
+            position: relative;
+        }
+
+        /* reading lamp over the desk */
+        .story-container::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 760px;
+            height: 760px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214, 178, 124, 0.10) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .story-container > * {
+            position: relative;
+        }
+
+        /* Photos hang like framed prints */
+        .story-photo {
+            border: 1px solid rgba(232, 228, 221, 0.13);
+            background: rgba(255, 252, 245, 0.03);
+            padding: 12px;
+            border-radius: 4px;
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-photo img {
+            border-radius: 2px;
+            filter: brightness(0.94) saturate(0.96);
+        }
+
+        .story-photo .caption {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: rgba(232, 228, 221, 0.45);
+            margin-top: 12px;
+            padding: 0 2px;
+        }
+
+        .slideshow {
+            border-radius: 2px;
+        }
+
+        /* Background = the study's card catalog */
+        .background-item .role {
+            color: var(--paper, #F5F3EE);
+            color: #F5F3EE;
+        }
+
+        .background-item {
+            border-bottom: 1px solid rgba(232, 228, 221, 0.1);
+        }
+
+        .background-item .date {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: rgba(232, 228, 221, 0.4);
+        }
+
+        .background h2 {
+            color: #F5F3EE;
+        }
+
+        /* CTA button -> portfolio teal */
+        .story-cta a {
+            background: #025355;
+            color: #F0EBE0;
+        }
+
+        .story-cta a:hover {
+            background: #0A6B6D;
+        }
+
+        /* Doorway (night variant) */
+        .doorway { background: #120E09; border-top: 1px solid rgba(232, 228, 221, 0.1); }
+        .doorway-eyebrow { color: #A8916F; }
+        .doorway-title { color: #F5F3EE; }
+        .doorway-note { color: rgba(232, 228, 221, 0.55); }
+        .doorway-arrow { color: #A8916F; }
+        .doorway:hover { background: #F5F3EE; }
+        .doorway:hover .doorway-title { color: #111111; }
+        .doorway:hover .doorway-eyebrow { color: #025355; }
+        .doorway:hover .doorway-note { color: #6B6560; }
+        .doorway:hover .doorway-arrow { color: #025355; }
     </style>
 </head>
 <body>
@@ -524,6 +655,18 @@
             <a href="connect.html">Get in touch</a>
         </div>
     </div>
+
+    <!-- Continue the visit -->
+    <a href="connect.html" class="doorway">
+        <div class="doorway-inner">
+            <div>
+                <p class="doorway-eyebrow">Before you go</p>
+                <p class="doorway-title">Write something</p>
+                <p class="doorway-note">A postcard waits at the exit. I read everything myself.</p>
+            </div>
+            <span class="doorway-arrow">&rarr;</span>
+        </div>
+    </a>
 
     <!-- Footer -->
     <footer>
