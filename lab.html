@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab - Antonio Murrieta</title>
-    <meta name="description" content="Enter Antonio's research laboratory - where innovation meets experimentation in the pursuit of digital creativity.">
+    <title>The Lab — Antonio Murrieta</title>
+    <meta name="description" content="The workshop of Antonio Murrieta's house-museum: live interactive experiments — gesture-tracked music, generative typography, gravity, cellular automata — all handmade, all touchable.">
+    <link rel="canonical" href="https://antoniomurrieta.com/lab.html">
+    <meta property="og:title" content="The Lab — Antonio Murrieta">
+    <meta property="og:description" content="Six live experiments you can touch. The room where the pieces get made.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antoniomurrieta.com/lab.html">
+    <meta property="og:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Lab — Antonio Murrieta">
+    <meta name="twitter:image" content="https://antoniomurrieta.com/assets/og-image.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap">
@@ -37,12 +46,51 @@
             }
         }
 
-        /* Experiments Grid */
-        .experiments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+        /* Lab title */
+        .lab-title {
+            font-family: var(--serif);
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        /* Gallery Walls */
+        .walls {
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
             margin-bottom: 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wall-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .wall-full .experiment-preview {
+            height: 300px;
+        }
+
+        .experiment .plaque {
+            margin: 18px 0 14px;
+            text-align: left;
+        }
+
+        .guestwall-plaque {
+            max-width: 800px;
+            margin: 0 auto 24px;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .walls { gap: 56px; }
+            .wall-pair { grid-template-columns: 1fr; gap: 56px; }
+            .wall-full .experiment-preview { height: 200px; }
         }
 
         .experiment {
@@ -756,54 +804,84 @@
     <div class="lab-container">
         <!-- Header -->
         <div class="lab-header">
-            <p class="section-label reveal">The Lab</p>
-            <p class="lab-intro reveal">Interactive experiments in generative art, physics simulations, and creative coding. Click any card to dive in.</p>
+            <p class="room-eyebrow reveal">Room 02 &mdash; The Workshop</p>
+            <h1 class="lab-title reveal">Where the pieces get made.</h1>
+            <p class="lab-intro reveal">The one room in the museum where you're allowed to touch. Everything here runs live &mdash; go ahead.</p>
         </div>
 
         <!-- Dot Grid Background -->
         <div class="dot-grid-container" id="dotGrid" aria-hidden="true"></div>
 
-        <!-- Experiments Grid -->
-        <div class="experiments-grid">
-            <div class="experiment reveal" data-experiment="waves" role="button" tabindex="0">
-                <div class="experiment-preview"><canvas id="previewWaves" width="280" height="160"></canvas></div>
-                <h3 class="experiment-title">Wave Generator</h3>
-                <p class="experiment-description">Create mesmerizing wave patterns with adjustable parameters</p>
-                <span class="experiment-cta">Explore &rarr;</span>
-            </div>
-
-            <a href="Music_1.html" target="_blank" class="experiment reveal" style="text-decoration: none; color: inherit;">
-                <div class="experiment-preview"><canvas id="previewInstrument" width="280" height="160"></canvas></div>
+        <!-- Gallery Walls -->
+        <div class="walls">
+            <a href="Music_1.html" target="_blank" class="experiment wall-full reveal" style="text-decoration: none; color: inherit;">
+                <div class="experiment-preview"><canvas id="previewInstrument" width="1120" height="300"></canvas></div>
                 <h3 class="experiment-title">Invisible Instrument</h3>
-                <p class="experiment-description">Create music with your hands and face using AI-powered gesture tracking</p>
+                <div class="plaque">
+                    <p class="plaque-id">No. 01 <span class="accent">&mdash;</span> 2025</p>
+                    <p class="plaque-medium">AI gesture tracking &middot; Web Audio</p>
+                    <p class="plaque-note">Play music with your hands and face. No instrument, no training, no excuses.</p>
+                </div>
                 <span class="experiment-cta">Open Experience &#8599;</span>
             </a>
 
-            <div class="experiment reveal" data-experiment="automata" role="button" tabindex="0">
-                <div class="experiment-preview"><canvas id="previewAutomata" width="280" height="160"></canvas></div>
-                <h3 class="experiment-title">Cellular Automata</h3>
-                <p class="experiment-description">Conway's Game of Life with colorful cell evolution</p>
-                <span class="experiment-cta">Explore &rarr;</span>
+            <div class="wall-pair">
+                <div class="experiment reveal" data-experiment="typography" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewTypography" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">Generative Typography</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 02 <span class="accent">&mdash;</span> 2025</p>
+                        <p class="plaque-medium">Canvas particles &middot; My own words</p>
+                        <p class="plaque-note">Letters that scatter and reform. The words are mine.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
+
+                <div class="experiment reveal" data-experiment="gravity" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewGravity" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">Gravity Sandbox</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 03 <span class="accent">&mdash;</span> 2025</p>
+                        <p class="plaque-medium">Orbital mechanics</p>
+                        <p class="plaque-note">What I was chasing: whether restraint can feel infinite.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
             </div>
 
-            <div class="experiment reveal" data-experiment="typography" role="button" tabindex="0">
-                <div class="experiment-preview"><canvas id="previewTypography" width="280" height="160"></canvas></div>
-                <h3 class="experiment-title">Generative Typography</h3>
-                <p class="experiment-description">Particle-driven text that flows, explodes, and reforms</p>
-                <span class="experiment-cta">Explore &rarr;</span>
-            </div>
+            <div class="wall-pair">
+                <div class="experiment reveal" data-experiment="automata" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewAutomata" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">Cellular Automata</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 04 <span class="accent">&mdash;</span> 2025</p>
+                        <p class="plaque-medium">Conway's Life</p>
+                        <p class="plaque-note">Grew up and moved out: shipped as PatternLab on the App Store.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
 
-            <div class="experiment reveal" data-experiment="gravity" role="button" tabindex="0">
-                <div class="experiment-preview"><canvas id="previewGravity" width="280" height="160"></canvas></div>
-                <h3 class="experiment-title">Gravity Sandbox</h3>
-                <p class="experiment-description">Orbital mechanics playground with colorful masses</p>
-                <span class="experiment-cta">Explore &rarr;</span>
+                <div class="experiment reveal" data-experiment="waves" role="button" tabindex="0">
+                    <div class="experiment-preview"><canvas id="previewWaves" width="280" height="160"></canvas></div>
+                    <h3 class="experiment-title">Wave Generator</h3>
+                    <div class="plaque">
+                        <p class="plaque-id">No. 05 <span class="accent">&mdash;</span> 2025</p>
+                        <p class="plaque-medium">Sine fields</p>
+                        <p class="plaque-note">Tides you can tune. I leave it running when I write.</p>
+                    </div>
+                    <span class="experiment-cta">Touch &rarr;</span>
+                </div>
             </div>
         </div>
 
         <!-- Interactive Canvas -->
         <div class="canvas-section">
-            <h2 class="canvas-title">DRAW WITH ME</h2>
+            <h2 class="canvas-title">THE GUESTBOOK WALL</h2>
+            <div class="plaque guestwall-plaque">
+                <p class="plaque-id">No. 06 <span class="accent">&mdash;</span> 2026</p>
+                <p class="plaque-medium">Your hand &middot; My canvas</p>
+                <p class="plaque-note">Draw something. Leave a mark on the museum.</p>
+            </div>
             <canvas id="interactive-canvas" width="800" height="400"></canvas>
             
             <div class="color-palette">
@@ -1014,7 +1092,7 @@
                 <div class="experiment-controls">
                     <div class="param-control">
                         <label>Text</label>
-                        <input type="text" class="typo-text-input" id="typoText" value="CREATE" maxlength="12" onchange="typoUpdateText()">
+                        <input type="text" class="typo-text-input" id="typoText" value="Hecho a mano" maxlength="14" onchange="typoUpdateText()">
                     </div>
                     <div class="param-control">
                         <label>Particles</label>
@@ -2280,6 +2358,9 @@
             var tyCtx = tyCanvas ? tyCanvas.getContext('2d') : null;
             var tyParticles = [];
             var tyTime = 0;
+            var tyWords = ['HOLA', 'CREAR', 'PULSO', 'LEER', 'HECHO A MANO'];
+            var tyWordIdx = 0;
+            var tyFrame = 0;
 
             function initPreviewTypography() {
                 if (!tyCanvas) return;
@@ -2290,10 +2371,10 @@
                 off.height = tyCanvas.height;
                 var oCtx = off.getContext('2d');
                 oCtx.fillStyle = '#fff';
-                oCtx.font = 'bold 48px sans-serif';
+                oCtx.font = '300 46px Newsreader, Georgia, serif';
                 oCtx.textAlign = 'center';
                 oCtx.textBaseline = 'middle';
-                oCtx.fillText('CREATE', off.width / 2, off.height / 2);
+                oCtx.fillText(tyWords[tyWordIdx % tyWords.length], off.width / 2, off.height / 2);
 
                 var imgData = oCtx.getImageData(0, 0, off.width, off.height);
                 var positions = [];
@@ -2321,6 +2402,8 @@
 
             function renderPreviewTypography() {
                 if (!tyCtx) return;
+                tyFrame++;
+                if (tyFrame % 320 === 0) { tyWordIdx++; initPreviewTypography(); }
                 var w = tyCanvas.width, h = tyCanvas.height;
                 tyCtx.fillStyle = 'rgba(17,17,17,0.15)';
                 tyCtx.fillRect(0, 0, w, h);
@@ -2472,7 +2555,15 @@
                 requestAnimationFrame(previewLoop);
             }
 
-            requestAnimationFrame(previewLoop);
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                renderPreviewWaves();
+                renderPreviewInstrument();
+                renderPreviewAutomata();
+                renderPreviewTypography();
+                renderPreviewGravity();
+            } else {
+                requestAnimationFrame(previewLoop);
+            }
         })();
 
         // ===========================================================
