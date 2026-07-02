@@ -3,92 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestural Symphony - Neon Resonator</title>
-  
+  <title>Las Manos &mdash; Antonio Murrieta</title>
+  <meta name="description" content="An instrument you play with your hands, through the camera. Nothing is recorded.">
   <link rel="icon" href="data:,">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
   <script src="https://unpkg.com/ml5@1.0.1/dist/ml5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
   <style>
-    body { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: 'Helvetica Neue', sans-serif; }
-    
-    /* Loading Overlay */
+    :root {
+      --night: #16110B;
+      --ink-light: #F5F3EE;
+      --bone-dark: #E8E4DD;
+      --stone: #8A857E;
+      --lamp: #A8916F;
+      --lamp-bright: #C8AE85;
+      --gold: #D6B27C;
+      --teal: #23716F;
+      --teal-bright: #5FA8A2;
+      --mono: 'JetBrains Mono', monospace;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'Instrument Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--night);
+      overflow: hidden;
+      font-family: var(--sans);
+      color: var(--ink-light);
+    }
+
+    /* film grain, same air as the rest of the museum */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+    }
+
+    canvas { display: block; }
+
+    /* ---- The card at the door ---- */
     #overlay {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.9);
-      backdrop-filter: blur(8px);
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      z-index: 100; color: white; transition: opacity 0.8s ease;
-    }
-    
-    .instruction-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-      border: 1px solid rgba(0, 255, 255, 0.2);
-      padding: 30px; border-radius: 16px; max-width: 600px;
-      text-align: center; margin-bottom: 40px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      background: radial-gradient(ellipse 70% 55% at 50% 38%, rgba(168, 145, 111, 0.09), rgba(0,0,0,0) 65%), var(--night);
+      transition: opacity 0.9s ease;
     }
 
-    h1 { letter-spacing: 2px; font-weight: 300; margin-bottom: 20px; color: #00ffff; text-transform: uppercase; }
-    p { color: #ccc; line-height: 1.6; margin: 15px 0; font-size: 16px; }
-    .highlight-l { color: #00ffff; font-weight: bold; }
-    .highlight-r { color: #ff0055; font-weight: bold; }
-
-    /* Button */
-    button {
-      padding: 18px 50px; font-size: 16px; cursor: pointer;
-      background: transparent; color: #555; 
-      border: 2px solid #444; font-weight: 700; letter-spacing: 2px;
-      border-radius: 50px; transition: all 0.3s ease;
-      text-transform: uppercase; pointer-events: none;
-    }
-    button.ready {
-      border-color: #00ffff; color: #00ffff; pointer-events: all;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    }
-    button.ready:hover {
-      background: #00ffff; color: #000; box-shadow: 0 0 60px rgba(0, 255, 255, 0.8);
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--lamp);
+      margin-bottom: 18px;
     }
 
-    #hud { position: absolute; bottom: 20px; left: 20px; color: rgba(255,255,255,0.4); font-family: monospace; font-size: 12px; pointer-events: none; }
-    #exit { position: absolute; top: 20px; right: 20px; text-decoration: none; color: rgba(255,255,255,0.3); font-size: 24px; z-index: 200; }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(52px, 9vw, 96px);
+      line-height: 1;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+    }
+
+    .lede {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.55;
+      color: rgba(232, 228, 221, 0.75);
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+    .lede .quiet { color: var(--stone); }
+
+    .plaques {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
+
+    .plq {
+      flex: 1 1 240px;
+      max-width: 300px;
+      text-align: left;
+      border-left: 2px solid rgba(232, 228, 221, 0.13);
+      padding: 4px 0 4px 16px;
+    }
+
+    .plq-hand {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 7px;
+    }
+    .plq-hand.gold { color: var(--lamp-bright); }
+    .plq-hand.teal { color: var(--teal-bright); }
+
+    .plq p {
+      font-family: var(--serif);
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(232, 228, 221, 0.72);
+    }
+
+    #startBtn {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 15px 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(232, 228, 221, 0.2);
+      background: transparent;
+      color: var(--stone);
+      cursor: default;
+      transition: all 0.35s ease;
+    }
+    #startBtn.ready {
+      border-color: transparent;
+      background: #025355;
+      color: var(--ink-light);
+      cursor: pointer;
+    }
+    #startBtn.ready:hover {
+      background: #0A6B6D;
+      box-shadow: 0 0 34px rgba(95, 168, 162, 0.25);
+    }
+
+    .perm-hint {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--stone);
+      margin-top: 22px;
+    }
+
+    /* ---- In the room ---- */
+    #hud {
+      position: fixed;
+      bottom: 18px;
+      left: 20px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: rgba(232, 228, 221, 0.42);
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    #exit {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      z-index: 200;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(232, 228, 221, 0.16);
+      color: rgba(232, 228, 221, 0.6);
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.25s ease;
+    }
+    #exit:hover { color: var(--ink-light); border-color: rgba(232, 228, 221, 0.4); }
   </style>
 </head>
 <body>
 
-<a href="/" id="exit">✕</a>
+<a href="lab.html" id="exit" aria-label="Back to the lab">&times;</a>
 
 <div id="overlay">
-  <div class="instruction-card">
-    <h1>Neon Resonator</h1>
-    <p>✋ <span class="highlight-l">LEFT HAND (Melody):</span> Pinch Index & Thumb to pluck strings. <br>Move Up/Down to change notes.</p>
-    <p>✊ <span class="highlight-r">RIGHT HAND (Rhythm):</span> Rotate wrist to change speed. <br>Open/Close hand to change volume.</p>
+  <p class="eyebrow">EXPERIMENT &middot; CAMERA &amp; SOUND</p>
+  <h1>Las Manos</h1>
+  <p class="lede">Your hands, an instrument. <span class="quiet">The camera stays on this page &mdash; nothing is recorded, nothing leaves.</span></p>
+  <div class="plaques">
+    <div class="plq">
+      <span class="plq-hand gold">ONE HAND &middot; THE MELODY</span>
+      <p>Pinch finger and thumb to pluck a note. The higher your hand, the higher the note.</p>
+    </div>
+    <div class="plq">
+      <span class="plq-hand teal">A SECOND HAND &middot; THE ROOM</span>
+      <p>Open it and the room starts to hum. Turn the wrist to set the pulse.</p>
+    </div>
   </div>
-  <button id="startBtn">Loading AI Models...</button>
+  <button id="startBtn">Warming up the camera&hellip;</button>
+  <p class="perm-hint">IF NOTHING HAPPENS, ALLOW THE CAMERA AND RELOAD</p>
 </div>
 
-<div id="hud">System Standby</div>
+<div id="hud"></div>
 
 <script>
-// --- MANUAL CONNECTION MAP ---
+// ---------------------------------------------------------------
+// LAS MANOS — an instrument you play through the camera.
+// Everything runs locally; no frame ever leaves this page.
+// ---------------------------------------------------------------
+
 const HAND_CONNECTIONS = [
   [0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [5, 6], [6, 7], [7, 8],
   [0, 9], [9, 10], [10, 11], [11, 12], [0, 13], [13, 14], [14, 15], [15, 16],
-  [0, 17], [17, 18], [18, 19], [19, 20]
+  [0, 17], [17, 18], [18, 19], [19, 20], [5, 9], [9, 13], [13, 17]
 ];
 
-// --- GLOBAL VARIABLES ---
+const NOTES = ['C3', 'D3', 'E3', 'G3', 'A3', 'C4', 'D4', 'E4'];
+
+const GOLD = [214, 178, 124];
+const TEAL = [95, 168, 162];
+
 let video, handPose, hands = [];
-let modelsLoaded = false, isRunning = false;
-let particles = []; 
+let modelsReady = false, isRunning = false;
 
-// Audio Nodes
-let pluckSynth, drumKit, metalLoop;
-let pingPongDelay, reverbMaster;
+let ripples = [];   // expanding rings where a note was plucked
+let floaters = [];  // note names drifting upward
 
-// --- SETUP ---
+// audio
+let pluck, kick, droneGain, droneA, droneB, loop;
+
+// per-hand pinch gate so one pinch = one note
+let pinchState = { melody: false };
+
+// ---------------------------------------------------------------
 function preload() {
   handPose = ml5.handPose({ flipped: true, maxHands: 2 });
 }
@@ -98,210 +260,268 @@ function setup() {
   video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
   video.hide();
-  
   handPose.detectStart(video, gotHands);
 }
 
 function gotHands(results) {
   hands = results;
-  if (!modelsLoaded && hands.length > -1) {
-    modelsLoaded = true;
-    let btn = document.getElementById('startBtn');
-    btn.innerText = "ENTER EXPERIENCE";
-    btn.classList.add("ready");
-    btn.addEventListener('click', initAudioAndStart);
+  if (!modelsReady) {
+    modelsReady = true;
+    const btn = document.getElementById('startBtn');
+    btn.innerText = 'Play';
+    btn.classList.add('ready');
+    btn.addEventListener('click', beginPlaying);
   }
 }
 
-async function initAudioAndStart() {
+async function beginPlaying() {
   await Tone.start();
-  
-  // Audio Chain
-  reverbMaster = new Tone.Reverb({ decay: 4, wet: 0.5 }).toDestination();
-  pingPongDelay = new Tone.PingPongDelay({ delayTime: "8n", feedback: 0.4, wet: 0.3 }).connect(reverbMaster);
 
-  // Melody Instrument
-  pluckSynth = new Tone.PluckSynth({
-    attackNoise: 1, dampening: 4000, resonance: 0.9
-  }).connect(pingPongDelay);
-  pluckSynth.volume.value = -5;
+  const reverb = new Tone.Reverb({ decay: 5, wet: 0.45 }).toDestination();
+  const delay = new Tone.PingPongDelay({ delayTime: '8n', feedback: 0.35, wet: 0.25 }).connect(reverb);
 
-  // Rhythm Instruments
-  drumKit = new Tone.MembraneSynth({ volume: -20 }).toDestination();
-  let hat = new Tone.MetalSynth({ frequency: 200, envelope: { decay: 0.05 }, volume: -25 }).toDestination();
+  // the melody: a warm pluck
+  pluck = new Tone.PluckSynth({ attackNoise: 0.8, dampening: 3600, resonance: 0.92 }).connect(delay);
+  pluck.volume.value = -4;
 
-  // Loop
-  metalLoop = new Tone.Loop((time) => {
-    drumKit.triggerAttackRelease("C1", "8n", time);
-    if (Math.random() > 0.5) hat.triggerAttackRelease("32n", time + 0.25);
-  }, "4n");
+  // the room: a low two-note hum, silent until a hand opens
+  droneGain = new Tone.Gain(0).connect(reverb);
+  droneA = new Tone.Oscillator('C2', 'sine').connect(droneGain).start();
+  droneB = new Tone.Oscillator('G2', 'sine').connect(droneGain);
+  droneB.volume.value = -7;
+  droneB.detune.value = 6;
+  droneB.start();
 
-  Tone.Transport.bpm.value = 110;
+  // the pulse: a soft heartbeat, also silent until invited
+  kick = new Tone.MembraneSynth({ volume: -60 }).connect(reverb);
+  loop = new Tone.Loop(function(time) {
+    kick.triggerAttackRelease('C1', '8n', time);
+  }, '2n');
+  Tone.Transport.bpm.value = 72;
   Tone.Transport.start();
-  metalLoop.start(0);
+  loop.start(0);
 
-  // Transition
   isRunning = true;
-  document.getElementById('overlay').style.opacity = '0';
-  setTimeout(() => { document.getElementById('overlay').style.display = 'none'; }, 800);
+  const overlay = document.getElementById('overlay');
+  overlay.style.opacity = '0';
+  setTimeout(function() { overlay.style.display = 'none'; }, 900);
 }
 
-// --- DRAW LOOP ---
+// ---------------------------------------------------------------
+// video "cover" mapping, so hands land where you see them
+function videoFit() {
+  const s = Math.max(width / video.width, height / video.height);
+  return {
+    s: s,
+    ox: (width - video.width * s) / 2,
+    oy: (height - video.height * s) / 2
+  };
+}
+
 function draw() {
-  background(0, 15); // Trail effect
+  background(22, 17, 11);
+  if (!isRunning) return;
 
-  if (isRunning) {
-    updateAndDrawParticles();
-    
-    if(hands.length > 0) {
-      processInteraction();
-    } else {
-      document.getElementById('hud').innerText = "SCANNING SPACE...";
-    }
-  }
-}
+  const fit = videoFit();
 
-// --- INTERACTION ---
-function processInteraction() {
-  let statusText = "";
-
-  for (let hand of hands) {
-    let isRightHandScreen = hand.handedness === "Left"; 
-    let isLeftHandScreen = hand.handedness === "Right";
-
-    let index = hand.keypoints[8];
-    let thumb = hand.keypoints[4];
-    let wrist = hand.keypoints[0];
-    let midKnuckle = hand.keypoints[9];
-
-    // Coordinates
-    let ix = map(index.x, 0, video.width, 0, width);
-    let iy = map(index.y, 0, video.height, 0, height);
-    let tx = map(thumb.x, 0, video.width, 0, width);
-    let ty = map(thumb.y, 0, video.height, 0, height);
-    let wx = map(wrist.x, 0, video.width, 0, width);
-    let wy = map(wrist.y, 0, video.height, 0, height);
-
-    // Draw Skeleton
-    let handColor = isLeftHandScreen ? [0, 255, 255] : [255, 0, 85];
-    drawNeonSkeleton(hand, handColor);
-
-    // --- LEFT HAND (MELODY) ---
-    if (isLeftHandScreen) {
-      let pinchDist = dist(index.x, index.y, thumb.x, thumb.y);
-      
-      // Visual Connection
-      if(pinchDist < 80) {
-         let brightness = map(pinchDist, 0, 80, 255, 50);
-         stroke(0, 255, 255, brightness); strokeWeight(2);
-         line(ix, iy, tx, ty);
-      }
-
-      // Trigger Note
-      if (pinchDist < 25) { 
-        // Pentatonic Scale
-        let notes = ["C3", "D3", "E3", "G3", "A3", "C4", "D4", "E4"];
-        let noteIndex = floor(map(iy, height, 0, 0, notes.length));
-        noteIndex = constrain(noteIndex, 0, notes.length -1);
-        let selectedNote = notes[noteIndex];
-
-        pluckSynth.triggerAttack(selectedNote, Tone.now());
-        spawnParticles((ix+tx)/2, (iy+ty)/2, handColor, 10);
-        statusText += `PLUCKING: ${selectedNote} | `;
-      }
-    }
-
-    // --- RIGHT HAND (RHYTHM) ---
-    if (isRightHandScreen) {
-      let ang = atan2(midKnuckle.y - wrist.y, midKnuckle.x - wrist.x);
-      let targetBPM = map(ang, -2, 2, 60, 220);
-      targetBPM = constrain(targetBPM, 60, 220);
-      Tone.Transport.bpm.rampTo(targetBPM, 0.1);
-
-      let spread = dist(index.x, index.y, wrist.x, wrist.y);
-      let vol = map(spread, 40, 140, -40, -5);
-      drumKit.volume.rampTo(constrain(vol, -60, 0), 0.1);
-
-      // Visuals
-      let dialX = wx + cos(ang) * 80;
-      let dialY = wy + sin(ang) * 80;
-      if(frameCount % 5 === 0) spawnParticles(dialX, dialY, handColor, 2, true);
-
-      push();
-      translate(wx, wy); rotate(ang);
-      fill(handColor); noStroke(); textSize(14);
-      text(Math.round(targetBPM), 90, 5);
-      pop();
-      statusText += `BPM: ${Math.round(targetBPM)}`;
-    }
-  }
-  document.getElementById('hud').innerText = statusText;
-}
-
-// --- PARTICLE SYSTEM ---
-class Particle {
-  // FIXED TYPO BELOW: 'isSubtle'
-  constructor(x, y, colorVals, isSubtle) {
-    this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D().mult(random(1, 5));
-    this.color = colorVals;
-    this.life = 255;
-    this.size = random(4, 12);
-    this.isSubtle = isSubtle; 
-  }
-
-  update() {
-    this.pos.add(this.vel);
-    this.life -= this.isSubtle ? 15 : 8; 
-    this.size *= 0.95; 
-  }
-
-  draw() {
-    noStroke();
-    fill(this.color[0], this.color[1], this.color[2], this.life * 0.5);
-    circle(this.pos.x, this.pos.y, this.size * 1.5);
-    fill(255, 255, 255, this.life); 
-    circle(this.pos.x, this.pos.y, this.size);
-  }
-}
-
-function spawnParticles(x, y, color, count, subtle = false) {
-  for (let i = 0; i < count; i++) {
-    particles.push(new Particle(x, y, color, subtle));
-  }
-}
-
-function updateAndDrawParticles() {
-  for (let i = particles.length - 1; i >= 0; i--) {
-    particles[i].update();
-    particles[i].draw();
-    if (particles[i].life <= 0) particles.splice(i, 1);
-  }
-}
-
-// --- SKELETON DRAWER ---
-function drawNeonSkeleton(hand, c) {
-  stroke(c[0], c[1], c[2], 80); strokeWeight(8);
-  drawLines(hand);
-  stroke(c[0], c[1], c[2], 200); strokeWeight(3);
-  drawLines(hand);
-  
+  // a dim mirror, so you can find your own hands
+  push();
+  tint(255, 30);
+  image(video, fit.ox, fit.oy, video.width * fit.s, video.height * fit.s);
+  pop();
   noStroke();
-  for (let k of hand.keypoints) {
-    let x = map(k.x, 0, video.width, 0, width);
-    let y = map(k.y, 0, video.height, 0, height);
-    fill(c[0], c[1], c[2], 100); circle(x, y, 12);
-    fill(255, 255, 255, 200); circle(x, y, 5);
+  fill(22, 17, 11, 120);
+  rect(0, 0, width, height);
+
+  drawNoteLadder();
+
+  let status = 'LAS MANOS · NOTHING IS RECORDED';
+
+  if (hands.length > 0) {
+    // roles by position: leftmost hand plays, the other one conducts
+    const sorted = hands.slice().sort(function(a, b) {
+      return a.keypoints[0].x - b.keypoints[0].x;
+    });
+    const melodyHand = sorted[0];
+    const roomHand = sorted.length > 1 ? sorted[1] : null;
+
+    status = processMelody(melodyHand, fit) || status;
+    if (roomHand) {
+      status += '  ·  ' + processRoom(roomHand, fit);
+    } else if (droneGain) {
+      droneGain.gain.rampTo(0, 0.6);
+      if (kick) kick.volume.rampTo(-60, 0.6);
+    }
+  } else {
+    if (droneGain) droneGain.gain.rampTo(0, 0.8);
+    if (kick) kick.volume.rampTo(-60, 0.8);
+    status = 'LOOKING FOR HANDS…';
+    pinchState.melody = false;
+  }
+
+  updateRipples();
+  updateFloaters();
+  document.getElementById('hud').innerText = status;
+}
+
+// ---------------------------------------------------------------
+function kp(hand, i, fit) {
+  const k = hand.keypoints[i];
+  return { x: fit.ox + k.x * fit.s, y: fit.oy + k.y * fit.s };
+}
+
+function handSize(hand) {
+  const w = hand.keypoints[0], m = hand.keypoints[9];
+  return dist(w.x, w.y, m.x, m.y);
+}
+
+function processMelody(hand, fit) {
+  drawHand(hand, GOLD, fit);
+
+  const size = handSize(hand);
+  const idx = hand.keypoints[8], thb = hand.keypoints[4];
+  const pinch = dist(idx.x, idx.y, thb.x, thb.y) / max(size, 1);
+
+  const p1 = kp(hand, 8, fit), p2 = kp(hand, 4, fit);
+  const mid = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+
+  // which note zone the hand is in
+  let zone = floor(map(mid.y, height, 0, 0, NOTES.length));
+  zone = constrain(zone, 0, NOTES.length - 1);
+  window._activeZone = zone;
+
+  // the thread between finger and thumb, tightening
+  if (pinch < 0.9) {
+    const a = map(pinch, 0.9, 0.3, 30, 160);
+    stroke(GOLD[0], GOLD[1], GOLD[2], a);
+    strokeWeight(1.5);
+    line(p1.x, p1.y, p2.x, p2.y);
+  }
+
+  let status = 'NOTE ZONE: ' + NOTES[zone];
+
+  // one pinch, one note — release to pluck again
+  if (pinch < 0.32 && !pinchState.melody) {
+    pinchState.melody = true;
+    const note = NOTES[zone];
+    if (pluck) pluck.triggerAttack(note, Tone.now());
+    ripples.push({ x: mid.x, y: mid.y, r: 8, a: 200 });
+    floaters.push({ x: mid.x, y: mid.y - 18, note: note, a: 230 });
+    status = 'PLUCKED: ' + note;
+  } else if (pinch > 0.45) {
+    pinchState.melody = false;
+  }
+
+  return status;
+}
+
+function processRoom(hand, fit) {
+  drawHand(hand, TEAL, fit);
+
+  const size = handSize(hand);
+  const idx = hand.keypoints[8], wrist = hand.keypoints[0], mid = hand.keypoints[9];
+
+  // openness, scale-invariant: fist ≈ 0, open palm ≈ 1
+  const reach = dist(idx.x, idx.y, wrist.x, wrist.y) / max(size, 1);
+  const open = constrain(map(reach, 1.0, 1.9, 0, 1), 0, 1);
+
+  if (droneGain) droneGain.gain.rampTo(open * 0.22, 0.25);
+  if (kick) kick.volume.rampTo(open < 0.08 ? -60 : map(open, 0, 1, -44, -20), 0.25);
+
+  // wrist angle sets the pulse
+  const ang = atan2(mid.y - wrist.y, mid.x - wrist.x);
+  const bpm = constrain(map(ang, -2.2, 0.6, 140, 54), 54, 140);
+  Tone.Transport.bpm.rampTo(bpm, 0.25);
+
+  // a quiet dial around the wrist
+  const w = kp(hand, 0, fit);
+  noFill();
+  stroke(TEAL[0], TEAL[1], TEAL[2], 60);
+  strokeWeight(2);
+  arc(w.x, w.y, 92, 92, -HALF_PI, -HALF_PI + open * TWO_PI);
+  noStroke();
+  fill(TEAL[0], TEAL[1], TEAL[2], 170);
+  textFont('JetBrains Mono');
+  textSize(10);
+  textAlign(CENTER);
+  text(round(bpm) + ' BPM', w.x, w.y + 62);
+
+  return 'ROOM: ' + round(open * 100) + '%  ·  ' + round(bpm) + ' BPM';
+}
+
+// ---------------------------------------------------------------
+function drawHand(hand, col, fit) {
+  // glow pass, then line pass — a constellation, not a scanner
+  stroke(col[0], col[1], col[2], 34);
+  strokeWeight(6);
+  drawBones(hand, fit);
+  stroke(col[0], col[1], col[2], 150);
+  strokeWeight(1.4);
+  drawBones(hand, fit);
+
+  noStroke();
+  for (let i = 0; i < hand.keypoints.length; i++) {
+    const p = kp(hand, i, fit);
+    const tip = (i === 4 || i === 8 || i === 12 || i === 16 || i === 20);
+    fill(col[0], col[1], col[2], tip ? 220 : 110);
+    circle(p.x, p.y, tip ? 5 : 3);
   }
 }
 
-function drawLines(hand) {
-   for (let i = 0; i < HAND_CONNECTIONS.length; i++) {
-    let pair = HAND_CONNECTIONS[i];
-    let a = hand.keypoints[pair[0]]; let b = hand.keypoints[pair[1]];
-    line(map(a.x,0,video.width,0,width), map(a.y,0,video.height,0,height), 
-         map(b.x,0,video.width,0,width), map(b.y,0,video.height,0,height));
+function drawBones(hand, fit) {
+  for (let i = 0; i < HAND_CONNECTIONS.length; i++) {
+    const a = kp(hand, HAND_CONNECTIONS[i][0], fit);
+    const b = kp(hand, HAND_CONNECTIONS[i][1], fit);
+    line(a.x, a.y, b.x, b.y);
   }
+}
+
+function drawNoteLadder() {
+  const x = 26;
+  textFont('JetBrains Mono');
+  textSize(9);
+  textAlign(LEFT, CENTER);
+  const active = (typeof window._activeZone === 'number' && hands.length > 0) ? window._activeZone : -1;
+  for (let i = 0; i < NOTES.length; i++) {
+    const y = map(i, 0, NOTES.length - 1, height * 0.88, height * 0.12);
+    const on = i === active;
+    noStroke();
+    fill(GOLD[0], GOLD[1], GOLD[2], on ? 220 : 55);
+    circle(x, y, on ? 5 : 3);
+    fill(232, 228, 221, on ? 200 : 60);
+    text(NOTES[i], x + 12, y);
+  }
+}
+
+// ---------------------------------------------------------------
+function updateRipples() {
+  noFill();
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    const r = ripples[i];
+    r.r += 3.2;
+    r.a *= 0.93;
+    stroke(GOLD[0], GOLD[1], GOLD[2], r.a);
+    strokeWeight(1.2);
+    circle(r.x, r.y, r.r * 2);
+    if (r.a < 4) ripples.splice(i, 1);
+  }
+}
+
+function updateFloaters() {
+  textFont('Newsreader');
+  textAlign(CENTER);
+  textStyle(ITALIC);
+  for (let i = floaters.length - 1; i >= 0; i--) {
+    const f = floaters[i];
+    f.y -= 0.7;
+    f.a *= 0.965;
+    noStroke();
+    fill(245, 243, 238, f.a);
+    textSize(22);
+    text(f.note, f.x, f.y);
+    if (f.a < 4) floaters.splice(i, 1);
+  }
+  textStyle(NORMAL);
 }
 
 function windowResized() { resizeCanvas(windowWidth, windowHeight); }
