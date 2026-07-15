@@ -9,15 +9,15 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <title>Antonio Murrieta — Builder, Entrepreneur & Author from Mexico City</title>
-    <meta name="description" content="Antonio Murrieta is a builder and entrepreneur from Mexico City shipping iOS apps, AI products (Pulso, Vocera), and books. 16+ apps shipped, MIT-backed research, Stanford alum.">
+    <meta name="description" content="Antonio Murrieta is a builder and entrepreneur from Mexico City shipping iOS apps, AI products (Pulso, Xanda, Vocera), and books. 16+ apps shipped, MIT-backed research, Stanford alum.">
     <meta name="author" content="Antonio Murrieta">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://antoniomurrieta.com/">
-    <meta name="keywords" content="Antonio Murrieta, Carlos Antonio Murrieta, MurrietaLabs, iOS developer Mexico, AI products, Pulso, Vocera, builder, entrepreneur">
+    <meta name="keywords" content="Antonio Murrieta, Carlos Antonio Murrieta, MurrietaLabs, iOS developer Mexico, AI products, Pulso, Xanda, Vocera, builder, entrepreneur">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Antonio Murrieta — Builder, Entrepreneur & Author">
-    <meta property="og:description" content="Builder and entrepreneur from Mexico City. Now building Pulso and Vocera — plus 16+ shipped apps and 3 published books, all under one roof.">
+    <meta property="og:description" content="Builder and entrepreneur from Mexico City. Now building Pulso, Xanda, and Vocera — plus 16+ shipped apps and 3 published books, all under one roof.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com/">
     <meta property="og:site_name" content="Antonio Murrieta">
@@ -298,8 +298,8 @@
 
         .paintings {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 56px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
         }
 
         .painting {
@@ -736,6 +736,8 @@
 
         @media (max-width: 1000px) {
             .releases-strip { grid-template-columns: repeat(4, 1fr); }
+            /* three-up gets too narrow to read below this — stack instead */
+            .paintings { grid-template-columns: 1fr; gap: 60px; }
         }
 
         @media (max-width: 768px) {
@@ -756,7 +758,6 @@
             .releases-more { text-align: center; }
 
             .showing { padding: 80px 20px 40px; }
-            .paintings { grid-template-columns: 1fr; gap: 60px; }
 
             .corridor { padding: 80px 20px 30px; }
             .doors { gap: 14px; margin-top: 48px; }
@@ -832,12 +833,24 @@
                     </div>
                 </a>
 
+                <a href="https://xanda.com.mx" target="_blank" rel="noopener" class="painting reveal">
+                    <div class="painting-frame">
+                        <div class="painting-img" style="background-image: url('assets/Work_Covers/Xanda.jpg')"></div>
+                    </div>
+                    <div class="painting-plaque">
+                        <p class="pp-id">No. 02 <span class="accent">&mdash;</span> Xanda</p>
+                        <p class="pp-medium">AI academy &middot; espa&ntilde;ol</p>
+                        <p class="pp-note">The AI you'll actually use. Applied courses in Spanish, taught from real work &mdash; you leave every lesson with something you can use that same day.</p>
+                        <span class="pp-cta">Visit xanda.com.mx &#8599;</span>
+                    </div>
+                </a>
+
                 <a href="https://vocera.mx" target="_blank" rel="noopener" class="painting reveal">
                     <div class="painting-frame">
                         <div class="painting-img" style="background-image: url('assets/Work_Covers/Vocera.jpg')"></div>
                     </div>
                     <div class="painting-plaque">
-                        <p class="pp-id">No. 02 <span class="accent">&mdash;</span> Vocera</p>
+                        <p class="pp-id">No. 03 <span class="accent">&mdash;</span> Vocera</p>
                         <p class="pp-medium">AI voice agents &middot; SaaS</p>
                         <p class="pp-note">An AI voice agent that answers every call and works your lists in natural Mexican Spanish, 24/7 &mdash; every conversation transcribed.</p>
                         <span class="pp-cta">Visit vocera.mx &#8599;</span>
