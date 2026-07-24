@@ -4,7 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portals — todas tus sesiones de Claude en una ventana</title>
+<meta name="description" content="Mission control para Claude Code: todas tus sesiones en paralelo en una sola ventana. Cada proyecto es un portal con su mascota guardiana — aprueba permisos, prompteá y observa desde un solo lugar.">
 <link rel="icon" href="icon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portals — mission control para Claude Code">
+<meta property="og:description" content="Todas tus sesiones de Claude Code en una sola ventana. Cada proyecto es un portal con su mascota guardiana.">
+<meta property="og:image" content="https://antoniomurrieta.com/portals/logo.png">
+<meta property="og:url" content="https://antoniomurrieta.com/portals/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portals — mission control para Claude Code">
+<meta name="twitter:description" content="Todas tus sesiones de Claude Code en una sola ventana. Cada proyecto es un portal con su mascota guardiana.">
+<meta name="twitter:image" content="https://antoniomurrieta.com/portals/logo.png">
 <style>
   :root {
     --bg: #0a0c14; --text: rgba(255,255,255,.94); --text2: rgba(255,255,255,.62);
@@ -27,6 +37,18 @@
   header { padding: 96px 0 40px; text-align: center; }
   .icon { width: 128px; height: 128px; border-radius: 29px; box-shadow: 0 20px 60px rgba(53,212,195,.25); animation: float 5s ease-in-out infinite; }
   @keyframes float { 50% { transform: translateY(-10px); } }
+
+  /* Living hero mascot — a guardian rising from its portal */
+  .hero-pet { width: 200px; height: 200px; display:block; margin: 0 auto; overflow: visible; }
+  .hero-pet .body-group { transform-box: fill-box; transform-origin: center; animation: pet-bob 3.4s ease-in-out infinite; }
+  @keyframes pet-bob { 50% { transform: translateY(-6px); } }
+  .hero-pet .hv { fill:none; stroke-linecap:round; transform-box: fill-box; transform-origin: center; }
+  .hero-pet .hv1 { stroke: rgba(53,212,195,.55); stroke-width:2; stroke-dasharray: 11 9; animation: spin 7s linear infinite; }
+  .hero-pet .hv2 { stroke: rgba(129,140,248,.6); stroke-width:2; stroke-dasharray: 8 7; animation: spin 5s linear infinite reverse; }
+  .hero-pet .hv3 { stroke: rgba(53,212,195,.75); stroke-width:2; stroke-dasharray: 5 6; animation: spin 3.2s linear infinite; }
+  .hero-pet .spark { animation: twinkle 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .hero-pet .spark.s2 { animation-delay: 1.2s; }
+  @keyframes twinkle { 0%,100% { opacity:.3; transform: scale(.7); } 50% { opacity:1; transform: scale(1.1); } }
   h1 { font-family: var(--display); font-size: clamp(40px, 7vw, 64px); font-weight: 800; margin-top: 28px; letter-spacing: -.5px; }
   h1 .spin { display:inline-block; animation: spin 14s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -64,7 +86,48 @@
 <body>
   <div class="wrap">
     <header>
-      <img class="icon" src="icon.svg" alt="Portals">
+      <svg class="hero-pet" viewBox="0 0 100 105" role="img" aria-label="La mascota guardiana de Portals saliendo de su portal">
+        <!-- portal vortex -->
+        <g>
+          <ellipse class="hv hv1" cx="50" cy="92" rx="30" ry="8"/>
+          <ellipse class="hv hv2" cx="50" cy="92" rx="22" ry="6"/>
+          <ellipse class="hv hv3" cx="50" cy="92" rx="14" ry="4"/>
+        </g>
+        <ellipse cx="50" cy="92" rx="24" ry="5" fill="rgba(0,0,0,0.28)"/>
+        <g class="body-group">
+          <!-- crown (fable flagship) -->
+          <path d="M60 26 L63 15 L69 22 L75 13 L79 24 Z" fill="#fbbf24" stroke="#b45309" stroke-width="2" stroke-linejoin="round" transform="rotate(12 70 20)"/>
+          <line x1="50" y1="38" x2="50" y2="24" stroke="hsl(150 45% 42%)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="50" cy="21" r="5" fill="hsl(150 60% 58%)" stroke="hsl(150 45% 42%)" stroke-width="2"/>
+          <defs>
+            <linearGradient id="heroBody" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="hsl(150 65% 62%)"/>
+              <stop offset="100%" stop-color="hsl(175 62% 55%)"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 30 C68 30 80 42 80 58 C80 76 68 86 50 86 C32 86 20 76 20 58 C20 42 32 30 50 30 Z" fill="url(#heroBody)" stroke="hsl(150 50% 42%)" stroke-width="2.5"/>
+          <ellipse cx="50" cy="68" rx="17" ry="12" fill="hsl(150 75% 74%)" opacity="0.85"/>
+          <circle cx="24" cy="64" r="6" fill="hsl(150 65% 62%)" stroke="hsl(150 50% 42%)" stroke-width="2"/>
+          <circle cx="76" cy="64" r="6" fill="hsl(150 65% 62%)" stroke="hsl(150 50% 42%)" stroke-width="2"/>
+          <!-- happy working face + glasses -->
+          <g>
+            <ellipse cx="42" cy="58" rx="4.5" ry="3.5" fill="hsl(150 45% 22%)"/>
+            <ellipse cx="58" cy="58" rx="4.5" ry="3.5" fill="hsl(150 45% 22%)"/>
+            <circle cx="43.5" cy="57" r="1.3" fill="#fff"/>
+            <circle cx="59.5" cy="57" r="1.3" fill="#fff"/>
+            <path d="M45 68 Q50 72 55 68" stroke="hsl(150 45% 22%)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          </g>
+          <g stroke="hsl(150 45% 22%)" stroke-width="2.2" fill="none">
+            <circle cx="42" cy="57" r="7.5"/>
+            <circle cx="58" cy="57" r="7.5"/>
+            <path d="M49.5 55.5 Q50 54.5 50.5 55.5"/>
+            <line x1="34.5" y1="55.5" x2="27" y2="52.5"/>
+            <line x1="65.5" y1="55.5" x2="73" y2="52.5"/>
+          </g>
+        </g>
+        <text class="spark s1" x="16" y="40" fill="var(--teal)" font-size="9">✦</text>
+        <text class="spark s2" x="82" y="52" fill="var(--amber)" font-size="8">✦</text>
+      </svg>
       <h1>Portals</h1>
       <p class="tagline">Todas tus sesiones de Claude Code en <b>una sola ventana</b>. Cada proyecto es un portal
       con su propia mascota: duerme cuando descansa, teclea cuando trabaja y te saluda cuando te necesita.</p>
