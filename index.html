@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <title>Antonio Murrieta — Builder, Entrepreneur & Author from Mexico City</title>
-    <meta name="description" content="Antonio Murrieta is a builder and entrepreneur from Mexico City shipping iOS apps, AI products (Pulso, Xanda, Vocera), and books. 16+ apps shipped, MIT-backed research, Stanford alum.">
+    <meta name="description" content="Antonio Murrieta is a builder and entrepreneur from Mexico City shipping iOS apps, AI products (Pulso, Xanda, Vocera), and books. 21 apps shipped, MIT-backed research, Stanford alum.">
     <meta name="author" content="Antonio Murrieta">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://antoniomurrieta.com/">
@@ -17,7 +17,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Antonio Murrieta — Builder, Entrepreneur & Author">
-    <meta property="og:description" content="Builder and entrepreneur from Mexico City. Now building Pulso, Xanda, and Vocera — plus 16+ shipped apps and 3 published books, all under one roof.">
+    <meta property="og:description" content="Builder and entrepreneur from Mexico City. Now building Pulso, Xanda, and Vocera — plus 21 shipped apps and 3 published books, all under one roof.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://antoniomurrieta.com/">
     <meta property="og:site_name" content="Antonio Murrieta">
@@ -298,8 +298,9 @@
 
         .paintings {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 36px;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 36px;
+            row-gap: 64px;
         }
 
         .painting {
@@ -736,7 +737,7 @@
 
         @media (max-width: 1000px) {
             .releases-strip { grid-template-columns: repeat(4, 1fr); }
-            /* three-up gets too narrow to read below this — stack instead */
+            /* two-up gets too narrow to read below this — stack instead */
             .paintings { grid-template-columns: 1fr; gap: 60px; }
         }
 
@@ -854,6 +855,18 @@
                         <p class="pp-medium">AI voice agents &middot; SaaS</p>
                         <p class="pp-note">An AI voice agent that answers every call and works your lists in natural Mexican Spanish, 24/7 &mdash; every conversation transcribed.</p>
                         <span class="pp-cta">Visit vocera.mx &#8599;</span>
+                    </div>
+                </a>
+
+                <a href="https://murrietalabs.com" target="_blank" rel="noopener" class="painting reveal">
+                    <div class="painting-frame">
+                        <div class="painting-img" style="background-image: url('assets/Work_Covers/MurrietaLabs.jpg')"></div>
+                    </div>
+                    <div class="painting-plaque">
+                        <p class="pp-id">No. 04 <span class="accent">&mdash;</span> MurrietaLabs</p>
+                        <p class="pp-medium">Custom software &middot; studio</p>
+                        <p class="pp-note">Software built from scratch for your problem &mdash; never a template, never more complexity than it needs. The studio where everything else on this wall gets made.</p>
+                        <span class="pp-cta">Visit murrietalabs.com &#8599;</span>
                     </div>
                 </a>
             </div>
