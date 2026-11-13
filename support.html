@@ -729,7 +729,9 @@
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        // threshold must be 0: a ratio like 0.2 can never be reached by a section
+        // taller than 5 viewports (e.g. #app-privacy), leaving it stuck at opacity 0.
+        }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
         reveals.forEach(function(el) { revealObserver.observe(el); });
 
         // Add scroll effect to navigation
