@@ -587,21 +587,25 @@
                 </details>
                 <details class="app-disclosure" id="facedash" open>
                     <summary>
-                        <span>Facedash <span class="app-disclosure-meta">iOS · Last updated November 13, 2026</span></span>
+                        <span>Facedash <span class="app-disclosure-meta">iOS · Last updated November 16, 2026</span></span>
                     </summary>
                     <div class="app-disclosure-body">
                         <h4>About Facedash</h4>
                         <p>Facedash is an endless-runner game you control with your face (head tilts and facial expressions) or, if you prefer, with classic swipes. It has no account, no sign-in and no server of its own.</p>
 
-                        <h4>Your face never leaves your device</h4>
+                        <h4>Face data (TrueDepth camera)</h4>
                         <ul>
-                            <li><strong>Camera:</strong> the front TrueDepth camera is used only to read facial-expression values (via Apple's ARKit) as the game controller. This happens entirely on your device, in real time.</li>
-                            <li><strong>No images, video or face data</strong> are recorded, stored or transmitted — not to us, not to anyone. The avatar you see in the game is a cartoon drawn from those values, not a camera image.</li>
+                            <li><strong>What is read:</strong> in Face mode, Facedash uses the front TrueDepth camera through Apple's ARKit face tracking to read a few numeric facial-expression values — eye blink (left and right), jaw open, eyebrow raise, smile — plus head tilt. Nothing else is read.</li>
+                            <li><strong>Why:</strong> only to control the game (switch lanes, jump, duck, boost, activate power-ups) and to animate the cartoon avatar that mirrors your expression. Face data is never used for identification, authentication, advertising, marketing, analytics or profiling.</li>
+                            <li><strong>No images:</strong> Facedash never records, stores or transmits photos, video, depth maps or a 3D model of your face. The avatar you see is a cartoon drawn from the values above, not a camera image.</li>
+                            <li><strong>Storage and retention:</strong> expression values are processed in real time, in memory, on your device and discarded as each frame is handled. The one exception: when a run ends, the handful of expression values from that moment are saved on your device so the cartoon "final face" can appear in your in-game gallery. Only the 24 most recent are kept; older ones are deleted automatically. These values cannot be used to identify you or to reconstruct your face.</li>
+                            <li><strong>Sharing:</strong> face data is never sent to us or to any third party, and never leaves your device. Facedash has no server. If you choose to share a run card, the image contains only the cartoon avatar and your score, and goes only where you send it through the iOS share sheet.</li>
+                            <li><strong>Deletion:</strong> uninstalling Facedash permanently erases everything it stored, including the gallery.</li>
                             <li><strong>Swipe mode</strong> does not use the camera at all.</li>
                         </ul>
 
                         <h4>What Facedash collects</h4>
-                        <p><strong>Nothing.</strong> Facedash has no analytics, no advertising, no tracking and no third-party SDKs. Your scores, coins, settings and run history are stored only on your device.</p>
+                        <p><strong>Nothing.</strong> We receive no data from Facedash. It has no analytics, no advertising, no tracking and no third-party SDKs. Your scores, coins, settings, run history and gallery are stored only on your device.</p>
 
                         <h4>Optional Apple features</h4>
                         <ul>
@@ -619,7 +623,7 @@
                         <p>Use of the app is governed by Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Standard End User License Agreement (EULA)</a>. Questions: <a href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>.</p>
 
                         <h4>En español</h4>
-                        <p>Facedash es un juego de carreras sin fin que controlas con la cara (o deslizando el dedo). La cámara frontal solo se usa para leer tus gestos en el dispositivo, en tiempo real; <strong>nunca</strong> se graban, guardan ni envían imágenes, video ni datos de tu rostro. Facedash no recopila ningún dato: no tiene analítica, publicidad, rastreo ni SDKs de terceros, y tus puntuaciones se guardan solo en tu dispositivo. Si usas Game Center, Apple recibe tu puntuación para las tablas. Dudas: <a href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>.</p>
+                        <p>Facedash es un juego de carreras sin fin que controlas con la cara (o deslizando el dedo). La cámara frontal TrueDepth (mediante ARKit de Apple) solo se usa para leer unos cuantos valores numéricos de expresión — parpadeo, boca, cejas, sonrisa e inclinación de la cabeza — como controles del juego y para animar el avatar de caricatura. <strong>Nunca</strong> se graban, guardan ni envían imágenes, video, mapas de profundidad ni un modelo de tu rostro, y los datos de tu rostro nunca salen de tu dispositivo ni se comparten con terceros. Los valores se procesan en memoria y se descartan al instante; la única excepción es que, al terminar una carrera, los valores de expresión de ese momento se guardan en tu dispositivo para mostrar la «cara final» de caricatura en la galería del juego (solo las 24 más recientes; no sirven para identificarte). Al desinstalar la app se borra todo. Facedash no recopila ningún dato: no tiene analítica, publicidad, rastreo ni SDKs de terceros, y tus puntuaciones se guardan solo en tu dispositivo. Si usas Game Center, Apple recibe tu puntuación para las tablas. Dudas: <a href="mailto:create@antoniomurrieta.com">create@antoniomurrieta.com</a>.</p>
 
                         <h4>Changes to this policy</h4>
                         <p>Material changes will be reflected by updating the "Last updated" date above.</p>
